@@ -63,7 +63,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- BEGIN LOGIN -->
 <div class="content">
 	<!-- BEGIN LOGIN FORM -->
-	<form class="login-form" action="index.html" method="post">
+	<form class="login-form" action="index.html" method="post" th:style="${login}?'display: block;':'display: none;'">
 		<h3 class="form-title">Login to your account</h3>
 		<div class="alert alert-danger display-hide">
 			<button class="close" data-close="alert"></button>
@@ -131,7 +131,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	</form>
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
-	<form class="register-form" action="index.html" method="post">
+	<form class="register-form" action="index.html" method="post" th:style="${signup}?'display: block;':'display: none;'">
 		<h3>Sign Up</h3>
 		<p>
 			 Enter your personal details below:
@@ -250,10 +250,10 @@ Layout.init(); // init current layout
   Demo.init();
        // init background slide images
        $.backstretch([
-        "resources/images/bg/1.jpg",
-        "resources/images/bg/2.jpg",
-        "resources/images/bg/3.jpg",
-        "resources/images/bg/4.jpg"
+        "../resources/images/bg/1.jpg",
+        "../resources/images/bg/2.jpg",
+        "../resources/images/bg/3.jpg",
+        "../resources/images/bg/4.jpg"
         ], {
           fade: 1000,
           duration: 8000
