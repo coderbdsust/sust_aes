@@ -33,11 +33,12 @@ public class UserDaoTest {
 	@Autowired
 	private UserRoleDao userRoleDao;
 
+	
 	@Test
 //	@Transactional
 	public void saveUser() {
 		
-		userDao.deleteAll();
+//		userDao.deleteAll();
 		User user = new User();
 		
 		user.setUsername("coder_bd");
