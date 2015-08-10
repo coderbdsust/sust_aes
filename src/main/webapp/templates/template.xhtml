@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich" contentType="text/html"
+	encoding="UTF-8">
+
+	<html>
+<f:loadBundle basename="messages" var="msg" />
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<title><ui:insert name="title">EZZY CRM</ui:insert></title>
+   	<link rel="shortcut icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+   	
+   	<h:outputStylesheet library="css" name="mt.css"/>
+   	<h:outputStylesheet library="css" name="cstyle.css"/>
+   	
+   	<h:outputScript library="javascript" name="jquery-1.4.4.min.js" target="head"/>
+   	<h:outputScript library="javascript" name="mt.js" target="head"/>
+   	<ui:insert name="head"/>
+</h:head>
+
+<h:body>
+	<div class="container">
+		<center style="height: 100%">
+			<table class="main" width="100%" border="0" cellpadding="0"
+				cellspacing="0">
+				<tr>
+					<td align="left" valign="top" height="80" bgcolor="#000">
+						<!-- header --> 
+						<h:graphicImage library="images" name="mt-banner.jpg" />
+					</td>
+				</tr>
+				<tr>
+					<td align="left" valign="bottom" height="25" bgcolor="#12699E">
+						<!-- top-menu --> 
+						<ui:include src="menu.xhtml"/>
+					</td>
+				</tr>
+				<tr>
+					<td align="left" valign="top">
+						<!-- left-menu and main-body -->
+						<table border="0" width="100%" cellpadding="3" cellspacing="5">
+							<tr>
+								<td width="230" align="left" valign="top">
+									<h:form>
+										<!-- left-menu -->
+										<ui:include src="navigation.xhtml" />
+									</h:form>
+									</td>
+								<td align="left" valign="top">
+									<!-- message on top of main-body --> 
+									<!-- global message --> 
+									<h:messages id="globalMsg" globalOnly="true" class="message"
+										styleClass="message" errorClass="errormsg" infoClass="infomsg"
+										warnClass="warnmsg" /> 
+										
+									<!-- main-body --> 
+									<ui:insert name="body" /> 
+									<br /> 
+									<br />
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+
+	<div id="footer-bar" class="footer-bar">
+		<!-- footer -->
+		<rich:toolbar height="30" itemSeparator="none">
+			<rich:toolbarGroup>
+				<h:outputText value="v.0.0.0.00001" />
+			</rich:toolbarGroup>
+		</rich:toolbar>
+	</div>
+			
+</h:body>
+	</html>
+</f:view>

@@ -1,0 +1,23 @@
+<rich:panel xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:c="http://java.sun.com/jsp/jstl/core"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
+		xmlns:rich="http://richfaces.org/rich"
+		xmlns:a4j="http://richfaces.org/a4j" 
+    	rendered="#{userPermissionController.selectedModule != 'home'}"
+    	style="width:225px">
+	<rich:panelMenu style="width:200px" mode="node"
+	        iconExpandedGroup="disc" iconCollapsedGroup="disc"
+	        iconExpandedTopGroup="chevronUp" iconGroupTopPosition="right"
+	        iconCollapsedTopGroup="chevronDown">	        
+		<c:forEach items="#{userPermissionController.panelMenuGroups}" var="panelMenuGroup">
+			<rich:panelMenuGroup label="#{panelMenuGroup.label}" expanded="true">
+				<c:forEach items="#{panelMenuGroup.menuItems}" var="menuItem">
+					<rich:panelMenuItem label="#{menuItem.label}" leftIcon="/resources/images/theme/icon/menu-item.gif" 
+						oncomplete="window.location.href='${request.contextPath}${menuItem.url}'"/>	
+				</c:forEach>
+			</rich:panelMenuGroup>
+		</c:forEach>
+	</rich:panelMenu>
+</rich:panel>

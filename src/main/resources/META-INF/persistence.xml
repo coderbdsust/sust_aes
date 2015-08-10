@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" 
+	xmlns="http://java.sun.com/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+	
+  <persistence-unit name="great-dao-pu" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.great.cms.entity.QuestionDescriptions</class>
+    <class>com.great.cms.entity.Exam</class>
+    <class>com.great.cms.entity.Designation</class>
+    <class>com.great.cms.entity.QuestionAnswers</class>
+    <class>com.great.cms.entity.CourseRegistration</class>
+    <class>com.great.cms.entity.TestRegistration</class>
+    <class>com.great.cms.entity.QuestionType</class>
+    <class>com.great.cms.entity.Questions</class>
+    <class>com.great.cms.entity.TestQuestion</class>
+    <class>com.great.cms.entity.ExamCommittee</class>
+    <class>com.great.cms.entity.UserRole</class>
+    <class>com.great.cms.entity.User</class>
+    <class>com.great.cms.entity.Test</class>
+    <class>com.great.cms.entity.Department</class>
+    <class>com.great.cms.entity.Course</class>
+    <class>com.great.cms.entity.Teaches</class>
+    
+    
+    
+    <properties>      
+		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+		<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
+		<property name="hibernate.hbm2ddl.auto" value="validate" />
+		<property name="hibernate.show_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>

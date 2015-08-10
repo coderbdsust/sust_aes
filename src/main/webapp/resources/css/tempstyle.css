@@ -1,0 +1,151 @@
+/* Form styles */
+
+label{    
+    text-align:right;
+    font-size:16px;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+}
+
+input,select{
+    padding:3px;
+    color:#333333;
+    border:1px solid #759C28;
+    margin-top:2px;
+    font-size:14px;
+    width:auto;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+}
+
+textarea {
+    border:1px solid #759C28;
+    padding:4px 3px;
+    font-size:14px;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+}
+
+button{
+    width:100px;
+    height:31px;
+    background:url("../images/main-bg.png") repeat-x;
+    text-align:center;
+    line-height:31px;
+    font-size:11px;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+    font-weight:bold;
+}
+
+td{
+    font-size:14px;
+}
+
+.form-title{
+    font-size:20px;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+    font-weight:bold;
+    border-bottom:solid 2px #D0D0D0;
+}
+
+.div-formbg{
+    border:1px solid #eeeeee;
+    background: #FFFFFF;
+    padding:5px;
+    color:#203360;
+    margin:0px auto 3px auto;
+    width:74%;
+}
+
+.scroller{
+    max-height: 325px;
+    overflow: scroll;
+}
+
+.scroller-popup{
+    max-height: 410px;
+    overflow: scroll;   
+}
+
+.display-list{
+    width: 450px;
+    border:1px solid #eeeeee;
+    background: #FFFFFF;
+    padding:5px;
+    color:#203360;
+    margin:0px 0px 3px 3px;
+    -moz-border-radius: 8px;
+}
+
+.div-form{
+    border:3px solid #eeeeee;
+    padding:15px;
+    background:url(../images/bg.jpg) repeat-x #cbd4e4;
+    color:#203360;
+    margin:5px 5px 5px 5px;   
+}
+
+.details-form{
+    border:3px solid #eeeeee;
+    padding:8px;
+    background:url(../images/bg.jpg) repeat-x #cbd4e4;
+    color:#203360;
+    margin:0px 0px 0px 0px;
+}
+
+.details-title{
+    font-size:16px;
+    font-family:"Lucida Grande",Tahoma,Verdana,Arial,sans-serif;
+    font-weight:bold;
+}
+
+.spacer{
+    margin:15px 15px 10px 15px;
+}
+
+.loginform-width{
+    width:300px;
+}
+
+.resultform-width{
+    width:100%;
+}
+
+.simp-button{
+    font-weight:bold;
+}
+
+.newATform-width{
+    width:520px;
+}
+
+.student-reg-form-width{
+    width:575px;
+}
+
+.asslist-width{
+    width:575px;
+}
+
+.profileform-width{
+    width:390px;
+}
+
+.uploadnotif-width{
+    width:575px;
+}
+
+
+.uploadcode-width{
+    width:550px
+}
+
+.newatsubmit-width{
+    width:400px;
+}
+
+#error{
+    background-color:#ffebe8;
+    border:1px solid #dd3c10;
+    padding:7px 3px;
+    text-align:center;
+    margin-top:10px;
+    visibility:hidden;
+}

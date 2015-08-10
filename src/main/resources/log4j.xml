@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ * Copyright 2012 by G5-Technologies Co.,Ltd. . All rights reserved.
+ * All intellectual property rights in and/or in the computer program and its
+ * related documentation and technology are the sole G5-Technologies'
+ * property. This computer program is under G5-Technologies copyright and
+ * cannot be in whole or in part reproduced, sublicensed, leased, sold or used
+ * in any form or by any means, including without limitation graphic, electronic,
+ * mechanical, photocopying, recording, taping or information storage and
+ * retrieval systems without G5-Technologies prior written consent. The
+ * downloading, exporting or reexporting of this computer program or any related
+ * documentation or technology is subject to any export rules, including US
+ * regulations.
+ -->
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+
+    <!-- #APPENDER FOR CONSOLE -->
+    <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="File" value="D:\\server.log"/> 
+      <param name="Append" value="true"/>
+      <param name="DatePattern" value="'.'yyyyMMdd"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{dd/MM/yyyyH|H\:mm\:ss.SSS}|%-5p|%c.%M()|%4L%m%n"/>
+         <param name="ConversionPattern" value="%d | %p | %l | %m%n"/>
+      </layout>
+   </appender>
+
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+      <errorHandler class="org.apache.log4j.helpers.OnlyOnceErrorHandler"/>
+      <param name="Target" value="System.out"/>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%d{dd/MM/yyyyH|H\:mm\:ss.SSS}|%-5p|%c.%M()|%4L%m%n"/>
+         <param name="ConversionPattern" value="%d | %p | %l | %m%n"/>
+      </layout>
+   </appender>
+
+    <category name="com.g5.crm">
+     <priority value="DEBUG"/>
+     <appender-ref ref="CONSOLE"/>
+     <appender-ref ref="FILE"/>
+   </category>
+    
+   <category name="org.hibernate.tool.hbm2ddl">
+     <priority value="WARN"/>
+     <appender-ref ref="CONSOLE"/>
+     <appender-ref ref="FILE"/>
+   </category>
+    
+   <category name="org.springframework">
+   	 <priority value="WARN"/>
+     <appender-ref ref="CONSOLE"/>
+     <appender-ref ref="FILE"/>
+   </category>
+   
+   <root>
+      <priority value="ERROR"/>
+   </root>
+
+</log4j:configuration>

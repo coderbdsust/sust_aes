@@ -1,0 +1,29 @@
+/* Form styles */
+
+.ticket-view {
+	color: black; 
+	border: 1px solid #B6AD84; 
+	background:url(#{resource['images/myres:bg.png']}) repeat-x;
+	text-align:center;
+}
+
+.form-font {
+	font-size:13px;
+}
+
+.top-align {
+	vertical-align: top;
+}
+
+.even-row {
+    background-color: #FCFFFE;
+}
+ 
+.odd-row {
+    background-color: #ECF3FE;
+}
+ 
+.active-row {
+    background-color: #FFEBDA !important;
+    cursor: pointer;
+}
