@@ -11,6 +11,5 @@ public interface UserDao extends GenericDao<User, Long>{
 	
 	public void deleteAll();
 	public boolean usernameExists(String username);
-	public User getActiveUser(String username, String password);
-	public List<User> findActiveUsers();
+	public User findByUsername(String username);
 }

@@ -8,9 +8,8 @@ import com.great.cms.entity.User;
 public interface UserService {
 	public List<User> getUsers();
 	public User getUserById(Long id);
+	public User getUser(String username);
 	public void saveOrUpdate(User user);
 	public boolean usernameExists(String username);
-	public User getActiveUser(String username, String password);
-	public List<User> getActiveUsers();
 	
 }

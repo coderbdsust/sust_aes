@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public void saveOrUpdate(User user) {
-		if (user.getUserId() != null) {
+		if (user.getUserId() == null) {
 			userDao.save(user);
 		}else{
 			userDao.update(user);
@@ -41,16 +41,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User getActiveUser(String username, String password) {
+	public User getUser(String username) {
 		// TODO Auto-generated method stub
-		return userDao.getActiveUser(username,password);
+		return userDao.findByUsername(username);
 	}
 
-
-	@Override
-	public List<User> getActiveUsers() {
-		// TODO Auto-generated method stub
-		return userDao.findActiveUsers();
-	}
 	
 }
