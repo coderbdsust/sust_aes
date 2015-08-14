@@ -25,6 +25,7 @@ public class AdminController {
 	
 	@RequestMapping({"/","/index",""})
 	public String showAdmin(Model model){
+		System.out.println("/admin/index/");
 		model.addAttribute("usersCount", userService.countVerifiedUsers());
 		model.addAttribute("verificationsNeed", userService.countVerificationNeed());
 		return "admin/index";
