@@ -36,7 +36,7 @@
                         <div class="dashboard-stat2">
                             <div class="display">
                                 <div class="number">
-                                    <h3 class="font-green-sharp" >100</h3>
+                                    <h3 class="font-green-sharp" th:text="${usersCount}!=null?${usersCount}:0"></h3>
                                     <small>TOTAL USERS</small>
                                 </div>
                                 <div class="icon">
@@ -49,8 +49,8 @@
                         <div class="dashboard-stat2">
                             <div class="display">
                                 <div class="number">
-                                    <h3 class="font-red-haze">1349</h3>
-                                    <small>VERIFICATION NEEDED</small>
+                                    <h3 class="font-red-haze"  th:text="${verificationsNeed}!=null?${verificationsNeed}:0"></h3>
+                                    <small>ACCOUNT VERIFICATION</small>
                                 </div>
                                 <div class="icon">
                                     <i class="icon-hourglass"></i>

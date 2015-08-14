@@ -82,6 +82,15 @@ public class UserDaoTest {
 		User user = userDao.findByUsername("coder_bd");
 		System.out.println(user);
 		assertNotNull(user);
+		
+		List<User> users = userDao.findAll();
+		for(User u:users){
+			System.out.println(u);
+		}
+		System.out.println(users.size());
+		
+		Integer count = userDao.countVerificationNeed();
+		System.out.println(count);
 	}
 	
 	

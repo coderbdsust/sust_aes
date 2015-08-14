@@ -46,5 +46,14 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByUsername(username);
 	}
 
+	@Override
+	public Integer countVerifiedUsers() {
+		return userDao.countUsers();
+	}
+	
+	public Integer countVerificationNeed(){
+		return userDao.countVerificationNeed();
+	}
+
 	
 }

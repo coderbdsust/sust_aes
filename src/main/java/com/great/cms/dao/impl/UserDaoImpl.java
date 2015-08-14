@@ -40,6 +40,23 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 			return null;
 		return users.get(0);
 	}
+
+	public Integer countUsers() {
+		Query query = this.em
+				.createQuery("SELECT count(u) FROM User u WHERE u.enabled=true");
+		Integer count = query.getResultList().size();
+		return count;
+	}
 	
+	public Integer countVerificationNeed(){
+		Query query = this.em
+				.createQuery("SELECT u FROM User u WHERE "
+						+ "u.enabled=false "
+						+ "or u.accountNonLocked=false "
+						+ "or u.accountNonExpired=false "
+						+ "or u.credentialsNonExpired=false");
+		Integer count = query.getResultList().size();
+		return count;
+	}
 
 }
