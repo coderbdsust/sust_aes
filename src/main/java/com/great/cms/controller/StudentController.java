@@ -9,6 +9,7 @@ public class StudentController {
 	
 	@RequestMapping({"/profile","/",""})
 	public String showProfile(){
+		System.out.println("/student/profile");
 		return "student/profile";
 	}
 }

@@ -7,22 +7,33 @@
 package com.great.cms.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.great.cms.enums.Role;
+
 
 /**
  *
@@ -67,8 +78,16 @@ public class User implements DomainObject, Serializable {
     private boolean credentialsNonExpired;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Student> studentList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId" )
     private List<UserRole> userRoleList;
+    
+//    @NotEmpty(message = "You must select one role")
+//    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
+//    @Enumerated(EnumType.STRING)
+//    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+//    private List<Role> roles = new ArrayList<>();
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Teacher> teacherList;
 
@@ -163,6 +182,14 @@ public class User implements DomainObject, Serializable {
         this.userRoleList = userRoleList;
     }
 
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
+    
     @XmlTransient
     public List<Teacher> getTeacherList() {
         return teacherList;
@@ -202,12 +229,5 @@ public class User implements DomainObject, Serializable {
 				+ ", studentList=" + getStudentList() + ", userRoleList="
 				+ getUserRoleList() + ", teacherList=" + getTeacherList() + "]";
 	}
-    
-    
-
-//    @Override
-//    public String toString() {
-//        return "com.great.cms.entity.User[ userId=" + userId + " ]";
-//    }
     
 }

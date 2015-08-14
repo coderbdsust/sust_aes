@@ -16,9 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.great.cms.dao.UserDao;
-import com.great.cms.dao.UserRoleDao;
 import com.great.cms.entity.User;
-import com.great.cms.entity.UserRole;
 import com.great.cms.enums.Role;
 import com.mchange.util.AssertException;
 
@@ -30,8 +28,6 @@ public class UserDaoTest {
 	@Autowired
 	private UserDao userDao;
 
-	@Autowired
-	private UserRoleDao userRoleDao;
 
 	
 //	@Test
@@ -83,14 +79,14 @@ public class UserDaoTest {
 		System.out.println(user);
 		assertNotNull(user);
 		
-		List<User> users = userDao.findAll();
-		for(User u:users){
-			System.out.println(u);
-		}
-		System.out.println(users.size());
+
+//		user.getRoles().add(Role.ROLE_ADMIN);
+//		user.getRoles().add(Role.ROLE_TEACHER);
+//		userDao.update(user);
 		
-		Integer count = userDao.countVerificationNeed();
-		System.out.println(count);
+		User u = userDao.findById(user.getUserId());
+		assertNotNull(u);
+	
 	}
 	
 	

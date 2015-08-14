@@ -40,7 +40,7 @@ public class LoginController {
 	@RequestMapping(value = "/user/signin", method = RequestMethod.POST)
 	public String userAuthentication(User user, BindingResult result,
 			Model uiModel, RedirectAttributes redirectAttr) {
-
+		System.out.println("/user/signin");
 		User userSaved = userService.getUser(user.getUsername());
 
 		if (userSaved == null) {
@@ -80,6 +80,7 @@ public class LoginController {
 	@RequestMapping(value = "/user/signup", method = RequestMethod.POST)
 	public String userSignUpEntry(User user, BindingResult result,
 			Model uiModel, RedirectAttributes redirectAttr) {
+		System.out.println("/user/signup");
 		boolean status = userService.usernameExists(user.getUsername());
 		if (status == true) {
 			System.out.println("User account creation rejected!");
