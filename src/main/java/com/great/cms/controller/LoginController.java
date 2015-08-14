@@ -56,7 +56,7 @@ public class LoginController {
 					&& userSaved.getCredentialsNonExpired() == true
 					&& userSaved.getEnabled() == true) {
 				uiModel.addAttribute("message", "Successfully Logged In!");
-				return "message";
+				return "layout/main";
 			} else {
 				if (!userSaved.getPassword().equals(user.getPassword())) {
 					redirectAttr.addFlashAttribute("loginError",
