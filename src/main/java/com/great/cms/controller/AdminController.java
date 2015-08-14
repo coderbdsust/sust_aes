@@ -14,12 +14,12 @@ import com.great.cms.service.UserService;
 
 
 @Controller
-@RequestMapping("/account")
+@RequestMapping("/admin")
 public class AdminController {
 
-	@RequestMapping("/admin")
+	@RequestMapping("/")
 	public String showAdmin(){
-		return "layout/main";
+		return "admin/index";
 		
 	}
 	
