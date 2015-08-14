@@ -7,63 +7,69 @@
 </head>
 <body>
 	<section layout:fragment="body-content">
-	<div class="page-content-wrapper">
-            <div class="page-content">
-                <!-- BEGIN PAGE HEAD -->
-                <div class="page-head">
-                    <!-- BEGIN PAGE TITLE -->
-                    <div class="page-title">
-                        <h1>Dashboard <small>statistics &amp; reports</small></h1>
-                    </div>
-                    <!-- END PAGE TITLE -->
-                    <!-- BEGIN PAGE TOOLBAR -->                    
-                    <!-- END PAGE TOOLBAR -->
-                </div>
-                <!-- END PAGE HEAD -->
-                <!-- BEGIN PAGE BREADCRUMB -->
-                <ul class="page-breadcrumb breadcrumb hide">
-                    <li>
-                        <a href="javascript:;">Home</a><i class="fa fa-circle"></i>
-                    </li>
-                    <li class="active">
-                        Dashboard
-                    </li>
-                </ul>
-                <!-- END PAGE BREADCRUMB -->
-                <!-- BEGIN PAGE CONTENT INNER -->
-                <div class="row margin-top-10">
-                    <div class="col-lg-6 col-md-3 col-sm-6 col-xs-12">
-                        <div class="dashboard-stat2">
-                            <div class="display">
-                                <div class="number">
-                                    <h3 class="font-green-sharp" th:text="${usersCount}!=null?${usersCount}:0"></h3>
-                                    <small>TOTAL USERS</small>
-                                </div>
-                                <div class="icon">
-                                    <i class="icon-user"></i>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-3 col-sm-6 col-xs-12">
-                        <div class="dashboard-stat2">
-                            <div class="display">
-                                <div class="number">
-                                    <h3 class="font-red-haze"  th:text="${verificationsNeed}!=null?${verificationsNeed}:0"></h3>
-                                    <small>ACCOUNT VERIFICATION</small>
-                                </div>
-                                <div class="icon">
-                                    <i class="icon-hourglass"></i>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                                       
-                </div>
-                <!-- END PAGE CONTENT INNER -->
-            </div>
-        </div>		
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<!-- BEGIN PAGE HEAD -->
+				<div class="page-head">
+					<!-- BEGIN PAGE TITLE -->
+					<div class="page-title">
+						<h1>
+							Dashboard <small>statistics &amp; reports</small>
+						</h1>
+					</div>
+					<!-- END PAGE TITLE -->
+					<!-- BEGIN PAGE TOOLBAR -->
+					<!-- END PAGE TOOLBAR -->
+				</div>
+				<!-- END PAGE HEAD -->
+				<!-- BEGIN PAGE BREADCRUMB -->
+				<ul class="page-breadcrumb breadcrumb hide">
+					<li><a href="javascript:;">Home</a><i class="fa fa-circle"></i>
+					</li>
+					<li class="active">Dashboard</li>
+				</ul>
+				<!-- END PAGE BREADCRUMB -->
+				<!-- BEGIN PAGE CONTENT INNER -->
+				<div class="row margin-top-10">
+					<div class="col-lg-6 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat2">
+							<div class="display">
+								<div class="number">
+									<h3 class="font-green-sharp"
+										th:text="${usersCount}!=null?${usersCount}:0"></h3>
+									<small>TOTAL USERS</small>
+								</div>
+								<div class="icon">
+									<i class="icon-user"></i>
+								</div>
+							</div>
+							<a class="more" href="javascript:;"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-3 col-sm-6 col-xs-12">
+						<div class="dashboard-stat2">
+							<div class="display">
+								<div class="number">
+									<h3 class="font-red-haze"
+										th:text="${verificationsNeed}!=null?${verificationsNeed}:0"></h3>
+									<small>ACCOUNT VERIFICATION</small>
+								</div>
+								<div class="icon">
+									<i class="icon-hourglass"></i>
+								</div>
+							</div>
+							<a class="more" th:href="@{/admin/verification}"> View more <i
+								class="m-icon-swapright m-icon-white"></i>
+							</a>
+						</div>
+					</div>
+
+				</div>
+				<!-- END PAGE CONTENT INNER -->
+			</div>
+		</div>
 	</section>
 </body>
 </html>
