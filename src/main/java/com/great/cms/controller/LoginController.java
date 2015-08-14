@@ -47,7 +47,7 @@ public class LoginController {
 		
 		if (userSaved == null) {
 			redirectAttr.addFlashAttribute("loginError",
-					"Sorry, username not found!");
+					"Sorry, Username not found!");
 			return "redirect:/account/user/login";
 		} else {
 			if (userSaved.getPassword().equals(user.getPassword())
@@ -60,10 +60,10 @@ public class LoginController {
 			} else {
 				if (!userSaved.getPassword().equals(user.getPassword())) {
 					redirectAttr.addFlashAttribute("loginError",
-							"Sorry, password not matched!");
+							"Sorry, Password not matched!");
 				} else {
 					redirectAttr.addFlashAttribute("loginError",
-							"Sorry, account not verified!");
+							"Sorry, Account not verified!");
 				}
 				return "redirect:/account/user/login";
 			}
