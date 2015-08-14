@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	public List<User> getUsers() {
 		return userDao.findAll();
 	}
-	
+
 	public User getUserById(Long id) {
 		return userDao.findById(id);
 	}
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	public void saveOrUpdate(User user) {
 		if (user.getUserId() == null) {
 			userDao.save(user);
-		}else{
+		} else {
 			userDao.update(user);
 		}
 	}
@@ -35,8 +35,8 @@ public class UserServiceImpl implements UserService {
 	public boolean usernameExists(String username) {
 		return userDao.usernameExists(username);
 	}
-	
-	public void deleteAll(){
+
+	public void deleteAll() {
 		userDao.deleteAll();
 	}
 
@@ -50,10 +50,15 @@ public class UserServiceImpl implements UserService {
 	public Integer countVerifiedUsers() {
 		return userDao.countUsers();
 	}
-	
-	public Integer countVerificationNeed(){
+
+	public Integer countVerificationNeed() {
 		return userDao.countVerificationNeed();
 	}
 
-	
+	@Override
+	public List<User> nonVerifiedUsers() {
+		// TODO Auto-generated method stub
+		return userDao.nonVerifiedUsers();
+	}
+
 }

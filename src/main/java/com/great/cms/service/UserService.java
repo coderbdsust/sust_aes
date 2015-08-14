@@ -15,5 +15,6 @@ public interface UserService {
 	public boolean usernameExists(String username);
 	public Integer countVerifiedUsers();
 	public Integer countVerificationNeed();
+	public List<User> nonVerifiedUsers();
 	
 }
