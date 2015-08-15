@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.great.cms.entity.Student;
 
 
-public interface StudentDao extends GenericDao<Student, Integer> {
+public interface StudentDao extends GenericDao<Student, Long> {
+
+	Student findByRegId(Integer regId);
 
 }
