@@ -28,7 +28,7 @@ public class AdminController {
 			.getLogger(AdminController.class);
 
 	@Autowired
-	private UserService userService;
+	private UserService userService; 
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
