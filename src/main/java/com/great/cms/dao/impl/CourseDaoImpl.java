@@ -19,11 +19,5 @@ public class CourseDaoImpl extends GenericDaoImpl<Course, Integer> implements Co
 	public CourseDaoImpl () {
 		super(Course.class );
 	}
-	
-	
-	public CourseDaoImpl(Class<Course> type) {
-		super(type);
-		
-	}
 
 }
