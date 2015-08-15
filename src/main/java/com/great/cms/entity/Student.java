@@ -51,11 +51,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Student.findByGender", query = "SELECT s FROM Student s WHERE s.gender = :gender")})
 public class Student implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "student_id")
-    private Integer studentId;
+    private Long studentId;
     @Basic(optional = false)
     @Column(name = "registration_no")
     private int registrationNo;
@@ -97,11 +97,11 @@ public class Student implements DomainObject, Serializable {
     public Student() {
     }
 
-    public Student(Integer studentId) {
+    public Student(Long studentId) {
         this.studentId = studentId;
     }
 
-    public Student(Integer studentId, int registrationNo, String email, String contactNo, String firstName, String lastName, String gender) {
+    public Student(Long studentId, int registrationNo, String email, String contactNo, String firstName, String lastName, String gender) {
         this.studentId = studentId;
         this.registrationNo = registrationNo;
         this.email = email;
@@ -111,11 +111,11 @@ public class Student implements DomainObject, Serializable {
         this.gender = gender;
     }
 
-    public Integer getStudentId() {
+    public Long getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Integer studentId) {
+    public void setStudentId(Long studentId) {
         this.studentId = studentId;
     }
 
