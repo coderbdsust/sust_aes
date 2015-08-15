@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
-<title>Teacher :: Profile</title>
+<title>Student :: Profile</title>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -32,28 +32,39 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Full Name</label>
+												<label class="control-label col-md-3">First Name</label>
 												<div class="col-md-9">
 													<input type="text" class="form-control"
-														placeholder="Sheikh Nabil mohammad" />
+														placeholder="Biswajit" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
 												</div>
 											</div>
 										</div>
 										<!--/span-->
-
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Last Name</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control"
+														placeholder="Debnath" />
+													<!-- span class="help-block">
+														This is inline help </span> -->
+												</div>
+											</div>
+										</div>
 										<!--/span-->
 									</div>
 									<!-- row -->
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Employee Code</label>
+												<label class="control-label col-md-3">Registration
+													Number</label>
 												<div class="col-md-9">
 
 													<input type="text" class="form-control" max="10"
-														placeholder="SNM" />
+														placeholder="2011331009" />
 													<!-- <span class="help-block">
 														This is inline help </span> -->
 
@@ -74,24 +85,73 @@
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
 											</div>
-										</div>
 
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Blood Group</label>
+												<div class="col-md-9">
+													<select class="form-control">
+														<option value="">A+</option>
+														<option value="">B+</option>
+														<option value="">O+</option>
+														<option value="">AB+</option>
+														<option value="">A-</option>
+														<option value="">B-</option>
+														<option value="">O-</option>
+														<option value="">AB-</option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+												</div>
+											</div>
+										</div>
 									</div>
 
 									<div class="row">
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Designation ID</label>
+												<label class="control-label col-md-3">Contact No.</label>
 												<div class="col-md-9">
 													<input type="text" class="form-control"
-														placeholder="CSE-SNM-1234" />
+														placeholder="019********" />
 												</div>
 											</div>
 										</div>
 										<!--/span-->
 									</div>
 									<!--/row-->
+									<div class="row">
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Maretial
+													Status</label>
+												<div class="col-md-9">
+													<select class="form-control">
+														<option value="">Single</option>
+														<option value="">Married</option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Gender</label>
+												<div class="col-md-9">
+													<select class="form-control">
+														<option value="">Male</option>
+														<option value="">Female</option>
+														<option value="">Others</option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
 									<div class="row">
 										<!--/span-->
 										<div class="col-md-6">
@@ -105,7 +165,47 @@
 										</div>
 										<!--/span-->
 									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Religion</label>
+												<div class="col-md-9">
+													<select class="form-control">
+														<option value="">Islam</option>
+														<option value="">Hindu</option>
+														<option value="">Buddist</option>
+														<option value="">Christian</option>
+														<option value="">Atheist</option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+												</div>
+											</div>
+										</div>
 
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Address</label>
+												<div class="col-md-9">
+													<input type="date" class="form-control" maxlength="100"
+														placeholder="dd/mm/yyyy" />
+													<!-- <span class="help-block"> Select your gender. </span> -->
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Address</label>
+												<div class="col-md-9">
+													<textarea class="form-control" maxlength="100"
+														placeholder="text"></textarea>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+												</div>
+											</div>
+										</div>
+									</div>
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-6">
