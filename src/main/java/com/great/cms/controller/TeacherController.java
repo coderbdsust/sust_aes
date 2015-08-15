@@ -12,4 +12,10 @@ public class TeacherController {
 		System.out.println("/teacher/profile");
 		return "teacher/profile";
 	}
+	
+	@RequestMapping("profile/edit")
+	public String editProfile() {
+		System.out.println("/teacher/profile/edit");
+		return "teacher/edit";
+	}
 }
