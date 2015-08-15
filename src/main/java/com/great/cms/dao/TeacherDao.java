@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.great.cms.entity.Teacher;
 
 
-public interface TeacherDao extends GenericDao<Teacher, Integer> {
+public interface TeacherDao extends GenericDao<Teacher, Long> {
 
 }

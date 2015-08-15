@@ -34,7 +34,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.great.cms.enums.Role;
 
-
 /**
  *
  * @author Biswajit Debnath
@@ -43,181 +42,184 @@ import com.great.cms.enums.Role;
 @Table(name = "user")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-    @NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled"),
-    @NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
-    @NamedQuery(name = "User.findByAccountNonExpired", query = "SELECT u FROM User u WHERE u.accountNonExpired = :accountNonExpired"),
-    @NamedQuery(name = "User.findByCredentialsNonExpired", query = "SELECT u FROM User u WHERE u.credentialsNonExpired = :credentialsNonExpired")})
+		@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+		@NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
+		@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
+		@NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
+		@NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled"),
+		@NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
+		@NamedQuery(name = "User.findByAccountNonExpired", query = "SELECT u FROM User u WHERE u.accountNonExpired = :accountNonExpired"),
+		@NamedQuery(name = "User.findByCredentialsNonExpired", query = "SELECT u FROM User u WHERE u.credentialsNonExpired = :credentialsNonExpired") })
 public class User implements DomainObject, Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "user_id")
-    private Long userId;
-    @Basic(optional = false)
-    @Column(name = "username")
-    private String username;
-    @Basic(optional = false)
-    @Column(name = "password")
-    private String password;
-    @Basic(optional = false)
-    @Column(name = "enabled")
-    private boolean enabled;
-    @Basic(optional = false)
-    @Column(name = "account_non_locked")
-    private boolean accountNonLocked;
-    @Basic(optional = false)
-    @Column(name = "account_non_expired")
-    private boolean accountNonExpired;
-    @Basic(optional = false)
-    @Column(name = "credentials_non_expired")
-    private boolean credentialsNonExpired;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private List<Student> studentList;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId" )
-    private List<UserRole> userRoleList;
-    
-//    @NotEmpty(message = "You must select one role")
-//    @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
-//    @Enumerated(EnumType.STRING)
-//    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-//    private List<Role> roles = new ArrayList<>();
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-    private List<Teacher> teacherList;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "user_id")
+	private Long userId;
+	@Basic(optional = false)
+	@Column(name = "username")
+	private String username;
+	@Basic(optional = false)
+	@Column(name = "password")
+	private String password;
+	@Basic(optional = false)
+	@Column(name = "enabled")
+	private boolean enabled;
+	@Basic(optional = false)
+	@Column(name = "account_non_locked")
+	private boolean accountNonLocked;
+	@Basic(optional = false)
+	@Column(name = "account_non_expired")
+	private boolean accountNonExpired;
+	@Basic(optional = false)
+	@Column(name = "credentials_non_expired")
+	private boolean credentialsNonExpired;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+	private List<Student> studentList;
 
-    public User() {
-    }
+	/*@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+	private List<Role> roles;*/
 
-    public User(Long userId) {
-        this.userId = userId;
-    }
+	 @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
+	 @Enumerated(EnumType.STRING)
+	 @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name =
+	 "user_id"))
+	 private List<Role> role = new ArrayList<>();
 
-    public User(Long userId, String username, String password, boolean enabled, boolean accountNonLocked, boolean accountNonExpired, boolean credentialsNonExpired) {
-        this.userId = userId;
-        this.username = username;
-        this.password = password;
-        this.enabled = enabled;
-        this.accountNonLocked = accountNonLocked;
-        this.accountNonExpired = accountNonExpired;
-        this.credentialsNonExpired = credentialsNonExpired;
-    }
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+	private List<Teacher> teacherList;
 
-    public Long getUserId() {
-        return userId;
-    }
+	public User() {
+	}
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+	public User(Long userId) {
+		this.userId = userId;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public User(Long userId, String username, String password, boolean enabled,
+			boolean accountNonLocked, boolean accountNonExpired,
+			boolean credentialsNonExpired) {
+		this.userId = userId;
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.accountNonLocked = accountNonLocked;
+		this.accountNonExpired = accountNonExpired;
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public Long getUserId() {
+		return userId;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public boolean getEnabled() {
-        return enabled;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public boolean getAccountNonLocked() {
-        return accountNonLocked;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setAccountNonLocked(boolean accountNonLocked) {
-        this.accountNonLocked = accountNonLocked;
-    }
+	public boolean getEnabled() {
+		return enabled;
+	}
 
-    public boolean getAccountNonExpired() {
-        return accountNonExpired;
-    }
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
 
-    public void setAccountNonExpired(boolean accountNonExpired) {
-        this.accountNonExpired = accountNonExpired;
-    }
+	public boolean getAccountNonLocked() {
+		return accountNonLocked;
+	}
 
-    public boolean getCredentialsNonExpired() {
-        return credentialsNonExpired;
-    }
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		this.accountNonLocked = accountNonLocked;
+	}
 
-    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-        this.credentialsNonExpired = credentialsNonExpired;
-    }
+	public boolean getAccountNonExpired() {
+		return accountNonExpired;
+	}
 
-    @XmlTransient
-    public List<Student> getStudentList() {
-        return studentList;
-    }
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		this.accountNonExpired = accountNonExpired;
+	}
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
-    }
+	public boolean getCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
 
-    @XmlTransient
-    public List<UserRole> getUserRoleList() {
-        return userRoleList;
-    }
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		this.credentialsNonExpired = credentialsNonExpired;
+	}
 
-    public void setUserRoleList(List<UserRole> userRoleList) {
-        this.userRoleList = userRoleList;
-    }
+	@XmlTransient
+	public List<Student> getStudentList() {
+		return studentList;
+	}
 
-//    public List<Role> getRoles() {
-//        return roles;
-//    }
-//
-//    public void setRoles(List<Role> roles) {
-//        this.roles = roles;
-//    }
-    
-    @XmlTransient
-    public List<Teacher> getTeacherList() {
-        return teacherList;
-    }
+	public void setStudentList(List<Student> studentList) {
+		this.studentList = studentList;
+	}
 
-    public void setTeacherList(List<Teacher> teacherList) {
-        this.teacherList = teacherList;
-    }
+	/*
+	 * @XmlTransient public List<UserRole> getUserRoleList() { return
+	 * userRoleList; }
+	 * 
+	 * public void setUserRoleList(List<UserRole> userRoleList) {
+	 * this.userRoleList = userRoleList; }
+	 */
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (userId != null ? userId.hashCode() : 0);
-        return hash;
-    }
+	public List<Role> getRole() {
+		return role;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.userId == null && other.userId != null) || (this.userId != null && !this.userId.equals(other.userId))) {
-            return false;
-        }
-        return true;
-    }
+	public void setRole(List<Role> role) {
+		this.role= role;
+	}
+
+	@XmlTransient
+	public List<Teacher> getTeacherList() {
+		return teacherList;
+	}
+
+	public void setTeacherList(List<Teacher> teacherList) {
+		this.teacherList = teacherList;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (userId != null ? userId.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof User)) {
+			return false;
+		}
+		User other = (User) object;
+		if ((this.userId == null && other.userId != null)
+				|| (this.userId != null && !this.userId.equals(other.userId))) {
+			return false;
+		}
+		return true;
+	}
 
 	@Override
 	public String toString() {
@@ -227,7 +229,7 @@ public class User implements DomainObject, Serializable {
 				+ ", accountNonExpired=" + accountNonExpired
 				+ ", credentialsNonExpired=" + credentialsNonExpired
 				+ ", studentList=" + getStudentList() + ", userRoleList="
-				+ getUserRoleList() + ", teacherList=" + getTeacherList() + "]";
+				+ getRole() + ", teacherList=" + getTeacherList() + "]";
 	}
-    
+
 }

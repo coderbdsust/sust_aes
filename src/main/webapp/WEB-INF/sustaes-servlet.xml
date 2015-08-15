@@ -95,6 +95,13 @@
 
 	<tx:annotation-driven />
 
+		<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+  			<property name="customEditors">
+   			 	<map>
+      				<entry key="com.great.cms.enums.Role" value="com.great.cms.utils.editor.RoleEditor"/>
+    			</map>
+ 		 	</property>
+		</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>

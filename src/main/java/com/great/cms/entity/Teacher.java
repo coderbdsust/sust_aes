@@ -40,10 +40,13 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Teacher.findByIsAvailable", query = "SELECT t FROM Teacher t WHERE t.isAvailable = :isAvailable")})
 public class Teacher implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @Basic(optional = false)
     @Column(name = "instructor_id")
     private Long instructorId;
+    
+    
     @Basic(optional = false)
     @Column(name = "teacher_name")
     private String teacherName;

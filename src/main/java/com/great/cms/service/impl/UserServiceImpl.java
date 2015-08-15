@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Integer countVerifiedUsers() {
+	public Long countVerifiedUsers() {
 		return userDao.countUsers();
 	}
 

@@ -12,7 +12,7 @@ public interface UserDao extends GenericDao<User, Long> {
 
 	public User findByUsername(String username);
 
-	public Integer countUsers();
+	public Long countUsers();
 
 	public Integer countVerificationNeed();
 

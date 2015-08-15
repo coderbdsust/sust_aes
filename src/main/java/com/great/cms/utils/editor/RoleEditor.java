@@ -13,7 +13,9 @@ public class RoleEditor extends PropertyEditorSupport {
 	@Override
 	public void setAsText(String text) {
 		for (Role authority : Role.values()) {
+			System.out.println(authority);
 			if (authority.name().equalsIgnoreCase(text)) {
+				
 				setValue(authority);
 				break;
 			}

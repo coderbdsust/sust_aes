@@ -13,7 +13,7 @@ public interface UserService {
 	public User getUser(String username);
 	public void saveOrUpdate(User user);
 	public boolean usernameExists(String username);
-	public Integer countVerifiedUsers();
+	public Long countVerifiedUsers();
 	public Integer countVerificationNeed();
 	public List<User> nonVerifiedUsers();
 	

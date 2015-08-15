@@ -3,7 +3,9 @@ package com.great.cms.dao.impl;
 import java.util.List;
 
 import javax.persistence.Query;
+
 import org.springframework.stereotype.Repository;
+
 import com.great.cms.dao.UserDao;
 import com.great.cms.entity.User;
 
@@ -41,10 +43,10 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 		return users.get(0);
 	}
 
-	public Integer countUsers() {
+	public Long countUsers() {
 		Query query = this.em
 				.createQuery("SELECT count(u) FROM User u WHERE u.enabled=true");
-		Integer count = query.getResultList().size();
+		Long count = (Long) query.getResultList().get(0);
 		return count;
 	}
 
