@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import com.great.cms.dao.CourseDao;
 import com.great.cms.dao.DepartmentDao;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.Department;
 
+@Repository("DepartmentDao")
 public class DepartmentDaoImpl extends GenericDaoImpl<Department, Integer>
 		implements DepartmentDao {
 
@@ -19,7 +22,7 @@ public class DepartmentDaoImpl extends GenericDaoImpl<Department, Integer>
 
 	@Override
 	public void deleteAll() {
-		Query query = this.em.createQuery("delete d from department d");
+		Query query = this.em.createQuery("delete d from Department d");
 		query.executeUpdate();
 	}
 
