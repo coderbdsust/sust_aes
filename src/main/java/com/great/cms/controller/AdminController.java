@@ -62,9 +62,8 @@ public class AdminController {
 	public String userVerification(User user, BindingResult bindingResult,
 			RedirectAttributes redirectAttributes, Model uiModel) {
 		System.out.println("/admin/verification/");
+		
 		System.out.println("Submit: " + user);
-//		List<User> nonVerifiedUsers = userService.nonVerifiedUsers();
-//		uiModel.addAttribute("nonVerifiedUsers", nonVerifiedUsers);
 		
 		User savedUser = userService.getUserById(user.getUserId());
 		user.setPassword(savedUser.getPassword());
@@ -73,19 +72,5 @@ public class AdminController {
 
 		return "redirect:/admin/verification";
 
-	}
-
-	@RequestMapping(value = "/check", method = RequestMethod.GET)
-	public String checkBoxCheck(Model uiModel) {
-		System.out.println("/admin/verification/");
-//		uiModel.addAttribute("check", new Check());
-		return "admin/check";
-	}
-
-	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public String checkBoxCheck(Check check, Model uiModel) {
-		System.out.println("/admin/verification/");
-		System.out.println(check);
-		return "admin/check";
 	}
 }

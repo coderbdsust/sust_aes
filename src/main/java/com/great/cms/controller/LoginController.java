@@ -42,7 +42,6 @@ public class LoginController {
 			Model uiModel, RedirectAttributes redirectAttr) {
 		System.out.println("/user/signin");
 		User userSaved = userService.getUser(user.getUsername());
-
 		if (userSaved == null) {
 			redirectAttr.addFlashAttribute("loginError",
 					"Sorry, Username not found!");
@@ -59,18 +58,18 @@ public class LoginController {
 				if (!userSaved.getPassword().equals(user.getPassword())) {
 					redirectAttr.addFlashAttribute("loginError",
 							"Sorry, Password not matched!");
+				} else if (userSaved.getEnabled() == false) {
+					redirectAttr.addFlashAttribute("loginError",
+							"Sorry, Account not verified!");
 				} else if (userSaved.getAccountNonExpired() == false) {
 					redirectAttr.addFlashAttribute("loginError",
 							"Sorry, Account Expired!");
 				} else if (userSaved.getAccountNonLocked() == false) {
 					redirectAttr.addFlashAttribute("loginError",
 							"Sorry, Account Locked!");
-				} else if (userSaved.getCredentialsNonExpired() == false) {
-					redirectAttr.addFlashAttribute("loginError",
-							"Sorry, Account Credentials Expired!");
 				} else {
 					redirectAttr.addFlashAttribute("loginError",
-							"Sorry, Account not verified!");
+							"Sorry, Account Credentials Expired!");
 				}
 				return "redirect:/account/user/login";
 			}
