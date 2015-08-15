@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.great.cms.dao.Check;
 import com.great.cms.entity.User;
 import com.great.cms.enums.Role;
 import com.great.cms.service.UserService;
