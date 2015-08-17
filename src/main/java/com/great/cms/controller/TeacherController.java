@@ -2,13 +2,14 @@ package com.great.cms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.great.cms.entity.Student;
 import com.great.cms.entity.Teacher;
-import com.great.cms.service.StudentService;
+import com.great.cms.service.DepartmentService;
+import com.great.cms.service.DesignationService;
 import com.great.cms.service.TeacherService;
 
 @Controller
@@ -17,6 +18,10 @@ public class TeacherController {
 
 	@Autowired
 	TeacherService teacherService;
+	@Autowired
+	DepartmentService departmentService;
+	@Autowired
+	DesignationService designationService;
 
 	@RequestMapping({ "/profile", "/", "" })
 	public String showProfile() {
@@ -25,8 +30,13 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
-	public String editProfile() {
-		System.out.println("student/profile/edit");
+	public String editProfile(Model uiModel) {
+		System.out.println("teacher/profile/edit");
+		uiModel.addAttribute("designationList",
+				designationService.getDesignations());
+		uiModel.addAttribute("departmentList",
+				departmentService.getDepartments());
+
 		return "teacher/edit";
 	}
 

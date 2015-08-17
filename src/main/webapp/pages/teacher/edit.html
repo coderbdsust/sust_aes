@@ -13,7 +13,7 @@
 				<div class="tab-pane">
 					<div class="portlet light bordered">
 						<div class="portlet-title">
-							<div class="caption"> 
+							<div class="caption">
 								<i class="icon-equalizer font-red-sunglo"></i> <span
 									class="caption-subject font-red-sunglo bold uppercase">Teacher
 									Profile Create/Edit Form</span>
@@ -65,11 +65,12 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Dept ID</label>
+												<label class="control-label col-md-3">Dept Code</label>
 												<div class="col-md-9">
 													<select class="form-control">
-														<option value="">CSE</option>
-														<option value="">EEE</option>
+														<option th:each="dept : ${departmentList}"
+															th:value="${dept.deptId}"
+															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>

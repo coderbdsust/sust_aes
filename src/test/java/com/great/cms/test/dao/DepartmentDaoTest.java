@@ -2,6 +2,7 @@ package com.great.cms.test.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,24 +56,23 @@ public class DepartmentDaoTest {
 		depts.add(new Department("Social Work", "SOW"));
 		depts.add(new Department("Sociology", "SOC"));
 		depts.add(new Department("Statistics", "STA"));
-		depts.add(new Department("Information & Communication Engineering", "ICT"));
-		
+		depts.add(new Department("Information & Communication Engineering",
+				"ICT"));
+
 		System.out.println("Department to be saved: " + depts.size());
 
 		System.out.println("Department Saving");
-		for(Department d:depts){
+		for (Department d : depts) {
 			departmentDao.save(d);
 		}
-//		System.out.println("Department Saved");
-		
+		System.out.println("Department Saved");
+
 		List<Department> departments = departmentDao.findAll();
 		assertEquals(26, departments.size());
-		for(Department d:departments){
-			System.out.println(d.getDeptId()+" "+d.getDeptCode());
+		for (Department d : departments) {
+			System.out.println(d.getDeptId() + " " + d.getDeptCode());
 		}
 
-		
 	}
-	
 
 }
