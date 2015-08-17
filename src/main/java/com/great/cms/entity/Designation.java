@@ -60,6 +60,10 @@ public class Designation implements DomainObject, Serializable {
         this.desigId = desigId;
         this.desigName = desigName;
     }
+    
+    public Designation(String desigName) {
+        this.desigName = desigName;
+    }
 
     public Integer getDesigId() {
         return desigId;

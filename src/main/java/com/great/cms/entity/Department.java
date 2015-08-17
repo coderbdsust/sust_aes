@@ -60,6 +60,12 @@ public class Department implements DomainObject, Serializable {
     public Department(Integer deptId) {
         this.deptId = deptId;
     }
+    
+    public Department(String deptName, String deptCode) {
+        this.deptId = deptId;
+        this.deptName = deptName;
+        this.deptCode = deptCode;
+    }
 
     public Department(Integer deptId, String deptName, String deptCode) {
         this.deptId = deptId;

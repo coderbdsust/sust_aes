@@ -20,7 +20,7 @@ public class DesignationDaoImpl extends GenericDaoImpl<Designation, Integer>
 
 	@Override
 	public void deleteAll() {
-		Query query = this.em.createQuery("delete d from Designation d");
+		Query query = this.em.createQuery("delete  FROM Designation");
 		query.executeUpdate();
 		
 	}

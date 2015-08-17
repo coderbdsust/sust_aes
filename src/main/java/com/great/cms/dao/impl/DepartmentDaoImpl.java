@@ -22,7 +22,7 @@ public class DepartmentDaoImpl extends GenericDaoImpl<Department, Integer>
 
 	@Override
 	public void deleteAll() {
-		Query query = this.em.createQuery("delete d from Department d");
+		Query query = this.em.createQuery("DELETE FROM Department");
 		query.executeUpdate();
 	}
 
