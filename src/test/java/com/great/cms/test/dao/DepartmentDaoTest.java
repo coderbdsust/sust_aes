@@ -59,13 +59,13 @@ public class DepartmentDaoTest {
 		depts.add(new Department("Information & Communication Engineering",
 				"ICT"));
 
-		System.out.println("Department to be saved: " + depts.size());
-
-		System.out.println("Department Saving");
-		for (Department d : depts) {
-			departmentDao.save(d);
-		}
-		System.out.println("Department Saved");
+//		System.out.println("Department to be saved: " + depts.size());
+//
+//		System.out.println("Department Saving");
+//		for (Department d : depts) {
+//			departmentDao.save(d);
+//		}
+//		System.out.println("Department Saved");
 
 		List<Department> departments = departmentDao.findAll();
 		assertEquals(26, departments.size());

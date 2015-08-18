@@ -85,8 +85,14 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Designation ID</label>
 												<div class="col-md-9">
-													<input type="text" class="form-control"
-														placeholder="CSE-SNM-1234" />
+													<!-- 													<input type="text" class="form-control" -->
+													<!-- 														placeholder="CSE-SNM-1234" /> -->
+													<select class="form-control">
+														<option th:each="desg : ${designationList}"
+															th:value="${desg.desigId}"
+															th:text="${desg.desigName}"></option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
 											</div>
 										</div>
