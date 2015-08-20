@@ -8,4 +8,8 @@ import com.great.cms.entity.Teacher;
 
 public interface TeacherDao extends GenericDao<Teacher, Long> {
 
+	public Teacher getTeacherByUserId(Long userId);
+
+
+
 }

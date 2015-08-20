@@ -8,4 +8,5 @@ import com.great.cms.entity.Teacher;
 public interface TeacherService {
 	public void saveOrUpdateTeacher(Teacher teacher);
 	public Teacher getTeacher(Long instructorId);
+	public Teacher getTeacherByUserId(Long userId);
 }

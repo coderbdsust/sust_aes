@@ -10,4 +10,6 @@ public interface StudentDao extends GenericDao<Student, Long> {
 
 	Student findByRegId(Integer regId);
 
+	Student getStudentByUserId(Long userId);
+
 }

@@ -32,4 +32,10 @@ public class StudentServiceImpl implements StudentService {
 		return studentDao.findByRegId(regId);
 	}
 
+	@Override
+	public Student getStudentByUserId(Long userId) {
+		
+		return studentDao.getStudentByUserId(userId);
+	}
+
 }

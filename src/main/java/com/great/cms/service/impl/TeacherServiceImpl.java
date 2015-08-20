@@ -28,4 +28,10 @@ public class TeacherServiceImpl implements TeacherService {
 		return teacherDao.findById(instructorId);
 	}
 
+	@Override
+	public Teacher getTeacherByUserId(Long userId) {
+		
+		return teacherDao.getTeacherByUserId(userId);
+	}
+
 }
