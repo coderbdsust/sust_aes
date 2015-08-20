@@ -104,13 +104,15 @@
                         <li class="dropdown dropdown-user">
 					<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<!--<img alt="" class="img-circle" src="../resources/assets/admin/layout/img/avatar3_small.jpg"/>-->
-					<span class="username username-hide-on-mobile">
-					Sample </span>
+					<span class="username username-hide-on-mobile" sec:authentication="name">
+					</span>
 					<i class="fa fa-angle-down"></i>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
-							<a href="extra_profile.html">
+							<a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')" th:href="@{/teacher/profile}">
+							<i class="icon-user"></i> My Profile </a>
+							<a sec:authorize="hasRole('ROLE_STUDENT')" th:href="@{/student/profile}">
 							<i class="icon-user"></i> My Profile </a>
 						</li>
 						<li>

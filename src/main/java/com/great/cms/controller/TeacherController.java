@@ -1,6 +1,8 @@
 package com.great.cms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,7 @@ import com.great.cms.service.TeacherService;
 
 @Controller
 @RequestMapping("/teacher")
+@Secured("ROLE_TEACHER")
 public class TeacherController {
 
 	@Autowired
