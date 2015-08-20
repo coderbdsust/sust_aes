@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xmlns:repository="http://www.springframework.org/schema/data/repository"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
@@ -16,9 +14,10 @@
 
 
 
-	<context:component-scan base-package="com.great.cms.controller"></context:component-scan>
-	<context:component-scan base-package="com.great.cms.dao"></context:component-scan>
-	<context:component-scan base-package="com.great.cms.service"></context:component-scan>
+	<!-- <context:component-scan base-package="com.great.cms.controller"></context:component-scan> -->
+	<!-- <context:component-scan base-package="com.great.cms.dao"></context:component-scan> -->
+	<!-- <context:component-scan base-package="com.great.cms.service"></context:component-scan> -->
+	<context:component-scan base-package="com.great.cms.*"></context:component-scan>
 	<mvc:annotation-driven></mvc:annotation-driven>
 
 	<bean id="templateResolver"
@@ -41,7 +40,6 @@
 			</set>
 		</property>
 	</bean>
-
 
 	<bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
@@ -95,13 +93,13 @@
 
 	<tx:annotation-driven />
 
-		<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-  			<property name="customEditors">
-   			 	<map>
-      				<entry key="com.great.cms.enums.Role" value="com.great.cms.utils.editor.RoleEditor"/>
-    			</map>
- 		 	</property>
-		</bean>
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="com.great.cms.enums.Role" value="com.great.cms.utils.editor.RoleEditor" />
+			</map>
+		</property>
+	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>

@@ -191,9 +191,16 @@ public class Teacher implements DomainObject, Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.Teacher[ instructorId=" + instructorId + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Teacher [instructorId=" + instructorId + ", teacherName="
+				+ teacherName + ", employeeCode=" + employeeCode
+				+ ", isPermanent=" + isPermanent + ", email=" + email
+				+ ", isAvailable=" + isAvailable + ", teachesList="
+				+ teachesList + ", desigId=" + desigId + ", deptId=" + deptId
+				+ ", userId=" + userId + "]";
+	}
+
+    
     
 }

@@ -42,8 +42,8 @@ public class TeacherController {
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
 	public String editProfile(Teacher teacher, BindingResult bandingResult) {
-		System.out.println("student/profile/edit");
-		System.out.println("Edit Student: " + teacher);
+		System.out.println("teacher/profile/edit");
+		System.out.println("Edit teacher: " + teacher);
 		return "redirect:/teacher/profile";
 	}
 }

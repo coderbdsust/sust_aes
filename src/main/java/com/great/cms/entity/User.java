@@ -6,8 +6,12 @@
 
 package com.great.cms.entity;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Basic;
@@ -33,6 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.great.cms.enums.Role;
+import com.great.cms.security.utils.SimpleGrantedAuthority;
 
 /**
  *
@@ -50,7 +55,7 @@ import com.great.cms.enums.Role;
 		@NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
 		@NamedQuery(name = "User.findByAccountNonExpired", query = "SELECT u FROM User u WHERE u.accountNonExpired = :accountNonExpired"),
 		@NamedQuery(name = "User.findByCredentialsNonExpired", query = "SELECT u FROM User u WHERE u.credentialsNonExpired = :credentialsNonExpired") })
-public class User implements DomainObject, Serializable {
+public class User implements DomainObject, UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,14 +83,15 @@ public class User implements DomainObject, Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
 	private List<Student> studentList;
 
-	/*@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
-	private List<Role> roles;*/
+	/*
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId") private
+	 * List<Role> roles;
+	 */
 
-	 @ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
-	 @Enumerated(EnumType.STRING)
-	 @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name =
-	 "user_id"))
-	 private List<Role> role = new ArrayList<>();
+	@ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
+	@Enumerated(EnumType.STRING)
+	@CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+	private List<Role> role = new ArrayList<>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
 	private List<Teacher> teacherList;
@@ -187,7 +193,7 @@ public class User implements DomainObject, Serializable {
 	}
 
 	public void setRole(List<Role> role) {
-		this.role= role;
+		this.role = role;
 	}
 
 	@XmlTransient
@@ -227,9 +233,39 @@ public class User implements DomainObject, Serializable {
 				+ ", password=" + password + ", enabled=" + enabled
 				+ ", accountNonLocked=" + accountNonLocked
 				+ ", accountNonExpired=" + accountNonExpired
-				+ ", credentialsNonExpired=" + credentialsNonExpired
-				+ ", studentList=" + getStudentList() + ", userRoleList="
-				+ getRole() + ", teacherList=" + getTeacherList() + "]";
+				+ ", credentialsNonExpired=" + credentialsNonExpired + "]";
+	}
+
+	@Override
+	public List<GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		List<GrantedAuthority> authorities = new ArrayList<>();
+
+		for (Role role : this.role) {
+			authorities.add(new SimpleGrantedAuthority(role.name()));
+		}
+		return authorities;
+
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return accountNonExpired;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return accountNonLocked;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return credentialsNonExpired;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return enabled;
 	}
 
 }

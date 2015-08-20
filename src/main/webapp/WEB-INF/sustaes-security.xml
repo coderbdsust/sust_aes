@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:component-scan base-package="com.great.cms.security" />
+
+	<!-- <security:authentication-manager> -->
+	<!-- <security:authentication-provider> -->
+	<!-- <security:user-service> -->
+	<!-- <security:user name="admin" authorities="admin" /> -->
+	<!-- </security:user-service> -->
+	<!-- </security:authentication-provider> -->
+
+	<!-- <security:authentication-provider -->
+	<!-- ref="databaseAuthenticationProvider" /> -->
+
+	<!-- </security:authentication-manager> -->
+
+	<security:http auto-config="true" use-expressions="true">
+
+		<!-- <security:form-login login-page="/account/user/login" /> -->
+		<!-- <security:intercept-url pattern="/resources/**" -->
+		<!-- access="permitAll" /> -->
+		<!-- <security:intercept-url pattern="/" access="permitAll" /> -->
+		<!-- <security:intercept-url pattern="/index" -->
+		<!-- access="permitAll" /> -->
+		<!-- <security:intercept-url pattern="/account/user/**" -->
+		<!-- access="permitAll" /> -->
+		<!-- <security:intercept-url pattern="/admin/**" -->
+		<!-- access="isAuthenticated()" /> -->
+		<!-- <security:intercept-url pattern="/**" access="denyAll" -->
+
+
+		<security:form-login authentication-failure-url="/account/user/login" 
+			authentication-success-handler-ref="authenticationSuccessHandler"
+			login-page="/account/user/login" />
+
+		<security:logout logout-url="/j_spring_security_logout"
+			logout-success-url="/account/user/login"  />
+
+		<!-- <security:form-login authentication-failure-url="/account/user/login" -->
+		<!-- login-page="/account/user/login" /> -->
+
+
+		<!-- <security:access-denied-handler -->
+		<!-- error-page="/accessDenied" /> -->
+
+		<security:intercept-url pattern="/resources/**" />
+
+		<security:intercept-url pattern="/" access="permitAll" />
+		<security:intercept-url pattern="/index"
+			access="permitAll" />
+
+		<security:intercept-url pattern="/account/user/**"
+			access="permitAll" />
+
+		<security:intercept-url pattern="/admin/**"
+			access="hasAnyRole('ROLE_ADMIN')" />
+
+	</security:http>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider
+			ref="databaseAuthenticationProvider" />
+			
+	</security:authentication-manager>
+
+	<!-- Configure Authentication mechanism -->
+	<bean class="com.great.cms.security.DatabaseAuthenticationProvider"
+		id="databaseAuthenticationProvider" />
+
+	<bean id="authenticationSuccessHandler"
+		class="com.great.cms.security.SecurityAuthenticationSuccessHandler" />
+
+
+</beans>
