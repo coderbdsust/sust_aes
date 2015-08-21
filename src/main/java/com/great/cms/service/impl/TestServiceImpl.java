@@ -1,5 +1,7 @@
 package com.great.cms.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +21,10 @@ public class TestServiceImpl implements TestService {
 		} else {
 			testDao.update(test);
 		}
+	}
+	
+	public List<Test> getTests(Integer teachesId) {
+		return testDao.findByTeachesId(teachesId);
+		
 	}
 }

@@ -71,6 +71,7 @@ public class TeacherController {
 	public String editProfile(Teacher teacher, BindingResult bandingResult) {
 		System.out.println("teacher/profile/edit");
 		System.out.println("Edit teacher: " + teacher);
+		teacherService.saveOrUpdateTeacher(teacher);
 		return "redirect:/teacher/profile";
 	}
 }
