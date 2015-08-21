@@ -30,7 +30,6 @@ public class TestController {
 		return "redirect:/test/show";
 	}
 	
-	
 	@RequestMapping("/show")
 	public String showAvailableTest(Principal principal){
 		String username = principal.getName();
