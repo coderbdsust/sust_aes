@@ -13,6 +13,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -42,6 +44,7 @@ public class Teacher implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "instructor_id")
     private Long instructorId;
@@ -66,10 +69,10 @@ public class Teacher implements DomainObject, Serializable {
     private List<Teaches> teachesList;
     @JoinColumn(name = "desig_id", referencedColumnName = "desig_id")
     @ManyToOne(optional = false)
-    private Designation desigId;
+    private Designation desigId= new Designation();
     @JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
     @ManyToOne(optional = false)
-    private Department deptId;
+    private Department deptId=new Department();
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User userId;
