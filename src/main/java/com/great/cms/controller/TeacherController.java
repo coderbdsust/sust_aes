@@ -36,7 +36,7 @@ public class TeacherController {
 	private Teacher getTeacher(String teacherName) {
 		User user = userService.getUser(teacherName);
 		Teacher teacher = teacherService.getTeacher(user.getUserId());
-		if (teacher == null) {
+		if (teacher == null) {			
 			teacher = new Teacher();
 		}
 		teacher.setUserId(user);
