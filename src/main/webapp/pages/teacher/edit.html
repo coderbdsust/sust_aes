@@ -26,7 +26,10 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form th:action="@{/teacher/profile/edit}" method="post" class="form-horizontal">
+							<form th:action="@{/teacher/profile/edit}" method="post"
+								class="form-horizontal">
+								<input name="userId.userId" type="hidden" class="form-control"
+									th:value="${teacher.userId.userId}" />
 								<div class="form-body">
 									<h3 class="form-section">Person Info</h3>
 									<div class="row">
@@ -34,7 +37,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Full Name</label>
 												<div class="col-md-9">
-													<input name="teacherName" type="text" class="form-control"
+													<input name="teacherName" type="text"
+														th:value="${teacher.teacherName}" class="form-control"
 														placeholder="Sheikh Nabil mohammad" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
@@ -52,7 +56,8 @@
 												<label class="control-label col-md-3">Employee Code</label>
 												<div class="col-md-9">
 
-													<input name="employeeCode" type="text" class="form-control" max="10"
+													<input name="employeeCode" type="text" class="form-control"
+														th:value="${teacher.employeeCode}" max="10"
 														placeholder="SNM" />
 													<!-- <span class="help-block">
 														This is inline help </span> -->
@@ -70,6 +75,7 @@
 													<select name="deptId.deptId" class="form-control">
 														<option th:each="dept : ${departmentList}"
 															th:value="${dept.deptId}"
+															th:selected="${teacher.deptId.deptId == dept.deptId}"
 															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
@@ -89,8 +95,7 @@
 													<!-- 														placeholder="CSE-SNM-1234" /> -->
 													<select name="desigId.desigId" class="form-control">
 														<option th:each="desg : ${designationList}"
-															th:value="${desg.desigId}"
-															th:text="${desg.desigName}"></option>
+															th:value="${desg.desigId}" th:text="${desg.desigName}"></option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -105,8 +110,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Email</label>
 												<div class="col-md-9">
-													<input name="email" type="text" class="form-control"
-														placeholder="abc@gmail.com" />
+													<input name="email" th:value="${teacher.email}" type="text"
+														class="form-control" placeholder="abc@gmail.com" />
 												</div>
 											</div>
 										</div>

@@ -69,10 +69,10 @@ public class Teacher implements DomainObject, Serializable {
     private List<Teaches> teachesList;
     @JoinColumn(name = "desig_id", referencedColumnName = "desig_id")
     @ManyToOne(optional = false)
-    private Designation desigId;
+    private Designation desigId= new Designation();
     @JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
     @ManyToOne(optional = false)
-    private Department deptId;
+    private Department deptId=new Department();
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User userId;

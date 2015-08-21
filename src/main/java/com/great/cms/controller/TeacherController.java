@@ -33,11 +33,21 @@ public class TeacherController {
 	@Autowired
 	UserService userService;
 
+	private Teacher getTeacher(String teacherName) {
+		User user = userService.getUser(teacherName);
+		Teacher teacher = teacherService.getTeacher(user.getUserId());
+		if (teacher == null) {
+			teacher = new Teacher();
+		}
+		teacher.setUserId(user);
+		return teacher;
+	}
+
 	@RequestMapping({ "/profile", "/", "" })
 	public String showProfile(Principal principal, Model uiModel) {
 
 		Teacher teacher = getTeacher(principal.getName());
-		if (teacher == null) {
+		if (teacher.getInstructorId() == null) {
 			return "redirect:/teacher/profile/edit";
 		}
 		System.out.println("/teacher/profile");
@@ -55,12 +65,6 @@ public class TeacherController {
 		Teacher teacher = getTeacher(principal.getName());
 		uiModel.addAttribute("teacher", teacher);
 		return "teacher/edit";
-	}
-
-	private Teacher getTeacher(String teacherName) {
-		User user = userService.getUser(teacherName);
-		Teacher teacher = teacherService.getTeacher(user.getUserId());
-		return teacher;
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
