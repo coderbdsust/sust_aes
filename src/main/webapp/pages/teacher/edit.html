@@ -29,9 +29,9 @@
 							<form th:action="@{/teacher/profile/edit}" method="post"
 								class="form-horizontal">
 								<input name="userId.userId" type="hidden" class="form-control"
-									value="${teacher.userId.userId}" />
+									th:value="${teacher.userId.userId}" />
 									<input name="instructorId" type="hidden" class="form-control"
-									value="${teacher.instructorId}" />
+									th:value="${teacher.instructorId}" />
 								<div class="form-body">
 									<h3 class="form-section">Person Info</h3>
 									<div class="row">
