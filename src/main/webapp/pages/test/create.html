@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Test :: Create</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-equalizer font-red-sunglo"></i> <span
+									class="caption-subject font-red-sunglo bold uppercase">Test
+									Details Create Form</span>
+							</div>
+							<div class="tools">
+								<a href="" class="collapse"> </a> <a href="#portlet-config"
+									data-toggle="modal" class="config"> </a> <a href=""
+									class="reload"> </a> <a href="" class="remove"> </a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form action="#" class="form-horizontal">
+								<div class="form-body">
+									<h3 class="form-section">Test Info</h3>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Test Title</label>
+												<div class="col-md-9">
+													<input type="text" class="form-control"
+														placeholder="Project 300 Quiz" />
+													<!-- span class="help-block">
+														This is inline help </span> -->
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+
+										<!--/span-->
+									</div>
+									<!-- row -->
+
+									<!--/row-->
+									<div class="row">
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Start-Time: </label>
+												<div class="col-md-9">
+													<input class="form-control" type="datetime-local" />
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">End-Time: </label>
+												<div class="col-md-9">
+													<input class="form-control" type="datetime-local" />
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!--/row-->
+									<div class="row">
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Description</label>
+												<div class="col-md-9">
+													<textarea class="form-control" rows="8"
+														placeholder="test description goes here" maxlength="300"></textarea>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="row">
+													<div class="col-md-offset-3 col-md-9">
+														<button type="submit" class="btn green">Create Test</button>
+														<button type="button" class="btn default">Cancel</button>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6"></div>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
