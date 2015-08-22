@@ -3,7 +3,6 @@ package com.great.cms.controller;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.great.cms.entity.Student;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.User;
 import com.great.cms.service.DepartmentService;
@@ -37,7 +35,7 @@ public class TeacherController {
 	private Teacher getTeacher(String teacherName) {
 		User user = userService.getUser(teacherName);
 		System.out.println(user);
-		Teacher teacher = teacherService.getTeacherByUserId(user.getUserId());
+		Teacher teacher = teacherService.getTeacherByUserId(user);
 		System.out.println(teacher);
 		if (teacher == null) {
 			teacher = new Teacher();

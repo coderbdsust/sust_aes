@@ -1,15 +1,10 @@
 package com.great.cms.dao;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
 import com.great.cms.entity.Teacher;
-
+import com.great.cms.entity.User;
 
 public interface TeacherDao extends GenericDao<Teacher, Long> {
 
-	public Teacher getTeacherByUserId(Long userId);
-
-
+	public Teacher getTeacherByUserId(User userId);
 
 }
