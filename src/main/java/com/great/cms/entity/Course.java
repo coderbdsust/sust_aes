@@ -203,9 +203,15 @@ public class Course implements DomainObject, Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.greatcms.cms.entity.Course[ courseId=" + courseId + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Course [courseId=" + courseId + ", courseCode=" + courseCode
+				+ ", courseTitle=" + courseTitle + ", credit=" + credit
+				+ ", semester=" + semester + ", session=" + session
+				+ ", offeringDept=" + offeringDept + ", acceptingDept="
+				+ acceptingDept + "]";
+	}
+
+    
     
 }

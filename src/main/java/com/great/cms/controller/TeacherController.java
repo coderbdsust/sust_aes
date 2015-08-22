@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.entity.Student;
 import com.great.cms.entity.Teacher;
@@ -68,10 +69,11 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
-	public String editProfile(Teacher teacher, BindingResult bandingResult) {
+	public String editProfile(Teacher teacher, BindingResult bandingResult,RedirectAttributes redirectAttributes) {
 		System.out.println("teacher/profile/edit");
 		System.out.println("Edit teacher: " + teacher);
 		teacherService.saveOrUpdateTeacher(teacher);
+		redirectAttributes.addFlashAttribute("message", "- Updated Successfully");
 		return "redirect:/teacher/profile";
 	}
 }

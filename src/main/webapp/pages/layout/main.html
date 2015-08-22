@@ -190,7 +190,7 @@
 				</li>
                 <br/>
 				<li  class="start active open">
-					   <a href="index.html">
+					   <a th:href="@{/admin/index}">
 					   <i class="icon-home"></i>
 					   <span class="title">Home</span>
 					   <!--<span class="selected"></span>-->
@@ -209,7 +209,7 @@
 							Upcoming Exam</a>
 						</li>
 						<li>
-							<a href="ecommerce_orders.html">
+							<a th:href="@{/test/create}">
 							<i class="icon-basket"></i>
 							New Exam</a>
 						</li>
@@ -304,13 +304,6 @@
     <script src="../../resources/plugins/bootstrap-switch/js/bootstrap-switch.min.js" th:src="@{/resources/plugins/bootstrap-switch/js/bootstrap-switch.min.js}" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="../../resources/plugins/jqvmap/jqvmap/jquery.vmap.js" type="text/javascript"></script>
-    <script src="../../resources/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js" type="text/javascript"></script>
-    <script src="../../resources/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
-    <script src="../../resources/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js" type="text/javascript"></script>
-    <script src="../../resources/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js" type="text/javascript"></script>
-    <script src="../../resources/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js" type="text/javascript"></script>
-    <script src="../../resources/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js" type="text/javascript"></script>
     <!-- IMPORTANT! fullcalendar depends on jquery-ui.min.js for drag & drop support -->
     <script src="../../resources/plugins/morris/morris.min.js" th:src="@{/resources/plugins/morris/morris.min.js}" type="text/javascript"></script>
     <script src="../../resources/plugins/morris/raphael-min.js" th:src="@{/resources/plugins/morris/raphael-min.js}" type="text/javascript"></script>
@@ -322,18 +315,31 @@
     <script src="../../resources/scripts/layout/demo.js" th:src="@{/resources/scripts/layout/demo.js}" type="text/javascript"></script>
     <script src="../../resources/scripts/pages/index3.js" th:src="@{/resources/scripts/pages/index3.js}" type="text/javascript"></script>
     <script src="../../resources/scripts/pages/tasks.js" th:src="@{/resources/scripts/pages/tasks.js}" type="text/javascript"></script>
+    <script src="../../resources/scripts/pages/components-pickers.js" th:src="@{/resources/scripts/pages/components-pickers.js}"></script>
+    
+    
+<script type="text/javascript" src="../../resources/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" th:src="@{/resources/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js}"></script>
+<script type="text/javascript" src="../../resources/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js" th:src="@{/resources/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js}"></script>
+<script type="text/javascript" src="../../resources/plugins/clockface/js/clockface.js" th:src="@{/resources/plugins/clockface/js/clockface.js}"></script>
+<script type="text/javascript" src="../../resources/plugins/bootstrap-daterangepicker/moment.min.js" th:src="@{/resources/plugins/bootstrap-daterangepicker/moment.min.js}"></script>
+<script type="text/javascript" src="../../resources/plugins/bootstrap-daterangepicker/daterangepicker.js" th:src="@{/resources/plugins/bootstrap-daterangepicker/daterangepicker.js}"></script>
+<script type="text/javascript" src="../../resources/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js" th:src="@{/resources/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js}"></script>
+
+
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
         jQuery(document).ready(function() {
             Metronic.init(); // init metronic core componets
             Layout.init(); // init layout
-            Demo.init(); // init demo features 
-            Index.init(); // init index page
+            Demo.init(); // init demo features                        
+            ComponentsPickers.init();            
             Tasks.initDashboardWidget(); // init tash dashboard widget  
         });
     </script>
     <!-- END JAVASCRIPTS -->
-
+<div layout:fragment="custom-scripts">
+    <!--Custom page specific scripts goes here-->
+</div>
     <!-- END BODY -->
 </body>
 </html>
