@@ -36,8 +36,10 @@ public class TeacherController {
 
 	private Teacher getTeacher(String teacherName) {
 		User user = userService.getUser(teacherName);
-		Teacher teacher = teacherService.getTeacher(user.getUserId());
-		if (teacher == null) {			
+		System.out.println(user);
+		Teacher teacher = teacherService.getTeacherByUserId(user.getUserId());
+		System.out.println(teacher);
+		if (teacher == null) {
 			teacher = new Teacher();
 		}
 		teacher.setUserId(user);
@@ -48,6 +50,7 @@ public class TeacherController {
 	public String showProfile(Principal principal, Model uiModel) {
 
 		Teacher teacher = getTeacher(principal.getName());
+		System.out.println(teacher);
 		if (teacher.getInstructorId() == null) {
 			return "redirect:/teacher/profile/edit";
 		}
@@ -59,17 +62,15 @@ public class TeacherController {
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
 	public String editProfile(Principal principal, Model uiModel) {
 		System.out.println("teacher/profile/edit");
-		uiModel.addAttribute("designationList",
-				designationService.getDesignations());
-		uiModel.addAttribute("departmentList",
-				departmentService.getDepartments());
+		uiModel.addAttribute("designationList", designationService.getDesignations());
+		uiModel.addAttribute("departmentList", departmentService.getDepartments());
 		Teacher teacher = getTeacher(principal.getName());
 		uiModel.addAttribute("teacher", teacher);
 		return "teacher/edit";
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
-	public String editProfile(Teacher teacher, BindingResult bandingResult,RedirectAttributes redirectAttributes) {
+	public String editProfile(Teacher teacher, BindingResult bandingResult, RedirectAttributes redirectAttributes) {
 		System.out.println("teacher/profile/edit");
 		System.out.println("Edit teacher: " + teacher);
 		teacherService.saveOrUpdateTeacher(teacher);
