@@ -17,11 +17,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
 		http://www.springframework.org/schema/data/repository http://www.springframework.org/schema/data/repository/spring-repository-1.4.xsd">
 
-	<security:global-method-security
+	<!-- <security:global-method-security
 		pre-post-annotations="enabled" secured-annotations="enabled">
 		<security:protect-pointcut
 			expression="execution(* com.great.cms.service.*Service.*(..))" access="ROLE_TEACHER,ROLE_STUDENT,ROLE_ADMIN" />
-	</security:global-method-security>
+	</security:global-method-security> -->
 
 	<!-- <context:component-scan base-package="com.great.cms.controller"></context:component-scan> -->
 	<!-- <context:component-scan base-package="com.great.cms.dao"></context:component-scan> -->
