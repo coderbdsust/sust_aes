@@ -61,9 +61,6 @@
 		<security:intercept-url pattern="/account/user/**"
 			access="permitAll" />
 
-		<security:intercept-url pattern="/course/create"
-			access="permitAll" />
-
 		<security:intercept-url pattern="/admin/**"
 			access="hasAnyRole('ROLE_ADMIN')" />
 
