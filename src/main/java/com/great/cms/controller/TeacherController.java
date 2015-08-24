@@ -60,19 +60,39 @@ public class TeacherController {
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
 	public String editProfile(Principal principal, Model uiModel) {
 		System.out.println("teacher/profile/edit");
-		uiModel.addAttribute("designationList", designationService.getDesignations());
-		uiModel.addAttribute("departmentList", departmentService.getDepartments());
+		uiModel.addAttribute("designationList",
+				designationService.getDesignations());
+		uiModel.addAttribute("departmentList",
+				departmentService.getDepartments());
 		Teacher teacher = getTeacher(principal.getName());
 		uiModel.addAttribute("teacher", teacher);
 		return "teacher/edit";
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
-	public String editProfile(Teacher teacher, BindingResult bandingResult, RedirectAttributes redirectAttributes) {
+	public String editProfile(Teacher teacher, BindingResult bandingResult,
+			RedirectAttributes redirectAttributes) {
 		System.out.println("teacher/profile/edit");
 		System.out.println("Edit teacher: " + teacher);
 		teacherService.saveOrUpdateTeacher(teacher);
-		redirectAttributes.addFlashAttribute("message", "- Updated Successfully");
+		redirectAttributes.addFlashAttribute("message",
+				"- Updated Successfully");
 		return "redirect:/teacher/profile";
+	}
+
+	@RequestMapping(value = "/course/apply", method = RequestMethod.GET)
+	public String newCourseApply(Teacher teacher, BindingResult bandingResult,
+			RedirectAttributes redirectAttributes) {
+		System.out.println("teacher/course/apply");
+
+		return "teacher/apply";
+	}
+
+	@RequestMapping(value = "/course/apply", method = RequestMethod.POST)
+	public String courseApply(Teacher teacher, BindingResult bandingResult,
+			RedirectAttributes redirectAttributes) {
+		System.out.println("teacher/course/apply");
+
+		return "redirect:/teacher/course/apply";
 	}
 }

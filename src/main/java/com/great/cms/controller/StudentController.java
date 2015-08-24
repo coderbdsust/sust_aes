@@ -59,4 +59,18 @@ public class StudentController {
 		return "redirect:/student/profile";
 	}
 
+	@RequestMapping(value = "/course/registration", method = RequestMethod.GET)
+	public String newCourseRegistration(Student student,
+			BindingResult bandingResult) {
+		System.out.println("student/course/registration");
+		return "student/reg";
+	}
+	
+	@RequestMapping(value = "/course/registration", method = RequestMethod.POST)
+	public String courseRegistration(Student student,
+			BindingResult bandingResult) {
+		System.out.println("student/course/registration");
+		return "redirect:/student/course/registration";
+	}
+
 }
