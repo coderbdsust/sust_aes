@@ -1,11 +1,11 @@
 package com.great.cms.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.StudentDao;
 import com.great.cms.entity.Student;
+import com.great.cms.entity.User;
 import com.great.cms.service.StudentService;
 
 
@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
 	}
 
 	@Override
-	public Student getStudentByUserId(Long userId) {
+	public Student getStudentByUserId(User userId) {
 		
 		return studentDao.getStudentByUserId(userId);
 	}

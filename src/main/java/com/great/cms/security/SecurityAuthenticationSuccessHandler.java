@@ -19,7 +19,7 @@ public class SecurityAuthenticationSuccessHandler implements
 			.getLogger(SecurityAuthenticationSuccessHandler.class);
 
 	public SecurityAuthenticationSuccessHandler() {
-		System.out.println("Security Auth Success Created!");
+		System.out.println("Security Authentication Success Handler!");
 	}
 
 	@Override
@@ -28,25 +28,21 @@ public class SecurityAuthenticationSuccessHandler implements
 			throws IOException, ServletException {
 		log.debug("nAuthenticationSuccess()");
 
-		System.out.println("Authority Loading!");
-
 		Set<String> roles = AuthorityUtils.authorityListToSet(authentication
 				.getAuthorities());
-		System.out.print("ROLES: " + roles.size());
-		for (String r : roles) {
-			System.out.println(", R: " + r);
-		}
+
+		System.out.println("#ROLES : " + roles.size());
 
 		if (roles.contains(Role.ROLE_ADMIN.name())) {
-			log.debug("role admin found, redirecting to intake page");
+			log.debug("role admin found, redirecting...");
 			System.out.println("ROLE: ADMIN FOUND, REDIRECTING...");
 			response.sendRedirect("admin/index");
 		} else if (roles.contains(Role.ROLE_TEACHER.name())) {
-			log.debug("role teacher found, redirecting to intake page");
+			log.debug("role teacher found, redirecting...");
 			System.out.println("ROLE: TEACHER FOUND, REDIRECTING...");
 			response.sendRedirect("teacher/profile/");
 		} else if (roles.contains(Role.ROLE_STUDENT.name())) {
-			log.debug("role student found, redirecting to intake page");
+			log.debug("role student found, redirecting...");
 			System.out.println("ROLE: STUDENT FOUND, REDIRECTING...");
 			response.sendRedirect("student/profile/");
 		}

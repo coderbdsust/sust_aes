@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.TestDao;
+import com.great.cms.entity.Teaches;
 import com.great.cms.entity.Test;
 import com.great.cms.service.TestService;
 
@@ -23,7 +24,7 @@ public class TestServiceImpl implements TestService {
 		}
 	}
 	
-	public List<Test> getTests(Integer teachesId) {
+	public List<Test> getTests(Teaches teachesId) {
 		return testDao.findByTeachesId(teachesId);
 		
 	}

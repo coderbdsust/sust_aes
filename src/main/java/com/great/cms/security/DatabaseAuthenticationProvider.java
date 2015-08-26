@@ -27,7 +27,7 @@ public class DatabaseAuthenticationProvider extends
 	
 	public DatabaseAuthenticationProvider() {
 		// TODO Auto-generated constructor stub
-		System.out.println("DB Auth Created!");
+		System.out.println("Database Authentication Provider Initialize!");
 	}
 
 	@Autowired

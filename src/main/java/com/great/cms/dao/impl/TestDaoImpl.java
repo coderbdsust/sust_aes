@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.great.cms.dao.TestDao;
+import com.great.cms.entity.Teaches;
 import com.great.cms.entity.Test;
 
 @Repository("TestDao")
@@ -16,7 +17,7 @@ public class TestDaoImpl extends GenericDaoImpl<Test, Long> implements TestDao {
 	}
 
 	@Override
-	public List<Test> findByTeachesId(Integer teachesId) {
+	public List<Test> findByTeachesId(Teaches teachesId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

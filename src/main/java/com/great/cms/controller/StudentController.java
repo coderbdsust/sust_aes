@@ -48,7 +48,7 @@ public class StudentController {
 
 	private Student getStudent(String studentName) {
 		User user = userService.getUser(studentName);
-		Student student = studentService.getStudentByUserId(user.getUserId());
+		Student student = studentService.getStudentByUserId(user);
 		return student;
 	}
 

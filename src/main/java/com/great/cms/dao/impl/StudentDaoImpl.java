@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.great.cms.dao.StudentDao;
 import com.great.cms.entity.Student;
-import com.great.cms.entity.Teacher;
+import com.great.cms.entity.User;
 
 @Repository("StudentDao")
 public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
@@ -31,7 +31,7 @@ public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
 	}
 
 	@Override
-	public Student getStudentByUserId(Long userId) {
+	public Student getStudentByUserId(User userId) {
 		Query query = this.em
 				.createQuery("SELECT s FROM Student s WHERE s.userId=:userId");
 		query.setParameter("userId", userId);
