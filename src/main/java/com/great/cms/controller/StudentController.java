@@ -9,9 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Student;
 import com.great.cms.entity.User;
+import com.great.cms.service.CourseRegistrationService;
+import com.great.cms.service.CourseService;
 import com.great.cms.service.StudentService;
 import com.great.cms.service.UserService;
 
@@ -22,6 +26,10 @@ public class StudentController {
 
 	@Autowired
 	StudentService studentService;
+	@Autowired
+	CourseService courseService;
+	@Autowired
+	CourseRegistrationService courseRegService;
 
 	@Autowired
 	UserService userService;
@@ -59,16 +67,21 @@ public class StudentController {
 	}
 
 	@RequestMapping(value = "/course/registration", method = RequestMethod.GET)
-	public String newCourseRegistration(Student student,
-			BindingResult bandingResult) {
+	public String newCourseRegistration(Model uiModel) {
 		System.out.println("student/course/registration");
-		return "student/reg";
+		uiModel.addAttribute("courseList", courseService.getCourses());
+		return "student/courseregistration";
 	}
-	
+
 	@RequestMapping(value = "/course/registration", method = RequestMethod.POST)
-	public String courseRegistration(Student student,
-			BindingResult bandingResult) {
+	public String courseRegistration(CourseRegistration courseReg,
+			BindingResult bandingResult, RedirectAttributes redirectAttr) {
+	
 		System.out.println("student/course/registration");
+		System.out.println("Course Reg:" + courseReg);
+		redirectAttr.addFlashAttribute("message",
+				" -Course Teacher Approval Pending!");
+//		courseRegService.saveOrUpdate(courseReg);
 		return "redirect:/student/course/registration";
 	}
 

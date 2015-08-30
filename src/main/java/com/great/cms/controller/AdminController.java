@@ -21,6 +21,7 @@ import com.great.cms.entity.User;
 import com.great.cms.enums.Role;
 import com.great.cms.service.CourseService;
 import com.great.cms.service.TeacherService;
+import com.great.cms.service.TeachesService;
 import com.great.cms.service.UserService;
 import com.great.cms.utils.editor.RoleEditor;
 
@@ -37,6 +38,8 @@ public class AdminController {
 	private CourseService courseService;
 	@Autowired
 	private TeacherService teacherService;
+	@Autowired
+	private TeachesService teachesService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -82,13 +85,13 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/course/assign", method = RequestMethod.GET)
-	public String courseAssign(Model uiModel) {
+	public String showCourseAssign(Model uiModel) {
 		System.out.println("GET: admin/course/assign");
-		
+
 		uiModel.addAttribute("teaches", new Teaches());
 		uiModel.addAttribute("teacherList", teacherService.getTeachers());
 		uiModel.addAttribute("courseList", courseService.getCourses());
-		
+
 		return "admin/courseassign";
 	}
 
@@ -96,8 +99,10 @@ public class AdminController {
 	public String assignCourse(Teaches teaches, BindingResult bindingResult,
 			RedirectAttributes redirectAttributes, Model uiModel) {
 		System.out.println("POST: admin/course/assign");
-
-		return "admin/courseassign";
+		System.out.println("Teaches: " + teaches);
+		teachesService.saveOrUpdate(teaches);
+		redirectAttributes.addFlashAttribute("message", "Course Assign Completed Successfully");
+		return "redirect:/admin/course/assign";
 
 	}
 }
