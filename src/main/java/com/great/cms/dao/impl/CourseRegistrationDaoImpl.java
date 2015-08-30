@@ -11,7 +11,7 @@ import com.great.cms.entity.CourseRegistration;
 public class CourseRegistrationDaoImpl extends
 		GenericDaoImpl<CourseRegistration, Integer> implements
 		CourseRegistrationDao {
-
+	
 	public CourseRegistrationDaoImpl() {
 		super(CourseRegistration.class);
 	}
