@@ -9,7 +9,7 @@ import com.great.cms.dao.CourseDao;
 import com.great.cms.entity.Course;
 import com.great.cms.service.CourseService;
 
-@Service
+@Service("CourseService")
 public class CourseServiceImpl implements CourseService {
 
 	@Autowired
