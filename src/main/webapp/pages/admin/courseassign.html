@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
-<title>Course :: Create</title>
+<title>Course :: Assign</title>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -16,7 +16,7 @@
 							<div class="caption">
 								<i class="icon-equalizer font-red-sunglo"></i> <span
 									class="caption-subject font-red-sunglo bold uppercase">Course
-									Assign Application</span>
+									Assign</span>
 							</div>
 							<div class="tools">
 								<a href="" class="collapse"> </a> <a href="#portlet-config"
@@ -26,64 +26,38 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" th:action="@{/teacher/course/apply}"
+							<form action="#" th:action="@{/admin/course/assign}"
 								method="post" class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section bold">Application Info</h3>
+									<h3 class="form-section bold">Assign Info</h3>
+
 
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Course Code</label>
+												<label class="control-label col-md-3">Course</label>
 												<div class="col-md-9">
-													<input type="text" name="courseCode" class="form-control"
-														placeholder="CSE333" />
-													<!-- span class="help-block">
-														This is inline help </span> -->
+													<select name="courseId.courseId" class="form-control">
+														<option th:each="course : ${courseList}"
+															th:value="${course.courseId}"
+															th:text="${course.courseCode}+' - '+${course.courseTitle}"></option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
 											</div>
 										</div>
+
 									</div>
 
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Semester</label>
+												<label class="control-label col-md-3">Teacher</label>
 												<div class="col-md-9">
-													<input type="text" name="semester" class="form-control"
-														placeholder="31" />
-													<!-- span class="help-block">
-														This is inline help </span> -->
-												</div>
-											</div>
-										</div>
-
-										<div class="col-md-6">
-											<div class="form-group">
-												<label class="control-label col-md-3">Session</label>
-												<div class="col-md-9">
-													<input type="text" name="session" class="form-control"
-														placeholder="2011" />
-													<!-- span class="help-block">
-														This is inline help </span> -->
-												</div>
-											</div>
-										</div>
-										<!--/span-->
-
-										<!--/span-->
-									</div>
-
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label class="control-label col-md-3">Course Title</label>
-												<div class="col-md-9">
-													<select name="deptId.deptId" class="form-control">
-														<option th:each="dept : ${departmentList}"
-															th:value="${dept.deptId}"
-															th:selected="${teacher.deptId.deptId == dept.deptId}"
-															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
+													<select name="instructorId.instructorId" class="form-control">
+														<option th:each="teacher : ${teacherList}"
+															th:value="${teacher.instructorId}"
+															th:text="${teacher.deptId?.deptCode}+' - '+${teacher.teacherName}+'  ['+ ${teacher.employeeCode} +']'"></option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -98,7 +72,7 @@
 											<div class="col-md-6">
 												<div class="row">
 													<div class="col-md-offset-3 col-md-9">
-														<button type="submit" class="btn green">Apply</button>
+														<button type="submit" class="btn green">Assign</button>
 														<button type="button" class="btn default">Cancel</button>
 													</div>
 												</div>

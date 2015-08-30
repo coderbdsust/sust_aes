@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.great.cms.entity.CourseRegistration;
+import com.great.cms.entity.Teaches;
 import com.great.cms.entity.User;
 import com.great.cms.enums.Role;
+import com.great.cms.service.CourseService;
+import com.great.cms.service.TeacherService;
 import com.great.cms.service.UserService;
 import com.great.cms.utils.editor.RoleEditor;
 
@@ -29,6 +33,10 @@ public class AdminController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CourseService courseService;
+	@Autowired
+	private TeacherService teacherService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -70,6 +78,26 @@ public class AdminController {
 		userService.saveOrUpdate(user);
 
 		return "redirect:/admin/verification";
+
+	}
+
+	@RequestMapping(value = "/course/assign", method = RequestMethod.GET)
+	public String courseAssign(Model uiModel) {
+		System.out.println("GET: admin/course/assign");
+		
+		uiModel.addAttribute("teaches", new Teaches());
+		uiModel.addAttribute("teacherList", teacherService.getTeachers());
+		uiModel.addAttribute("courseList", courseService.getCourses());
+		
+		return "admin/courseassign";
+	}
+
+	@RequestMapping(value = "/course/assign", method = RequestMethod.POST)
+	public String assignCourse(Teaches teaches, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model uiModel) {
+		System.out.println("POST: admin/course/assign");
+
+		return "admin/courseassign";
 
 	}
 }

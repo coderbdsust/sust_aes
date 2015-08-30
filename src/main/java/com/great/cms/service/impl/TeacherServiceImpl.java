@@ -1,5 +1,7 @@
 package com.great.cms.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,12 @@ public class TeacherServiceImpl implements TeacherService {
 	public Teacher getTeacherByUserId(User userId) {
 		// TODO Auto-generated method stub
 		return teacherDao.getTeacherByUserId(userId);
+	}
+
+	@Override
+	public List<Teacher> getTeachers() {
+		// TODO Auto-generated method stub
+		return teacherDao.findAll();
 	}
 
 }

@@ -83,20 +83,4 @@ public class TeacherController {
 				"- Updated Successfully");
 		return "redirect:/teacher/profile";
 	}
-
-	@RequestMapping(value = "/course/apply", method = RequestMethod.GET)
-	public String newCourseApply(Teacher teacher, BindingResult bandingResult,
-			RedirectAttributes redirectAttributes) {
-		System.out.println("teacher/course/apply");
-
-		return "teacher/apply";
-	}
-
-	@RequestMapping(value = "/course/apply", method = RequestMethod.POST)
-	public String courseApply(Teacher teacher, BindingResult bandingResult,
-			RedirectAttributes redirectAttributes) {
-		System.out.println("teacher/course/apply");
-
-		return "redirect:/teacher/course/apply";
-	}
 }
