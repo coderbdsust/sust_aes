@@ -77,7 +77,7 @@
 													<select name="deptId.deptId" class="form-control">
 														<option th:each="dept : ${departmentList}"
 															th:value="${dept.deptId}"
-															th:selected="${teacher.deptId.deptId == dept.deptId}"
+															th:selected="${teacher.deptId?.deptId == dept.deptId}"
 															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
