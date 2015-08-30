@@ -2,8 +2,6 @@ package com.great.cms.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 import com.great.cms.entity.UserRole;
 
 

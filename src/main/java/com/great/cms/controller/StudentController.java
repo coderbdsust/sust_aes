@@ -1,6 +1,5 @@
 package com.great.cms.controller;
 
-import java.net.Authenticator.RequestorType;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;

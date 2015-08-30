@@ -1,22 +1,17 @@
 package com.great.cms.security;
 
-import com.great.cms.entity.User;
-import com.great.cms.enums.Role;
-import com.great.cms.service.UserService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider;
-import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.Arrays;
+import com.great.cms.entity.User;
+import com.great.cms.service.UserService;
 
 
 

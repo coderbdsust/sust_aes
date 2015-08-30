@@ -1,14 +1,10 @@
 package com.great.cms.dao.impl;
 
-import java.util.List;
-
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import com.great.cms.dao.CourseDao;
 import com.great.cms.dao.DepartmentDao;
-import com.great.cms.entity.Course;
 import com.great.cms.entity.Department;
 
 @Repository("DepartmentDao")

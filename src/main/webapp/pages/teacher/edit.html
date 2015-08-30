@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
@@ -29,8 +30,8 @@
 							<form th:action="@{/teacher/profile/edit}" method="post"
 								class="form-horizontal">
 								<input name="userId.userId" type="hidden" class="form-control"
-									th:value="${teacher.userId.userId}" />
-									<input name="instructorId" type="hidden" class="form-control"
+									th:value="${teacher.userId.userId}" /> <input
+									name="instructorId" type="hidden" class="form-control"
 									th:value="${teacher.instructorId}" />
 								<div class="form-body">
 									<h3 class="form-section">Person Info</h3>

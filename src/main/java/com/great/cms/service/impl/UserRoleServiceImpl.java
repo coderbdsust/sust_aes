@@ -9,15 +9,14 @@ import com.great.cms.dao.UserRoleDao;
 import com.great.cms.entity.UserRole;
 import com.great.cms.service.UserRoleService;
 
-
 @Service("UserRoleService")
 public class UserRoleServiceImpl implements UserRoleService {
 
 	@Autowired
-	private UserRoleDao userTypeDao;
+	private UserRoleDao userRoleDao;
 
 	@Override
-	public UserRole getUserRole(Integer userTypeId) {
+	public UserRole getUserRole(Integer userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -25,21 +24,19 @@ public class UserRoleServiceImpl implements UserRoleService {
 	@Override
 	public List<UserRole> getUserRoles() {
 		// TODO Auto-generated method stub
-		return null;
+		return userRoleDao.findAll();
 	}
 
 	@Override
 	public void saveUserType(UserRole UserRole) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deleteUserType(UserRole UserRole) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }

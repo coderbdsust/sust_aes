@@ -1,11 +1,5 @@
 package com.great.cms.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.print.attribute.HashAttributeSet;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +17,7 @@ import com.great.cms.service.UserService;
 @Controller
 @RequestMapping("/account")
 public class LoginController {
-	private static final Logger log = LoggerFactory
+	static final Logger log = LoggerFactory
 			.getLogger(LoginController.class);
 
 	@Autowired

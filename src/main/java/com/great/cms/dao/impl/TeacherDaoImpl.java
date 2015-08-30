@@ -21,6 +21,7 @@ public class TeacherDaoImpl extends GenericDaoImpl<Teacher, Long>implements Teac
 	public Teacher getTeacherByUserId(User userId) {
 		Query query = this.em.createQuery("SELECT t FROM Teacher t WHERE t.userId=:userId");
 		query.setParameter("userId", userId);
+		@SuppressWarnings("unchecked")
 		List<Teacher> teachers = query.getResultList();
 		if (teachers == null || teachers.isEmpty() || teachers.size() > 1)
 			return null;

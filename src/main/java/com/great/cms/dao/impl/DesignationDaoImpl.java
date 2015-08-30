@@ -4,9 +4,7 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import com.great.cms.dao.DepartmentDao;
 import com.great.cms.dao.DesignationDao;
-import com.great.cms.entity.Department;
 import com.great.cms.entity.Designation;
 
 

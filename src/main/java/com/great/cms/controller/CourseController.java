@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.great.cms.entity.Course;
-import com.great.cms.entity.Department;
 import com.great.cms.service.CourseService;
 import com.great.cms.service.DepartmentService;
 

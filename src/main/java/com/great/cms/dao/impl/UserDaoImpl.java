@@ -10,6 +10,7 @@ import com.great.cms.dao.UserDao;
 import com.great.cms.entity.User;
 
 @Repository("UserDao")
+@SuppressWarnings("unchecked")
 public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 
 	public UserDaoImpl() {

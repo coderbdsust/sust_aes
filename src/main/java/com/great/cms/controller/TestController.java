@@ -34,7 +34,7 @@ public class TestController {
 
 	@RequestMapping("/show")
 	public String showAvailableTest(Principal principal) {
-		String username = principal.getName();
+		/* String username = principal.getName(); */
 		return "test/showlist";
 	}
 }

@@ -1,13 +1,8 @@
 package com.great.cms.dao.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import com.great.cms.dao.UserDao;
 import com.great.cms.dao.UserRoleDao;
-import com.great.cms.entity.User;
 import com.great.cms.entity.UserRole;
 
 

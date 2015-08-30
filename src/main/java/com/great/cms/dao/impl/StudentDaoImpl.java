@@ -11,6 +11,7 @@ import com.great.cms.entity.Student;
 import com.great.cms.entity.User;
 
 @Repository("StudentDao")
+@SuppressWarnings("unchecked")
 public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
 		StudentDao {
 
@@ -24,6 +25,7 @@ public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
 		Query query = this.em
 				.createQuery("SELECT s from Student s where registrationNo=:regNo");
 		query.setParameter("regNo", regId);
+		
 		List<Student> students = query.getResultList();
 		if (students != null && students.size() > 1)
 			return null;
