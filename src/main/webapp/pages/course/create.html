@@ -26,7 +26,8 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" th:action="@{/course/create}" method="post" class="form-horizontal">
+							<form action="#" th:action="@{/course/create}" method="post"
+								class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section bold">Course Info</h3>
 									<div class="row">
@@ -35,7 +36,7 @@
 												<label class="control-label col-md-3">Course Code</label>
 												<div class="col-md-9">
 													<input type="text" class="form-control"
-														placeholder="CSE333" name="courseCode"/>
+														placeholder="CSE333" name="courseCode" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
 												</div>
@@ -69,7 +70,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Course Credit</label>
 												<div class="col-md-9">
-													<input type="text" name="credit" class="form-control" placeholder="3.5" />
+													<input type="text" name="credit" class="form-control"
+														placeholder="3.5" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
 												</div>
@@ -92,7 +94,7 @@
 												</div>
 											</div>
 										</div>
-										
+
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label col-md-3">Session</label>
@@ -117,7 +119,13 @@
 												<label class="control-label col-md-3">Offering Dept
 													Code</label>
 												<div class="col-md-9">
-													<input type="text" name="offeringDept" class="form-control" placeholder="CSE" />
+													<select name="offeringDept" class="form-control">
+														<option th:each="dept : ${departments}"
+															th:value="${dept.deptCode}"
+															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+
 												</div>
 											</div>
 										</div>
@@ -126,7 +134,13 @@
 												<label class="control-label col-md-3">Accepting Dept
 													Code</label>
 												<div class="col-md-9">
-													<input type="text" name="acceptingDept" class="form-control" placeholder="BBA" />
+													<select name="acceptingDept" class="form-control">
+														<option th:each="dept : ${departments}"
+															th:value="${dept.deptCode}"
+															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+
 												</div>
 											</div>
 										</div>
