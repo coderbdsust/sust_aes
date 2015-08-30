@@ -3,9 +3,10 @@ package com.great.cms.dao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.great.cms.entity.QuestionAnswers;
+
+import com.great.cms.entity.QuestionDescription;
 
 
-public interface QuestionDescriptionsDao extends GenericDao<QuestionAnswers, Long>{
+public interface QuestionDescriptionDao extends GenericDao<QuestionDescription, Long>{
 
 }

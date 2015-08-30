@@ -23,8 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -32,7 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "test_registration")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestRegistration.findAll", query = "SELECT t FROM TestRegistration t"),
     @NamedQuery(name = "TestRegistration.findByTestRegistrationId", query = "SELECT t FROM TestRegistration t WHERE t.testRegistrationId = :testRegistrationId"),
@@ -41,7 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TestRegistration.findByIsRegApproved", query = "SELECT t FROM TestRegistration t WHERE t.isRegApproved = :isRegApproved"),
     @NamedQuery(name = "TestRegistration.findByIsAttended", query = "SELECT t FROM TestRegistration t WHERE t.isAttended = :isAttended"),
     @NamedQuery(name = "TestRegistration.findByIsExamReviewed", query = "SELECT t FROM TestRegistration t WHERE t.isExamReviewed = :isExamReviewed")})
-public class TestRegistration implements DomainObject, Serializable {
+public class TestRegistration implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -63,7 +60,7 @@ public class TestRegistration implements DomainObject, Serializable {
     @Column(name = "is_exam_reviewed")
     private boolean isExamReviewed;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "testRegistrationId")
-    private List<QuestionAnswers> questionAnswersList;
+    private List<QuestionAnswer> questionAnswerList;
     @JoinColumn(name = "test_id", referencedColumnName = "test_id")
     @ManyToOne(optional = false)
     private Test testId;
@@ -133,13 +130,12 @@ public class TestRegistration implements DomainObject, Serializable {
         this.isExamReviewed = isExamReviewed;
     }
 
-    @XmlTransient
-    public List<QuestionAnswers> getQuestionAnswersList() {
-        return questionAnswersList;
+    public List<QuestionAnswer> getQuestionAnswerList() {
+        return questionAnswerList;
     }
 
-    public void setQuestionAnswersList(List<QuestionAnswers> questionAnswersList) {
-        this.questionAnswersList = questionAnswersList;
+    public void setQuestionAnswerList(List<QuestionAnswer> questionAnswerList) {
+        this.questionAnswerList = questionAnswerList;
     }
 
     public Test getTestId() {
@@ -180,7 +176,7 @@ public class TestRegistration implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.TestRegistration[ testRegistrationId=" + testRegistrationId + " ]";
+        return "com.great.cms.entity.TestRegistration[ testRegistrationId=" + testRegistrationId + " ]";
     }
     
 }

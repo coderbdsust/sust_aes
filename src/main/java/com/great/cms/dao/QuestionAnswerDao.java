@@ -4,9 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.great.cms.entity.ExamCommittee;
-import com.great.cms.entity.QuestionAnswers;
+import com.great.cms.entity.QuestionAnswer;
 
 
-public interface QuestionAnswersDao extends GenericDao<QuestionAnswers, Long> {
+public interface QuestionAnswerDao extends GenericDao<QuestionAnswer, Long> {
 
 }

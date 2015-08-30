@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,13 +27,12 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "department")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Department.findAll", query = "SELECT d FROM Department d"),
     @NamedQuery(name = "Department.findByDeptId", query = "SELECT d FROM Department d WHERE d.deptId = :deptId"),
     @NamedQuery(name = "Department.findByDeptName", query = "SELECT d FROM Department d WHERE d.deptName = :deptName"),
     @NamedQuery(name = "Department.findByDeptCode", query = "SELECT d FROM Department d WHERE d.deptCode = :deptCode")})
-public class Department implements DomainObject, Serializable {
+public class Department implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,12 +59,12 @@ public class Department implements DomainObject, Serializable {
         this.deptId = deptId;
     }
     
-    public Department(String deptName, String deptCode) {
-        this.deptId = deptId;
+    public Department( String deptName, String deptCode) {
+
         this.deptName = deptName;
         this.deptCode = deptCode;
     }
-
+    
     public Department(Integer deptId, String deptName, String deptCode) {
         this.deptId = deptId;
         this.deptName = deptName;
@@ -97,7 +95,6 @@ public class Department implements DomainObject, Serializable {
         this.deptCode = deptCode;
     }
 
-    @XmlTransient
     public List<Student> getStudentList() {
         return studentList;
     }
@@ -106,7 +103,6 @@ public class Department implements DomainObject, Serializable {
         this.studentList = studentList;
     }
 
-    @XmlTransient
     public List<Exam> getExamList() {
         return examList;
     }
@@ -115,7 +111,6 @@ public class Department implements DomainObject, Serializable {
         this.examList = examList;
     }
 
-    @XmlTransient
     public List<Teacher> getTeacherList() {
         return teacherList;
     }
@@ -146,7 +141,7 @@ public class Department implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.Department[ deptId=" + deptId + " ]";
+        return "com.great.cms.entity.Department[ deptId=" + deptId + " ]";
     }
     
 }

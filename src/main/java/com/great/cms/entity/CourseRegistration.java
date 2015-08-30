@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,14 +27,13 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "course_registration")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "CourseRegistration.findAll", query = "SELECT c FROM CourseRegistration c"),
     @NamedQuery(name = "CourseRegistration.findByCourseRegId", query = "SELECT c FROM CourseRegistration c WHERE c.courseRegId = :courseRegId"),
     @NamedQuery(name = "CourseRegistration.findByIsApproved", query = "SELECT c FROM CourseRegistration c WHERE c.isApproved = :isApproved"),
     @NamedQuery(name = "CourseRegistration.findByMarks", query = "SELECT c FROM CourseRegistration c WHERE c.marks = :marks"),
     @NamedQuery(name = "CourseRegistration.findByGpa", query = "SELECT c FROM CourseRegistration c WHERE c.gpa = :gpa")})
-public class CourseRegistration implements DomainObject, Serializable {
+public class CourseRegistration implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -120,7 +118,6 @@ public class CourseRegistration implements DomainObject, Serializable {
         this.courseId = courseId;
     }
 
-    @XmlTransient
     public List<TestRegistration> getTestRegistrationList() {
         return testRegistrationList;
     }
@@ -151,7 +148,7 @@ public class CourseRegistration implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.CourseRegistration[ courseRegId=" + courseRegId + " ]";
+        return "com.great.cms.entity.CourseRegistration[ courseRegId=" + courseRegId + " ]";
     }
     
 }

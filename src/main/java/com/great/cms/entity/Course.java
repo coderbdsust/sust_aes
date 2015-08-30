@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,7 +27,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "course")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
     @NamedQuery(name = "Course.findByCourseId", query = "SELECT c FROM Course c WHERE c.courseId = :courseId"),
@@ -39,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Course.findBySession", query = "SELECT c FROM Course c WHERE c.session = :session"),
     @NamedQuery(name = "Course.findByOfferingDept", query = "SELECT c FROM Course c WHERE c.offeringDept = :offeringDept"),
     @NamedQuery(name = "Course.findByAcceptingDept", query = "SELECT c FROM Course c WHERE c.acceptingDept = :acceptingDept")})
-public class Course implements DomainObject, Serializable {
+public class Course implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,8 +65,6 @@ public class Course implements DomainObject, Serializable {
     @Basic(optional = false)
     @Column(name = "accepting_dept")
     private String acceptingDept;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
-    private List<Questions> questionsList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
     private List<CourseRegistration> courseRegistrationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
@@ -156,16 +152,6 @@ public class Course implements DomainObject, Serializable {
         this.acceptingDept = acceptingDept;
     }
 
-    @XmlTransient
-    public List<Questions> getQuestionsList() {
-        return questionsList;
-    }
-
-    public void setQuestionsList(List<Questions> questionsList) {
-        this.questionsList = questionsList;
-    }
-
-    @XmlTransient
     public List<CourseRegistration> getCourseRegistrationList() {
         return courseRegistrationList;
     }
@@ -174,7 +160,6 @@ public class Course implements DomainObject, Serializable {
         this.courseRegistrationList = courseRegistrationList;
     }
 
-    @XmlTransient
     public List<Teaches> getTeachesList() {
         return teachesList;
     }
@@ -203,15 +188,9 @@ public class Course implements DomainObject, Serializable {
         return true;
     }
 
-	@Override
-	public String toString() {
-		return "Course [courseId=" + courseId + ", courseCode=" + courseCode
-				+ ", courseTitle=" + courseTitle + ", credit=" + credit
-				+ ", semester=" + semester + ", session=" + session
-				+ ", offeringDept=" + offeringDept + ", acceptingDept="
-				+ acceptingDept + "]";
-	}
-
-    
+    @Override
+    public String toString() {
+        return "com.great.cms.entity.Course[ courseId=" + courseId + " ]";
+    }
     
 }

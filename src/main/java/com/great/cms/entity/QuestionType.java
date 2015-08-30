@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -17,8 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -26,12 +25,11 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "question_type")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "QuestionType.findAll", query = "SELECT q FROM QuestionType q"),
     @NamedQuery(name = "QuestionType.findByQuestionTypeId", query = "SELECT q FROM QuestionType q WHERE q.questionTypeId = :questionTypeId"),
     @NamedQuery(name = "QuestionType.findByQuestionTypeName", query = "SELECT q FROM QuestionType q WHERE q.questionTypeName = :questionTypeName")})
-public class QuestionType implements DomainObject, Serializable {
+public class QuestionType implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -41,7 +39,7 @@ public class QuestionType implements DomainObject, Serializable {
     @Column(name = "question_type_name")
     private String questionTypeName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionTypeId")
-    private List<Questions> questionsList;
+    private List<Question> questionList;
 
     public QuestionType() {
     }
@@ -71,13 +69,12 @@ public class QuestionType implements DomainObject, Serializable {
         this.questionTypeName = questionTypeName;
     }
 
-    @XmlTransient
-    public List<Questions> getQuestionsList() {
-        return questionsList;
+    public List<Question> getQuestionList() {
+        return questionList;
     }
 
-    public void setQuestionsList(List<Questions> questionsList) {
-        this.questionsList = questionsList;
+    public void setQuestionList(List<Question> questionList) {
+        this.questionList = questionList;
     }
 
     @Override
@@ -102,7 +99,7 @@ public class QuestionType implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.QuestionType[ questionTypeId=" + questionTypeId + " ]";
+        return "com.great.cms.entity.QuestionType[ questionTypeId=" + questionTypeId + " ]";
     }
     
 }

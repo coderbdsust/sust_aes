@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,8 +22,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,7 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "exam")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Exam.findAll", query = "SELECT e FROM Exam e"),
     @NamedQuery(name = "Exam.findByExamId", query = "SELECT e FROM Exam e WHERE e.examId = :examId"),
@@ -39,7 +37,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Exam.findByExamEnd", query = "SELECT e FROM Exam e WHERE e.examEnd = :examEnd"),
     @NamedQuery(name = "Exam.findByRegStart", query = "SELECT e FROM Exam e WHERE e.regStart = :regStart"),
     @NamedQuery(name = "Exam.findByRegEnd", query = "SELECT e FROM Exam e WHERE e.regEnd = :regEnd")})
-public class Exam implements DomainObject, Serializable {
+public class Exam implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -131,7 +129,6 @@ public class Exam implements DomainObject, Serializable {
         this.regEnd = regEnd;
     }
 
-    @XmlTransient
     public List<ExamCommittee> getExamCommitteeList() {
         return examCommitteeList;
     }
@@ -170,7 +167,7 @@ public class Exam implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.Exam[ examId=" + examId + " ]";
+        return "com.great.cms.entity.Exam[ examId=" + examId + " ]";
     }
     
 }

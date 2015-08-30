@@ -9,6 +9,7 @@ package com.great.cms.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,8 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,7 +30,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "test")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Test.findAll", query = "SELECT t FROM Test t"),
     @NamedQuery(name = "Test.findByTestId", query = "SELECT t FROM Test t WHERE t.testId = :testId"),
@@ -42,7 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Test.findByStartTime", query = "SELECT t FROM Test t WHERE t.startTime = :startTime"),
     @NamedQuery(name = "Test.findByEndTime", query = "SELECT t FROM Test t WHERE t.endTime = :endTime"),
     @NamedQuery(name = "Test.findByIsQuestionTimerOn", query = "SELECT t FROM Test t WHERE t.isQuestionTimerOn = :isQuestionTimerOn")})
-public class Test implements DomainObject, Serializable {
+public class Test implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -165,7 +163,6 @@ public class Test implements DomainObject, Serializable {
         this.teachesId = teachesId;
     }
 
-    @XmlTransient
     public List<TestQuestion> getTestQuestionList() {
         return testQuestionList;
     }
@@ -174,7 +171,6 @@ public class Test implements DomainObject, Serializable {
         this.testQuestionList = testQuestionList;
     }
 
-    @XmlTransient
     public List<TestRegistration> getTestRegistrationList() {
         return testRegistrationList;
     }
@@ -205,7 +201,7 @@ public class Test implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.Test[ testId=" + testId + " ]";
+        return "com.great.cms.entity.Test[ testId=" + testId + " ]";
     }
     
 }

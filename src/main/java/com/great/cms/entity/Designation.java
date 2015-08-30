@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,8 +20,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -28,13 +27,12 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "designation")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Designation.findAll", query = "SELECT d FROM Designation d"),
     @NamedQuery(name = "Designation.findByDesigId", query = "SELECT d FROM Designation d WHERE d.desigId = :desigId"),
     @NamedQuery(name = "Designation.findByDesigName", query = "SELECT d FROM Designation d WHERE d.desigName = :desigName"),
     @NamedQuery(name = "Designation.findByDesigDesc", query = "SELECT d FROM Designation d WHERE d.desigDesc = :desigDesc")})
-public class Designation implements DomainObject, Serializable {
+public class Designation implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,12 +54,13 @@ public class Designation implements DomainObject, Serializable {
         this.desigId = desigId;
     }
 
-    public Designation(Integer desigId, String desigName) {
-        this.desigId = desigId;
+    public Designation(String desigName) {
+
         this.desigName = desigName;
     }
     
-    public Designation(String desigName) {
+    public Designation(Integer desigId, String desigName) {
+        this.desigId = desigId;
         this.desigName = desigName;
     }
 
@@ -89,7 +88,6 @@ public class Designation implements DomainObject, Serializable {
         this.desigDesc = desigDesc;
     }
 
-    @XmlTransient
     public List<Teacher> getTeacherList() {
         return teacherList;
     }
@@ -120,7 +118,7 @@ public class Designation implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.Designation[ desigId=" + desigId + " ]";
+        return "com.great.cms.entity.Designation[ desigId=" + desigId + " ]";
     }
     
 }

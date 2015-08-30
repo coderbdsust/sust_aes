@@ -17,7 +17,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -25,11 +24,10 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "test_question")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TestQuestion.findAll", query = "SELECT t FROM TestQuestion t"),
     @NamedQuery(name = "TestQuestion.findByTestQuestionId", query = "SELECT t FROM TestQuestion t WHERE t.testQuestionId = :testQuestionId")})
-public class TestQuestion implements DomainObject, Serializable {
+public class TestQuestion implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -40,7 +38,7 @@ public class TestQuestion implements DomainObject, Serializable {
     private Test testId;
     @JoinColumn(name = "question_id", referencedColumnName = "question_id")
     @ManyToOne(optional = false)
-    private Questions questionId;
+    private Question questionId;
 
     public TestQuestion() {
     }
@@ -65,11 +63,11 @@ public class TestQuestion implements DomainObject, Serializable {
         this.testId = testId;
     }
 
-    public Questions getQuestionId() {
+    public Question getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(Questions questionId) {
+    public void setQuestionId(Question questionId) {
         this.questionId = questionId;
     }
 
@@ -95,7 +93,7 @@ public class TestQuestion implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.TestQuestion[ testQuestionId=" + testQuestionId + " ]";
+        return "com.great.cms.entity.TestQuestion[ testQuestionId=" + testQuestionId + " ]";
     }
     
 }

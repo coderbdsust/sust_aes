@@ -7,6 +7,7 @@
 package com.great.cms.entity;
 
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,7 +19,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -26,7 +26,6 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "exam_committee")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "ExamCommittee.findAll", query = "SELECT e FROM ExamCommittee e"),
     @NamedQuery(name = "ExamCommittee.findByExamCommitteeId", query = "SELECT e FROM ExamCommittee e WHERE e.examCommitteeId = :examCommitteeId"),
@@ -155,7 +154,7 @@ public class ExamCommittee implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.ExamCommittee[ examCommitteeId=" + examCommitteeId + " ]";
+        return "com.great.cms.entity.ExamCommittee[ examCommitteeId=" + examCommitteeId + " ]";
     }
     
 }

@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,8 +22,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,7 +29,6 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "teaches")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Teaches.findAll", query = "SELECT t FROM Teaches t"),
     @NamedQuery(name = "Teaches.findByTeachesId", query = "SELECT t FROM Teaches t WHERE t.teachesId = :teachesId")})
@@ -65,7 +63,6 @@ public class Teaches implements DomainObject, Serializable {
         this.teachesId = teachesId;
     }
 
-    @XmlTransient
     public List<Test> getTestList() {
         return testList;
     }
@@ -112,7 +109,7 @@ public class Teaches implements DomainObject, Serializable {
 
     @Override
     public String toString() {
-        return "com.greatcms.cms.entity.Teaches[ teachesId=" + teachesId + " ]";
+        return "com.great.cms.entity.Teaches[ teachesId=" + teachesId + " ]";
     }
     
 }
