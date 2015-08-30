@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.entity.Course;
 import com.great.cms.service.CourseService;
@@ -27,9 +28,11 @@ public class CourseController {
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String saveCourse(Course course, BindingResult bResult) {
+	public String saveCourse(Course course, BindingResult bResult,RedirectAttributes redirectAttributes) {
 		System.out.println("course/create");
 		System.out.println("Course: " + course);
-		return "course/create";
+		courseService.saveOrUpdate(course);
+		redirectAttributes.addFlashAttribute("message","Course was created successfully");
+		return "redirect:/course/create";
 	}
 }
