@@ -92,7 +92,7 @@ public class AdminController {
 		uiModel.addAttribute("teacherList", teacherService.getTeachers());
 		uiModel.addAttribute("courseList", courseService.getCourses());
 
-		return "admin/courseassign";
+		return "admin/course_assign";
 	}
 
 	@RequestMapping(value = "/course/assign", method = RequestMethod.POST)

@@ -83,4 +83,12 @@ public class TeacherController {
 				"- Updated Successfully");
 		return "redirect:/teacher/profile";
 	}
+	
+	@RequestMapping(value = "/course/reg/approve", method = RequestMethod.GET)
+	public String regApprove(Model uiModel) {
+		System.out.println("GET: teacher/course/reg/approve");
+
+		
+		return "teacher/course_reg_approve";
+	}
 }

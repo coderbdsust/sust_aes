@@ -70,7 +70,7 @@ public class StudentController {
 	public String newCourseRegistration(Model uiModel) {
 		System.out.println("student/course/registration");
 		uiModel.addAttribute("courseList", courseService.getCourses());
-		return "student/courseregistration";
+		return "student/course_registration";
 	}
 
 	@RequestMapping(value = "/course/registration", method = RequestMethod.POST)
