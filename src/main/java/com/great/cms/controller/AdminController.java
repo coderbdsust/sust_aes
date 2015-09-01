@@ -101,8 +101,14 @@ public class AdminController {
 		System.out.println("POST: admin/course/assign");
 		System.out.println("Teaches: " + teaches);
 		teachesService.saveOrUpdate(teaches);
-		redirectAttributes.addFlashAttribute("message", "Course Assign Completed Successfully");
+		redirectAttributes.addFlashAttribute("message",
+				"Course Assign Completed Successfully");
 		return "redirect:/admin/course/assign";
+	}
 
+	@RequestMapping(value = "/course/view")
+	public String adminCourseView(Model uiModel) {
+		uiModel.addAttribute("courseList", courseService.getCourses());
+		return "admin/course_view";
 	}
 }

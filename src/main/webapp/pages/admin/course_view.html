@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Course :: Assign</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-equalizer font-red-sunglo"></i> <span
+									class="caption-subject font-red-sunglo bold uppercase">Course
+									Information</span>
+							</div>
+							<div class="tools">
+								<a href="" class="collapse"> </a> <a href="#portlet-config"
+									data-toggle="modal" class="config"> </a> <a href=""
+									class="reload"> </a> <a href="" class="remove"> </a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<!-- BEGIN CONDENSED TABLE PORTLET-->
+								<div class="portlet box green">
+									<div class="portlet-title">
+										<div class="caption">
+											<i class="fa fa-picture"></i>Available Course
+										</div>
+										<div class="tools">
+											<a href="javascript:;" class="collapse"> </a> <a
+												href="#portlet-config" data-toggle="modal" class="config">
+											</a> <a href="javascript:;" class="reload"> </a> <a
+												href="javascript:;" class="remove"> </a>
+										</div>
+									</div>
+									<div class="portlet-body">
+										<div class="table-scrollable">
+											<table class="table table-condensed table-hover">
+												<thead>
+													<tr>
+
+														<th>Course Code</th>
+														<th>Course Title</th>
+														<th>Course Credit</th>
+														<th>Semester</th>
+														<th>Session</th>
+														<th>Offering Dept.</th>
+														<th>Accepting Dept.</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="course:${courseList}">
+														<td th:text="${course.courseCode}">CSE333</td>
+														<td th:text="${course.courseTitle}">Database</td>
+														<td th:text="${course.credit}">3</td>
+														<td th:text="${course.semester}">3-1</td>
+														<td th:text="${course.session}">2011</td>
+														<td th:text="${course.offeringDept}">CSE</td>
+														<td th:text="${course.acceptingDept}">CSE</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+								<!-- END CONDENSED TABLE PORTLET-->
+							</div>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
