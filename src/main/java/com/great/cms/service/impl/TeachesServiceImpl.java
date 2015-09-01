@@ -2,10 +2,13 @@ package com.great.cms.service.impl;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.TeachesDao;
+import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
 import com.great.cms.service.TeachesService;
 
@@ -29,6 +32,11 @@ public class TeachesServiceImpl implements TeachesService {
 
 	public Teaches findById(Integer id) {
 		return teachesDao.findById(id);
+	}
+
+	@Override
+	public List<Teaches> findByInstructorId(Teacher teacher) {
+		return teachesDao.findByInstructorId(teacher);
 	}
 
 }

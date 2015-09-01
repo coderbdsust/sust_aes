@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.CourseRegistrationDao;
+import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.service.CourseRegistrationService;
 
@@ -25,6 +26,12 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 	
 	public List<CourseRegistration> getCourseRegistrations(){
 		return courseRegDao.findAll();
+	}
+
+	@Override
+	public List<CourseRegistration> findByCourseId(Course course) {
+		return courseRegDao.findByCourseId(course);
+
 	}
 	
 }

@@ -4,7 +4,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
-<title>Course :: Approve</title>
+<title>Course :: Open</title>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -15,8 +15,7 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="icon-equalizer font-red-sunglo"></i> <span
-									class="caption-subject font-red-sunglo bold uppercase">Course
-									Approve Info</span>
+									class="caption-subject font-red-sunglo bold uppercase">Open Course Registration Info</span>
 							</div>
 							<div class="tools">
 								<a href="" class="collapse"> </a> <a href="#portlet-config"
@@ -26,7 +25,7 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" th:action="@{/teacher/course/reg/approve}"
+							<form action="#" th:action="@{/teacher/course/reg/open}"
 								method="post" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section bold">
@@ -35,17 +34,16 @@
 											th:if="${message}" th:text="${message}"></label>
 									</h3>
 
-
-
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Course Title</label>
+												<label class="control-label col-md-3">Available
+													Assigned Course</label>
 												<div class="col-md-9">
-													<select name="studentId.studentId" class="form-control">
-														<option th:each="courseReg : ${courseRegistrationList}"
-															th:value="${course.courseId}"
-															th:text="${course.courseCode}+'('+${course.courseTitle}+')'"></option>
+													<select name="courseId" class="form-control">
+														<option th:each="teaches : ${teachesList}"
+															th:value="${teaches.courseId.courseId}"
+															th:text="'['+${teaches.courseId.courseCode}+'] - '+${teaches.courseId.courseTitle}+' [ Session: '+${teaches.courseId.session}+','+${teaches.courseId.offeringDept}+'->'+${teaches.courseId.acceptingDept}+']'"></option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -61,7 +59,7 @@
 											<div class="col-md-6">
 												<div class="row">
 													<div class="col-md-offset-3 col-md-9">
-														<button type="submit" class="btn green">Apply</button>
+														<button type="submit" class="btn green">Open</button>
 														<button type="button" class="btn default">Cancel</button>
 													</div>
 												</div>
