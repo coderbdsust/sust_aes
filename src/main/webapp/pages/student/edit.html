@@ -26,7 +26,14 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" class="form-horizontal">
+							<form th:action="@{/student/profile/edit}" th:object="${student}" method="POST"
+								class="form-horizontal">
+
+								<input name="userId.userId" type="hidden" class="form-control"
+									th:value="${student.userId.userId}" /> <input
+									name="studentId" type="hidden" class="form-control"
+									th:value="${student.studentId}" />
+
 								<div class="form-body">
 									<h3 class="form-section">Person Info</h3>
 									<div class="row">
@@ -34,7 +41,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">First Name</label>
 												<div class="col-md-9">
-													<input type="text" class="form-control"
+													<input type="text" name="firstName" class="form-control"
 														placeholder="Biswajit" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
@@ -46,7 +53,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Last Name</label>
 												<div class="col-md-9">
-													<input type="text" class="form-control"
+													<input type="text" name="lastName" class="form-control"
 														placeholder="Debnath" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
@@ -63,8 +70,8 @@
 													Number</label>
 												<div class="col-md-9">
 
-													<input type="text" class="form-control" max="10"
-														placeholder="2011331009" />
+													<input type="text" name="registrationNo"
+														class="form-control" max="10" placeholder="2011331009" />
 													<!-- <span class="help-block">
 														This is inline help </span> -->
 
@@ -78,9 +85,9 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Dept ID</label>
 												<div class="col-md-9">
-													<select class="form-control">
-														<option value="">CSE</option>
-														<option value="">EEE</option>
+													<select name="deptId.deptId" class="form-control">
+														<option value="1">CSE</option>
+														<option value="2">EEE</option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -91,13 +98,13 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Blood Group</label>
 												<div class="col-md-9">
-													<select class="form-control">
-														<option value="">A+</option>
-														<option value="">B+</option>
-														<option value="">O+</option>
-														<option value="">AB+</option>
-														<option value="">A-</option>
-														<option value="">B-</option>
+													<select name="bloodGroup" class="form-control">
+														<option value="A+">A+</option>
+														<option value="B+">B+</option>
+														<option value="O+">O+</option>
+														<option value="AB+">AB+</option>
+														<option value="A-">A-</option>
+														<option value="B-">B-</option>
 														<option value="">O-</option>
 														<option value="">AB-</option>
 													</select>
@@ -113,7 +120,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Contact No.</label>
 												<div class="col-md-9">
-													<input type="text" class="form-control"
+													<input name="contactNo" type="text" class="form-control"
 														placeholder="01*********" />
 												</div>
 											</div>
@@ -128,9 +135,9 @@
 												<label class="control-label col-md-3">Maretial
 													Status</label>
 												<div class="col-md-9">
-													<select class="form-control">
-														<option value="">Single</option>
-														<option value="">Married</option>
+													<select name="maritalStatus" class="form-control">
+														<option value="Single">Single</option>
+														<option value="Married">Married</option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -141,10 +148,10 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Gender</label>
 												<div class="col-md-9">
-													<select class="form-control">
-														<option value="">Male</option>
-														<option value="">Female</option>
-														<option value="">Others</option>
+													<select name="gender" class="form-control">
+														<option value="Male">Male</option>
+														<option value="Female">Female</option>
+														<option value="Others">Others</option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -158,7 +165,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Email</label>
 												<div class="col-md-9">
-													<input type="text" class="form-control"
+													<input type="text" name="email" class="form-control"
 														placeholder="abc@gmail.com" />
 												</div>
 											</div>
@@ -170,12 +177,13 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Religion</label>
 												<div class="col-md-9">
-													<select class="form-control">
-														<option value="">Islam</option>
-														<option value="">Hindu</option>
-														<option value="">Buddist</option>
-														<option value="">Christian</option>
-														<option value="">Atheist</option>
+													<select name="religion" class="form-control">
+														<option value="Islam">Islam</option>
+														<option value="Hindu">Hindu</option>
+														<option value="Buddist">Buddist</option>
+														<option value="Chistian">Christian</option>
+														<option value="Atheist">Atheist</option>
+														<option value="Others">Others</option>
 													</select>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -184,10 +192,10 @@
 
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Address</label>
+												<label class="control-label col-md-3">Date of Birth</label>
 												<div class="col-md-9">
-													<input type="date" class="form-control" maxlength="100"
-														placeholder="dd/mm/yyyy" />
+													<input name="dateOfBirth" th:field="*{dateOfBirth}" type="text" class="form-control"
+														 maxlength="100" placeholder="dd/mm/yyyy"  />
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
 											</div>
@@ -199,8 +207,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Address</label>
 												<div class="col-md-9">
-													<textarea class="form-control" maxlength="100"
-														placeholder="text"></textarea>
+													<textarea name="address" class="form-control"
+														maxlength="100" placeholder="text"></textarea>
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
 											</div>

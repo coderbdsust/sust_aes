@@ -26,6 +26,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.test.annotation.Timed;
+
 /**
  *
  * @author Biswajit Debnath
@@ -77,8 +80,11 @@ public class Student implements DomainObject,Serializable {
     @Column(name = "religion")
     private String religion;
     @Column(name = "date_of_birth")
+    
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth;
+    
     @Basic(optional = false)
     @Column(name = "gender")
     private String gender;
@@ -248,9 +254,18 @@ public class Student implements DomainObject,Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.Student[ studentId=" + studentId + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", registrationNo="
+				+ registrationNo + ", email=" + email + ", contactNo="
+				+ contactNo + ", address=" + address + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", maritalStatus="
+				+ maritalStatus + ", bloodGroup=" + bloodGroup + ", religion="
+				+ religion + ", dateOfBirth=" + dateOfBirth + ", gender="
+				+ gender + ", deptId=" + deptId + ", userId=" + userId
+				+ ", courseRegistrationList=" + courseRegistrationList + "]";
+	}
+
+    
     
 }

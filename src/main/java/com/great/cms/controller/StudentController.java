@@ -1,12 +1,17 @@
 package com.great.cms.controller;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -30,14 +35,29 @@ public class StudentController {
 	CourseService courseService;
 	@Autowired
 	CourseRegistrationService courseRegService;
-
 	@Autowired
 	UserService userService;
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				new SimpleDateFormat("dd/MM/yyyy"), true));
+	}
+
+	private Student getStudent(String username) {
+		User user = userService.getUser(username);
+		Student student = studentService.getStudentByUserId(user);
+		if (student == null) {
+			student = new Student();
+		}
+		student.setUserId(user);
+		return student;
+	}
 
 	@RequestMapping({ "/profile", "/", "" })
 	public String showProfile(Principal principal, Model uiModel) {
 		Student student = getStudent(principal.getName());
-		if (student == null) {
+		if (student.getStudentId() == null) {
 			return "redirect:/student/profile/edit";
 		}
 		uiModel.addAttribute("student", student);
@@ -51,12 +71,6 @@ public class StudentController {
 		Student student = getStudent(principal.getName());
 		uiModel.addAttribute("student", student);
 		return "student/edit";
-	}
-
-	private Student getStudent(String studentName) {
-		User user = userService.getUser(studentName);
-		Student student = studentService.getStudentByUserId(user);
-		return student;
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
@@ -76,12 +90,12 @@ public class StudentController {
 	@RequestMapping(value = "/course/registration", method = RequestMethod.POST)
 	public String courseRegistration(CourseRegistration courseReg,
 			BindingResult bandingResult, RedirectAttributes redirectAttr) {
-	
+
 		System.out.println("student/course/registration");
 		System.out.println("Course Reg:" + courseReg);
 		redirectAttr.addFlashAttribute("message",
 				" -Course Teacher Approval Pending!");
-//		courseRegService.saveOrUpdate(courseReg);
+		// courseRegService.saveOrUpdate(courseReg);
 		return "redirect:/student/course/registration";
 	}
 
