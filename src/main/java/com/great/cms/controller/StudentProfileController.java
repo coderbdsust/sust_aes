@@ -21,22 +21,24 @@ import com.great.cms.entity.Student;
 import com.great.cms.entity.User;
 import com.great.cms.service.CourseRegistrationService;
 import com.great.cms.service.CourseService;
+import com.great.cms.service.DepartmentService;
 import com.great.cms.service.StudentService;
 import com.great.cms.service.UserService;
 
 @Controller
 @RequestMapping("/student")
 @Secured("ROLE_STUDENT")
-public class StudentController {
+public class StudentProfileController {
 
 	@Autowired
 	StudentService studentService;
 	@Autowired
-	CourseService courseService;
-	@Autowired
 	CourseRegistrationService courseRegService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	DepartmentService deptService;
+	
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -60,6 +62,7 @@ public class StudentController {
 		if (student.getStudentId() == null) {
 			return "redirect:/student/profile/edit";
 		}
+		System.out.println(student);
 		uiModel.addAttribute("student", student);
 		System.out.println("/student/profile");
 		return "student/profile";
@@ -69,6 +72,7 @@ public class StudentController {
 	public String editProfile(Principal principal, Model uiModel) {
 		System.out.println("student/profile/edit");
 		Student student = getStudent(principal.getName());
+		uiModel.addAttribute("departmentList", deptService.getDepartments());
 		uiModel.addAttribute("student", student);
 		return "student/edit";
 	}
@@ -77,26 +81,10 @@ public class StudentController {
 	public String editProfile(Student student, BindingResult bandingResult) {
 		System.out.println("student/profile/edit");
 		System.out.println("Edit Student: " + student);
+		studentService.saveOrUpdateStudent(student);
 		return "redirect:/student/profile";
 	}
 
-	@RequestMapping(value = "/course/registration", method = RequestMethod.GET)
-	public String newCourseRegistration(Model uiModel) {
-		System.out.println("student/course/registration");
-		uiModel.addAttribute("courseList", courseService.getCourses());
-		return "student/course_registration";
-	}
-
-	@RequestMapping(value = "/course/registration", method = RequestMethod.POST)
-	public String courseRegistration(CourseRegistration courseReg,
-			BindingResult bandingResult, RedirectAttributes redirectAttr) {
-
-		System.out.println("student/course/registration");
-		System.out.println("Course Reg:" + courseReg);
-		redirectAttr.addFlashAttribute("message",
-				" -Course Teacher Approval Pending!");
-		// courseRegService.saveOrUpdate(courseReg);
-		return "redirect:/student/course/registration";
-	}
+	
 
 }

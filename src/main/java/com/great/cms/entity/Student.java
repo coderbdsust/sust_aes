@@ -262,8 +262,7 @@ public class Student implements DomainObject,Serializable {
 				+ firstName + ", lastName=" + lastName + ", maritalStatus="
 				+ maritalStatus + ", bloodGroup=" + bloodGroup + ", religion="
 				+ religion + ", dateOfBirth=" + dateOfBirth + ", gender="
-				+ gender + ", deptId=" + deptId + ", userId=" + userId
-				+ ", courseRegistrationList=" + courseRegistrationList + "]";
+				+ gender + ", deptId=" + deptId + ", userId=" + userId + "]";
 	}
 
     

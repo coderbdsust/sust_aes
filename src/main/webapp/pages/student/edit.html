@@ -26,7 +26,7 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form th:action="@{/student/profile/edit}" th:object="${student}" method="POST"
+							<form th:action="@{/student/profile/edit}"  method="POST"
 								class="form-horizontal">
 
 								<input name="userId.userId" type="hidden" class="form-control"
@@ -85,11 +85,13 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Dept ID</label>
 												<div class="col-md-9">
-													<select name="deptId.deptId" class="form-control">
-														<option value="1">CSE</option>
-														<option value="2">EEE</option>
-													</select>
+
 													<!-- <span class="help-block"> Select your gender. </span> -->
+													<select name="deptId.deptId" class="form-control">
+														<option th:each="dept : ${departmentList}"
+															th:value="${dept.deptId}"
+															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option>
+													</select>
 												</div>
 											</div>
 
@@ -194,7 +196,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Date of Birth</label>
 												<div class="col-md-9">
-													<input name="dateOfBirth" th:field="*{dateOfBirth}" type="text" class="form-control"
+													<input name="dateOfBirth" type="text" class="form-control form-control-inline input-medium date-picker"
 														 maxlength="100" placeholder="dd/mm/yyyy"  />
 													<!-- <span class="help-block"> Select your gender. </span> -->
 												</div>
@@ -219,7 +221,7 @@
 											<div class="col-md-6">
 												<div class="row">
 													<div class="col-md-offset-3 col-md-9">
-														<button type="submit" class="btn green">Submit</button>
+														<button type="submit" class="btn green">Edit</button>
 														<button type="button" class="btn default">Cancel</button>
 													</div>
 												</div>

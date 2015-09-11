@@ -27,7 +27,7 @@
 	<!-- <context:component-scan base-package="com.great.cms.dao"></context:component-scan> -->
 	<!-- <context:component-scan base-package="com.great.cms.service"></context:component-scan> -->
 	<context:component-scan base-package="com.great.cms.*"></context:component-scan>
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven></mvc:annotation-driven>  
 
 	<bean id="templateResolver"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
