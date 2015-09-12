@@ -73,6 +73,9 @@
 		<security:intercept-url pattern="/teacher/**"
 			access="hasAnyRole('ROLE_TEACHER')" />
 
+		<security:intercept-url pattern="/question/**"
+			access="hasAnyRole('ROLE_TEACHER')" />
+
 
 
 	</security:http>
