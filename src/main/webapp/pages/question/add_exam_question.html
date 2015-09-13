@@ -28,15 +28,14 @@
 							<!-- BEGIN FORM-->
 							<form th:action="@{/question/add}" method="POST"
 								class="form-horizontal">
-
 								<div class="form-body">
 									<h3 class="form-section">Questions</h3>
 									<!--/row-->
 									<div class="row">
-										
-										<div class="col-md-6 col-sm-12">
+
+										<div class="col-md-6 col-sm-12" >
 											<!-- BEGIN PORTLET-->
-											<div class="portlet light tasks-widget">
+											<div class="portlet light tasks-widget" style="background: rgba(223,240,216,0.40);">
 												<div class="portlet-title">
 													<div class="caption caption-md">
 														<i class="icon-bar-chart theme-font-color hide"></i> <span
@@ -46,17 +45,16 @@
 													<div class="inputs">
 														<div class="portlet-input input-small input-inline">
 															<div class="input-icon right">
-
-																<a href="#" class="btn green"> New Question <i
+																<a th:href="@{/question/create}" class="btn green"> New Question <i
 																	class="fa fa-plus"></i>
 																</a>
 															</div>
 														</div>
 													</div>
 												</div>
-												
-												<div class="portlet-body">
-													<div class="task-content">
+
+												<div class="portlet-body" >
+													<div class="task-content note-success">
 														<div class="scroller" style="height: 282px;"
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
@@ -65,7 +63,7 @@
 
 																<li>
 																	<div class="task-checkbox">
-<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
+																		<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
 																		<p>1.</p>
 																	</div>
 																	<div class="task-title">
@@ -96,11 +94,11 @@
 																</li>
 																<li>
 																	<div class="task-checkbox">
-<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
+																		<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
 																		<p>2.</p>
 																	</div>
 																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill gaps?
+																		<span class="task-title-sp"> What is fill in the gaps?
 																		</span>
 																	</div>
 																	<div class="task-config">
@@ -124,8 +122,6 @@
 																		</div>
 																	</div>
 																</li>
-
-
 															</ul>
 															<!-- END START TASK LIST -->
 														</div>
@@ -137,9 +133,11 @@
 
 
 										</div>
+
+										<!-- This module for exam added question -->
 										<div class="col-md-6 col-sm-12">
 											<!-- BEGIN PORTLET-->
-											<div class="portlet light tasks-widget">
+											<div class="portlet light tasks-widget" style="background: rgba(223,240,216,0.40);">
 												<div class="portlet-title">
 													<div class="caption caption-md">
 														<i class="icon-bar-chart theme-font-color hide"></i> <span
@@ -150,16 +148,16 @@
 														<div class="portlet-input input-small input-inline">
 															<div class="input-icon right">
 
-<!-- 																<a href="#" class="btn green"> New Question <i -->
-<!-- 																	class="fa fa-plus"></i> -->
-<!-- 																</a> -->
+																<!-- 	<a href="#" class="btn green"> New Question <i -->
+																<!-- 	class="fa fa-plus"></i> -->
+																<!-- 	</a> -->
 															</div>
 														</div>
 													</div>
 												</div>
-												
-												<div class="portlet-body">
-													<div class="task-content">
+
+												<div class="portlet-body" >
+													<div class="task-content" >
 														<div class="scroller" style="height: 282px;"
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
@@ -168,7 +166,7 @@
 
 																<li>
 																	<div class="task-checkbox">
-<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
+																		<!--<input type="checkbox" class="liChild" value=""/> -->
 																		<p>1.</p>
 																	</div>
 																	<div class="task-title">
@@ -183,9 +181,7 @@
 																				class="fa fa-angle-down"></i>
 																			</a>
 																			<ul class="dropdown-menu pull-right">
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-check"></i> Add
-																				</a></li>
+
 																				<li><a href="javascript:;"> <i
 																						class="fa fa-times"></i> Remove
 																				</a></li>
@@ -199,11 +195,11 @@
 																</li>
 																<li>
 																	<div class="task-checkbox">
-<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
+																		<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
 																		<p>2.</p>
 																	</div>
 																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill gaps?
+																		<span class="task-title-sp"> What is fill in the gaps?
 																		</span>
 																	</div>
 																	<div class="task-config">
@@ -214,9 +210,7 @@
 																				class="fa fa-angle-down"></i>
 																			</a>
 																			<ul class="dropdown-menu pull-right">
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-check"></i> Add
-																				</a></li>
+
 																				<li><a href="javascript:;"> <i
 																						class="fa fa-times"></i> Remove
 																				</a></li>
@@ -243,19 +237,19 @@
 									</div>
 
 
-<!-- 									<div class="form-actions"> -->
-<!-- 										<div class="row"> -->
-<!-- 											<div class="col-md-6"> -->
-<!-- 												<div class="row"> -->
-<!-- 													<div class="col-md-offset-6 col-md-6"> -->
-<!-- 														<button type="submit" class="btn green">Save</button> -->
-<!-- 														<button type="button" class="btn default">Cancel</button> -->
-<!-- 													</div> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 											<div class="col-md-6"></div> -->
-<!-- 										</div> -->
-<!-- 									</div> -->
+									<!-- 									<div class="form-actions"> -->
+									<!-- 										<div class="row"> -->
+									<!-- 											<div class="col-md-6"> -->
+									<!-- 												<div class="row"> -->
+									<!-- 													<div class="col-md-offset-6 col-md-6"> -->
+									<!-- 														<button type="submit" class="btn green">Save</button> -->
+									<!-- 														<button type="button" class="btn default">Cancel</button> -->
+									<!-- 													</div> -->
+									<!-- 												</div> -->
+									<!-- 											</div> -->
+									<!-- 											<div class="col-md-6"></div> -->
+									<!-- 										</div> -->
+									<!-- 									</div> -->
 								</div>
 							</form>
 							<!-- END FORM-->

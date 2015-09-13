@@ -8,18 +8,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/question")
 public class QuestionAddController {
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/exam/add", method = RequestMethod.GET)
 	public String showAvailableQuestion() {
-		System.out.println("GET: /question/add");
+		System.out.println("GET: /question/exam/add");
 		
-		return "question/question_add";
+		return "question/add_exam_question";
 	}
 	
 	
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/exam/add", method = RequestMethod.POST)
 	public String saveExamQuestion() {
-		System.out.println("POST: /question/add");
+		System.out.println("POST: /question/exam/add");
 		
-		return "redirect:/question/add";
+		return "redirect:/question/exam/add";
+	}
+	
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String showCreateQuestion() {
+		System.out.println("GET: /question/create");
+		
+		return "question/create_question";
 	}
 }
