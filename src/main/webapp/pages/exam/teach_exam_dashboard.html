@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Student :: Profile</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-equalizer font-red-sunglo"></i> <span
+									class="caption-subject font-red-sunglo bold uppercase">Student
+									Exam Dashboard</span>
+							</div>
+							<div class="tools">
+								<a href="" class="collapse"> </a> <a href="#portlet-config"
+									data-toggle="modal" class="config"> </a> <a href=""
+									class="reload"> </a> <a href="" class="remove"> </a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form th:action="@{/student/exam/dashboard}" method="POST"
+								class="form-horizontal"></form>
+							<!-- END FORM-->
+							<div class="row">
+								<div class="col-md-12">
+		
+									<div class="portlet light">
+										
+										<div class="portlet-body">
+											<div class="tabbable-line">
+												<ul class="nav nav-tabs">
+													<li class="active"><a href="#overview_1"
+														data-toggle="tab"> <strong>Available Exams</strong></a></li>
+													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed
+																Exams</strong></a></li>
+												</ul>
+												<div class="tab-content">
+													<div class="tab-pane active" id="overview_1">
+														<div class="table-responsive">
+															<table
+																class="table table-striped table-hover table-bordered">
+																<thead>
+																	<tr>
+																		<th>Exam Title</th>
+																		<th>Course Code</th>
+																		<th>Date Time</th>
+																		<th>End Time</th>
+																		<th></th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Database Quiz Exam 4</td>
+																		<td>CSE333</td>
+																		<td>12-Sat-15</td>
+																		<td>15-Sat-15</td>
+																		<td><a href="javascript:;"
+																			class="btn default btn-xs green-stripe"> View </a></td>
+																	</tr>
+																	<tr>
+																		<td>Database Quiz Exam 3</td>
+																		<td>CSE333</td>
+																		<td>5-Sat-15</td>
+																		<td>10 Sat-15</td>
+																		<td><a href="javascript:;"
+																			class="btn default btn-xs green-stripe"> View </a></td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+													<div class="tab-pane" id="overview_2">
+														<div class="table-responsive">
+															<table
+																class="table table-striped table-hover table-bordered">
+																<thead>
+																	<tr>
+																		<th>Exam Title</th>
+																		<th>Course Code</th>
+																		<th>Marks</th>
+																		<th>Status</th>
+																		<th></th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Database Quiz Exam 2</td>
+																		<td>CSE333</td>
+																		<td>15/20</td>
+																		<td>Passed</td>
+																		<td><a href="javascript:;"
+																			class="btn default btn-xs green-stripe"> View </a></td>
+																	</tr>
+																	<tr>
+																		<td>Database Quiz Exam 1</td>
+																		<td>CSE333</td>
+																		<td>5/20</td>
+																		<td>Failed</td>
+																		<td><a href="javascript:;"
+																			class="btn default btn-xs green-stripe"> View </a></td>
+																	</tr>
+
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- End: life time stats -->
+								</div>
+
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

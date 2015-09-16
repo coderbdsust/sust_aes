@@ -112,6 +112,7 @@
 						<li>
 							<a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')" th:href="@{/teacher/profile}">
 							<i class="icon-user"></i> My Profile </a>
+							
 							<a sec:authorize="hasRole('ROLE_STUDENT')" th:href="@{/student/profile}">
 							<i class="icon-user"></i> My Profile </a>
 						</li>
@@ -188,6 +189,7 @@
 					</form>-->
 					<!-- END RESPONSIVE QUICK SEARCH FORM -->
 				</li>                
+				
 				<li  class="start active open">
 					   <a th:href="@{/admin/index}">
 					   <i class="icon-home"></i>
@@ -195,29 +197,18 @@
 					   <!--<span class="selected"></span>-->
 					   </a>
 				</li>
+				
 				<li>
-					<a href="javascript:;">
-					<i class="icon-graduation"></i>
-					<span class="title">Exam</span>
-					<span class="arrow "></span>
+					<a sec:authorize="hasRole('ROLE_STUDENT')" th:href="@{/student/exam/dashboard}">
+						<i class="icon-graduation"></i>
+						<span class="title">Exam Dashboard</span>
+<!-- 						<span class="arrow "></span> -->
 					</a>
-					<ul class="sub-menu">
-						<li>
-							<a href="ecommerce_index.html">
-							<i class="icon-home"></i>
-							Upcoming Exam</a>
-						</li>
-						<li>
-							<a th:href="@{/test/create}">
-							<i class="icon-basket"></i>
-							New Exam</a>
-						</li>
-						<li>
-							<a href="ecommerce_orders_view.html">
-							<i class="icon-tag"></i>
-							Exam Review</a>
-						</li>
-					</ul>
+					<a sec:authorize="hasAnyRole('ROLE_TEACHER','ROLE_ADMIN')" th:href="@{/teacher/exam/dashboard}">
+						<i class="icon-graduation"></i>
+						<span class="title">Exam Dashboard</span>
+<!-- 						<span class="arrow "></span> -->
+					</a>
 				</li>
 				<li>
 					<a href="javascript:;">

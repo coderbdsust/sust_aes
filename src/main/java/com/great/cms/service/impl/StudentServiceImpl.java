@@ -1,5 +1,7 @@
 package com.great.cms.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,11 @@ public class StudentServiceImpl implements StudentService {
 	public Student getStudentByUserId(User userId) {
 		
 		return studentDao.getStudentByUserId(userId);
+	}
+
+	@Override
+	public List<Student> getStudents() {
+		return studentDao.findAll();
 	}
 
 }
