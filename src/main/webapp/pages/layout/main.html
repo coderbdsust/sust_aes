@@ -204,50 +204,78 @@
 						<span class="title">Exam Dashboard</span>
 <!-- 						<span class="arrow "></span> -->
 					</a>
-					<a sec:authorize="hasAnyRole('ROLE_TEACHER','ROLE_ADMIN')" th:href="@{/teacher/exam/dashboard}">
+					
+					
+					
+					<a sec:authorize="hasAnyRole('ROLE_TEACHER','ROLE_ADMIN')">
 						<i class="icon-graduation"></i>
-						<span class="title">Exam Dashboard</span>
-<!-- 						<span class="arrow "></span> -->
-					</a>
-				</li>
-				<li>
-					<a href="javascript:;">
-					<i class="icon-rocket"></i>
-					<span class="title">Registration</span>
-					<span class="arrow "></span>
-					</a>
-					<ul class="sub-menu">
+						<span class="title">Exam</span>
+						<span class="arrow "></span>
+						<ul class="sub-menu">
 						<li>
-							<a th:href="@{/course/create}">
-							Course</a>
+							<a th:href="@{/teacher/exam/dashboard}">
+							Dashboard</a>
 						</li>
+						
 						<li>
-							<a href="index_horizontal_menu.html">
-							Student</a>
-						</li>						
+							<a th:href="@{/test/create}">
+							Create New Exam</a>
+						</li>
+						
+						<li>
+							<a th:href="@{/question/exam/add}">
+							Add Exam Question</a>
+						</li>				
 					</ul>
-				</li>
+					</a> 
+					
+				
+					</li>
+				
 				<li>
-					<a href="javascript:;">
+					<a sec:authorize="hasAnyRole('ROLE_TEACHER','ROLE_ADMIN')">
 					<i class="icon-diamond"></i>
 					<span class="title">Question Bank</span>
 					<span class="arrow "></span>
-					</a>
 					<ul class="sub-menu">
-						<li>
-							<a th:href="@{/question/exam/add}">
-							Add Exam Questions</a>
-						</li>
 						<li>
 							<a th:href="@{/question/create}">
 							Create New Question</a>
 						</li>
-						<li>
-							<a href="ui_buttons.html">
-							Stats</a>
-						</li>
-						
 					</ul>
+					
+					</a>
+				</li>
+				
+				<li>
+					<a sec:authorize="hasAnyRole('ROLE_TEACHER','ROLE_ADMIN')">
+					<i class="icon-rocket"></i>
+					<span class="title">Registration</span>
+					<span class="arrow "></span>
+						<ul class="sub-menu">
+							<li>
+								<a th:href="@{/course/create}">
+								Create Course</a>
+							</li>
+							<li>
+								<a href="#">
+								Student Course Registration</a>
+							</li>						
+						</ul>
+					</a>
+					
+					<a sec:authorize="hasRole('ROLE_STUDENT')">
+					<i class="icon-rocket"></i>
+					<span class="title">Registration</span>
+					<span class="arrow "></span>
+						<ul class="sub-menu">
+							<li>
+								<a href="#">
+								Course</a>
+							</li>					
+						</ul>
+					</a>
+					
 				</li>
 				<li>
 					<a >

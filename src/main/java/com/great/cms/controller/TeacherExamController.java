@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/teacher/exam")
 public class TeacherExamController {
 
-	@RequestMapping("/question")
+	@RequestMapping("/question/create")
 	public String showExamQuestions(Model model) {
 		System.out.println("/exam/question");
 		return "exam/exam_question";
