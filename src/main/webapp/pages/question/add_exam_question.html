@@ -33,27 +33,46 @@
 									<!--/row-->
 									<div class="row">
 
-										<div class="col-md-6 col-sm-12" >
+										<div class="col-md-6 col-sm-12">
 											<!-- BEGIN PORTLET-->
-											<div class="portlet light tasks-widget" style="background: rgba(223,240,216,0.40);">
+											<div class="portlet light tasks-widget"
+												style="background: rgba(223, 240, 216, 0.40);">
 												<div class="portlet-title">
+
 													<div class="caption caption-md">
 														<i class="icon-bar-chart theme-font-color hide"></i> <span
 															class="caption-subject theme-font-color bold uppercase">Available
 															Questions</span>
 													</div>
+
 													<div class="inputs">
 														<div class="portlet-input input-small input-inline">
 															<div class="input-icon right">
-																<a th:href="@{/question/create}" class="btn green"> New Question <i
-																	class="fa fa-plus"></i>
-																</a>
+																<!-- <a th:href="@{/question/create}" class="btn red">
+																	New Question <i class="fa fa-plus"></i>
+																</a> -->
+																
+																<button type="button"
+																	class="btn green-haze btn-sm dropdown-toggle"
+																	data-toggle="dropdown" data-hover="dropdown"
+																	data-close-others="true">
+																	<i class="fa fa-plus"></i> New Question&nbsp; <span
+																		class="hidden-sm hidden-xs"> </span><i
+																		class="fa fa-angle-down"></i>
+																</button>
+																<ul class="dropdown-menu" role="menu">
+																	<li><a href="javascript:;"> MCQ </a></li>
+																	<li><a href="javascript:;"> DESCRIPTIVE </a></li>
+																	<li><a href="javascript:;"> FILL IN THE BLANKS</a>
+																	</li>
+																</ul>
+																
 															</div>
 														</div>
 													</div>
 												</div>
 
-												<div class="portlet-body" >
+												<div class="portlet-body">
 													<div class="task-content note-success">
 														<div class="scroller" style="height: 282px;"
 															data-always-visible="1" data-rail-visible1="0"
@@ -98,8 +117,8 @@
 																		<p>2.</p>
 																	</div>
 																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill in the gaps?
-																		</span>
+																		<span class="task-title-sp"> What is fill in
+																			the gaps? </span>
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
@@ -137,7 +156,8 @@
 										<!-- This module for exam added question -->
 										<div class="col-md-6 col-sm-12">
 											<!-- BEGIN PORTLET-->
-											<div class="portlet light tasks-widget" style="background: rgba(223,240,216,0.40);">
+											<div class="portlet light tasks-widget"
+												style="background: rgba(223, 240, 216, 0.40);">
 												<div class="portlet-title">
 													<div class="caption caption-md">
 														<i class="icon-bar-chart theme-font-color hide"></i> <span
@@ -156,8 +176,8 @@
 													</div>
 												</div>
 
-												<div class="portlet-body" >
-													<div class="task-content" >
+												<div class="portlet-body">
+													<div class="task-content">
 														<div class="scroller" style="height: 282px;"
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
@@ -199,8 +219,8 @@
 																		<p>2.</p>
 																	</div>
 																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill in the gaps?
-																		</span>
+																		<span class="task-title-sp"> What is fill in
+																			the gaps? </span>
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">

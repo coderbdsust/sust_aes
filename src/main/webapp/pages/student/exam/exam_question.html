@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Question :: Create</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-equalizer font-red-sunglo"></i> <span
+									class="caption-subject font-red-sunglo bold uppercase">Exam
+									Questions</span>
+							</div>
+							<div class="tools">
+								<a href="" class="collapse"> </a> <a href="#portlet-config"
+									data-toggle="modal" class="config"> </a> <a href=""
+									class="reload"> </a> <a href="" class="remove"> </a>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form th:action="@{/question/add}" method="POST"
+								class="form-horizontal">
+								<div class="form-body">
+									<h3 class="form-section">Question</h3>
+									<!--/row-->
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="portlet box green">
+
+												<div class="portlet-title">
+													<div class="row">
+														<div class="col-md-8">
+															<div class="caption caption-md">
+																<h3>
+																	<strong>MCQ QUESTION</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="col-md-offset-1 col-md-3">
+															<div class="caption caption-md">
+																<h3>
+																	<strong>02:00</strong>
+																</h3>
+															</div>
+														</div>
+													</div>
+
+
+
+												</div>
+												<div class="portlet-body form">
+													<form class="form-horizontal" role="form">
+														<div class="form-body">
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">MCQ Question </label> -->
+																<div class="col-md-offset-1 col-md-12">
+																	<!-- <input type="text" class="form-control input-md" > -->
+																	<h4>
+																		<strong>What programming language do you
+																			prefer ? What programming language do you prefer ?</strong>
+																	</h4>
+																</div>
+															</div>
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">Option 1</label> -->
+																<div class="row">
+																	<div class="col-md-offset-1 col-md-11">
+																		<div class="input-group">
+																			<span class="input-group-addon"> <input
+																				type="checkbox" />
+																			</span>
+																			<!-- <input type="text" class="form-control"> -->
+																			<h4 style="padding-left: 1em;">Ruby</h4>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">Option 1</label> -->
+																<div class="row">
+																	<div class="col-md-offset-1 col-md-11">
+																		<div class="input-group">
+																			<span class="input-group-addon"> <input
+																				type="checkbox" />
+																			</span>
+																			<!-- <input type="text" class="form-control"> -->
+																			<h4 style="padding-left: 1em;">Python</h4>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">Option 1</label> -->
+																<div class="row">
+																	<div class="col-md-offset-1 col-md-11">
+																		<div class="input-group">
+																			<span class="input-group-addon"> <input
+																				type="checkbox" />
+																			</span>
+																			<!-- <input type="text" class="form-control"> -->
+																			<h4 style="padding-left: 1em;">Javascript</h4>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">Option 1</label> -->
+																<div class="row">
+																	<div class="col-md-offset-1 col-md-11">
+																		<div class="input-group">
+																			<span class="input-group-addon"> <input
+																				type="checkbox" />
+																			</span>
+																			<!-- <input type="text" class="form-control"> -->
+																			<h4 style="padding-left: 1em;">Java</h4>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+														</div>
+														<div class="form-actions ">
+															<div class="row">
+																<div class="col-md-3">
+																	<h4 style="padding-left: 1em;" class="pull-left">
+																		<strong>1/27</strong>
+																	</h4>
+																</div>
+																<div class="col-md-offset-4 col-md-5">
+
+																	<button type="submit" class="btn green">Previous</button>
+																	<button type="button" class="btn green">Next</button>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="portlet box green">
+
+												<div class="portlet-title">
+													<div class="row">
+														<div class="col-md-8">
+															<div class="caption caption-md">
+																<h3>
+																	<strong>DESCRIPTIVE QUESTION</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="col-md-offset-1 col-md-3">
+															<div class="caption caption-md">
+																<h3>
+																	<strong>02:00</strong>
+																</h3>
+															</div>
+														</div>
+													</div>
+
+
+
+												</div>
+												<div class="portlet-body form">
+													<form class="form-horizontal" role="form">
+														<div class="form-body">
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">MCQ Question </label> -->
+																<div class="col-md-offset-1 col-md-11">
+																	<!-- <input type="text" class="form-control input-md" > -->
+																	<h4>
+																		<strong>What programming language do you
+																			prefer ? What programming language do you prefer ?</strong>
+																	</h4>
+																</div>
+															</div>
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">Option 1</label> -->
+																<div class="row">
+																	<div class="col-md-offset-1 col-md-10">
+<!-- 																		<div class="input-group"> -->
+
+																			<textarea style="resize: vertical;"
+																				class="form-control" rows="10" cols="24"
+																				placeholder="Answer the following question"></textarea>
+<!-- 																		</div> -->
+																	</div>
+																</div>
+															</div>
+
+
+
+
+														</div>
+														<div class="form-actions ">
+															<div class="row">
+																<div class="col-md-3">
+																	<h4 style="padding-left: 1em;" class="pull-left">
+																		<strong>1/27</strong>
+																	</h4>
+																</div>
+																<div class="col-md-offset-4 col-md-5">
+
+																	<button type="submit" class="btn green">Previous</button>
+																	<button type="button" class="btn green">Next</button>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-md-6 col-sm-12">
+											<div class="portlet box green">
+
+												<div class="portlet-title">
+													<div class="row">
+														<div class="col-md-8">
+															<div class="caption caption-md">
+																<h3>
+																	<strong>FILL IN THE GAPS</strong>
+																</h3>
+															</div>
+														</div>
+														<div class="col-md-offset-1 col-md-3">
+															<div class="caption caption-md">
+																<h3>
+																	<strong>02:00</strong>
+																</h3>
+															</div>
+														</div>
+													</div>
+
+
+
+												</div>
+												<div class="portlet-body form">
+													<form class="form-horizontal" role="form">
+														<div class="form-body">
+															<div class="form-group">
+																<!-- <label class="col-md-3 control-label">MCQ Question </label> -->
+																<div class="col-md-offset-1 col-md-11">
+																	<!-- <input type="text" class="form-control input-md" > -->
+																	<h4>
+																		<strong>What (A)_____ language do you
+																			(B)_____ ?</strong>
+																	</h4>
+																</div>
+															</div>
+
+
+															<div class="form-group">
+																<label class="col-md-2 control-label"><strong><em>A.</em></strong></label>
+																<div class="row">
+																	<div class="col-md-8">
+																		<div class="input-group">
+																			<input placeholder="type this answer" type="text"
+																				class="form-control" />
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+															<div class="form-group">
+																<label class="col-md-2 control-label"><strong><em>B.</em></strong></label>
+																<div class="row">
+																	<div class="col-md-8">
+																		<div class="input-group">
+																			<input placeholder="type this answer" type="text"
+																				class="form-control" />
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+
+														</div>
+														<div class="form-actions ">
+															<div class="row">
+																<div class="col-md-3">
+																	<h4 style="padding-left: 1em;" class="pull-left">
+																		<strong>1/27</strong>
+																	</h4>
+																</div>
+																<div class="col-md-offset-4 col-md-5">
+
+																	<button type="submit" class="btn green">Previous</button>
+																	<button type="button" class="btn green">Next</button>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

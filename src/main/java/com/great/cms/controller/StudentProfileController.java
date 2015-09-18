@@ -3,6 +3,7 @@ package com.great.cms.controller;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.entity.CourseRegistration;
@@ -38,7 +40,6 @@ public class StudentProfileController {
 	UserService userService;
 	@Autowired
 	DepartmentService deptService;
-	
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -85,6 +86,13 @@ public class StudentProfileController {
 		return "redirect:/student/profile";
 	}
 
-	
+//	@RequestMapping(value = "/profile/show", method = RequestMethod.GET)
+//	@ResponseBody
+//	public List<Student> showProfileInfo() {
+//		System.out.println("/profile/show");
+//		List<Student> students = studentService.getStudents();
+//		System.out.println("/profile/show : data found!");
+//		return students;
+//	}
 
 }
