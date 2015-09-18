@@ -54,17 +54,7 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>com.googlecode.t7mp</groupId>
-				<artifactId>maven-t7-plugin</artifactId>
-				<version>0.9.6</version>
-				<configuration>
-					<tomcatHttpPort>8084</tomcatHttpPort>
-					<tomcatShutdownPort>8008</tomcatShutdownPort>
-					<tomcatVersion>7.0.22</tomcatVersion>
-				</configuration>
-			</plugin>
-
+	
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
