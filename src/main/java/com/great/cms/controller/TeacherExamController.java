@@ -13,13 +13,13 @@ public class TeacherExamController {
 	@RequestMapping("/question/create")
 	public String showExamQuestions(Model model) {
 		System.out.println("/exam/question");
-		return "exam/exam_question";
+		return "teacher/exam/exam_question";
 	}
 	
 	@RequestMapping("/dashboard")
 	public String showStdExamDashboard(Model model) {
 		System.out.println("/exam/question");
-		return "exam/teach_exam_dashboard";
+		return "teacher/exam/teach_exam_dashboard";
 	}
 
 }
