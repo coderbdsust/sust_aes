@@ -23,10 +23,24 @@ public class QuestionAddController {
 		return "redirect:/question/exam/add";
 	}
 	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String showCreateQuestion() {
-		System.out.println("GET: /question/create");
+	@RequestMapping(value = "/create/mcq", method = RequestMethod.GET)
+	public String showCreateMCQQuestion() {
+		System.out.println("GET: /question/create/mcq");
 		
-		return "question/create_question";
+		return "question/create_mcq_question";
+	}
+	
+	@RequestMapping(value = "/create/fig", method = RequestMethod.GET)
+	public String showCreateFigQuestion() {
+		System.out.println("GET: /question/create/fig");
+		
+		return "question/create_fig_question";
+	}
+	
+	@RequestMapping(value = "/create/desc", method = RequestMethod.GET)
+	public String showCreateDescQuestion() {
+		System.out.println("GET: /question/create/desc");
+		
+		return "question/create_desc_question";
 	}
 }
