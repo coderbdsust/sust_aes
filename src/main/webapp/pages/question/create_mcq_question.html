@@ -15,21 +15,20 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<i class="icon-equalizer font-red-sunglo"></i> <span
-									class="caption-subject font-red-sunglo bold uppercase">Assign
-									Question To Exam</span>
+									class="caption-subject font-red-sunglo bold uppercase">Create MCQ Question</span>
 							</div>
-							<div class="tools">
-								<a href="" class="collapse"> </a> <a href="#portlet-config"
-									data-toggle="modal" class="config"> </a> <a href=""
-									class="reload"> </a> <a href="" class="remove"> </a>
-							</div>
+<!-- 							<div class="tools"> -->
+<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
+<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
+<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
+<!-- 							</div> -->
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
 							<form th:action="@{/question/add}" method="POST"
 								class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Question</h3>
+<!-- 									<h3 class="form-section">Question</h3> -->
 									<!--/row-->
 									<div class="row">
 
@@ -49,6 +48,9 @@
 																	Question</label>
 																<div class="col-md-8">
 																	<input type="text" class="form-control input-md" />
+																	<p>
+																		<strong>Note: </strong> Keep fields blank if doesn't want to give more options!
+																	</p>
 																</div>
 																<div class="col-md-1"></div>
 															</div>
@@ -107,15 +109,38 @@
 																	</div>
 																</div>
 															</div>
+															<div class="form-group">
+																<label class="col-md-3 control-label">Option 5</label>
+																<div class="row">
+																	<div class="col-md-offset-1 col-md-6">
+																		<div class="input-group">
+																			<input type="text" class="form-control" /> <span
+																				class="input-group-addon"> <input
+																				type="checkbox" />
+																			</span>
+																		</div>
+																	</div>
+																</div>
+															</div>
 
 														</div>
 
 
 														<div class="form-actions right">
+<!-- 															<div class="row"> -->
+<!-- 																<div class="col-md-offset-5 col-md-6"> -->
+<!-- 																	<button type="button" class="btn green">Save</button> -->
+<!-- 																	<button type="button" class="btn red">Cancel</button> -->
+<!-- 																</div> -->
+<!-- 															</div> -->
+															
 															<div class="row">
-																<div class="col-md-offset-4 col-md-6">
-																	<button type="button" class="btn green">Add</button>
-																	<button type="button" class="btn blue">Edit</button>
+																<div class="col-md-offset-1 col-md-4">
+																	<input type="text" class="form-control" placeholder="Question Mark"/>
+																</div>
+																<div class="col-md-offset-2 col-md-4">
+
+																	<button type="submit" class="btn green">Save</button>
 																	<button type="button" class="btn red">Cancel</button>
 																</div>
 															</div>
