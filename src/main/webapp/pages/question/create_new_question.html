@@ -9,78 +9,56 @@
 </head>
 <body>
 	<section layout:fragment="body-content">
+
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				<div class="tab-pane">
-					<div class="portlet light bordered">
-						<div class="portlet-title">
-							<div class="caption">
-								<i class="icon-equalizer font-red-sunglo"></i> <span
-									class="caption-subject font-red-sunglo bold uppercase">Question
-									Creation</span> <label class="caption-subject font-green-haze bold"
-									th:if="${message}" th:text="${message}"></label>
-							</div>
-							<div class="tools">
-								<a href="" class="collapse"> </a> <a href="#portlet-config"
-									data-toggle="modal" class="config"> </a> <a href=""
-									class="reload"> </a> <a href="" class="remove"> </a>
-							</div>
-						</div>
-						<div class="portlet-body form">
-							<!-- BEGIN FORM-->
-							<form action="#" method="post" class="form-horizontal">
-								<div class="form-body">
-									<!--/row-->
-									<div class="row">
-										<!--/span-->
-										<div class="col-md-6">
-											<div class="form-group">
-												<label class="control-label col-md-3">Choose Course</label>
-												<div class="col-md-9">
-													<select name="courseId" class="form-control">
-														<!-- 														<option th:each="dept : ${departments}" -->
-														<!-- 															th:value="${dept.deptCode}" -->
-														<!-- 															th:text="${dept.deptName}+'('+${dept.deptCode}+')'"></option> -->
-														<option>CSE-330</option>
-													</select>
-													<!-- <span class="help-block"> Select your gender. </span> -->
-
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-6">
-											<label class="control-label col-md-3">Question Type</label>
-											<div class="col-md-9">
-												<!--New Question Choice Selection -->
-												<button type="button"
-													class="btn green-haze btn-sm dropdown-toggle"
-													data-toggle="dropdown" data-hover="dropdown"
-													data-close-others="true">
-													<i class="fa fa-plus"></i> New Question&nbsp; <span
-														class="hidden-sm hidden-xs"> </span><i
-														class="fa fa-angle-down"></i>
-												</button>
-
-												<ul class="dropdown-menu" role="menu">
-													<li><a href="#form_modal10" data-toggle="modal">
-															MCQ </a></li>
-													<li><a href="#form_modal11" data-toggle="modal">
-															DESCRIPTIVE </a></li>
-													<li><a href="#form_modal12" data-toggle="modal">
-															FILL IN THE GAPS </a></li>
-
-												</ul>
-											</div>
-
-										</div>
-										<!--/span-->
-									</div>
+				<div class="row margin-top-10">
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<div class="dashboard-stat2">
+							<div class="display">
+								<div class="number">
+									<h3 class="font-green-sharp"
+										th:text="${usersCount}!=null?${usersCount}:0"></h3>
+									<small>MCQ</small>
 								</div>
-							</form>
-							<!-- END FORM-->
+								
+							</div>
+							<a class="more" href="#form_modal10" data-toggle="modal">
+																Add More </a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<div class="dashboard-stat2">
+							<div class="display">
+								<div class="number">
+									<h3 class="font-red-haze"
+										th:text="${verificationsNeed}!=null?${verificationsNeed}:0"></h3>
+									<small>DESCRIPTIVE</small>
+								</div>
+								
+							</div>
+							<a class="more" href="#form_modal11" data-toggle="modal">
+																Add More </a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<div class="dashboard-stat2">
+							<div class="display">
+								<div class="number">
+									<h3 class="font-red-haze"
+										th:text="${verificationsNeed}!=null?${verificationsNeed}:0"></h3>
+									<small>FILL IN THE GAPS</small>
+								</div>
+								
+							</div>
+							<a class="more" href="#form_modal12" data-toggle="modal">
+																Add More </a>
+						</div>
+					</div>
+
+				</div>
+				<div class="tab-pane">
+						<div class="portlet-body form">
 
 							<!--MODAL FORM SAMPLE START-->
 							<!--MCQ MODAL-->
@@ -181,12 +159,7 @@
 												</div>
 
 												<div class="form-actions right">
-													<!-- 															<div class="row"> -->
-													<!-- 																<div class="col-md-offset-5 col-md-6"> -->
-													<!-- 																	<button type="button" class="btn green">Save</button> -->
-													<!-- 																	<button type="button" class="btn red">Cancel</button> -->
-													<!-- 																</div> -->
-													<!-- 															</div> -->
+																			
 
 													<div class="row">
 														<div class="col-md-offset-1 col-md-4">
@@ -383,7 +356,6 @@
 										</div>
 									</div>
 								</div>
-							</div>
 							<!--MODAL FORM SAMPLE END-->
 
 						</div>
