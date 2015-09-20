@@ -12,7 +12,7 @@ public class QuestionAddController {
 	public String showAvailableQuestion() {
 		System.out.println("GET: /question/exam/add");
 		
-		return "question/add_exam_question";
+		return "question/p_add_exam_question";
 	}
 	
 	
@@ -42,5 +42,11 @@ public class QuestionAddController {
 		System.out.println("GET: /question/create/desc");
 		
 		return "question/create_desc_question";
+	}
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String showGenericQuestionPage() {
+		System.out.println("GET: /question/create");
+		
+		return "question/create_new_question";
 	}
 }
