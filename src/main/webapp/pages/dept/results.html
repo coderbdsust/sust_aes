@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+</head>
+<body>
+	<div th:fragment="resultsList" th:unless="${#lists.isEmpty(depts)}"
+		class="results-block">
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Dept Name</th>
+					<th>Dept Code</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="dept : ${depts}">
+					<td th:text="${dept.deptId}">id</td>
+					<td th:text="${dept.deptName}">surname</td>
+					<td th:text="${dept.deptCode}">name</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

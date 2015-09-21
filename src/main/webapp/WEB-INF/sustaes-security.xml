@@ -70,6 +70,9 @@
 		<security:intercept-url pattern="/student/**"
 			access="hasAnyRole('ROLE_STUDENT')" />
 
+		<security:intercept-url pattern="/dept/**"
+			access="hasAnyRole('ROLE_TEACHER')" />
+
 		<security:intercept-url pattern="/teacher/**"
 			access="hasAnyRole('ROLE_TEACHER')" />
 
