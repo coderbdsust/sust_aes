@@ -191,7 +191,7 @@
 				</li>                
 				
 				<li  class="start active open">
-					   <a th:href="@{/admin/index}">
+					   <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/index}">
 					   <i class="icon-home"></i>
 					   <span class="title">Home</span>
 					   <!--<span class="selected"></span>-->
