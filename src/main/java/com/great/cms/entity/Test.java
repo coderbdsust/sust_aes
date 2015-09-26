@@ -95,8 +95,8 @@ public class Test implements DomainObject,Serializable {
         return testId;
     }
 
-    public void setTestId(Long testId) {
-        this.testId = testId;
+    public void setTestId(Long i) {
+        this.testId = i;
     }
 
     public String getTestTitle() {
@@ -199,9 +199,16 @@ public class Test implements DomainObject,Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.Test[ testId=" + testId + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Test [testId=" + testId + ", testTitle=" + testTitle
+				+ ", description=" + description + ", createDate=" + createDate
+				+ ", updateDate=" + updateDate + ", startTime=" + startTime
+				+ ", endTime=" + endTime + ", isQuestionTimerOn="
+				+ isQuestionTimerOn + ", teachesId=" + teachesId + "]";
+	}
+
+    
+   
     
 }
