@@ -5,6 +5,34 @@
 	layout:decorator="layout/main">
 <head>
 <title>Student :: Profile</title>
+<script type="text/javascript">
+	function addQuestions(id) {
+		//alert('parent1');
+		var oldParent = document.getElementById("bank-quest");
+		var newParent = document.getElementById("add-quest");
+		//alert('parent2');
+		var child = document.getElementById("quest-"+id);
+		$("#add-"+id).hide();
+		$("#remove-"+id).show();
+		//alert('parent3');
+		oldParent.removeChild(child);
+		newParent.appendChild(child);
+		//alert('parent');
+	}
+	function removeQuestions(id) {
+		//alert('parent1');
+		var oldParent = document.getElementById("add-quest");
+		var newParent = document.getElementById("bank-quest");
+		//alert('parent2');
+		var child = document.getElementById("quest-"+id);
+		$("#remove-"+id).hide();
+		$("#add-"+id).show();
+		//alert('parent3');
+		oldParent.removeChild(child);
+		newParent.appendChild(child);
+		//alert('parent');
+	}
+</script>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -78,20 +106,20 @@
 												</div>
 
 												<div class="portlet-body">
-													<div class="task-content note-success">
+													<div id="quess" class="task-content note-success">
 														<div class="scroller" style="height: 282px;"
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
 															<!-- START TASK LIST -->
-															<ul class="task-list">
+															<ul id="bank-quest" class="task-list">
 
-																<li>
+																<li id="quest-1">
 																	<div class="task-checkbox">
 																		<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
 																		<p>1.</p>
 																	</div>
 																	<div class="task-title">
-																		<span class="task-title-sp"> What is multiple
+																		<span class="task-title-sp"> Whats is multiple
 																			questions? </span>
 																	</div>
 																	<div class="task-config">
@@ -102,12 +130,18 @@
 																				class="fa fa-angle-down"></i>
 																			</a>
 																			<ul class="dropdown-menu pull-right">
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-check"></i> Add
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-times"></i> Remove
-																				</a></li>
+																				<li id="add-1"><button id="addButton1"
+																						name="addButton1" type="button"
+																						onclick="addQuestions('1')">
+																						<i class="fa fa-check"></i> Add
+																					</button></li>
+																				<li style="display: none;" id="remove-1"><button id="removeButton2"
+																						name="removeButton2" type="button"
+																						onclick="removeQuestions('1')">
+																						<i class="fa fa-times"></i> Remove
+																					</button></li>
+
+
 																				<li><a href="javascript:;"> <i
 																						class="fa fa-info"></i> Details
 																				</a></li>
@@ -116,7 +150,7 @@
 																		</div>
 																	</div>
 																</li>
-																<li>
+																<li id="quest-2">
 																	<div class="task-checkbox">
 																		<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
 																		<p>2.</p>
@@ -133,12 +167,16 @@
 																				class="fa fa-angle-down"></i>
 																			</a>
 																			<ul class="dropdown-menu pull-right">
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-check"></i> Add
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-times"></i> Remove
-																				</a></li>
+																				<li id="add-2"><button id="addButton2"
+																						name="addButton2" type="button"
+																						onclick="addQuestions('2')">
+																						<i class="fa fa-check"></i> Add
+																					</button></li>
+																				<li style="display: none;" id="remove-2"><button id="removeButton2"
+																						name="removeButton2" type="button"
+																						onclick="removeQuestions('2')">
+																						<i class="fa fa-times"></i> Remove
+																					</button></li>
 																				<li><a href="javascript:;"> <i
 																						class="fa fa-info"></i> Details
 																				</a></li>
@@ -187,65 +225,9 @@
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
 															<!-- START TASK LIST -->
-															<ul class="task-list">
+															<ul id="add-quest" class="task-list">
 
-																<li>
-																	<div class="task-checkbox">
-																		<!--<input type="checkbox" class="liChild" value=""/> -->
-																		<p>1.</p>
-																	</div>
-																	<div class="task-title">
-																		<span class="task-title-sp"> What is multiple
-																			questions? </span>
-																	</div>
-																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-																			<a class="btn btn-xs default" href="javascript:;"
-																				data-toggle="dropdown" data-hover="dropdown"
-																				data-close-others="true"> <i class="fa fa-cog"></i><i
-																				class="fa fa-angle-down"></i>
-																			</a>
-																			<ul class="dropdown-menu pull-right">
 
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-times"></i> Remove
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-info"></i> Details
-																				</a></li>
-
-																			</ul>
-																		</div>
-																	</div>
-																</li>
-																<li>
-																	<div class="task-checkbox">
-																		<!-- 																	<input type="checkbox" class="liChild" value=""/> -->
-																		<p>2.</p>
-																	</div>
-																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill in
-																			the gaps? </span>
-																	</div>
-																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-																			<a class="btn btn-xs default" href="javascript:;"
-																				data-toggle="dropdown" data-hover="dropdown"
-																				data-close-others="true"> <i class="fa fa-cog"></i><i
-																				class="fa fa-angle-down"></i>
-																			</a>
-																			<ul class="dropdown-menu pull-right">
-
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-times"></i> Remove
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-info"></i> Details
-																				</a></li>
-																			</ul>
-																		</div>
-																	</div>
-																</li>
 															</ul>
 															<!-- END START TASK LIST -->
 														</div>
