@@ -3,8 +3,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
+
 <head>
 <title>Question :: Create</title>
+<script type="text/javascript">
+	function nextQuestion(id) {
+		console.log('Question id :' + id);
+		$("#question-" + id).hide();
+		id = id + 1;
+		console.log('NextId :' + id);
+		$("#question-" + id).show();
+	}
+	function prevQuestion(id) {
+		// 		alert('Question id: ' + id);
+		console.log('Question id :' + id);
+		$("#question-" + id).hide();
+		id = id - 1;
+		console.log('PreviousId :' + id);
+		$("#question-" + id).show();
+
+	}
+</script>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -31,7 +50,7 @@
 								<div class="form-body">
 									<h3 class="form-section">Question</h3>
 									<!--/row-->
-									<div class="row">
+									<div class="row" id="question-1">
 										<div class="col-md-6 col-sm-12">
 											<div class="portlet box green">
 
@@ -136,8 +155,10 @@
 																</div>
 																<div class="col-md-offset-4 col-md-5">
 
-																	<button type="submit" class="btn green">Previous</button>
-																	<button type="button" class="btn green">Next</button>
+																	<button type="button" class="btn green"
+																		onclick="prevQuestion(1)">Previous</button>
+																	<button type="button" class="btn green"
+																		onclick="nextQuestion(1)">Next</button>
 																</div>
 															</div>
 														</div>
@@ -146,7 +167,8 @@
 											</div>
 										</div>
 									</div>
-									<div class="row">
+
+									<div class="row" id="question-2" style="display: none;">
 										<div class="col-md-6 col-sm-12">
 											<div class="portlet box green">
 
@@ -188,12 +210,12 @@
 																<!-- <label class="col-md-3 control-label">Option 1</label> -->
 																<div class="row">
 																	<div class="col-md-offset-1 col-md-10">
-<!-- 																		<div class="input-group"> -->
+																		<!-- 																		<div class="input-group"> -->
 
-																			<textarea style="resize: vertical;"
-																				class="form-control" rows="10" cols="24"
-																				placeholder="Answer the following question"></textarea>
-<!-- 																		</div> -->
+																		<textarea style="resize: vertical;"
+																			class="form-control" rows="10" cols="24"
+																			placeholder="Answer the following question"></textarea>
+																		<!-- 																		</div> -->
 																	</div>
 																</div>
 															</div>
@@ -211,8 +233,10 @@
 																</div>
 																<div class="col-md-offset-4 col-md-5">
 
-																	<button type="submit" class="btn green">Previous</button>
-																	<button type="button" class="btn green">Next</button>
+																	<button type="button" class="btn green"
+																		onclick="prevQuestion(2)">Previous</button>
+																	<button type="button" class="btn green"
+																		onclick="nextQuestion(2)">Next</button>
 																</div>
 															</div>
 														</div>
@@ -221,7 +245,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="row">
+									<div class="row" id="question-3" style="display: none;">
 										<div class="col-md-6 col-sm-12">
 											<div class="portlet box green">
 												<div class="portlet-title">
@@ -293,8 +317,10 @@
 																</div>
 																<div class="col-md-offset-4 col-md-5">
 
-																	<button type="submit" class="btn green">Previous</button>
-																	<button type="button" class="btn green">Next</button>
+																	<button type="button" class="btn green"
+																		onclick="prevQuestion(3)">Previous</button>
+																	<button type="button" class="btn green"
+																		onclick="nextQuestion(3)">Next</button>
 																</div>
 															</div>
 														</div>
