@@ -16,7 +16,7 @@
 							<div class="caption">
 								<i class="icon-equalizer font-red-sunglo"></i> <span
 									class="caption-subject font-red-sunglo bold uppercase">Quiz
-									Details Create Form</span>
+									Create </span>
 							</div>
 							<div class="tools">
 								<a href="" class="collapse"> </a> <a href="#portlet-config"
@@ -26,7 +26,8 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" class="form-horizontal">
+							<form action="#" th:action="@{/quiz/create}" method="POST"
+								class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section">Quiz Info</h3>
 									<div class="row">
@@ -34,7 +35,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Quiz Title</label>
 												<div class="col-md-9">
-													<input type="text" class="form-control"
+													<input type="text" name="quizTitle" class="form-control"
 														placeholder="Project 300 Quiz" />
 													<!-- span class="help-block">
 														This is inline help </span> -->
@@ -42,6 +43,20 @@
 											</div>
 										</div>
 										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Course</label>
+												<div class="col-md-9">
+													<select name="teachesId.teachesId" class="form-control">
+														<option th:each="teaches : ${teachesList}"
+															th:value="${teaches.teachesId}"
+															th:text="'['+${teaches.courseId.courseCode}+'] '+${teaches.courseId.courseTitle}"></option>
+													</select>
+													<!-- <span class="help-block"> Select your gender. </span> -->
+
+												</div>
+											</div>
+										</div>
 
 										<!--/span-->
 									</div>
@@ -52,39 +67,41 @@
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Start-Time: </label>
+												<label class="control-label col-md-3">Start-Time </label>
 												<div class="col-md-9">
 													<div class="input-group date form_datetime"
-															data-date="2012-12-21T15:25:00Z">
-															<input type="text" size="16" readonly="readonly"
-																class="form-control" /> <span class="input-group-btn">
-																<button class="btn default date-reset" type="button">
-																	<i class="fa fa-times"></i>
-																</button>
-																<button class="btn default date-set" type="button">
-																	<i class="fa fa-calendar"></i>
-																</button>
-															</span>
-														</div>
+														data-date="2012-12-21T15:25:00Z">
+														<input name="startTime" type="text" size="16"
+															readonly="readonly" class="form-control" /> <span
+															class="input-group-btn">
+															<button class="btn default date-reset" type="button">
+																<i class="fa fa-times"></i>
+															</button>
+															<button class="btn default date-set" type="button">
+																<i class="fa fa-calendar"></i>
+															</button>
+														</span>
+													</div>
 												</div>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">End-Time: </label>
+												<label class="control-label col-md-3">End-Time </label>
 												<div class="col-md-9">
 													<div class="input-group date form_datetime"
-															data-date="2012-12-21T15:25:00Z">
-															<input type="text" size="16" readonly="readonly"
-																class="form-control" /> <span class="input-group-btn">
-																<button class="btn default date-reset" type="button">
-																	<i class="fa fa-times"></i>
-																</button>
-																<button class="btn default date-set" type="button">
-																	<i class="fa fa-calendar"></i>
-																</button>
-															</span>
-														</div>
+														data-date="2012-12-21T15:25:00Z">
+														<input name="endTime" type="text" size="16"
+															readonly="readonly" class="form-control" /> <span
+															class="input-group-btn">
+															<button class="btn default date-reset" type="button">
+																<i class="fa fa-times"></i>
+															</button>
+															<button class="btn default date-set" type="button">
+																<i class="fa fa-calendar"></i>
+															</button>
+														</span>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -95,10 +112,22 @@
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3">Description</label>
+												<label class="control-label col-md-3">Timer on
+													Single Question</label>
 												<div class="col-md-9">
-													<textarea class="form-control" rows="8"
-														placeholder="test description goes here" maxlength="300"></textarea>
+													<input type="checkbox" value="true"
+														name="isQuestionTimerOn" />
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3">Description/Rules</label>
+												<div class="col-md-9">
+													<textarea name="description" class="form-control" rows="8"
+														placeholder="Quiz descriptions/rules goes here"
+														maxlength="300"></textarea>
 												</div>
 											</div>
 										</div>
@@ -111,7 +140,7 @@
 												<div class="row">
 													<div class="col-md-offset-3 col-md-9">
 														<button type="submit" class="btn green">Create
-															Test</button>
+															Quiz</button>
 														<button type="button" class="btn default">Cancel</button>
 													</div>
 												</div>
