@@ -20,7 +20,7 @@ import static org.junit.Assert.*;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/sustaes-servlet.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
-public class TestDaoTest {
+public class QuizDaoTest {
 
 	@Autowired
 	QuizDao testDao;
@@ -28,20 +28,20 @@ public class TestDaoTest {
 	@Test
 	public void runTest() {
 
-		Quiz test = new Quiz();
-		test.setQuizId(1L);
-		test.setQuizTitle("Database Quize 1");
-		test.setCreateDate(new Date());
-		test.setUpdateDate(new Date());
-		test.setStartTime(new Date());
-		test.setEndTime(new Date());
-		test.setIsQuestionTimerOn(true);
+		Quiz quiz = new Quiz();
+		quiz.setQuizId(1L);
+		quiz.setQuizTitle("Database Quize 1");
+		quiz.setCreateDate(new Date());
+		quiz.setUpdateDate(new Date());
+		quiz.setStartTime(new Date());
+		quiz.setEndTime(new Date());
+		quiz.setIsQuestionTimerOn(true);
 		Teaches teaches = new Teaches();
 		teaches.setTeachesId(1);
-		test.setTeachesId(teaches);
-		test.setDescription("Final Database Quize");
-		System.out.println(test);
-		testDao.save(test);
+		quiz.setTeachesId(teaches);
+		quiz.setDescription("Final Database Quize");
+		System.out.println(quiz);
+		testDao.save(quiz);
 
 		List<Quiz> tests = testDao.findAll();
 		System.out.println(tests.get(0));
