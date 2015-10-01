@@ -11,8 +11,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.great.cms.dao.DepartmentDao;
-import com.great.cms.dao.TestDao;
+import com.great.cms.dao.QuizDao;
+import com.great.cms.entity.Quiz;
 import com.great.cms.entity.Teaches;
+
 import static org.junit.Assert.*;
 
 @ContextConfiguration("file:src/main/webapp/WEB-INF/sustaes-servlet.xml")
@@ -21,14 +23,14 @@ import static org.junit.Assert.*;
 public class TestDaoTest {
 
 	@Autowired
-	TestDao testDao;
+	QuizDao testDao;
 
 	@Test
 	public void runTest() {
 
-		com.great.cms.entity.Test test = new com.great.cms.entity.Test();
-		test.setTestId(1L);
-		test.setTestTitle("Database Quize 1");
+		Quiz test = new Quiz();
+		test.setQuizId(1L);
+		test.setQuizTitle("Database Quize 1");
 		test.setCreateDate(new Date());
 		test.setUpdateDate(new Date());
 		test.setStartTime(new Date());
@@ -40,8 +42,8 @@ public class TestDaoTest {
 		test.setDescription("Final Database Quize");
 		System.out.println(test);
 		testDao.save(test);
-		
-		List<com.great.cms.entity.Test> tests = testDao.findAll();
+
+		List<Quiz> tests = testDao.findAll();
 		System.out.println(tests.get(0));
 		assertEquals(1, tests.size());
 

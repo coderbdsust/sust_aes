@@ -6,24 +6,24 @@
 	
   <persistence-unit name="great-dao-pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>com.great.cms.entity.Teacher</class>
-    <class>com.great.cms.entity.QuestionType</class>
-    <class>com.great.cms.entity.CourseRegistration</class>
-    <class>com.great.cms.entity.User</class>
+     <class>com.great.cms.entity.ExamCommittee</class>
+    <class>com.great.cms.entity.QuizRegistration</class>
     <class>com.great.cms.entity.UserRole</class>
-    <class>com.great.cms.entity.QuestionDescription</class>
-    <class>com.great.cms.entity.Teaches</class>
-    <class>com.great.cms.entity.TestQuestion</class>
-    <class>com.great.cms.entity.Department</class>
-    <class>com.great.cms.entity.Exam</class>
-    <class>com.great.cms.entity.Question</class>
-    <class>com.great.cms.entity.Course</class>
-    <class>com.great.cms.entity.ExamCommittee</class>
     <class>com.great.cms.entity.Student</class>
-    <class>com.great.cms.entity.Designation</class>
-    <class>com.great.cms.entity.Test</class>
+    <class>com.great.cms.entity.QuizQuestion</class>
+    <class>com.great.cms.entity.QuestionDescription</class>
+    <class>com.great.cms.entity.Question</class>
+    <class>com.great.cms.entity.User</class>
+    <class>com.great.cms.entity.Exam</class>
+    <class>com.great.cms.entity.QuestionType</class>
+    <class>com.great.cms.entity.Quiz</class>
+    <class>com.great.cms.entity.CourseRegistration</class>
+    <class>com.great.cms.entity.Teaches</class>
+    <class>com.great.cms.entity.Course</class>
     <class>com.great.cms.entity.QuestionAnswer</class>
-    <class>com.great.cms.entity.TestRegistration</class>
+    <class>com.great.cms.entity.Teacher</class>
+    <class>com.great.cms.entity.Designation</class>
+    <class>com.great.cms.entity.Department</class>
     
     
     

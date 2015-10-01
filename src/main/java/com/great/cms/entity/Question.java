@@ -41,7 +41,7 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Question.findByQuestionMarks", query = "SELECT q FROM Question q WHERE q.questionMarks = :questionMarks"),
     @NamedQuery(name = "Question.findByCreatedTime", query = "SELECT q FROM Question q WHERE q.createdTime = :createdTime"),
     @NamedQuery(name = "Question.findByLastUpdated", query = "SELECT q FROM Question q WHERE q.lastUpdated = :lastUpdated")})
-public class Question implements DomainObject,Serializable {
+public class Question implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,10 +72,13 @@ public class Question implements DomainObject,Serializable {
     @JoinColumn(name = "question_type_id", referencedColumnName = "question_type_id")
     @ManyToOne(optional = false)
     private QuestionType questionTypeId;
+    @JoinColumn(name = "course_id", referencedColumnName = "course_id")
+    @ManyToOne(optional = false)
+    private Course courseId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
     private List<QuestionAnswer> questionAnswerList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
-    private List<TestQuestion> testQuestionList;
+    private List<QuizQuestion> quizQuestionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
     private List<QuestionDescription> questionDescriptionList;
 
@@ -160,6 +163,14 @@ public class Question implements DomainObject,Serializable {
         this.questionTypeId = questionTypeId;
     }
 
+    public Course getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(Course courseId) {
+        this.courseId = courseId;
+    }
+
     public List<QuestionAnswer> getQuestionAnswerList() {
         return questionAnswerList;
     }
@@ -168,12 +179,12 @@ public class Question implements DomainObject,Serializable {
         this.questionAnswerList = questionAnswerList;
     }
 
-    public List<TestQuestion> getTestQuestionList() {
-        return testQuestionList;
+    public List<QuizQuestion> getQuizQuestionList() {
+        return quizQuestionList;
     }
 
-    public void setTestQuestionList(List<TestQuestion> testQuestionList) {
-        this.testQuestionList = testQuestionList;
+    public void setQuizQuestionList(List<QuizQuestion> quizQuestionList) {
+        this.quizQuestionList = quizQuestionList;
     }
 
     public List<QuestionDescription> getQuestionDescriptionList() {

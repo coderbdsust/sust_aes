@@ -29,26 +29,26 @@ import javax.persistence.TemporalType;
  * @author Biswajit Debnath
  */
 @Entity
-@Table(name = "test")
+@Table(name = "quiz")
 @NamedQueries({
-    @NamedQuery(name = "Test.findAll", query = "SELECT t FROM Test t"),
-    @NamedQuery(name = "Test.findByTestId", query = "SELECT t FROM Test t WHERE t.testId = :testId"),
-    @NamedQuery(name = "Test.findByTestTitle", query = "SELECT t FROM Test t WHERE t.testTitle = :testTitle"),
-    @NamedQuery(name = "Test.findByDescription", query = "SELECT t FROM Test t WHERE t.description = :description"),
-    @NamedQuery(name = "Test.findByCreateDate", query = "SELECT t FROM Test t WHERE t.createDate = :createDate"),
-    @NamedQuery(name = "Test.findByUpdateDate", query = "SELECT t FROM Test t WHERE t.updateDate = :updateDate"),
-    @NamedQuery(name = "Test.findByStartTime", query = "SELECT t FROM Test t WHERE t.startTime = :startTime"),
-    @NamedQuery(name = "Test.findByEndTime", query = "SELECT t FROM Test t WHERE t.endTime = :endTime"),
-    @NamedQuery(name = "Test.findByIsQuestionTimerOn", query = "SELECT t FROM Test t WHERE t.isQuestionTimerOn = :isQuestionTimerOn")})
-public class Test implements DomainObject,Serializable {
+    @NamedQuery(name = "Quiz.findAll", query = "SELECT q FROM Quiz q"),
+    @NamedQuery(name = "Quiz.findByQuizId", query = "SELECT q FROM Quiz q WHERE q.quizId = :quizId"),
+    @NamedQuery(name = "Quiz.findByQuizTitle", query = "SELECT q FROM Quiz q WHERE q.quizTitle = :quizTitle"),
+    @NamedQuery(name = "Quiz.findByDescription", query = "SELECT q FROM Quiz q WHERE q.description = :description"),
+    @NamedQuery(name = "Quiz.findByCreateDate", query = "SELECT q FROM Quiz q WHERE q.createDate = :createDate"),
+    @NamedQuery(name = "Quiz.findByUpdateDate", query = "SELECT q FROM Quiz q WHERE q.updateDate = :updateDate"),
+    @NamedQuery(name = "Quiz.findByStartTime", query = "SELECT q FROM Quiz q WHERE q.startTime = :startTime"),
+    @NamedQuery(name = "Quiz.findByEndTime", query = "SELECT q FROM Quiz q WHERE q.endTime = :endTime"),
+    @NamedQuery(name = "Quiz.findByIsQuestionTimerOn", query = "SELECT q FROM Quiz q WHERE q.isQuestionTimerOn = :isQuestionTimerOn")})
+public class Quiz implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "test_id")
-    private Long testId;
+    @Column(name = "quiz_id")
+    private Long quizId;
     @Basic(optional = false)
-    @Column(name = "test_title")
-    private String testTitle;
+    @Column(name = "quiz_title")
+    private String quizTitle;
     @Column(name = "description")
     private String description;
     @Basic(optional = false)
@@ -71,40 +71,40 @@ public class Test implements DomainObject,Serializable {
     @JoinColumn(name = "teaches_id", referencedColumnName = "teaches_id")
     @ManyToOne(optional = false)
     private Teaches teachesId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testId")
-    private List<TestQuestion> testQuestionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testId")
-    private List<TestRegistration> testRegistrationList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
+    private List<QuizQuestion> quizQuestionList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
+    private List<QuizRegistration> quizRegistrationList;
 
-    public Test() {
+    public Quiz() {
     }
 
-    public Test(Long testId) {
-        this.testId = testId;
+    public Quiz(Long quizId) {
+        this.quizId = quizId;
     }
 
-    public Test(Long testId, String testTitle, Date createDate, Date updateDate, boolean isQuestionTimerOn) {
-        this.testId = testId;
-        this.testTitle = testTitle;
+    public Quiz(Long quizId, String quizTitle, Date createDate, Date updateDate, boolean isQuestionTimerOn) {
+        this.quizId = quizId;
+        this.quizTitle = quizTitle;
         this.createDate = createDate;
         this.updateDate = updateDate;
         this.isQuestionTimerOn = isQuestionTimerOn;
     }
 
-    public Long getTestId() {
-        return testId;
+    public Long getQuizId() {
+        return quizId;
     }
 
-    public void setTestId(Long i) {
-        this.testId = i;
+    public void setQuizId(Long quizId) {
+        this.quizId = quizId;
     }
 
-    public String getTestTitle() {
-        return testTitle;
+    public String getQuizTitle() {
+        return quizTitle;
     }
 
-    public void setTestTitle(String testTitle) {
-        this.testTitle = testTitle;
+    public void setQuizTitle(String quizTitle) {
+        this.quizTitle = quizTitle;
     }
 
     public String getDescription() {
@@ -163,52 +163,45 @@ public class Test implements DomainObject,Serializable {
         this.teachesId = teachesId;
     }
 
-    public List<TestQuestion> getTestQuestionList() {
-        return testQuestionList;
+    public List<QuizQuestion> getQuizQuestionList() {
+        return quizQuestionList;
     }
 
-    public void setTestQuestionList(List<TestQuestion> testQuestionList) {
-        this.testQuestionList = testQuestionList;
+    public void setQuizQuestionList(List<QuizQuestion> quizQuestionList) {
+        this.quizQuestionList = quizQuestionList;
     }
 
-    public List<TestRegistration> getTestRegistrationList() {
-        return testRegistrationList;
+    public List<QuizRegistration> getQuizRegistrationList() {
+        return quizRegistrationList;
     }
 
-    public void setTestRegistrationList(List<TestRegistration> testRegistrationList) {
-        this.testRegistrationList = testRegistrationList;
+    public void setQuizRegistrationList(List<QuizRegistration> quizRegistrationList) {
+        this.quizRegistrationList = quizRegistrationList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (testId != null ? testId.hashCode() : 0);
+        hash += (quizId != null ? quizId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Test)) {
+        if (!(object instanceof Quiz)) {
             return false;
         }
-        Test other = (Test) object;
-        if ((this.testId == null && other.testId != null) || (this.testId != null && !this.testId.equals(other.testId))) {
+        Quiz other = (Quiz) object;
+        if ((this.quizId == null && other.quizId != null) || (this.quizId != null && !this.quizId.equals(other.quizId))) {
             return false;
         }
         return true;
     }
 
-	@Override
-	public String toString() {
-		return "Test [testId=" + testId + ", testTitle=" + testTitle
-				+ ", description=" + description + ", createDate=" + createDate
-				+ ", updateDate=" + updateDate + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", isQuestionTimerOn="
-				+ isQuestionTimerOn + ", teachesId=" + teachesId + "]";
-	}
-
-    
-   
+    @Override
+    public String toString() {
+        return "com.great.cms.entity.Quiz[ quizId=" + quizId + " ]";
+    }
     
 }

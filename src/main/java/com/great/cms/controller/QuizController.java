@@ -8,33 +8,34 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.great.cms.entity.Test;
+import com.great.cms.entity.Quiz;
+
 
 @Controller
-@RequestMapping("/test")
+@RequestMapping("/quiz")
 @Secured(value = { "ROLE_ADMIN", "ROLE_TEACHER", "ROLE_STUDENT" })
-public class TestController {
+public class QuizController {
 
 	@RequestMapping("/create")
 	@Secured({ "ROLE_TEACHER", "ROLE_ADMIN" })
 	public String createNewTest(Model uiModel) {
-		uiModel.addAttribute("test", new Test());
-		return "test/create";
+		uiModel.addAttribute("quiz", new Quiz());
+		return "quiz/create";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String saveNewTest() {
-		return "redirect:/test/show";
+		return "redirect:/quiz/show";
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public String editNewTest() {
-		return "redirect:/test/show";
+		return "redirect:/quiz/show";
 	}
 
 	@RequestMapping("/show")
 	public String showAvailableTest(Principal principal) {
 		/* String username = principal.getName(); */
-		return "test/showlist";
+		return "quiz/showlist";
 	}
 }

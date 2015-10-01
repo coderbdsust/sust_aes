@@ -30,7 +30,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "QuestionAnswer.findByQuestionOptionId", query = "SELECT q FROM QuestionAnswer q WHERE q.questionOptionId = :questionOptionId"),
     @NamedQuery(name = "QuestionAnswer.findByAnswerText", query = "SELECT q FROM QuestionAnswer q WHERE q.answerText = :answerText"),
     @NamedQuery(name = "QuestionAnswer.findByMarks", query = "SELECT q FROM QuestionAnswer q WHERE q.marks = :marks")})
-public class QuestionAnswer implements DomainObject,Serializable {
+public class QuestionAnswer implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -45,9 +45,9 @@ public class QuestionAnswer implements DomainObject,Serializable {
     @Basic(optional = false)
     @Column(name = "marks")
     private double marks;
-    @JoinColumn(name = "test_registration_id", referencedColumnName = "test_registration_id")
+    @JoinColumn(name = "quiz_registration_id", referencedColumnName = "quiz_registration_id")
     @ManyToOne(optional = false)
-    private TestRegistration testRegistrationId;
+    private QuizRegistration quizRegistrationId;
     @JoinColumn(name = "question_id", referencedColumnName = "question_id")
     @ManyToOne(optional = false)
     private Question questionId;
@@ -98,12 +98,12 @@ public class QuestionAnswer implements DomainObject,Serializable {
         this.marks = marks;
     }
 
-    public TestRegistration getTestRegistrationId() {
-        return testRegistrationId;
+    public QuizRegistration getQuizRegistrationId() {
+        return quizRegistrationId;
     }
 
-    public void setTestRegistrationId(TestRegistration testRegistrationId) {
-        this.testRegistrationId = testRegistrationId;
+    public void setQuizRegistrationId(QuizRegistration quizRegistrationId) {
+        this.quizRegistrationId = quizRegistrationId;
     }
 
     public Question getQuestionId() {

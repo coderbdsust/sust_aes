@@ -23,44 +23,44 @@ import javax.persistence.Table;
  * @author Biswajit Debnath
  */
 @Entity
-@Table(name = "test_question")
+@Table(name = "quiz_question")
 @NamedQueries({
-    @NamedQuery(name = "TestQuestion.findAll", query = "SELECT t FROM TestQuestion t"),
-    @NamedQuery(name = "TestQuestion.findByTestQuestionId", query = "SELECT t FROM TestQuestion t WHERE t.testQuestionId = :testQuestionId")})
-public class TestQuestion implements DomainObject,Serializable {
+    @NamedQuery(name = "QuizQuestion.findAll", query = "SELECT q FROM QuizQuestion q"),
+    @NamedQuery(name = "QuizQuestion.findByQuizQuestionId", query = "SELECT q FROM QuizQuestion q WHERE q.quizQuestionId = :quizQuestionId")})
+public class QuizQuestion implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "test_question_id")
-    private Long testQuestionId;
-    @JoinColumn(name = "test_id", referencedColumnName = "test_id")
+    @Column(name = "quiz_question_id")
+    private Long quizQuestionId;
+    @JoinColumn(name = "quiz_id", referencedColumnName = "quiz_id")
     @ManyToOne(optional = false)
-    private Test testId;
+    private Quiz quizId;
     @JoinColumn(name = "question_id", referencedColumnName = "question_id")
     @ManyToOne(optional = false)
     private Question questionId;
 
-    public TestQuestion() {
+    public QuizQuestion() {
     }
 
-    public TestQuestion(Long testQuestionId) {
-        this.testQuestionId = testQuestionId;
+    public QuizQuestion(Long quizQuestionId) {
+        this.quizQuestionId = quizQuestionId;
     }
 
-    public Long getTestQuestionId() {
-        return testQuestionId;
+    public Long getQuizQuestionId() {
+        return quizQuestionId;
     }
 
-    public void setTestQuestionId(Long testQuestionId) {
-        this.testQuestionId = testQuestionId;
+    public void setQuizQuestionId(Long quizQuestionId) {
+        this.quizQuestionId = quizQuestionId;
     }
 
-    public Test getTestId() {
-        return testId;
+    public Quiz getQuizId() {
+        return quizId;
     }
 
-    public void setTestId(Test testId) {
-        this.testId = testId;
+    public void setQuizId(Quiz quizId) {
+        this.quizId = quizId;
     }
 
     public Question getQuestionId() {
@@ -74,18 +74,18 @@ public class TestQuestion implements DomainObject,Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (testQuestionId != null ? testQuestionId.hashCode() : 0);
+        hash += (quizQuestionId != null ? quizQuestionId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TestQuestion)) {
+        if (!(object instanceof QuizQuestion)) {
             return false;
         }
-        TestQuestion other = (TestQuestion) object;
-        if ((this.testQuestionId == null && other.testQuestionId != null) || (this.testQuestionId != null && !this.testQuestionId.equals(other.testQuestionId))) {
+        QuizQuestion other = (QuizQuestion) object;
+        if ((this.quizQuestionId == null && other.quizQuestionId != null) || (this.quizQuestionId != null && !this.quizQuestionId.equals(other.quizQuestionId))) {
             return false;
         }
         return true;
@@ -93,7 +93,7 @@ public class TestQuestion implements DomainObject,Serializable {
 
     @Override
     public String toString() {
-        return "com.great.cms.entity.TestQuestion[ testQuestionId=" + testQuestionId + " ]";
+        return "com.great.cms.entity.QuizQuestion[ quizQuestionId=" + quizQuestionId + " ]";
     }
     
 }

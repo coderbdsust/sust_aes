@@ -8,7 +8,6 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,7 +32,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "CourseRegistration.findByIsApproved", query = "SELECT c FROM CourseRegistration c WHERE c.isApproved = :isApproved"),
     @NamedQuery(name = "CourseRegistration.findByMarks", query = "SELECT c FROM CourseRegistration c WHERE c.marks = :marks"),
     @NamedQuery(name = "CourseRegistration.findByGpa", query = "SELECT c FROM CourseRegistration c WHERE c.gpa = :gpa")})
-public class CourseRegistration implements DomainObject,Serializable {
+public class CourseRegistration implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -48,14 +47,14 @@ public class CourseRegistration implements DomainObject,Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "GPA")
     private Double gpa;
-    @JoinColumn(name = "student_id", referencedColumnName = "student_id")
-    @ManyToOne(optional = false)
-    private Student studentId;
     @JoinColumn(name = "course_id", referencedColumnName = "course_id")
     @ManyToOne(optional = false)
     private Course courseId;
+    @JoinColumn(name = "student_id", referencedColumnName = "student_id")
+    @ManyToOne(optional = false)
+    private Student studentId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseRegId")
-    private List<TestRegistration> testRegistrationList;
+    private List<QuizRegistration> quizRegistrationList;
 
     public CourseRegistration() {
     }
@@ -102,14 +101,6 @@ public class CourseRegistration implements DomainObject,Serializable {
         this.gpa = gpa;
     }
 
-    public Student getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Student studentId) {
-        this.studentId = studentId;
-    }
-
     public Course getCourseId() {
         return courseId;
     }
@@ -118,12 +109,20 @@ public class CourseRegistration implements DomainObject,Serializable {
         this.courseId = courseId;
     }
 
-    public List<TestRegistration> getTestRegistrationList() {
-        return testRegistrationList;
+    public Student getStudentId() {
+        return studentId;
     }
 
-    public void setTestRegistrationList(List<TestRegistration> testRegistrationList) {
-        this.testRegistrationList = testRegistrationList;
+    public void setStudentId(Student studentId) {
+        this.studentId = studentId;
+    }
+
+    public List<QuizRegistration> getQuizRegistrationList() {
+        return quizRegistrationList;
+    }
+
+    public void setQuizRegistrationList(List<QuizRegistration> quizRegistrationList) {
+        this.quizRegistrationList = quizRegistrationList;
     }
 
     @Override

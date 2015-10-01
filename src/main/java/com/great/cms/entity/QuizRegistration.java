@@ -29,21 +29,21 @@ import javax.persistence.TemporalType;
  * @author Biswajit Debnath
  */
 @Entity
-@Table(name = "test_registration")
+@Table(name = "quiz_registration")
 @NamedQueries({
-    @NamedQuery(name = "TestRegistration.findAll", query = "SELECT t FROM TestRegistration t"),
-    @NamedQuery(name = "TestRegistration.findByTestRegistrationId", query = "SELECT t FROM TestRegistration t WHERE t.testRegistrationId = :testRegistrationId"),
-    @NamedQuery(name = "TestRegistration.findByAttendTime", query = "SELECT t FROM TestRegistration t WHERE t.attendTime = :attendTime"),
-    @NamedQuery(name = "TestRegistration.findBySubmitTime", query = "SELECT t FROM TestRegistration t WHERE t.submitTime = :submitTime"),
-    @NamedQuery(name = "TestRegistration.findByIsRegApproved", query = "SELECT t FROM TestRegistration t WHERE t.isRegApproved = :isRegApproved"),
-    @NamedQuery(name = "TestRegistration.findByIsAttended", query = "SELECT t FROM TestRegistration t WHERE t.isAttended = :isAttended"),
-    @NamedQuery(name = "TestRegistration.findByIsExamReviewed", query = "SELECT t FROM TestRegistration t WHERE t.isExamReviewed = :isExamReviewed")})
-public class TestRegistration implements DomainObject,Serializable {
+    @NamedQuery(name = "QuizRegistration.findAll", query = "SELECT q FROM QuizRegistration q"),
+    @NamedQuery(name = "QuizRegistration.findByQuizRegistrationId", query = "SELECT q FROM QuizRegistration q WHERE q.quizRegistrationId = :quizRegistrationId"),
+    @NamedQuery(name = "QuizRegistration.findByAttendTime", query = "SELECT q FROM QuizRegistration q WHERE q.attendTime = :attendTime"),
+    @NamedQuery(name = "QuizRegistration.findBySubmitTime", query = "SELECT q FROM QuizRegistration q WHERE q.submitTime = :submitTime"),
+    @NamedQuery(name = "QuizRegistration.findByIsRegApproved", query = "SELECT q FROM QuizRegistration q WHERE q.isRegApproved = :isRegApproved"),
+    @NamedQuery(name = "QuizRegistration.findByIsAttended", query = "SELECT q FROM QuizRegistration q WHERE q.isAttended = :isAttended"),
+    @NamedQuery(name = "QuizRegistration.findByIsExamReviewed", query = "SELECT q FROM QuizRegistration q WHERE q.isExamReviewed = :isExamReviewed")})
+public class QuizRegistration implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "test_registration_id")
-    private Long testRegistrationId;
+    @Column(name = "quiz_registration_id")
+    private Long quizRegistrationId;
     @Column(name = "attend_time")
     @Temporal(TemporalType.TIMESTAMP)
     private Date attendTime;
@@ -59,35 +59,35 @@ public class TestRegistration implements DomainObject,Serializable {
     @Basic(optional = false)
     @Column(name = "is_exam_reviewed")
     private boolean isExamReviewed;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "testRegistrationId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quizRegistrationId")
     private List<QuestionAnswer> questionAnswerList;
-    @JoinColumn(name = "test_id", referencedColumnName = "test_id")
+    @JoinColumn(name = "quiz_id", referencedColumnName = "quiz_id")
     @ManyToOne(optional = false)
-    private Test testId;
+    private Quiz quizId;
     @JoinColumn(name = "course_reg_id", referencedColumnName = "course_reg_id")
     @ManyToOne(optional = false)
     private CourseRegistration courseRegId;
 
-    public TestRegistration() {
+    public QuizRegistration() {
     }
 
-    public TestRegistration(Long testRegistrationId) {
-        this.testRegistrationId = testRegistrationId;
+    public QuizRegistration(Long quizRegistrationId) {
+        this.quizRegistrationId = quizRegistrationId;
     }
 
-    public TestRegistration(Long testRegistrationId, boolean isRegApproved, boolean isAttended, boolean isExamReviewed) {
-        this.testRegistrationId = testRegistrationId;
+    public QuizRegistration(Long quizRegistrationId, boolean isRegApproved, boolean isAttended, boolean isExamReviewed) {
+        this.quizRegistrationId = quizRegistrationId;
         this.isRegApproved = isRegApproved;
         this.isAttended = isAttended;
         this.isExamReviewed = isExamReviewed;
     }
 
-    public Long getTestRegistrationId() {
-        return testRegistrationId;
+    public Long getQuizRegistrationId() {
+        return quizRegistrationId;
     }
 
-    public void setTestRegistrationId(Long testRegistrationId) {
-        this.testRegistrationId = testRegistrationId;
+    public void setQuizRegistrationId(Long quizRegistrationId) {
+        this.quizRegistrationId = quizRegistrationId;
     }
 
     public Date getAttendTime() {
@@ -138,12 +138,12 @@ public class TestRegistration implements DomainObject,Serializable {
         this.questionAnswerList = questionAnswerList;
     }
 
-    public Test getTestId() {
-        return testId;
+    public Quiz getQuizId() {
+        return quizId;
     }
 
-    public void setTestId(Test testId) {
-        this.testId = testId;
+    public void setQuizId(Quiz quizId) {
+        this.quizId = quizId;
     }
 
     public CourseRegistration getCourseRegId() {
@@ -157,18 +157,18 @@ public class TestRegistration implements DomainObject,Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (testRegistrationId != null ? testRegistrationId.hashCode() : 0);
+        hash += (quizRegistrationId != null ? quizRegistrationId.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TestRegistration)) {
+        if (!(object instanceof QuizRegistration)) {
             return false;
         }
-        TestRegistration other = (TestRegistration) object;
-        if ((this.testRegistrationId == null && other.testRegistrationId != null) || (this.testRegistrationId != null && !this.testRegistrationId.equals(other.testRegistrationId))) {
+        QuizRegistration other = (QuizRegistration) object;
+        if ((this.quizRegistrationId == null && other.quizRegistrationId != null) || (this.quizRegistrationId != null && !this.quizRegistrationId.equals(other.quizRegistrationId))) {
             return false;
         }
         return true;
@@ -176,7 +176,7 @@ public class TestRegistration implements DomainObject,Serializable {
 
     @Override
     public String toString() {
-        return "com.great.cms.entity.TestRegistration[ testRegistrationId=" + testRegistrationId + " ]";
+        return "com.great.cms.entity.QuizRegistration[ quizRegistrationId=" + quizRegistrationId + " ]";
     }
     
 }
