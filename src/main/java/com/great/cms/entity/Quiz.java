@@ -24,6 +24,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 /**
  *
  * @author Biswajit Debnath
@@ -51,14 +54,19 @@ public class Quiz implements DomainObject, Serializable {
 	private String quizTitle;
 	@Column(name = "description")
 	private String description;
+	
+	@CreatedDate
 	@Basic(optional = false)
 	@Column(name = "create_date")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	private Date createDate = new Date();
+	
+	@LastModifiedDate
 	@Basic(optional = false)
 	@Column(name = "update_date")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updateDate;
+	private Date updateDate = new Date();
+
 	@Column(name = "start_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date startTime;

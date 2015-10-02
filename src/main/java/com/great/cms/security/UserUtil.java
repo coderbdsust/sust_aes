@@ -29,9 +29,9 @@ public class UserUtil {
 				: "User Service Autowired");
 
 		User user = userService.getUser(username);
-		System.out.println(user);
+//		System.out.println(user);
 		Teacher teacher = teacherService.getTeacherByUserId(user);
-		System.out.println(teacher);
+//		System.out.println(teacher);
 		if (teacher == null) {
 			teacher = new Teacher();
 		}

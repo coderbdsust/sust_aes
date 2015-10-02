@@ -32,22 +32,18 @@ public class QuizController {
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				new SimpleDateFormat("dd MMMM yyyy - hh:mm"), true));
+				new SimpleDateFormat("dd MMMM yyyy - hh:mm a"), true));
 	}
 
 	@RequestMapping("/create")
 	@Secured({ "ROLE_TEACHER", "ROLE_ADMIN" })
 	public String createNewQuiz(Principal principal, Model uiModel) {
 
-		System.out.println("quiz/create");
+		System.out.println("GET: quiz/create");
 
 		Teacher teacher = UserUtil.getInstance()
 				.getTeacher(principal.getName());
-		// System.out.println(teacher);
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
-
-		// System.out.println("TeachesList: " + teachesList.size());
-
 		uiModel.addAttribute("quiz", new Quiz());
 		uiModel.addAttribute("teachesList", teachesList);
 

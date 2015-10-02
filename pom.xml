@@ -54,7 +54,7 @@
 				</configuration>
 			</plugin>
 
-	
+
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
@@ -334,6 +334,13 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>1.11.0.RELEASE</version>
+		</dependency>
+
 
 		<!-- c3p0 Connection Pool -->
 		<dependency>
