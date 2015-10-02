@@ -4,7 +4,10 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
-<title>Student :: Profile</title>
+<title>Student :: Question</title>
+
+<script  th:src="@{/resources/scripts/pages/question/mcq.js}" type="text/javascript"></script>
+
 <script type="text/javascript">
 	function addQuestions(id) {
 		//alert('parent1');
@@ -385,7 +388,7 @@
 										<div class="modal-footer">
 											<button class="btn default" data-dismiss="modal"
 												aria-hidden="true">Close</button>
-											<button class="btn green" data-dismiss="modal">Save
+											<button class="btn green" data-dismiss="modal"  onclick="submitMCQ()">Save
 												changes</button>
 										</div>
 									</div>

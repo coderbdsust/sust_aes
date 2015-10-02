@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/question")
 public class QuestionAddController {
 
-	@RequestMapping(value = "/exam/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/quiz/add", method = RequestMethod.GET)
 	public String showAvailableQuestion() {
 		System.out.println("GET: /question/exam/add");
 		
@@ -16,7 +16,7 @@ public class QuestionAddController {
 	}
 	
 	
-	@RequestMapping(value = "/exam/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/quiz/add", method = RequestMethod.POST)
 	public String saveExamQuestion() {
 		System.out.println("POST: /question/exam/add");
 		
