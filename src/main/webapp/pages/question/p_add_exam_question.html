@@ -274,7 +274,7 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label">Question</label>
 														<div class="col-md-8">
-															<input type="text" class="form-control input-md" />
+															<input id="mcq-question-text" type="text" class="form-control input-md" />
 															<p>
 																<strong>Note: </strong> Keep fields blank if doesn't
 																want to give more options!
@@ -289,8 +289,8 @@
 														<div class="row">
 															<div class="col-md-offset-1 col-md-6">
 																<div class="input-group">
-																	<input type="text" class="form-control" /> <span
-																		class="input-group-addon"> <input
+																	<input  id="mcq-opt-1-text" type="text" class="form-control" /> <span
+																		class="input-group-addon"> <input id="mcq-opt-1-status"
 																		type="checkbox" />
 																	</span>
 																</div>
@@ -303,8 +303,8 @@
 														<div class="row">
 															<div class="col-md-offset-1 col-md-6">
 																<div class="input-group">
-																	<input type="text" class="form-control" /> <span
-																		class="input-group-addon"> <input
+																	<input id="mcq-opt-2-text" type="text" class="form-control" /> <span
+																		class="input-group-addon"> <input id="mcq-opt-2-status"
 																		type="checkbox" />
 																	</span>
 																</div>
@@ -316,8 +316,8 @@
 														<div class="row">
 															<div class="col-md-offset-1 col-md-6">
 																<div class="input-group">
-																	<input type="text" class="form-control" /> <span
-																		class="input-group-addon"> <input
+																	<input id="mcq-opt-3-text" type="text" class="form-control" /> <span
+																		class="input-group-addon"> <input id="mcq-opt-3-status"
 																		type="checkbox" />
 																	</span>
 																</div>
@@ -329,8 +329,8 @@
 														<div class="row">
 															<div class="col-md-offset-1 col-md-6">
 																<div class="input-group">
-																	<input type="text" class="form-control" /> <span
-																		class="input-group-addon"> <input
+																	<input id="mcq-opt-4-text" type="text" class="form-control" /> <span
+																		class="input-group-addon"> <input id="mcq-opt-4-status"
 																		type="checkbox" />
 																	</span>
 																</div>
@@ -342,8 +342,8 @@
 														<div class="row">
 															<div class="col-md-offset-1 col-md-6">
 																<div class="input-group">
-																	<input type="text" class="form-control" /> <span
-																		class="input-group-addon"> <input
+																	<input id="mcq-opt-5-text" type="text" class="form-control" /> <span
+																		class="input-group-addon"> <input id="mcq-opt-5-status"
 																		type="checkbox" />
 																	</span>
 																</div>
@@ -357,7 +357,7 @@
 																<div class="row">
 																	<div class="col-md-7">
 																		<div class="input-group">
-																			<input placeholder="Mark" type="text"
+																			<input id="mcq-marks" placeholder="Mark" type="text"
 																				class="form-control" />
 
 																		</div>
@@ -372,7 +372,7 @@
 																<div class="row">
 																	<div class="col-md-7">
 																		<div class="input-group">
-																			<input placeholder="Time" type="text"
+																			<input id="mcq-time" placeholder="In Seconds..." type="text"
 																				class="form-control" />
 
 																		</div>
@@ -457,7 +457,7 @@
 															<div class="row">
 																<div class="col-md-7">
 																	<div class="input-group">
-																		<input placeholder="Time" type="text"
+																		<input placeholder="In Seconds..." type="text"
 																			class="form-control" />
 
 																	</div>
@@ -580,11 +580,11 @@
 
 														<div class="col-md-6">
 															<div class="form-group">
-																<label class="col-md-3 control-label"><strong><em>Time</em></strong></label>
+																<label class="col-md-3 control-label"><strong><em>Time </em></strong></label>
 																<div class="row">
 																	<div class="col-md-7">
 																		<div class="input-group">
-																			<input placeholder="Time" type="text"
+																			<input placeholder="In Seconds..." type="text"
 																				class="form-control" />
 
 																		</div>
