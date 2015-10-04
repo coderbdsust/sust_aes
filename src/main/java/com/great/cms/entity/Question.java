@@ -26,6 +26,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 /**
  *
  * @author Biswajit Debnath
@@ -43,187 +46,195 @@ import javax.persistence.TemporalType;
 		@NamedQuery(name = "Question.findByLastUpdated", query = "SELECT q FROM Question q WHERE q.lastUpdated = :lastUpdated") })
 public class Question implements DomainObject, Serializable {
 	private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "question_id")
-    private Long questionId;
-    @Basic(optional = false)
-    @Column(name = "question_text")
-    private String questionText;
-    @Basic(optional = false)
-    @Column(name = "difficulty_level")
-    private int difficultyLevel;
-    @Basic(optional = false)
-    @Column(name = "required_time")
-    private long requiredTime;
-    @Basic(optional = false)
-    @Column(name = "question_marks")
-    private double questionMarks;
-    @Basic(optional = false)
-    @Column(name = "created_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdTime;
-    @Basic(optional = false)
-    @Column(name = "last_updated")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastUpdated;
-    @JoinColumn(name = "question_type_id", referencedColumnName = "question_type_id")
-    @ManyToOne(optional = false)
-    private QuestionType questionTypeId;
-    @JoinColumn(name = "course_id", referencedColumnName = "course_id")
-    @ManyToOne(optional = false)
-    private Course courseId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
-    private List<QuestionAnswer> questionAnswerList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
-    private List<QuizQuestion> quizQuestionList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
-    private List<QuestionDescription> questionDescriptionList;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "question_id")
+	private Long questionId;
+	@Basic(optional = false)
+	@Column(name = "question_text")
+	private String questionText;
+	@Basic(optional = false)
+	@Column(name = "question_body")
+	private String questionBody;
+	@Basic(optional = false)
+	@Column(name = "difficulty_level")
+	private int difficultyLevel;
+	@Basic(optional = false)
+	@Column(name = "required_time")
+	private long requiredTime;
+	@Basic(optional = false)
+	@Column(name = "question_marks")
+	private double questionMarks;
+	@Basic(optional = false)
+	@CreatedDate
+	@Column(name = "created_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdTime = new Date();
+	@LastModifiedDate
+	@Basic(optional = false)
+	@Column(name = "last_updated")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdated = new Date();
+	@JoinColumn(name = "question_type_id", referencedColumnName = "question_type_id")
+	@ManyToOne(optional = false)
+	private QuestionType questionTypeId;
+	@JoinColumn(name = "course_id", referencedColumnName = "course_id")
+	@ManyToOne(optional = false)
+	private Course courseId;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
+	private List<QuestionAnswer> questionAnswerList;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
+	private List<QuizQuestion> quizQuestionList;
 
-    public Question() {
-    }
+	public Question() {
+	}
 
-    public Question(Long questionId) {
-        this.questionId = questionId;
-    }
+	public Question(Long questionId) {
+		this.questionId = questionId;
+	}
 
-    public Question(Long questionId, String questionText, int difficultyLevel, long requiredTime, double questionMarks, Date createdTime, Date lastUpdated) {
-        this.questionId = questionId;
-        this.questionText = questionText;
-        this.difficultyLevel = difficultyLevel;
-        this.requiredTime = requiredTime;
-        this.questionMarks = questionMarks;
-        this.createdTime = createdTime;
-        this.lastUpdated = lastUpdated;
-    }
+	public Question(Long questionId, String questionText, String questionBody,
+			int difficultyLevel, long requiredTime, double questionMarks,
+			Date createdTime, Date lastUpdated) {
+		this.questionId = questionId;
+		this.questionText = questionText;
+		this.questionBody = questionBody;
+		this.difficultyLevel = difficultyLevel;
+		this.requiredTime = requiredTime;
+		this.questionMarks = questionMarks;
+		this.createdTime = createdTime;
+		this.lastUpdated = lastUpdated;
+	}
 
-    public Long getQuestionId() {
-        return questionId;
-    }
+	public Long getQuestionId() {
+		return questionId;
+	}
 
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
-    }
+	public void setQuestionId(Long questionId) {
+		this.questionId = questionId;
+	}
 
-    public String getQuestionText() {
-        return questionText;
-    }
+	public String getQuestionText() {
+		return questionText;
+	}
 
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
-    }
+	public void setQuestionText(String questionText) {
+		this.questionText = questionText;
+	}
 
-    public int getDifficultyLevel() {
-        return difficultyLevel;
-    }
+	public String getQuestionBody() {
+		return questionBody;
+	}
 
-    public void setDifficultyLevel(int difficultyLevel) {
-        this.difficultyLevel = difficultyLevel;
-    }
+	public void setQuestionBody(String questionBody) {
+		this.questionBody = questionBody;
+	}
 
-    public long getRequiredTime() {
-        return requiredTime;
-    }
+	public int getDifficultyLevel() {
+		return difficultyLevel;
+	}
 
-    public void setRequiredTime(long requiredTime) {
-        this.requiredTime = requiredTime;
-    }
+	public void setDifficultyLevel(int difficultyLevel) {
+		this.difficultyLevel = difficultyLevel;
+	}
 
-    public double getQuestionMarks() {
-        return questionMarks;
-    }
+	public long getRequiredTime() {
+		return requiredTime;
+	}
 
-    public void setQuestionMarks(double questionMarks) {
-        this.questionMarks = questionMarks;
-    }
+	public void setRequiredTime(long requiredTime) {
+		this.requiredTime = requiredTime;
+	}
 
-    public Date getCreatedTime() {
-        return createdTime;
-    }
+	public double getQuestionMarks() {
+		return questionMarks;
+	}
 
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
+	public void setQuestionMarks(double questionMarks) {
+		this.questionMarks = questionMarks;
+	}
 
-    public Date getLastUpdated() {
-        return lastUpdated;
-    }
+	public Date getCreatedTime() {
+		return createdTime;
+	}
 
-    public void setLastUpdated(Date lastUpdated) {
-        this.lastUpdated = lastUpdated;
-    }
+	public void setCreatedTime(Date createdTime) {
+		this.createdTime = createdTime;
+	}
 
-    public QuestionType getQuestionTypeId() {
-        return questionTypeId;
-    }
+	public Date getLastUpdated() {
+		return lastUpdated;
+	}
 
-    public void setQuestionTypeId(QuestionType questionTypeId) {
-        this.questionTypeId = questionTypeId;
-    }
+	public void setLastUpdated(Date lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
 
-    public Course getCourseId() {
-        return courseId;
-    }
+	public QuestionType getQuestionTypeId() {
+		return questionTypeId;
+	}
 
-    public void setCourseId(Course courseId) {
-        this.courseId = courseId;
-    }
+	public void setQuestionTypeId(QuestionType questionTypeId) {
+		this.questionTypeId = questionTypeId;
+	}
 
-    public List<QuestionAnswer> getQuestionAnswerList() {
-        return questionAnswerList;
-    }
+	public Course getCourseId() {
+		return courseId;
+	}
 
-    public void setQuestionAnswerList(List<QuestionAnswer> questionAnswerList) {
-        this.questionAnswerList = questionAnswerList;
-    }
+	public void setCourseId(Course courseId) {
+		this.courseId = courseId;
+	}
 
-    public List<QuizQuestion> getQuizQuestionList() {
-        return quizQuestionList;
-    }
+	public List<QuestionAnswer> getQuestionAnswerList() {
+		return questionAnswerList;
+	}
 
-    public void setQuizQuestionList(List<QuizQuestion> quizQuestionList) {
-        this.quizQuestionList = quizQuestionList;
-    }
+	public void setQuestionAnswerList(List<QuestionAnswer> questionAnswerList) {
+		this.questionAnswerList = questionAnswerList;
+	}
 
-    public List<QuestionDescription> getQuestionDescriptionList() {
-        return questionDescriptionList;
-    }
+	public List<QuizQuestion> getQuizQuestionList() {
+		return quizQuestionList;
+	}
 
-    public void setQuestionDescriptionList(List<QuestionDescription> questionDescriptionList) {
-        this.questionDescriptionList = questionDescriptionList;
-    }
+	public void setQuizQuestionList(List<QuizQuestion> quizQuestionList) {
+		this.quizQuestionList = quizQuestionList;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (questionId != null ? questionId.hashCode() : 0);
-        return hash;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (questionId != null ? questionId.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Question)) {
-            return false;
-        }
-        Question other = (Question) object;
-        if ((this.questionId == null && other.questionId != null) || (this.questionId != null && !this.questionId.equals(other.questionId))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Question)) {
+			return false;
+		}
+		Question other = (Question) object;
+		if ((this.questionId == null && other.questionId != null)
+				|| (this.questionId != null && !this.questionId
+						.equals(other.questionId))) {
+			return false;
+		}
+		return true;
+	}
 
 	@Override
 	public String toString() {
 		return "Question [questionId=" + questionId + ", questionText="
-				+ questionText + ", difficultyLevel=" + difficultyLevel
-				+ ", requiredTime=" + requiredTime + ", questionMarks="
-				+ questionMarks + ", createdTime=" + createdTime
-				+ ", lastUpdated=" + lastUpdated + ", questionTypeId="
-				+ questionTypeId + ", courseId=" + courseId+"]";
+				+ questionText + ", questionBody=" + questionBody
+				+ ", difficultyLevel=" + difficultyLevel + ", requiredTime="
+				+ requiredTime + ", questionMarks=" + questionMarks
+				+ ", createdTime=" + createdTime + ", lastUpdated="
+				+ lastUpdated + ", questionTypeId=" + questionTypeId
+				+ ", courseId=" + courseId + "]";
 	}
-
-    
 
 }

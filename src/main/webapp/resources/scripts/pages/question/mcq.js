@@ -12,16 +12,16 @@ function submitMCQ() {
 	question['questionText'] = document.getElementById('mcq-question-text').value;
 	question['questionMarks'] = document.getElementById('mcq-marks').value;
 	question['requiredTime'] = document.getElementById('mcq-time').value;
-	// question['courseId'] = 1;
-	// question['question_type_id'] = 1;
-	// question['question_type_name'] = "mcq";
-	//question['question_body'] = options;
+	question['courseId.courseId'] = 1;
+	question['questionTypeId.questionTypeId'] = 1;
+	question['questionTypeId.questionTypeName'] = "mcq";
+	question['questionBody'] = JSON.stringify(options);
 
-	var data = JSON.stringify(question);
-	// $("#resultsBlock").load(url);
-	console.log(question);
-	$.post(url, "questionMarks=" + question['questionMarks'] + "&"
-			+ "questionText=" + question['questionText'] + "&"
-			+ "requiredTime=" + question['requiredTime']);
-
+	$.ajax({
+		method : "POST",
+		url : url,
+		data : question
+	}).success(function(msg) {
+		console.log('Success: ' + msg);
+	});
 }
