@@ -33,16 +33,16 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "question")
 @NamedQueries({
-    @NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q"),
-    @NamedQuery(name = "Question.findByQuestionId", query = "SELECT q FROM Question q WHERE q.questionId = :questionId"),
-    @NamedQuery(name = "Question.findByQuestionText", query = "SELECT q FROM Question q WHERE q.questionText = :questionText"),
-    @NamedQuery(name = "Question.findByDifficultyLevel", query = "SELECT q FROM Question q WHERE q.difficultyLevel = :difficultyLevel"),
-    @NamedQuery(name = "Question.findByRequiredTime", query = "SELECT q FROM Question q WHERE q.requiredTime = :requiredTime"),
-    @NamedQuery(name = "Question.findByQuestionMarks", query = "SELECT q FROM Question q WHERE q.questionMarks = :questionMarks"),
-    @NamedQuery(name = "Question.findByCreatedTime", query = "SELECT q FROM Question q WHERE q.createdTime = :createdTime"),
-    @NamedQuery(name = "Question.findByLastUpdated", query = "SELECT q FROM Question q WHERE q.lastUpdated = :lastUpdated")})
+		@NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q"),
+		@NamedQuery(name = "Question.findByQuestionId", query = "SELECT q FROM Question q WHERE q.questionId = :questionId"),
+		@NamedQuery(name = "Question.findByQuestionText", query = "SELECT q FROM Question q WHERE q.questionText = :questionText"),
+		@NamedQuery(name = "Question.findByDifficultyLevel", query = "SELECT q FROM Question q WHERE q.difficultyLevel = :difficultyLevel"),
+		@NamedQuery(name = "Question.findByRequiredTime", query = "SELECT q FROM Question q WHERE q.requiredTime = :requiredTime"),
+		@NamedQuery(name = "Question.findByQuestionMarks", query = "SELECT q FROM Question q WHERE q.questionMarks = :questionMarks"),
+		@NamedQuery(name = "Question.findByCreatedTime", query = "SELECT q FROM Question q WHERE q.createdTime = :createdTime"),
+		@NamedQuery(name = "Question.findByLastUpdated", query = "SELECT q FROM Question q WHERE q.lastUpdated = :lastUpdated") })
 public class Question implements DomainObject, Serializable {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -56,8 +56,7 @@ public class Question implements DomainObject, Serializable {
     private int difficultyLevel;
     @Basic(optional = false)
     @Column(name = "required_time")
-    @Temporal(TemporalType.TIME)
-    private Date requiredTime;
+    private long requiredTime;
     @Basic(optional = false)
     @Column(name = "question_marks")
     private double questionMarks;
@@ -89,7 +88,7 @@ public class Question implements DomainObject, Serializable {
         this.questionId = questionId;
     }
 
-    public Question(Long questionId, String questionText, int difficultyLevel, Date requiredTime, double questionMarks, Date createdTime, Date lastUpdated) {
+    public Question(Long questionId, String questionText, int difficultyLevel, long requiredTime, double questionMarks, Date createdTime, Date lastUpdated) {
         this.questionId = questionId;
         this.questionText = questionText;
         this.difficultyLevel = difficultyLevel;
@@ -123,11 +122,11 @@ public class Question implements DomainObject, Serializable {
         this.difficultyLevel = difficultyLevel;
     }
 
-    public Date getRequiredTime() {
+    public long getRequiredTime() {
         return requiredTime;
     }
 
-    public void setRequiredTime(Date requiredTime) {
+    public void setRequiredTime(long requiredTime) {
         this.requiredTime = requiredTime;
     }
 
@@ -215,9 +214,16 @@ public class Question implements DomainObject, Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.Question[ questionId=" + questionId + " ]";
-    }
+	@Override
+	public String toString() {
+		return "Question [questionId=" + questionId + ", questionText="
+				+ questionText + ", difficultyLevel=" + difficultyLevel
+				+ ", requiredTime=" + requiredTime + ", questionMarks="
+				+ questionMarks + ", createdTime=" + createdTime
+				+ ", lastUpdated=" + lastUpdated + ", questionTypeId="
+				+ questionTypeId + ", courseId=" + courseId+"]";
+	}
+
     
+
 }

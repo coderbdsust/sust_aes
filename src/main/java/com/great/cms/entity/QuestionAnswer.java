@@ -24,119 +24,101 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "question_answer")
-@NamedQueries({
-    @NamedQuery(name = "QuestionAnswer.findAll", query = "SELECT q FROM QuestionAnswer q"),
-    @NamedQuery(name = "QuestionAnswer.findByQuestionAnswersIndexId", query = "SELECT q FROM QuestionAnswer q WHERE q.questionAnswersIndexId = :questionAnswersIndexId"),
-    @NamedQuery(name = "QuestionAnswer.findByQuestionOptionId", query = "SELECT q FROM QuestionAnswer q WHERE q.questionOptionId = :questionOptionId"),
-    @NamedQuery(name = "QuestionAnswer.findByAnswerText", query = "SELECT q FROM QuestionAnswer q WHERE q.answerText = :answerText"),
-    @NamedQuery(name = "QuestionAnswer.findByMarks", query = "SELECT q FROM QuestionAnswer q WHERE q.marks = :marks")})
 public class QuestionAnswer implements DomainObject, Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "question_answers_index_id")
-    private Long questionAnswersIndexId;
-    @Basic(optional = false)
-    @Column(name = "question_option_id")
-    private int questionOptionId;
-    @Basic(optional = false)
-    @Column(name = "answer_text")
-    private String answerText;
-    @Basic(optional = false)
-    @Column(name = "marks")
-    private double marks;
-    @JoinColumn(name = "quiz_registration_id", referencedColumnName = "quiz_registration_id")
-    @ManyToOne(optional = false)
-    private QuizRegistration quizRegistrationId;
-    @JoinColumn(name = "question_id", referencedColumnName = "question_id")
-    @ManyToOne(optional = false)
-    private Question questionId;
+	 private static final long serialVersionUID = 1L;
+	    @Id
+	    @Basic(optional = false)
+	    @Column(name = "question_ans_id")
+	    private Long questionAnsId;
+	    @Basic(optional = false)
+	    @Column(name = "answer_body")
+	    private String answerBody;
+	    @Basic(optional = false)
+	    @Column(name = "marks")
+	    private double marks;
+	    @JoinColumn(name = "quiz_registration_id", referencedColumnName = "quiz_registration_id")
+	    @ManyToOne(optional = false)
+	    private QuizRegistration quizRegistrationId;
+	    @JoinColumn(name = "question_id", referencedColumnName = "question_id")
+	    @ManyToOne(optional = false)
+	    private Question questionId;
 
-    public QuestionAnswer() {
-    }
+	    public QuestionAnswer() {
+	    }
 
-    public QuestionAnswer(Long questionAnswersIndexId) {
-        this.questionAnswersIndexId = questionAnswersIndexId;
-    }
+	    public QuestionAnswer(Long questionAnsId) {
+	        this.questionAnsId = questionAnsId;
+	    }
 
-    public QuestionAnswer(Long questionAnswersIndexId, int questionOptionId, String answerText, double marks) {
-        this.questionAnswersIndexId = questionAnswersIndexId;
-        this.questionOptionId = questionOptionId;
-        this.answerText = answerText;
-        this.marks = marks;
-    }
+	    public QuestionAnswer(Long questionAnsId, String answerBody, double marks) {
+	        this.questionAnsId = questionAnsId;
+	        this.answerBody = answerBody;
+	        this.marks = marks;
+	    }
 
-    public Long getQuestionAnswersIndexId() {
-        return questionAnswersIndexId;
-    }
+	    public Long getQuestionAnsId() {
+	        return questionAnsId;
+	    }
 
-    public void setQuestionAnswersIndexId(Long questionAnswersIndexId) {
-        this.questionAnswersIndexId = questionAnswersIndexId;
-    }
+	    public void setQuestionAnsId(Long questionAnsId) {
+	        this.questionAnsId = questionAnsId;
+	    }
 
-    public int getQuestionOptionId() {
-        return questionOptionId;
-    }
+	    public String getAnswerBody() {
+	        return answerBody;
+	    }
 
-    public void setQuestionOptionId(int questionOptionId) {
-        this.questionOptionId = questionOptionId;
-    }
+	    public void setAnswerBody(String answerBody) {
+	        this.answerBody = answerBody;
+	    }
 
-    public String getAnswerText() {
-        return answerText;
-    }
+	    public double getMarks() {
+	        return marks;
+	    }
 
-    public void setAnswerText(String answerText) {
-        this.answerText = answerText;
-    }
+	    public void setMarks(double marks) {
+	        this.marks = marks;
+	    }
 
-    public double getMarks() {
-        return marks;
-    }
+	    public QuizRegistration getQuizRegistrationId() {
+	        return quizRegistrationId;
+	    }
 
-    public void setMarks(double marks) {
-        this.marks = marks;
-    }
+	    public void setQuizRegistrationId(QuizRegistration quizRegistrationId) {
+	        this.quizRegistrationId = quizRegistrationId;
+	    }
 
-    public QuizRegistration getQuizRegistrationId() {
-        return quizRegistrationId;
-    }
+	    public Question getQuestionId() {
+	        return questionId;
+	    }
 
-    public void setQuizRegistrationId(QuizRegistration quizRegistrationId) {
-        this.quizRegistrationId = quizRegistrationId;
-    }
+	    public void setQuestionId(Question questionId) {
+	        this.questionId = questionId;
+	    }
 
-    public Question getQuestionId() {
-        return questionId;
-    }
+	    @Override
+	    public int hashCode() {
+	        int hash = 0;
+	        hash += (questionAnsId != null ? questionAnsId.hashCode() : 0);
+	        return hash;
+	    }
 
-    public void setQuestionId(Question questionId) {
-        this.questionId = questionId;
-    }
+	    @Override
+	    public boolean equals(Object object) {
+	        // TODO: Warning - this method won't work in the case the id fields are not set
+	        if (!(object instanceof QuestionAnswer)) {
+	            return false;
+	        }
+	        QuestionAnswer other = (QuestionAnswer) object;
+	        if ((this.questionAnsId == null && other.questionAnsId != null) || (this.questionAnsId != null && !this.questionAnsId.equals(other.questionAnsId))) {
+	            return false;
+	        }
+	        return true;
+	    }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (questionAnswersIndexId != null ? questionAnswersIndexId.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof QuestionAnswer)) {
-            return false;
-        }
-        QuestionAnswer other = (QuestionAnswer) object;
-        if ((this.questionAnswersIndexId == null && other.questionAnswersIndexId != null) || (this.questionAnswersIndexId != null && !this.questionAnswersIndexId.equals(other.questionAnswersIndexId))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.QuestionAnswer[ questionAnswersIndexId=" + questionAnswersIndexId + " ]";
-    }
+	    @Override
+	    public String toString() {
+	        return "com.great.cms.entity.QuestionAnswer[ questionAnsId=" + questionAnsId + " ]";
+	    }
     
 }
