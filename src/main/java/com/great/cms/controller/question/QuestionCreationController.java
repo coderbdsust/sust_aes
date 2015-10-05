@@ -51,7 +51,6 @@ public class QuestionCreationController {
 		// e.printStackTrace();
 		// return null;
 		// }
-
 		return question;
 	}
 }
