@@ -46,16 +46,6 @@
 		<finalName>sustaes</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-				</configuration>
-			</plugin>
-
-
-			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<webResources>
@@ -64,6 +54,15 @@
 							<targetPath>/WEB-INF/src</targetPath>
 						</resource>
 					</webResources>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -178,6 +177,19 @@
 		<!-- <artifactId>javax.faces</artifactId> -->
 		<!-- <scope>compile</scope> -->
 		<!-- </dependency> -->
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
