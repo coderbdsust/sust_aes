@@ -11,7 +11,6 @@
     <class>com.great.cms.entity.UserRole</class>
     <class>com.great.cms.entity.Student</class>
     <class>com.great.cms.entity.QuizQuestion</class>
-    <class>com.great.cms.entity.QuestionDescription</class>
     <class>com.great.cms.entity.Question</class>
     <class>com.great.cms.entity.User</class>
     <class>com.great.cms.entity.Exam</class>

@@ -38,15 +38,16 @@ public class QuestionController {
 	}
 
 	@RequestMapping(value = "/create/mcq", method = RequestMethod.GET)
-	public String showCreateMCQQuestion() {
+	public String showCreateMCQPage() {
 		System.out.println("GET: /question/create/mcq");
 		return "question/create_mcq_question";
 	}
 
 	@RequestMapping(value = "/create/mcq", method = RequestMethod.POST)
-	public String showCreateMCQQuestion(Principal principal, Question question) {
+	public String saveMCQ(Principal principal, Question question) {
 		System.out.println("POST: /question/create/mcq");
 		System.out.println(principal.getName());
+		System.out.print(question);
 
 		return "redirect:/question/create/mcq";
 	}
@@ -58,11 +59,27 @@ public class QuestionController {
 		return "question/create_fig_question";
 	}
 
+	@RequestMapping(value = "/create/fig", method = RequestMethod.POST)
+	public String saveCreateFigQuestion(Principal principal, Question question) {
+		System.out.println("POST: /question/create/fig");
+		System.out.println(question);
+		
+		return "redirect:/question/create/fig";
+	}
+
 	@RequestMapping(value = "/create/desc", method = RequestMethod.GET)
 	public String showCreateDescQuestion() {
 		System.out.println("GET: /question/create/desc");
 
 		return "question/create_desc_question";
+	}
+
+	@RequestMapping(value = "/create/desc", method = RequestMethod.POST)
+	public String saveDescQuestion(Principal principal, Question question) {
+		System.out.println("POST: /question/create/desc");
+		System.out.println(question);
+
+		return "redirect: /question/create/desc";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
