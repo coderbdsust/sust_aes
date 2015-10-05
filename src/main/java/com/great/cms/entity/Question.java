@@ -14,6 +14,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,6 +30,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+
+import com.great.cms.enums.QuestionType;
 
 /**
  *
@@ -76,9 +80,11 @@ public class Question implements DomainObject, Serializable {
 	@Column(name = "last_updated")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdated = new Date();
-	@JoinColumn(name = "question_type_id", referencedColumnName = "question_type_id")
-	@ManyToOne(optional = false)
-	private QuestionType questionTypeId;
+
+	@Column(name = "question_type")
+	@Enumerated(EnumType.STRING)
+	private QuestionType questionType;
+
 	@JoinColumn(name = "course_id", referencedColumnName = "course_id")
 	@ManyToOne(optional = false)
 	private Course courseId;
@@ -171,12 +177,12 @@ public class Question implements DomainObject, Serializable {
 		this.lastUpdated = lastUpdated;
 	}
 
-	public QuestionType getQuestionTypeId() {
-		return questionTypeId;
+	public QuestionType getQuestionType() {
+		return questionType;
 	}
 
-	public void setQuestionTypeId(QuestionType questionTypeId) {
-		this.questionTypeId = questionTypeId;
+	public void setQuestionType(QuestionType questionType) {
+		this.questionType = questionType;
 	}
 
 	public Course getCourseId() {
@@ -212,8 +218,6 @@ public class Question implements DomainObject, Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
 		if (!(object instanceof Question)) {
 			return false;
 		}
@@ -233,7 +237,7 @@ public class Question implements DomainObject, Serializable {
 				+ ", difficultyLevel=" + difficultyLevel + ", requiredTime="
 				+ requiredTime + ", questionMarks=" + questionMarks
 				+ ", createdTime=" + createdTime + ", lastUpdated="
-				+ lastUpdated + ", questionTypeId=" + questionTypeId
+				+ lastUpdated + ", questionType=" + questionType
 				+ ", courseId=" + courseId + "]";
 	}
 

@@ -79,6 +79,9 @@
 		<security:intercept-url pattern="/question/**"
 			access="hasAnyRole('ROLE_TEACHER')" />
 
+		<security:intercept-url pattern="/quiz/**"
+			access="hasAnyRole('ROLE_TEACHER')" />
+
 
 
 	</security:http>

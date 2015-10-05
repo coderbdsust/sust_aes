@@ -1,5 +1,5 @@
 function submitMCQ() {
-	var url = '/sustaes/question/create/mcq';
+	var url = '/sustaes/question/create';
 	var options = [];
 	for (var i = 1; i <= 5; i++) {
 		var opt = {};
@@ -13,8 +13,7 @@ function submitMCQ() {
 	question['questionMarks'] = document.getElementById('mcq-marks').value;
 	question['requiredTime'] = document.getElementById('mcq-time').value;
 	question['courseId.courseId'] = 1;
-	question['questionTypeId.questionTypeId'] = 1;
-	question['questionTypeId.questionTypeName'] = "mcq";
+	question['questionType'] = "MCQ";
 	question['questionBody'] = JSON.stringify(options);
 
 	$.ajax({

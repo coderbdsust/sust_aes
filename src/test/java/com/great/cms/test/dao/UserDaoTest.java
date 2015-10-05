@@ -1,6 +1,6 @@
 package com.great.cms.test.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -12,9 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.great.cms.dao.UserDao;
-import com.great.cms.dao.UserRoleDao;
 import com.great.cms.entity.User;
-import com.great.cms.enums.Role;
 
 @ContextConfiguration("file:src/main/webapp/WEB-INF/sustaes-servlet.xml")
 @RunWith(SpringJUnit4ClassRunner.class)

@@ -1,8 +1,8 @@
 function submitDESC() {
-	var url = '/sustaes/question/create/desc';
+	var url = '/sustaes/question/create';
 
-	var options=[];
-	var opt={};
+	var options = [];
+	var opt = {};
 	opt["answer"] = document.getElementById('desc-answer-text').value;
 	options.push(opt);
 
@@ -11,8 +11,7 @@ function submitDESC() {
 	question['questionMarks'] = document.getElementById('desc-marks').value;
 	question['requiredTime'] = document.getElementById('desc-time').value;
 	question['courseId.courseId'] = 1;
-	question['questionTypeId.questionTypeId'] = 2;
-	question['questionTypeId.questionTypeName'] = "desc";
+	question['questionType'] = "DESCRIPTIVE";
 	question['questionBody'] = JSON.stringify(options);
 
 	$.ajax({
@@ -20,6 +19,7 @@ function submitDESC() {
 		url : url,
 		data : question
 	}).success(function(msg) {
+		console.log("Success:" + msg);
 
 	});
 }

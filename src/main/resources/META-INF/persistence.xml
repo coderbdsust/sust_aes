@@ -8,13 +8,11 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
      <class>com.great.cms.entity.ExamCommittee</class>
     <class>com.great.cms.entity.QuizRegistration</class>
-    <class>com.great.cms.entity.UserRole</class>
     <class>com.great.cms.entity.Student</class>
     <class>com.great.cms.entity.QuizQuestion</class>
     <class>com.great.cms.entity.Question</class>
     <class>com.great.cms.entity.User</class>
     <class>com.great.cms.entity.Exam</class>
-    <class>com.great.cms.entity.QuestionType</class>
     <class>com.great.cms.entity.Quiz</class>
     <class>com.great.cms.entity.CourseRegistration</class>
     <class>com.great.cms.entity.Teaches</class>

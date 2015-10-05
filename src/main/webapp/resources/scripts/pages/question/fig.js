@@ -1,5 +1,5 @@
 function submitFIG() {
-	var url = '/sustaes/question/create/fig';
+	var url = '/sustaes/question/create';
 	var options = [];
 	for (var i = 1; i <= 4; i++) {
 		var opt = {};
@@ -11,8 +11,7 @@ function submitFIG() {
 	question['questionMarks'] = document.getElementById('fig-marks').value;
 	question['requiredTime'] = document.getElementById('fig-time').value;
 	question['courseId.courseId'] = 1;
-	question['questionTypeId.questionTypeId'] = 3;
-	question['questionTypeId.questionTypeName'] = "fig";
+	question['questionType'] = "FILL_IN_THE_GAPS";
 	question['questionBody'] = JSON.stringify(options);
 
 	$.ajax({
@@ -20,6 +19,6 @@ function submitFIG() {
 		url : url,
 		data : question
 	}).success(function(msg) {
-		
+		console.log("Success:" + msg);
 	});
 }
