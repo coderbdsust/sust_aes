@@ -1,4 +1,4 @@
-package com.great.cms.controller;
+package com.great.cms.controller.quiz;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
@@ -19,34 +19,27 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.great.cms.entity.Question;
 
 @Controller
-@RequestMapping("/question")
-public class QuestionCreationController {
+@RequestMapping("/quiz")
+public class QuizQuestionController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				new SimpleDateFormat("dd/MM/yyyy"), true));
 	}
-	
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public String showCreateQuestion() {
-		System.out.println("GET: /question/create/");
-		return "question/create_new_question";
+
+	@RequestMapping(value = "/question/add", method = RequestMethod.GET)
+	public String showAvailableQuestion() {
+		System.out.println("GET: /question/exam/add");
+
+		return "question/p_add_exam_question";
 	}
-	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	@ResponseBody
-	public String saveQuestion(Principal principal, Question question) {
-		System.out.println("POST: /question/create");
-		System.out.println(question);
-		
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			return mapper.writeValueAsString(question);
-		} catch (JsonProcessingException jpe) {
-			return null;
-		}
-		
-//		return question;
+
+	@RequestMapping(value = "/question/add", method = RequestMethod.POST)
+	public String saveExamQuestion() {
+		System.out.println("POST: /question/exam/add");
+
+		return "redirect:/question/exam/add";
 	}
+
 }

@@ -1,4 +1,4 @@
-package com.great.cms.controller;
+package com.great.cms.controller.student;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

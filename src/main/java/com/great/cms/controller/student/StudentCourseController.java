@@ -1,4 +1,4 @@
-package com.great.cms.controller;
+package com.great.cms.controller.student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;

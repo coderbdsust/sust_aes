@@ -1,4 +1,4 @@
-package com.great.cms.controller;
+package com.great.cms.controller.quiz;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
