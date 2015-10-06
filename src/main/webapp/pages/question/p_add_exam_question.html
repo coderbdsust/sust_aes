@@ -56,18 +56,39 @@
 									class="caption-subject font-red-sunglo bold uppercase">Assign
 									Question To Exam</span>
 							</div>
-<!-- 							<div class="tools"> -->
-<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
-<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
-<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
-<!-- 							</div> -->
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
 							<form th:action="@{/question/add}" method="POST"
 								class="form-horizontal">
 								<div class="form-body">
-									<h3 class="form-section">Questions</h3>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<h4 class="control-label col-md-3">
+													<strong>Quiz Title:</strong>
+												</h4>
+												<div class="col-md-9">
+													<p class="form-control-static"><strong>Database
+														Lab Quiz 2</strong></p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<h4 class="control-label col-md-3">
+													<strong>Course:</strong>
+												</h4>
+												<div class="col-md-9">
+													<p class="form-control-static"><strong>[CSE333]
+														Database</strong></p>
+													<input id="courseId" type="hidden" />
+												</div>
+											</div>
+										</div>
+									</div>
+
 									<!--/row-->
 									<div class="row">
 

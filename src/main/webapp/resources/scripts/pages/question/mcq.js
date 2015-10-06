@@ -15,7 +15,7 @@ function submitMCQ() {
 	question['courseId.courseId'] = 1;
 	question['questionType'] = "MCQ";
 	question['questionBody'] = JSON.stringify(options);
-	console.log('Sending: ' + question['questionBody']);
+	//console.log('Sending: ' + question['questionBody']);
 	$.ajax({
 		method : "POST",
 		url : url,
