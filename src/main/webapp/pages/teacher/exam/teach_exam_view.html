@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Teacher :: Quiz</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane" id="tab_3">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<h2>
+									<span class="caption-subject font-red-haze bold uppercase">Database
+										Quiz Exam 1</span>
+								</h2>
+							</div>
+
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form class="form-horizontal" role="form"
+								th:action="@{/student/exam/view}">
+								<div class="form-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Quiz
+														Title</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">Database Quiz Lab 1</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Course</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">CSE333 - Database</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<!--/row-->
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Start
+														Time</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">20.01.1984</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>End
+														Time</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">20.01.1984</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<!--/row-->
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Total
+														Questions</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">25</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Total
+														Time</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">2hrs</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Marks</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">50</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Description</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static">1.Quiz is not for all
+													</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+
+
+
+									<!--/row-->
+
+								</div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-5 col-md-4">
+											<a class="btn green" href=""> Edit </a> <a class="btn green"
+												href=""> Add Question </a>
+										</div>
+
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
+

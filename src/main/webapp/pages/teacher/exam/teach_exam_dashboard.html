@@ -18,11 +18,6 @@
 									class="caption-subject font-red-sunglo bold uppercase">Teacher
 									Exam Dashboard</span>
 							</div>
-							<div class="tools">
-								<a href="" class="collapse"> </a> <a href="#portlet-config"
-									data-toggle="modal" class="config"> </a> <a href=""
-									class="reload"> </a> <a href="" class="remove"> </a>
-							</div>
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -34,13 +29,15 @@
 									<div class="portlet light">
 										<div class="portlet-body">
 											<div class="tabbable-line">
-<!-- 												<ul class="nav nav-tabs"> -->
-<!-- 													<li class="active"><a href="#overview_1" -->
-<!-- 														data-toggle="tab"> <strong>Available Exams</strong></a></li> -->
-<!-- 													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed -->
-<!-- 																Exams</strong></a></li> -->
-<!-- 												</ul> -->
-												<h4><strong>Available Exams</strong></h4>
+												<!-- 												<ul class="nav nav-tabs"> -->
+												<!-- 													<li class="active"><a href="#overview_1" -->
+												<!-- 														data-toggle="tab"> <strong>Available Exams</strong></a></li> -->
+												<!-- 													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed -->
+												<!-- 																Exams</strong></a></li> -->
+												<!-- 												</ul> -->
+												<h4>
+													<strong>Available Exams</strong>
+												</h4>
 												<div class="tab-content">
 													<div class="tab-pane active" id="overview_1">
 														<div class="table-responsive">
@@ -50,94 +47,93 @@
 																	<tr>
 																		<th>Exam Title</th>
 																		<th>Course Code</th>
-																		<th>Date Time</th>
+																		<th>Start Time</th>
 																		<th>End Time</th>
 																		<th>Status</th>
-																		<th>Edit</th>
-																		<th>Review</th>
+																		<th>View</th>
+
 																	</tr>
 																</thead>
 																<tbody>
-																	<tr>
-																		<td>Database Quiz Exam 4</td>
-																		<td>CSE333</td>
-																		<td>12-Sat-15</td>
-																		<td>15-Sat-15</td>
-																		<td>Not Started</td>
-																		
-																		<td><a href=""
-																			class="btn default btn-xs green-stripe"> Edit </a></td>
-																		<td><a href="javascript:;"
-																			class="btn default btn-xs green-stripe"> Review </a></td>
-																	</tr>
-																	<tr>
-																		<td>Database Quiz Exam 3</td>
-																		<td>CSE333</td>
-																		<td>5-Sat-15</td>
-																		<td>10 Sat-15</td>
-																		<td>Running</td>
-																		<td><a href="javascript:;"
-																			class="btn default btn-xs green-stripe"> Edit </a></td>
-																		<td><a href="javascript:;"
-																			class="btn default btn-xs green-stripe"> Review </a></td>
-																	</tr>
-																	<tr>
-																		<td>Database Quiz Exam 3</td>
-																		<td>CSE333</td>
-																		<td>5-Sat-15</td>
-																		<td>10 Sat-15</td>
+<!-- 																	<tr> -->
+<!-- 																		<td>Database Quiz Exam 4</td> -->
+<!-- 																		<td>CSE333</td> -->
+<!-- 																		<td>12-Sat-15</td> -->
+<!-- 																		<td>15-Sat-15</td> -->
+<!-- 																		<td>Not Started</td> -->
+
+<!-- 																		<td><a th:href="@{/quiz/view/1}" -->
+<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
+
+<!-- 																	</tr> -->
+<!-- 																	<tr> -->
+<!-- 																		<td>Database Quiz Exam 3</td> -->
+<!-- 																		<td>CSE333</td> -->
+<!-- 																		<td>5-Sat-15</td> -->
+<!-- 																		<td>10 Sat-15</td> -->
+<!-- 																		<td>Running</td> -->
+<!-- 																		<td><a th:href="@{/quiz/view/1}" -->
+<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
+
+<!-- 																	</tr> -->
+																	
+																	<tr th:each="quiz: ${quizList}">
+																		<td th:text="${quiz.quizTitle}">Database Quiz Exam 3</td>
+																		<td th:text="${quiz.teachesId.courseId.courseCode}">CSE333</td>
+																		<td th:text="${quiz.startTime}">5-Sat-15</td>
+																		<td th:text="${quiz.endTime}">10 Sat-15</td>
 																		<td>Finished</td>
-																		<td><a href="javascript:;"
-																			class="btn default btn-xs green-stripe"> Edit </a></td>
-																		<td><a href="javascript:;"
-																			class="btn default btn-xs green-stripe"> Review </a></td>
+																		<td><a th:href="@{'/quiz/view/'+${quiz.quizId}}"
+																			class="btn default btn-xs green-stripe"> View </a></td>
+
 																	</tr>
+																	
 																</tbody>
 															</table>
 														</div>
 													</div>
-													
-<!-- 													<div class="tab-pane" id="overview_2"> -->
-<!-- 														<div class="table-responsive"> -->
-<!-- 															<table -->
-<!-- 																class="table table-striped table-hover table-bordered"> -->
-<!-- 																<thead> -->
-<!-- 																	<tr> -->
-<!-- 																		<th>Exam Title</th> -->
-<!-- 																		<th>Course Code</th> -->
-<!-- 																		<th>Marks</th> -->
-<!-- 																		<th>Status</th> -->
-<!-- 																		<th></th> -->
-<!-- 																		<th></th> -->
-<!-- 																	</tr> -->
-<!-- 																</thead> -->
-<!-- 																<tbody> -->
-<!-- 																	<tr> -->
-<!-- 																		<td>Database Quiz Exam 2</td> -->
-<!-- 																		<td>CSE333</td> -->
-<!-- 																		<td>15/20</td> -->
-<!-- 																		<td>Passed</td> -->
-<!-- 																		<td><a href="javascript:;" -->
-<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
-<!-- 																		<td><a href="javascript:;" -->
-<!-- 																			class="btn default btn-xs green-stripe"> Edit </a></td> -->
 
-<!-- 																	</tr> -->
-<!-- 																	<tr> -->
-<!-- 																		<td>Database Quiz Exam 1</td> -->
-<!-- 																		<td>CSE333</td> -->
-<!-- 																		<td>5/20</td> -->
-<!-- 																		<td>Failed</td> -->
-<!-- 																		<td><a href="javascript:;" -->
-<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
-<!-- 																		<td><a href="javascript:;" -->
-<!-- 																			class="btn default btn-xs green-stripe"> Edit </a></td> -->
-<!-- 																	</tr> -->
+													<!-- 													<div class="tab-pane" id="overview_2"> -->
+													<!-- 														<div class="table-responsive"> -->
+													<!-- 															<table -->
+													<!-- 																class="table table-striped table-hover table-bordered"> -->
+													<!-- 																<thead> -->
+													<!-- 																	<tr> -->
+													<!-- 																		<th>Exam Title</th> -->
+													<!-- 																		<th>Course Code</th> -->
+													<!-- 																		<th>Marks</th> -->
+													<!-- 																		<th>Status</th> -->
+													<!-- 																		<th></th> -->
+													<!-- 																		<th></th> -->
+													<!-- 																	</tr> -->
+													<!-- 																</thead> -->
+													<!-- 																<tbody> -->
+													<!-- 																	<tr> -->
+													<!-- 																		<td>Database Quiz Exam 2</td> -->
+													<!-- 																		<td>CSE333</td> -->
+													<!-- 																		<td>15/20</td> -->
+													<!-- 																		<td>Passed</td> -->
+													<!-- 																		<td><a href="javascript:;" -->
+													<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
+													<!-- 																		<td><a href="javascript:;" -->
+													<!-- 																			class="btn default btn-xs green-stripe"> Edit </a></td> -->
 
-<!-- 																</tbody> -->
-<!-- 															</table> -->
-<!-- 														</div> -->
-<!-- 													</div> -->
+													<!-- 																	</tr> -->
+													<!-- 																	<tr> -->
+													<!-- 																		<td>Database Quiz Exam 1</td> -->
+													<!-- 																		<td>CSE333</td> -->
+													<!-- 																		<td>5/20</td> -->
+													<!-- 																		<td>Failed</td> -->
+													<!-- 																		<td><a href="javascript:;" -->
+													<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
+													<!-- 																		<td><a href="javascript:;" -->
+													<!-- 																			class="btn default btn-xs green-stripe"> Edit </a></td> -->
+													<!-- 																	</tr> -->
+
+													<!-- 																</tbody> -->
+													<!-- 															</table> -->
+													<!-- 														</div> -->
+													<!-- 													</div> -->
 												</div>
 											</div>
 										</div>

@@ -67,12 +67,22 @@ public class QuizController {
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String editQuiz(@PathVariable Long id, RedirectAttributes redirectAttr) {
-		System.out.println("GET: quiz/edit/{id}"+id);
+	public String editQuiz(@PathVariable Long id,
+			RedirectAttributes redirectAttr) {
+		System.out.println("GET: quiz/edit/{id}" + id);
 		Quiz savedQuiz = quizService.getQuiz(id);
 		System.out.println(savedQuiz);
 		redirectAttr.addFlashAttribute("id", savedQuiz.getQuizId());
 		return "redirect:/quiz/question/add";
 	}
-	
+
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
+	public String viewQuiz(@PathVariable Long id, Model uiModel) {
+		System.out.println("GET: quiz/edit/{id}" + id);
+		Quiz savedQuiz = quizService.getQuiz(id);
+		System.out.println(savedQuiz);
+		uiModel.addAttribute("quiz", savedQuiz);
+		return "teacher/exam/teach_exam_view";
+	}
+
 }
