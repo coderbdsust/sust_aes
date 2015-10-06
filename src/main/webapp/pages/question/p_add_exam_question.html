@@ -66,11 +66,12 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<h4 class="control-label col-md-3">
-													<strong>Quiz Title:</strong>
+													<strong>QUIZ TITLE:</strong>
 												</h4>
 												<div class="col-md-9">
-													<p class="form-control-static"><strong>Database
-														Lab Quiz 2</strong></p>
+													<h4 class="form-control-static">
+														<strong th:text="${quiz?.quizTitle}"></strong>
+													</h4>
 												</div>
 											</div>
 										</div>
@@ -78,12 +79,16 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<h4 class="control-label col-md-3">
-													<strong>Course:</strong>
+													<strong>COURSE:</strong>
 												</h4>
 												<div class="col-md-9">
-													<p class="form-control-static"><strong>[CSE333]
-														Database</strong></p>
-													<input id="courseId" type="hidden" />
+													<h4 class="form-control-static">
+														<strong
+															th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle}">[CSE333]
+															Database</strong>
+													</h4>
+													<input id="courseId" type="hidden"
+														th:value="${quiz?.teachesId?.courseId?.courseId}" />
 												</div>
 											</div>
 										</div>

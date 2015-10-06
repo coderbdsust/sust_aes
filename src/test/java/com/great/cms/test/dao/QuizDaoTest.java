@@ -23,13 +23,13 @@ import static org.junit.Assert.*;
 public class QuizDaoTest {
 
 	@Autowired
-	QuizDao testDao;
+	QuizDao quizDao;
 
 	@Test
 	public void runTest() {
 
 		Quiz quiz = new Quiz();
-		quiz.setQuizId(1L);
+
 		quiz.setQuizTitle("Database Quize 1");
 		quiz.setCreateDate(new Date());
 		quiz.setUpdateDate(new Date());
@@ -40,12 +40,14 @@ public class QuizDaoTest {
 		teaches.setTeachesId(1);
 		quiz.setTeachesId(teaches);
 		quiz.setDescription("Final Database Quize");
+		
+		quizDao.save(quiz);
 		System.out.println(quiz);
-		testDao.save(quiz);
+		Quiz q = quizDao.findByCreateDateAndTeachesId(quiz.getCreateDate(),
+				teaches);
 
-		List<Quiz> tests = testDao.findAll();
-		System.out.println(tests.get(0));
-		assertEquals(1, tests.size());
+		assertNotNull(q);
+		System.out.println(q.getQuizId());
 
 	}
 

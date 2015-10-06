@@ -1,5 +1,6 @@
 package com.great.cms.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class QuizServiceImpl implements QuizService {
 	@Autowired
 	private QuizDao quizDao;
 
-	public void saveOrUpdateTest(Quiz quiz) {
+	public void saveOrUpdate(Quiz quiz) {
 		if (quiz.getQuizId() == null) {
 			quizDao.save(quiz);
 		} else {
@@ -24,8 +25,19 @@ public class QuizServiceImpl implements QuizService {
 		}
 	}
 
+	public Quiz getQuiz(Long quizId) {
+		return quizDao.findById(quizId);
+
+	}
+
 	public List<Quiz> getQuizes(Teaches teachesId) {
 		return quizDao.findByTeachesId(teachesId);
 
+	}
+
+	@Override
+	public Quiz getQuizesByCreateDateAndTeachesId(Date createDate,
+			Teaches teachesId) {
+		return quizDao.findByCreateDateAndTeachesId(createDate, teachesId);
 	}
 }
