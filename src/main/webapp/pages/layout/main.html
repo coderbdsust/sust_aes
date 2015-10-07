@@ -200,9 +200,9 @@
 				</li>
 				
 				<li>
-					<a sec:authorize="hasRole('ROLE_STUDENT')" th:href="@{/student/exam/dashboard}">
+					<a sec:authorize="hasRole('ROLE_STUDENT')" th:href="@{/student/quiz/dashboard}">
 						<i class="icon-graduation"></i>
-						<span class="title">Exam Dashboard</span>
+						<span class="title">Quiz Dashboard</span>
 <!-- 						<span class="arrow "></span> -->
 					</a>
 					
@@ -210,23 +210,18 @@
 					
 					<a sec:authorize="hasAnyRole('ROLE_TEACHER','ROLE_ADMIN')">
 						<i class="icon-graduation"></i>
-						<span class="title">Exam</span>
+						<span class="title">Quiz</span>
 						<span class="arrow "></span>
 						<ul class="sub-menu">
 						<li>
-							<a th:href="@{/teacher/exam/dashboard}">
+							<a th:href="@{/teacher/quiz/dashboard}">
 							Dashboard</a>
 						</li>
 						
 						<li>
 							<a th:href="@{/quiz/create}">
-							Create New Exam</a>
-						</li>
-						
-						<li>
-							<a th:href="@{/quiz/question/add}">
-							Add Exam Question</a>
-						</li>				
+							Create New Quiz</a>
+						</li>			
 					</ul>
 					</a> 
 					

@@ -17,8 +17,8 @@ import com.great.cms.service.QuizService;
 import com.great.cms.service.TeachesService;
 
 @Controller
-@RequestMapping("/teacher/exam")
-public class TeacherExamController {
+@RequestMapping("/teacher/quiz")
+public class TeacherQuizController {
 
 	@Autowired
 	TeachesService teachesService;
@@ -26,13 +26,13 @@ public class TeacherExamController {
 	QuizService quizService;
 
 	@RequestMapping("/question/create")
-	public String showExamQuestions(Model model) {
-		System.out.println("/exam/question");
-		return "teacher/exam/exam_question";
+	public String showQuizQuestions(Model model) {
+		System.out.println("teacher/quiz/question/create");
+		return "teacher/quiz/quiz_question";
 	}
 
 	@RequestMapping("/dashboard")
-	public String showStdExamDashboard(Principal principal, Model uiModel) {
+	public String showStdQuizDashboard(Principal principal, Model uiModel) {
 		System.out.println("/exam/question");
 		Teacher teacher = UserUtil.getInstance()
 				.getTeacher(principal.getName());
@@ -46,6 +46,6 @@ public class TeacherExamController {
 		}
 		System.out.println("Total Quiz: " + quizList.size());
 		uiModel.addAttribute("quizList", quizList);
-		return "teacher/exam/teach_exam_dashboard";
+		return "teacher/quiz/teach_quiz_dashboard";
 	}
 }

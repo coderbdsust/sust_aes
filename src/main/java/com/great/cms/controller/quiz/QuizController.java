@@ -82,7 +82,7 @@ public class QuizController {
 		Quiz savedQuiz = quizService.getQuiz(id);
 		System.out.println(savedQuiz);
 		uiModel.addAttribute("quiz", savedQuiz);
-		return "teacher/exam/teach_exam_view";
+		return "teacher/quiz/teach_quiz_view";
 	}
 
 }

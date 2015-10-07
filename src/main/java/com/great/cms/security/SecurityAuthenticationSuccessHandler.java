@@ -44,7 +44,7 @@ public class SecurityAuthenticationSuccessHandler implements
 		} else if (roles.contains(Role.ROLE_STUDENT.name())) {
 			log.debug("role student found, redirecting...");
 			System.out.println("ROLE: STUDENT FOUND, REDIRECTING...");
-			response.sendRedirect("student/exam/dashboard");
+			response.sendRedirect("student/quiz/dashboard");
 		}
 	}
 }

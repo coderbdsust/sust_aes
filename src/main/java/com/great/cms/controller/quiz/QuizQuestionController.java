@@ -36,18 +36,18 @@ public class QuizQuestionController {
 
 	@RequestMapping(value = "/question/add/{id}", method = RequestMethod.GET)
 	public String showAvailableQuestion(@PathVariable Long id, Model model) {
-		System.out.println("GET: /question/exam/add");
+		System.out.println("GET: /question/quiz/add/"+id);
 		Quiz quiz = quizService.getQuiz(id);
 		System.out.println(quiz);
 		model.addAttribute("quiz", quiz);
-		return "question/p_add_exam_question";
+		return "question/p_add_quiz_question";
 	}
 
 	@RequestMapping(value = "/question/add", method = RequestMethod.POST)
 	public String saveExamQuestion() {
 		System.out.println("POST: /question/exam/add");
 
-		return "redirect:/question/exam/add";
+		return "redirect:/question/quiz/add";
 	}
 
 }
