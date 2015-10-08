@@ -9,6 +9,7 @@ import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -18,10 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.entity.Question;
+import com.great.cms.service.QuestionService;
 
 @Controller
 @RequestMapping("/question")
 public class QuestionCreationController {
+
+	@Autowired
+	QuestionService questionService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -40,17 +45,11 @@ public class QuestionCreationController {
 	public Question saveQuestion(Principal principal, Question question) {
 		System.out.println("POST: /question/create");
 		System.out.println(question);
-
-		// try {
-		// ObjectMapper mapper = new ObjectMapper();
-		// return mapper.writeValueAsString(question);
-		// } catch (JsonProcessingException jpe) {
-		// return null;
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// return null;
-		// }
+//		questionService.saveOrUpdate(question);
+//		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
+//				question.getCreatedTime(), question.getCourseId());
+		
+//		return savedQuestion;
 		return question;
 	}
 }

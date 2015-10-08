@@ -45,25 +45,25 @@ public class QuizController {
 	public String createNewQuiz(Principal principal, Model uiModel) {
 
 		System.out.println("GET: quiz/create");
-
 		Teacher teacher = UserUtil.getInstance()
 				.getTeacher(principal.getName());
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		uiModel.addAttribute("quiz", new Quiz());
 		uiModel.addAttribute("teachesList", teachesList);
-
 		return "quiz/create";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public String saveNewQuiz(Quiz quiz, Model model,
-			RedirectAttributes redirectAttr) {
+	public String saveNewQuiz(Quiz quiz, RedirectAttributes redirectAttr) {
 		System.out.println("POST: quiz/create");
+		System.out.println(quiz);
 		quizService.saveOrUpdate(quiz);
 		Quiz savedQuiz = quizService.getQuizesByCreateDateAndTeachesId(
 				quiz.getCreateDate(), quiz.getTeachesId());
-		redirectAttr.addFlashAttribute("quiz", savedQuiz);
-		return "redirect:/quiz/question/add";
+		redirectAttr.addAttribute("id", savedQuiz.getQuizId());
+		System.out.println("Quiz Saved Id: " + savedQuiz.getQuizId());
+		System.out.println("Redirectig to quiz/question/add/"+savedQuiz.getQuizId());
+		return "redirect:/quiz/question/add/{id}";
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
@@ -72,8 +72,8 @@ public class QuizController {
 		System.out.println("GET: quiz/edit/{id}" + id);
 		Quiz savedQuiz = quizService.getQuiz(id);
 		System.out.println(savedQuiz);
-		redirectAttr.addFlashAttribute("id", savedQuiz.getQuizId());
-		return "redirect:/quiz/question/add";
+		redirectAttr.addAttribute("id", savedQuiz.getQuizId());
+		return "redirect:/quiz/question/add/{id}";
 	}
 
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
