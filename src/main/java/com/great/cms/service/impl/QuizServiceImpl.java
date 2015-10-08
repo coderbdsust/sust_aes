@@ -40,4 +40,11 @@ public class QuizServiceImpl implements QuizService {
 			Teaches teachesId) {
 		return quizDao.findByCreateDateAndTeachesId(createDate, teachesId);
 	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		quizDao.deleteById(id);
+
+	}
 }

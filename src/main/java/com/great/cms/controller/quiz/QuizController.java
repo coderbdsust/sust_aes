@@ -75,6 +75,14 @@ public class QuizController {
 		redirectAttr.addAttribute("id", savedQuiz.getQuizId());
 		return "redirect:/quiz/question/add/{id}";
 	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String deleteQuiz(@PathVariable Long id,
+			RedirectAttributes redirectAttr) {
+		System.out.println("GET: quiz/delete/{id}" + id);
+		quizService.delete(id);
+		return "redirect:/teacher/quiz/dashboard";
+	}
 
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String viewQuiz(@PathVariable Long id, Model uiModel) {

@@ -52,7 +52,7 @@ public class TeacherProfileController {
 
 	@RequestMapping({ "/profile", "/", "" })
 	public String showProfile(Principal principal, Model uiModel) {
-
+	
 		Teacher teacher = getTeacher(principal.getName());
 		if (teacher.getInstructorId() == null) {
 			return "redirect:/teacher/profile/edit";

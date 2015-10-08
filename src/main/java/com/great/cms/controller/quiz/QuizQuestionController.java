@@ -43,11 +43,6 @@ public class QuizQuestionController {
 		return "question/p_add_quiz_question";
 	}
 	
-//	@RequestMapping(value = "/question/add/{id}", method = RequestMethod.POST)
-//	public String saveQuizQuestion() {
-//		System.out.println("POST: /question/exam/add");
-//
-//		return "redirect:/quiz/question/add/{id}";
-//	}
+	
 
 }

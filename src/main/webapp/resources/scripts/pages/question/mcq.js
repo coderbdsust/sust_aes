@@ -27,15 +27,6 @@ function submitMCQ() {
 			function(msg) {
 				console.log("Question [questionId=" + msg['questionId']
 						+ ", questionBody=" + msg['questionBody']);
-				// + ", questionText=" + msg['questionText']
-				// + ", questionBody=" + msg['questionBody']
-				// + ", difficultyLevel=" + msg['difficultyLevel']
-				// + ", requiredTime=" + msg['requiredTime']
-				// + ", questionMarks=" + msg['questionMarks']
-				// + ", createdTime=" + msg['createdTime']
-				// + ", lastUpdated=" + msg['lastUpdated']
-				// + ", questionType=" + msg['questionType']
-				// + ", courseId=" + msg['courseId'] + "]");
 				$('#success-modal').modal('show');
 			}).error(function(msg) {
 		$('#error-modal').modal('show');

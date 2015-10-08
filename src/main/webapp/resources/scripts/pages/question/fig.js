@@ -3,8 +3,8 @@ function submitFIG() {
 	var options = [];
 	for (var i = 0; i < 4; i++) {
 		var opt = {};
-		opt["index"]=i;
-		opt["answer"] = document.getElementById('fig-gaps-'+i+'-text').value;
+		opt["index"] = i;
+		opt["answer"] = document.getElementById('fig-gaps-' + i + '-text').value;
 		options.push(opt);
 	}
 	var question = {};
@@ -19,11 +19,14 @@ function submitFIG() {
 		method : "POST",
 		url : url,
 		data : question
-	}).success(function(msg) {
-		console.log("Success:" + msg);
-		 $('#success-modal').modal('show'); 
+	}).success(
+			function(msg) {
+				console.log("Success:" + msg);
+				console.log("Question [questionId=" + msg['questionId']
+						+ ", questionBody=" + msg['questionBody']);
+				$('#success-modal').modal('show');
 
-		}).error(function(msg) {
+			}).error(function(msg) {
 		$('#error-modal').modal('show');
 	});
 }

@@ -45,11 +45,10 @@ public class QuestionCreationController {
 	public Question saveQuestion(Principal principal, Question question) {
 		System.out.println("POST: /question/create");
 		System.out.println(question);
-//		questionService.saveOrUpdate(question);
-//		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
-//				question.getCreatedTime(), question.getCourseId());
-		
-//		return savedQuestion;
-		return question;
+		questionService.saveOrUpdate(question);
+		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
+				question.getCreatedTime(), question.getCourseId());
+		return savedQuestion;
+		// return question;
 	}
 }
