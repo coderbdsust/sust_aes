@@ -21,5 +21,9 @@ function submitFIG() {
 		data : question
 	}).success(function(msg) {
 		console.log("Success:" + msg);
+		 $('#success-modal').modal('show'); 
+
+		}).error(function(msg) {
+		$('#error-modal').modal('show');
 	});
 }

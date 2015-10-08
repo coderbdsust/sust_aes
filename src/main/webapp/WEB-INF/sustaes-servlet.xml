@@ -97,7 +97,7 @@
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
 		</property>
 	</bean>
-
+		   
 	<tx:annotation-driven />
 
 	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
@@ -125,6 +125,6 @@
 	  
 	<bean id="UserUtil" class="com.great.cms.security.UserUtil" factory-method="getInstance">
 	</bean>
-
+     
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 </beans>
