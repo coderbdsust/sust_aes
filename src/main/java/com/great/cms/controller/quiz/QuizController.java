@@ -50,7 +50,7 @@ public class QuizController {
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		uiModel.addAttribute("quiz", new Quiz());
 		uiModel.addAttribute("teachesList", teachesList);
-		return "quiz/create";
+		return "teacher/quiz/create";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)

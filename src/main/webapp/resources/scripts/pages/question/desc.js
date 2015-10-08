@@ -10,10 +10,10 @@ function submitDESC() {
 	question['questionText'] = document.getElementById('desc-question-text').value;
 	question['questionMarks'] = document.getElementById('desc-marks').value;
 	question['requiredTime'] = document.getElementById('desc-time').value;
-	question['courseId.courseId'] = 1;
+	question['courseId.courseId'] = document.getElementById('courseId').value;
 	question['questionType'] = "DESCRIPTIVE";
 	question['questionBody'] = JSON.stringify(options);
-
+	console.log(question);
 	$.ajax({
 		method : "POST",
 		url : url,
