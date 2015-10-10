@@ -20,12 +20,13 @@ function submitFIG() {
 		url : url,
 		data : question
 	}).success(
+		
 			function(msg) {
 				console.log("Success:" + msg);
 				console.log("Question [questionId=" + msg['questionId']
 						+ ", questionBody=" + msg['questionBody']);
 				$('#success-modal').modal('show');
-
+				appendQuestion(msg);
 			}).error(function(msg) {
 		$('#error-modal').modal('show');
 	});

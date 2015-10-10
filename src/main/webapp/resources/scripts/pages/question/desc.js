@@ -23,7 +23,9 @@ function submitDESC() {
 				console.log("Question [questionId=" + msg['questionId']
 						+ ", questionBody=" + msg['questionBody']);
 				console.log("Success:" + msg);
+				appendQuestion(msg);
 				$('#success-modal').modal('show');
+				
 			}).error(function(msg) {
 		$('#error-modal').modal('show');
 	});
