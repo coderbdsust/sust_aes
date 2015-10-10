@@ -14,8 +14,6 @@ import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Teacher;
 import com.great.cms.service.CourseRegistrationService;
-import com.great.cms.service.DepartmentService;
-import com.great.cms.service.DesignationService;
 import com.great.cms.service.TeacherService;
 import com.great.cms.service.TeachesService;
 import com.great.cms.service.UserService;

@@ -1,11 +1,8 @@
 package com.great.cms.controller.quiz;
 
-import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -15,9 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.service.QuizService;
 

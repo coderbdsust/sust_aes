@@ -1,14 +1,9 @@
 package com.great.cms.controller.question;
 
-import java.io.IOException;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -45,10 +40,10 @@ public class QuestionCreationController {
 	public Question saveQuestion(Principal principal, Question question) {
 		System.out.println("POST: /question/create");
 		System.out.println(question);
-		questionService.saveOrUpdate(question);
-		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
-				question.getCreatedTime(), question.getCourseId());
-		return savedQuestion;
-		// return question;
+//		questionService.saveOrUpdate(question);
+//		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
+//				question.getCreatedTime(), question.getCourseId());
+//		return savedQuestion;
+		 return question;
 	}
 }

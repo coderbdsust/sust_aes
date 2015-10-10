@@ -15,34 +15,12 @@
 <script th:src="@{/resources/scripts/pages/question/desc.js}"
 	type="text/javascript"></script>
 
-<script type="text/javascript">
-	function addQuestions(id) {
-		//alert('parent1');
-		var oldParent = document.getElementById("bank-quest");
-		var newParent = document.getElementById("add-quest");
-		//alert('parent2');
-		var child = document.getElementById("quest-" + id);
-		$("#add-" + id).hide();
-		$("#remove-" + id).show();
-		//alert('parent3');
-		oldParent.removeChild(child);
-		newParent.appendChild(child);
-		//alert('parent');
-	}
-	function removeQuestions(id) {
-		//alert('parent1');
-		var oldParent = document.getElementById("add-quest");
-		var newParent = document.getElementById("bank-quest");
-		//alert('parent2');
-		var child = document.getElementById("quest-" + id);
-		$("#remove-" + id).hide();
-		$("#add-" + id).show();
-		//alert('parent3');
-		oldParent.removeChild(child);
-		newParent.appendChild(child);
-		//alert('parent');
-	}
-</script>
+
+<script th:src="@{/resources/scripts/pages/question/add-remove.js}"
+	type="text/javascript"></script>
+<script th:src="@{/resources/scripts/pages/question/refresh-question.js}"
+	type="text/javascript"></script>
+
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -147,11 +125,10 @@
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
 															<!-- START TASK LIST -->
-															<ul id="bank-quest" class="task-list">
+															<ul id="question-bank" class="task-list">
 
-																<li id="quest-1">
-																	<!-- 																	<div class="task-checkbox"> --> <!-- 																																			<input type="checkbox" class="liChild" value=""/> -->
-																	<!-- 																		<p>1.</p> --> <!-- 																	</div> -->
+																<li id="question-1">
+
 																	<div class="task-title">
 																		<span class="task-title-sp"> Whats is multiple
 																			questions? </span>
@@ -159,35 +136,34 @@
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
 
-																			<a class="btn btn-xs default" href="javascript:;"
-																				data-toggle="dropdown" data-hover="dropdown"
-																				data-close-others="true"> <i class="fa fa-cog"></i><i
-																				class="fa fa-angle-down"></i>
+																			<a class="btn btn-xs default" data-toggle="dropdown"
+																				data-hover="dropdown" data-close-others="true">
+																				<i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
 																			</a>
 
 																			<ul class="dropdown-menu pull-right">
 																				<li id="add-1"><a id="addButton1"
 																					name="addButton1" type="button"
-																					onclick="addQuestions('1')"> <i
+																					onclick="addQuestions(1)"> <i
 																						class="fa fa-plus"></i> Add
 																				</a></li>
 
 																				<li style="display: none;" id="remove-1"><a
-																					id="removeButton2" name="removeButton2"
-																					type="button" onclick="removeQuestions('1')"> <i
+																					id="removeButton1" name="removeButton1"
+																					type="button" onclick="removeQuestions(1)"> <i
 																						class="fa fa-times"></i> Remove
 																				</a></li>
 
 
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-info"></i> Details
+																				<li><a> <i class="fa fa-info"></i> Details
 																				</a></li>
 
 																			</ul>
 																		</div>
 																	</div>
 																</li>
-																<li id="quest-2">
+
+																<li id="question-2">
 																	<!-- 																	<div class="task-checkbox"> --> <!-- 																																			<input type="checkbox" class="liChild" value=""/> -->
 																	<!-- 																		<p>2.</p> --> <!-- 																	</div> -->
 																	<div class="task-title">
@@ -204,12 +180,12 @@
 																			<ul class="dropdown-menu pull-right">
 																				<li id="add-2"><a id="addButton2"
 																					name="addButton2" type="button"
-																					onclick="addQuestions('2')"> <i
+																					onclick="addQuestions(2)"> <i
 																						class="fa fa-plus"></i> Add
 																				</a></li>
 																				<li style="display: none;" id="remove-2"><a
 																					id="removeButton2" name="removeButton2"
-																					type="button" onclick="removeQuestions('2')"> <i
+																					type="button" onclick="removeQuestions(2)"> <i
 																						class="fa fa-times"></i> Remove
 																				</a></li>
 																				<li><a href="javascript:;"> <i
@@ -662,7 +638,8 @@
 											aria-hidden="true"></button>
 									</div>
 									<div class="note note-success">
-										<h4 class="block">Question saved successfully in question bank!</h4>
+										<h4 class="block">Question saved successfully in question
+											bank!</h4>
 									</div>
 									<div class="modal-footer" aria-hidden="true">
 										<button class="btn default" data-dismiss="modal"

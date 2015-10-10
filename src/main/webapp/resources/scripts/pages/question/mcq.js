@@ -10,6 +10,7 @@ function submitMCQ() {
 		options.push(opt);
 	}
 	var question = {};
+	question['questionId'] = -1;
 	question['questionText'] = document.getElementById('mcq-question-text').value;
 	question['questionMarks'] = document.getElementById('mcq-marks').value;
 	question['requiredTime'] = document.getElementById('mcq-time').value;
@@ -28,7 +29,10 @@ function submitMCQ() {
 				console.log("Question [questionId=" + msg['questionId']
 						+ ", questionBody=" + msg['questionBody']);
 				$('#success-modal').modal('show');
+				appendQuestion(msg);
 			}).error(function(msg) {
 		$('#error-modal').modal('show');
 	});
 }
+
+
