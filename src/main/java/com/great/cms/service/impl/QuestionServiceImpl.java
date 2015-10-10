@@ -40,4 +40,16 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionDao.findByCreatedTimeAndCourseId(createdTime, courseId);
 	}
 
+	@Override
+	public List<Question> findAvailableQuestions(Quiz quiz) {
+		// TODO Auto-generated method stub
+		return questionDao.findAvailableQuestions(quiz);
+	}
+
+	@Override
+	public List<Question> findAssignedQuestions(Quiz quiz) {
+		// TODO Auto-generated method stub
+		return questionDao.findAssignedQuestions(quiz);
+	}
+
 }

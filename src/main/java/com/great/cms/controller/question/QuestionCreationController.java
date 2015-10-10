@@ -24,7 +24,8 @@ public class QuestionCreationController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				new SimpleDateFormat("dd/MM/yyyy"), true));
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -39,23 +40,26 @@ public class QuestionCreationController {
 		System.out.println("POST: /question/create");
 		System.out.println(question);
 		questionService.saveOrUpdate(question);
-		System.out.println("Question Saved");
-		Question savedQuestion = questionService.findByCreationTimeAndCourseId(question.getCreatedTime(),
-				question.getCourseId());
-		System.out.println("Question Retrieved with id: " + savedQuestion.getQuestionId());
+		// System.out.println("Question Saved");
+		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
+				question.getCreatedTime(), question.getCourseId());
+		// System.out.println("Question Retrieved with id: " +
+		// savedQuestion.getQuestionId());
 		return savedQuestion;
 	}
 
-//	@RequestMapping(value = "/create", method = RequestMethod.POST)
-//	public String saveQuestion(Question question, Model uiModel) {
-//		System.out.println("POST: /question/create");
-//		System.out.println(question);
-//		questionService.saveOrUpdate(question);
-//		System.out.println("Question Saved");
-//		Question savedQuestion = questionService.findByCreationTimeAndCourseId(question.getCreatedTime(),
-//				question.getCourseId());
-//		System.out.println("Question Retrieved with id: " + savedQuestion.getQuestionId());
-//		uiModel.addAttribute("question", savedQuestion);
-//		return "jsonTemplate";
-//	}
+	// @RequestMapping(value = "/create", method = RequestMethod.POST)
+	// public String saveQuestion(Question question, Model uiModel) {
+	// System.out.println("POST: /question/create");
+	// System.out.println(question);
+	// questionService.saveOrUpdate(question);
+	// System.out.println("Question Saved");
+	// Question savedQuestion =
+	// questionService.findByCreationTimeAndCourseId(question.getCreatedTime(),
+	// question.getCourseId());
+	// System.out.println("Question Retrieved with id: " +
+	// savedQuestion.getQuestionId());
+	// uiModel.addAttribute("question", savedQuestion);
+	// return "jsonTemplate";
+	// }
 }

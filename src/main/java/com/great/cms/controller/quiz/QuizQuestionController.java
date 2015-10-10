@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
+import com.great.cms.service.QuestionService;
 import com.great.cms.service.QuizService;
 
 @Controller
@@ -26,6 +27,8 @@ public class QuizQuestionController {
 
 	@Autowired
 	QuizService quizService;
+	@Autowired
+	QuestionService questionService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -38,24 +41,29 @@ public class QuizQuestionController {
 		System.out.println("GET: /question/quiz/add/" + id);
 		Quiz quiz = quizService.getQuiz(id);
 		System.out.println(quiz);
+
+		List<Question> availableQuestions = questionService
+				.findAvailableQuestions(quiz);
+		List<Question> assignedQuestions = questionService
+				.findAssignedQuestions(quiz);
 		model.addAttribute("quiz", quiz);
+		model.addAttribute("availableQuestions", availableQuestions);
+		model.addAttribute("assignedQuestions", assignedQuestions);
 		return "question/p_add_quiz_question";
 	}
 
 	@RequestMapping(value = "/question/available/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Question> availableQuizQuestion(Long id, Course course,
-			Model model) {
-		System.out.println("POST: quiz/question/available/" + id);
+	public List<Question> availableQuizQuestion(Quiz quiz, Model model) {
+		System.out.println("POST: quiz/question/available/" + quiz.getQuizId());
 		List<Question> questions = null;
 		return questions;
 	}
 
 	@RequestMapping(value = "/question/assigned/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Question> quizAssignedQuestion(@PathVariable Long id,
-			Model model) {
-		System.out.println("POST: quiz/question/assigned/" + id);
+	public List<Question> quizAssignedQuestion(Quiz quiz, Model model) {
+		System.out.println("POST: quiz/question/assigned/" + +quiz.getQuizId());
 		List<Question> questions = null;
 		return questions;
 	}

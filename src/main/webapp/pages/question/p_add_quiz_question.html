@@ -18,7 +18,7 @@
 
 <script th:src="@{/resources/scripts/pages/question/add-remove.js}"
 	type="text/javascript"></script>
-<script th:src="@{/resources/scripts/pages/question/refresh-question.js}"
+<script th:src="@{/resources/scripts/pages/question/append-question.js}"
 	type="text/javascript"></script>
 
 </head>
@@ -48,215 +48,185 @@
 												</h4>
 												<div class="col-md-9">
 													<h4 class="form-control-static">
-														<strong th:text="${quiz?.quizTitle}"></strong>
+														<strong th:text="${quiz?.quizTitle}"> <input
+															type="hidden" id="quizId"
+															th:value="${quiz.quizId}"/>
+														</strong>
 													</h4>
 												</div>
 											</div>
 										</div>
 										<!--/span-->
 										<div class="col-md-6">
-											<div class="form-group">
-												<h4 class="control-label col-md-3">
-													<strong>COURSE:</strong>
-												</h4>
-												<div class="col-md-9">
-													<h4 class="form-control-static">
-														<strong
-															th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle}">[CSE333]
-															Database</strong>
-													</h4>
-													<input id="courseId" type="hidden"
-														th:value="${quiz?.teachesId?.courseId?.courseId}" />
+															<div class="form-group">
+																<h4 class="control-label col-md-3">
+																	<strong>COURSE:</strong>
+																</h4>
+																<div class="col-md-9">
+																	<h4 class="form-control-static">
+																		<strong
+																			th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle}">[CSE333]
+																			Database</strong>
+																	</h4>
+																	<input id="courseId" type="hidden"
+																		th:value="${quiz?.teachesId?.courseId?.courseId}" />
+																</div>
+															</div>
 												</div>
 											</div>
-										</div>
-									</div>
 
-									<!--/row-->
-									<div class="row">
+											<!--/row-->
+											<div class="row">
 
-										<div class="col-md-6 col-sm-12">
-											<!-- BEGIN PORTLET-->
-											<div class="portlet light tasks-widget"
-												style="background: rgba(223, 240, 216, 0.40);">
-												<div class="portlet-title">
+												<div class="col-md-6 col-sm-12">
+													<!-- BEGIN PORTLET-->
+													<div class="portlet light tasks-widget"
+														style="background: rgba(223, 240, 216, 0.40);">
+														<div class="portlet-title">
 
-													<div class="caption caption-md">
-														<i class="icon-bar-chart theme-font-color hide"></i> <span
-															class="caption-subject theme-font-color bold uppercase">Available
-															Questions</span>
-													</div>
+															<div class="caption caption-md">
+																<i class="icon-bar-chart theme-font-color hide"></i> <span
+																	class="caption-subject theme-font-color bold uppercase">Available
+																	Questions</span>
+															</div>
 
-													<div class="inputs">
-														<div class="portlet-input input-small input-inline">
-															<div class="input-icon right">
-																<!-- <a th:href="@{/question/create}" class="btn red">
+															<div class="inputs">
+																<div class="portlet-input input-small input-inline">
+																	<div class="input-icon right">
+																		<!-- <a th:href="@{/question/create}" class="btn red">
 																	New Question <i class="fa fa-plus"></i>
 																</a> -->
 
-																<button type="button"
-																	class="btn green-haze btn-sm dropdown-toggle"
-																	data-toggle="dropdown" data-hover="dropdown"
-																	data-close-others="true">
-																	<i class="fa fa-plus"></i> New Question&nbsp; <span
-																		class="hidden-sm hidden-xs"> </span><i
-																		class="fa fa-angle-down"></i>
-																</button>
-
-																<ul class="dropdown-menu" role="menu">
-																	<li><a href="#form_modal10" data-toggle="modal">
-																			MCQ </a></li>
-																	<li><a href="#form_modal11" data-toggle="modal">
-																			DESCRIPTIVE </a></li>
-																	<li><a href="#form_modal12" data-toggle="modal">
-																			FILL IN THE GAPS </a></li>
-
-																</ul>
-
-															</div>
-
-														</div>
-													</div>
-												</div>
-
-												<div class="portlet-body">
-													<div id="quess" class="task-content note-success">
-														<div class="scroller" style="height: 282px;"
-															data-always-visible="1" data-rail-visible1="0"
-															data-handle-color="#D7DCE2">
-															<!-- START TASK LIST -->
-															<ul id="question-bank" class="task-list">
-
-																<li id="question-1">
-
-																	<div class="task-title">
-																		<span class="task-title-sp"> Whats is multiple
-																			questions? </span>
-																	</div>
-																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-
-																			<a class="btn btn-xs default" data-toggle="dropdown"
-																				data-hover="dropdown" data-close-others="true">
-																				<i class="fa fa-cog"></i><i class="fa fa-angle-down"></i>
-																			</a>
-
-																			<ul class="dropdown-menu pull-right">
-																				<li id="add-1"><a id="addButton1"
-																					name="addButton1" type="button"
-																					onclick="addQuestions(1)"> <i
-																						class="fa fa-plus"></i> Add
-																				</a></li>
-
-																				<li style="display: none;" id="remove-1"><a
-																					id="removeButton1" name="removeButton1"
-																					type="button" onclick="removeQuestions(1)"> <i
-																						class="fa fa-times"></i> Remove
-																				</a></li>
-
-
-																				<li><a> <i class="fa fa-info"></i> Details
-																				</a></li>
-
-																			</ul>
-																		</div>
-																	</div>
-																</li>
-
-																<li id="question-2">
-																	<!-- 																	<div class="task-checkbox"> --> <!-- 																																			<input type="checkbox" class="liChild" value=""/> -->
-																	<!-- 																		<p>2.</p> --> <!-- 																	</div> -->
-																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill in
-																			the gaps? </span>
-																	</div>
-																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-																			<a class="btn btn-xs default" href="javascript:;"
-																				data-toggle="dropdown" data-hover="dropdown"
-																				data-close-others="true"> <i class="fa fa-cog"></i><i
+																		<button type="button"
+																			class="btn green-haze btn-sm dropdown-toggle"
+																			data-toggle="dropdown" data-hover="dropdown"
+																			data-close-others="true">
+																			<i class="fa fa-plus"></i> New Question&nbsp; <span
+																				class="hidden-sm hidden-xs"> </span><i
 																				class="fa fa-angle-down"></i>
-																			</a>
-																			<ul class="dropdown-menu pull-right">
-																				<li id="add-2"><a id="addButton2"
-																					name="addButton2" type="button"
-																					onclick="addQuestions(2)"> <i
-																						class="fa fa-plus"></i> Add
-																				</a></li>
-																				<li style="display: none;" id="remove-2"><a
-																					id="removeButton2" name="removeButton2"
-																					type="button" onclick="removeQuestions(2)"> <i
-																						class="fa fa-times"></i> Remove
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-info"></i> Details
-																				</a></li>
-																			</ul>
-																		</div>
+																		</button>
+
+																		<ul class="dropdown-menu" role="menu">
+																			<li><a href="#form_modal10" data-toggle="modal">
+																					MCQ </a></li>
+																			<li><a href="#form_modal11" data-toggle="modal">
+																					DESCRIPTIVE </a></li>
+																			<li><a href="#form_modal12" data-toggle="modal">
+																					FILL IN THE GAPS </a></li>
+
+																		</ul>
+
 																	</div>
-																</li>
-															</ul>
-															<!-- END START TASK LIST -->
+
+																</div>
+															</div>
+														</div>
+
+														<div class="portlet-body">
+															<div id="quess" class="task-content note-success">
+																<div class="scroller" style="height: 282px;"
+																	data-always-visible="1" data-rail-visible1="0"
+																	data-handle-color="#D7DCE2">
+																	<!-- START TASK LIST -->
+																	<ul id="question-bank" class="task-list" >
+
+																	
+
+																		<li id="question-'+${q.questionId}+'" th:each="q : ${availableQuestions}">
+																			<!-- 																	<div class="task-checkbox"> -->
+																			<!-- 																																			<input type="checkbox" class="liChild" value=""/> -->
+																			<!-- 																		<p>2.</p> --> <!-- 																	</div> -->
+																			<div class="task-title">
+																				<span class="task-title-sp" th:text="${q.questionText}"> What is fill in
+																					the gaps? </span>
+																			</div>
+																			<div class="task-config">
+																				<div class="task-config-btn btn-group">
+																					<a class="btn btn-xs default" href="javascript:;"
+																						data-toggle="dropdown" data-hover="dropdown"
+																						data-close-others="true"> <i class="fa fa-cog"></i><i
+																						class="fa fa-angle-down"></i>
+																					</a>
+																					<ul class="dropdown-menu pull-right">
+																						<li id="add-'+${q.questionId}+'"><a id="addButton'+${q.questionId}+'"
+																							name="addButton'+${q.questionId}+'" type="button"
+																							onclick="addQuestions('+${q.questionId}+')"> <i
+																								class="fa fa-plus"></i> Add
+																						</a></li>
+																						<li style="display: none;" id="remove-'+${q.questionId}+'"><a
+																							id="removeButton'+${q.questionId}+'" name="removeButton'+${q.questionId}+'"
+																							type="button" onclick="removeQuestions('+${q.questionId}+')"> <i
+																								class="fa fa-times"></i> Remove
+																						</a></li>
+																						<li><a href="javascript:;"> <i
+																								class="fa fa-info"></i> Details
+																						</a></li>
+																					</ul>
+																				</div>
+																			</div>
+																		</li>
+																	</ul>
+																	<!-- END START TASK LIST -->
+																</div>
+															</div>
+
 														</div>
 													</div>
+													<!-- END PORTLET-->
+
 
 												</div>
-											</div>
-											<!-- END PORTLET-->
+
+												<!-- This module for exam added question -->
+												<div class="col-md-6 col-sm-12">
+													<!-- BEGIN PORTLET-->
+													<div class="portlet light tasks-widget"
+														style="background: rgba(223, 240, 216, 0.40);">
+														<div class="portlet-title">
+															<div class="caption caption-md">
+																<i class="icon-bar-chart theme-font-color hide"></i> <span
+																	class="caption-subject theme-font-color bold uppercase">Exam
+																	Questions</span>
+															</div>
+															<div class="inputs">
+																<div class="portlet-input input-small input-inline">
+																	<div class="input-icon right">
+
+																		<!-- 	<a href="#" class="btn green"> New Question <i -->
+																		<!-- 	class="fa fa-plus"></i> -->
+																		<!-- 	</a> -->
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="portlet-body">
+															<div class="task-content">
+																<div class="scroller" style="height: 282px;"
+																	data-always-visible="1" data-rail-visible1="0"
+																	data-handle-color="#D7DCE2">
+																	<!-- START TASK LIST -->
+																	<ul id="add-quest" class="task-list">
 
 
-										</div>
-
-										<!-- This module for exam added question -->
-										<div class="col-md-6 col-sm-12">
-											<!-- BEGIN PORTLET-->
-											<div class="portlet light tasks-widget"
-												style="background: rgba(223, 240, 216, 0.40);">
-												<div class="portlet-title">
-													<div class="caption caption-md">
-														<i class="icon-bar-chart theme-font-color hide"></i> <span
-															class="caption-subject theme-font-color bold uppercase">Exam
-															Questions</span>
-													</div>
-													<div class="inputs">
-														<div class="portlet-input input-small input-inline">
-															<div class="input-icon right">
-
-																<!-- 	<a href="#" class="btn green"> New Question <i -->
-																<!-- 	class="fa fa-plus"></i> -->
-																<!-- 	</a> -->
+																	</ul>
+																	<!-- END START TASK LIST -->
+																</div>
 															</div>
 														</div>
 													</div>
+													<!-- END PORTLET-->
 												</div>
-
-												<div class="portlet-body">
-													<div class="task-content">
-														<div class="scroller" style="height: 282px;"
-															data-always-visible="1" data-rail-visible1="0"
-															data-handle-color="#D7DCE2">
-															<!-- START TASK LIST -->
-															<ul id="add-quest" class="task-list">
-
-
-															</ul>
-															<!-- END START TASK LIST -->
-														</div>
+											</div>
+											<div class="form-actions">
+												<div class="row">
+													<div class="col-md-offset-9 col-md-3">
+														<button type="submit" class="btn green">Save</button>
+														<button type="button" class="btn default">Cancel</button>
 													</div>
 												</div>
 											</div>
-											<!-- END PORTLET-->
 										</div>
-									</div>
-									<div class="form-actions">
-										<div class="row">
-											<div class="col-md-offset-9 col-md-3">
-												<button type="submit" class="btn green">Save</button>
-												<button type="button" class="btn default">Cancel</button>
-											</div>
-										</div>
-									</div>
-								</div>
 							</form>
 							<!-- END FORM-->
 
