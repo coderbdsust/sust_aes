@@ -4,13 +4,11 @@ import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-
-
-
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +27,7 @@ public class QuestionCreationController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				new SimpleDateFormat("dd/MM/yyyy"), true));
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -41,24 +38,14 @@ public class QuestionCreationController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
-	public String saveQuestion(Question question) {
+	public Question saveQuestion(Question question, Model uiModel) {
 		System.out.println("POST: /question/create");
 		System.out.println(question);
 		questionService.saveOrUpdate(question);
 		System.out.println("Question Saved");
-		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
-				question.getCreatedTime(), question.getCourseId());
-		System.out.println("Question Retrieved with id: "
-				+ savedQuestion.getQuestionId());
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			String questionJson = mapper.writeValueAsString(savedQuestion);
-			System.out.println("SavedQuestion JSON: " + questionJson);
-			return questionJson;
-		} catch (Exception ex) {
-			System.out.println("Couldn't convert to json!");
-			return null;
-		}
-//		return savedQuestion;
+		Question savedQuestion = questionService.findByCreationTimeAndCourseId(question.getCreatedTime(),
+				question.getCourseId());
+		System.out.println("Question Retrieved with id: " + savedQuestion.getQuestionId());
+		return savedQuestion;
 	}
 }

@@ -13,6 +13,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -64,8 +67,10 @@ public class Course implements DomainObject, Serializable {
 	@Basic(optional = false)
 	@Column(name = "accepting_dept")
 	private String acceptingDept;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
 	private List<CourseRegistration> courseRegistrationList;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "courseId")
 	private List<Teaches> teachesList;
 

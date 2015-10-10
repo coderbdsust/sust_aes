@@ -28,6 +28,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -88,8 +89,10 @@ public class Question implements DomainObject, Serializable {
 	@JoinColumn(name = "course_id", referencedColumnName = "course_id")
 	@ManyToOne(optional = false)
 	private Course courseId;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
 	private List<QuestionAnswer> questionAnswerList;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
 	private List<QuizQuestion> quizQuestionList;
 
