@@ -10,29 +10,32 @@ function submitMCQ() {
 		options.push(opt);
 	}
 	var question = {};
-	question['questionId'] = -1;
+
 	question['questionText'] = document.getElementById('mcq-question-text').value;
 	question['questionMarks'] = document.getElementById('mcq-marks').value;
 	question['requiredTime'] = document.getElementById('mcq-time').value;
 	question['courseId.courseId'] = document.getElementById('courseId').value;
-
 	question['questionType'] = "MCQ";
 	question['questionBody'] = JSON.stringify(options);
 
-	console.log(question);
+	// console.log(question);
 	$.ajax({
 		method : "POST",
 		url : url,
 		data : question
 	}).success(
 			function(msg) {
-				console.log("Question [questionId=" + msg['questionId']
-						+ ", questionBody=" + msg['questionBody']);
-				$('#success-modal').modal('show');
-				appendQuestion(msg);
+				console.log('SUCCESS MCQ ' + msg);
+				if (msg != null) {
+					console.log("Question [questionId=" + msg['questionId']
+							+ ", questionBody=" + msg['questionBody']);
+
+					$('#success-modal').modal('show');
+					appendQuestion(msg);
+				} else {
+					$('#error-modal').modal('show');
+				}
 			}).error(function(msg) {
 		$('#error-modal').modal('show');
 	});
 }
-
-

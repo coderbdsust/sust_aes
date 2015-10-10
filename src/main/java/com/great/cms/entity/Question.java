@@ -238,7 +238,11 @@ public class Question implements DomainObject, Serializable {
 				+ requiredTime + ", questionMarks=" + questionMarks
 				+ ", createdTime=" + createdTime + ", lastUpdated="
 				+ lastUpdated + ", questionType=" + questionType
-				+ ", courseId=" + courseId + "]";
+				+ ", courseId=" + courseId + ", questionAnswerList="
+				+ questionAnswerList + ", quizQuestionList=" + quizQuestionList
+				+ "]";
 	}
+
+	
 
 }

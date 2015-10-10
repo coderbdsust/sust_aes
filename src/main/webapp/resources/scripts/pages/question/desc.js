@@ -20,12 +20,16 @@ function submitDESC() {
 		data : question
 	}).success(
 			function(msg) {
-				console.log("Question [questionId=" + msg['questionId']
-						+ ", questionBody=" + msg['questionBody']);
-				console.log("Success:" + msg);
-				appendQuestion(msg);
-				$('#success-modal').modal('show');
-				
+				if (msg != null) {
+					console.log("Question [questionId=" + msg['questionId']
+							+ ", questionBody=" + msg['questionBody']);
+					console.log("Success:" + msg);
+					appendQuestion(msg);
+					$('#success-modal').modal('show');
+				} else {
+					$('#error-modal').modal('show');
+				}
+
 			}).error(function(msg) {
 		$('#error-modal').modal('show');
 	});
