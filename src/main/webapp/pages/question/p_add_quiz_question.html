@@ -132,7 +132,7 @@
 
 																	
 
-																		<li id="question-'+${q.questionId}+'" th:each="q : ${availableQuestions}">
+																		<li th:id="'question-'+${q.questionId}" th:each="q : ${availableQuestions}">
 																			<!-- 																	<div class="task-checkbox"> -->
 																			<!-- 																																			<input type="checkbox" class="liChild" value=""/> -->
 																			<!-- 																		<p>2.</p> --> <!-- 																	</div> -->
@@ -148,14 +148,14 @@
 																						class="fa fa-angle-down"></i>
 																					</a>
 																					<ul class="dropdown-menu pull-right">
-																						<li id="add-'+${q.questionId}+'"><a id="addButton'+${q.questionId}+'"
-																							name="addButton'+${q.questionId}+'" type="button"
-																							onclick="addQuestions('+${q.questionId}+')"> <i
+																						<li th:id="'add-'+${q.questionId}"><a th:id="'addButton'+${q.questionId}"
+																							th:name="'addButton'+${q.questionId}" type="button"
+																							th:onclick="'addQuestions('+${q.questionId}+')'"> <i
 																								class="fa fa-plus"></i> Add
 																						</a></li>
-																						<li style="display: none;" id="remove-'+${q.questionId}+'"><a
-																							id="removeButton'+${q.questionId}+'" name="removeButton'+${q.questionId}+'"
-																							type="button" onclick="removeQuestions('+${q.questionId}+')"> <i
+																						<li style="display: none;" th:id="'remove-'+${q.questionId}"><a
+																							th:id="'removeButton'+${q.questionId}" th:name="'removeButton'+${q.questionId}"
+																							type="button" onclick="'removeQuestions('+${q.questionId}+')'"> <i
 																								class="fa fa-times"></i> Remove
 																						</a></li>
 																						<li><a href="javascript:;"> <i
