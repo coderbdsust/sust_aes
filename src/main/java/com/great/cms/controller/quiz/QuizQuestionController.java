@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
+import com.great.cms.entity.QuizQuestion;
 import com.great.cms.service.QuestionService;
 import com.great.cms.service.QuizService;
 
@@ -69,9 +70,9 @@ public class QuizQuestionController {
 	}
 
 	@RequestMapping(value = "/question/assignto", method = RequestMethod.GET)
-	public String saveQuizQuestion(List<Question> questions, Model model) {
+	public String saveQuizQuestion(List<QuizQuestion> quizQuestions, Model model) {
 		System.out.println("POST: /quiz/question/assignto");
-		for (Question q : questions)
+		for (QuizQuestion q : quizQuestions)
 			System.out.println(q.getQuestionId());
 
 		return "redirect:/teacher/quiz/dashboard";
