@@ -20,10 +20,4 @@ public class QuizQuestionDaoImpl extends GenericDaoImpl<Question, Long> implemen
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	
-
-
-
 }

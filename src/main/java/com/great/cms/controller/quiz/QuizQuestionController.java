@@ -68,4 +68,13 @@ public class QuizQuestionController {
 		return questions;
 	}
 
+	@RequestMapping(value = "/question/assignto", method = RequestMethod.GET)
+	public String saveQuizQuestion(List<Question> questions, Model model) {
+		System.out.println("POST: /quiz/question/assignto");
+		for (Question q : questions)
+			System.out.println(q.getQuestionId());
+
+		return "redirect:/teacher/quiz/dashboard";
+	}
+
 }

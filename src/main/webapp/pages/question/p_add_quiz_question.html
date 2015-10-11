@@ -37,8 +37,8 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form action="#" method="POST"
-								class="form-horizontal">
+							<!-- 							<form th:action="@{/quiz/question/assignto}" method="GET" -->
+							<form action="#" method="GET" class="form-horizontal">
 								<div class="form-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -132,13 +132,16 @@
 
 
 																<li th:id="'question-'+${q.questionId}"
-																	th:each="q : ${availableQuestions}">
+																	th:each="q, iterStat : ${availableQuestions}">
 																	<!-- 																	<div class="task-checkbox"> --> <!-- 																																			<input type="checkbox" class="liChild" value=""/> -->
 																	<!-- 																		<p>2.</p> --> <!-- 																	</div> -->
 																	<div class="task-title">
 																		<span class="task-title-sp"
 																			th:text="${q.questionText}"> What is fill in
-																			the gaps? </span>
+																			the gaps? <input type="hidden"
+																			th:name="question['${iterStat.count}'].questionId"
+																			th:value="@{q.questionId}" />
+																		</span>
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
@@ -226,7 +229,7 @@
 									<div class="form-actions">
 										<div class="row">
 											<div class="col-md-offset-9 col-md-3">
-												<button type="button" class="btn green">Save</button>
+												<button type="submit" class="btn green">Save</button>
 												<button type="button" class="btn default">Cancel</button>
 											</div>
 										</div>
