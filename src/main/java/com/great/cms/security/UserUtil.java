@@ -25,8 +25,8 @@ public class UserUtil {
 	}
 
 	public Teacher getTeacher(String username) {
-		System.out.println(userService == null ? "UserService Not Intialized"
-				: "User Service Autowired");
+//		System.out.println(userService == null ? "UserService Not Intialized"
+//				: "User Service Autowired");
 
 		User user = userService.getUser(username);
 //		System.out.println(user);
@@ -41,8 +41,8 @@ public class UserUtil {
 
 	public Student getStudent(String username) {
 
-		System.out.println(userService == null ? "UserService Not Intialized"
-				: "User Service Autowired");
+//		System.out.println(userService == null ? "UserService Not Intialized"
+//				: "User Service Autowired");
 
 		User user = userService.getUser(username);
 		Student student = studentService.getStudentByUserId(user);

@@ -1,6 +1,7 @@
 package com.great.cms.controller.quiz;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -41,15 +42,15 @@ public class QuizQuestionController {
 	public String showQuizQuestionPage(@PathVariable Long id, Model model) {
 		System.out.println("GET: /question/quiz/add/" + id);
 		Quiz quiz = quizService.getQuiz(id);
-		System.out.println(quiz);
+//		System.out.println(quiz);
 
 		List<Question> availableQuestions = questionService
 				.findAvailableQuestions(quiz);
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(quiz);
 		model.addAttribute("quiz", quiz);
-		model.addAttribute("availableQuestions", availableQuestions);
-		model.addAttribute("assignedQuestions", assignedQuestions);
+		model.addAttribute("availableQuestionList", availableQuestions);
+		model.addAttribute("assignedQuestionList", assignedQuestions);
 		return "question/p_add_quiz_question";
 	}
 
@@ -70,10 +71,13 @@ public class QuizQuestionController {
 	}
 
 	@RequestMapping(value = "/question/assignto", method = RequestMethod.GET)
-	public String saveQuizQuestion(List<QuizQuestion> quizQuestions, Model model) {
-		System.out.println("POST: /quiz/question/assignto");
-		for (QuizQuestion q : quizQuestions)
-			System.out.println(q.getQuestionId());
+	public String saveQuizQuestion(ArrayList<QuizQuestion> quizQuestionList,
+			Model model) {
+		System.out.println("GET: /quiz/question/assignto");
+		for (QuizQuestion q : quizQuestionList) {
+			System.out
+					.println("SQ: " + q.getQuestionId().getQuestionId() + " " + q.getQuizId().getQuizId());
+		}
 
 		return "redirect:/teacher/quiz/dashboard";
 	}
