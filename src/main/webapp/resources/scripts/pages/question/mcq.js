@@ -1,7 +1,7 @@
 function submitMCQ() {
 	var url = '/sustaes/question/create';
 	var options = [];
-	i = 0;
+	var i = 0;
 	while (true) {
 		if (document.getElementById('mcq-opt-' + i) == null)
 			break;

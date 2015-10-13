@@ -1,12 +1,16 @@
 function submitFIG() {
 	var url = '/sustaes/question/create';
 	var options = [];
-	for (var i = 0; i < 4; i++) {
+	var i=0;
+	while(true){
+		if( document.getElementById('fig-gaps-'+i+'-text') == null) break;
 		var opt = {};
 		opt["index"] = i;
 		opt["answer"] = document.getElementById('fig-gaps-' + i + '-text').value;
 		options.push(opt);
+		i++;
 	}
+	
 	var question = {};
 	question['questionText'] = document.getElementById('fig-question-text').value;
 	question['questionMarks'] = document.getElementById('fig-marks').value;
@@ -14,8 +18,10 @@ function submitFIG() {
 	question['courseId.courseId'] = document.getElementById('courseId').value;
 	question['questionType'] = "FILL_IN_THE_GAPS";
 	question['questionBody'] = JSON.stringify(options);
-	console.log(question);
-	$.ajax({
+	//console.log(question);
+	
+
+		$.ajax({
 		method : "POST",
 		url : url,
 		data : question

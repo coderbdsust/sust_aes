@@ -14,6 +14,8 @@
 
 <script th:src="@{/resources/scripts/pages/question/fig.js}"
 	type="text/javascript"></script>
+	<script th:src="@{/resources/scripts/pages/question/fig-field-maker.js}"
+	type="text/javascript"></script>
 
 <script th:src="@{/resources/scripts/pages/question/desc.js}"
 	type="text/javascript"></script>
@@ -312,20 +314,21 @@
 														<div class="col-md-offset-3 col-md-6">
 															<div class="clearfix">
 																<div class="btn-toolbar margin-bottom-10">
-																	<div  class="btn-group  btn-group-xs btn-group-justified"><a id='addOptionBtn' class="btn green"
+																	<div
+																		class="btn-group  btn-group-xs btn-group-justified">
+																		<a id='addOptionBtn' class="btn green"
 																			onclick="addOption(1)"> <i class="fa fa-plus"></i>
-																		</a> <a id='removeOptionBtn'  class="btn red"
+																		</a> <a id='removeOptionBtn' class="btn red"
 																			onclick="removeOption(1)"> <i class="fa fa-minus"></i>
-																		</a></div>
+																		</a>
+																	</div>
 																</div>
 															</div>
 														</div>
 													</div>
 
 													<div class="row">
-
 														<div class="col-md-6">
-
 															<div class="form-group">
 																<label class="col-md-3 control-label"><strong><em>Mark</em></strong></label>
 																<div class="row">
@@ -473,8 +476,8 @@
 															<input id="fig-question-text" type="text"
 																class="form-control input-md" />
 															<p>
-																<strong> Example: </strong> What __(A)__ language do you
-																__(B)__ ?
+																<strong> Example: </strong> What language do you
+																__(1)__ ?
 															</p>
 															<p>
 																<strong>Note: </strong> Keep fields blank if havn't
@@ -484,8 +487,8 @@
 													</div>
 
 
-													<div class="form-group">
-														<label class="col-md-2 control-label"><strong><em>A.</em></strong></label>
+													<div id="fig-gaps-1" class="form-group">
+														<label class="col-md-2 control-label"><strong><em>1.</em></strong></label>
 														<div class="row">
 															<div class="col-md-8">
 																<div class="input-group">
@@ -497,43 +500,18 @@
 														</div>
 													</div>
 
-													<div class="form-group">
-														<label class="col-md-2 control-label"><strong><em>B.</em></strong></label>
-														<div class="row">
-															<div class="col-md-8">
-																<div class="input-group">
-																	<input id="fig-gaps-1-text"
-																		placeholder="type this answer" type="text"
-																		class="form-control" />
-
-																</div>
-															</div>
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label class="col-md-2 control-label"><strong><em>C.</em></strong></label>
-														<div class="row">
-															<div class="col-md-8">
-																<div class="input-group">
-																	<input id="fig-gaps-2-text"
-																		placeholder="type this answer" type="text"
-																		class="form-control" />
-
-																</div>
-															</div>
-														</div>
-													</div>
-
-													<div class="form-group">
-														<label class="col-md-2 control-label"><strong><em>D.</em></strong></label>
-														<div class="row">
-															<div class="col-md-8">
-																<div class="input-group">
-																	<input id="fig-gaps-3-text"
-																		placeholder="type this answer" type="text"
-																		class="form-control" />
-
+													<div class="row">
+														<div class="col-md-offset-2 col-md-4">
+															<div class="clearfix">
+																<div class="btn-toolbar margin-bottom-10">
+																	<div
+																		class="btn-group  btn-group-xs btn-group-justified">
+																		<a id='addFigFieldBtn' class="btn green"
+																			onclick="addFigField(1)"> <i class="fa fa-plus"></i>
+																		</a> <a id="removeFigFieldBtn" class="btn red"
+																			onclick="removeFigField(1)"> <i class="fa fa-minus"></i>
+																		</a>
+																	</div>
 																</div>
 															</div>
 														</div>
