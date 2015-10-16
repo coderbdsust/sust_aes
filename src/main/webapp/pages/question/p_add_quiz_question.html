@@ -14,7 +14,7 @@
 
 <script th:src="@{/resources/scripts/pages/question/fig.js}"
 	type="text/javascript"></script>
-	<script th:src="@{/resources/scripts/pages/question/fig-field-maker.js}"
+<script th:src="@{/resources/scripts/pages/question/fig-field-maker.js}"
 	type="text/javascript"></script>
 
 <script th:src="@{/resources/scripts/pages/question/desc.js}"
@@ -135,8 +135,10 @@
 															<ul id="question-bank" class="task-list">
 
 																<li th:id="'question-'+${q.questionId}"
-																	th:each="q, iterStat : ${availableQuestionList}" style="background: rgba(223, 240, 216, 0.70);  margin-bottom: 2px;">
-																	<div class="task-checkbox"><p></p>
+																	th:each="q, iterStat : ${availableQuestionList}"
+																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
+																	<div class="task-checkbox">
+																		<p></p>
 																	</div>
 																	<div class="task-title">
 																		<span class="task-title-sp"
@@ -233,7 +235,20 @@
 									</div>
 									<div class="form-actions">
 										<div class="row">
-											<div class="col-md-offset-9 col-md-3">
+											<div class="col-md-6">
+												<label class="col-md-3 control-label"><strong><em>Total
+															Time</em></strong></label>
+												<div class="row">
+													<div class="col-md-7">
+														<div class="input-group">
+															<input id="total-time" placeholder="In seconds" name=""
+																type="text" class="form-control" />
+
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-offset-3 col-md-3">
 												<button type="submit" class="btn green">Save</button>
 												<button type="button" class="btn default">Cancel</button>
 											</div>
@@ -472,8 +487,8 @@
 															<input id="fig-question-text" type="text"
 																class="form-control input-md" />
 															<p>
-																<strong> Example: </strong> What language do you
-																__(1)__ ?
+																<strong> Example: </strong> What language do you __(1)__
+																?
 															</p>
 															<p>
 																<strong>Note: </strong> Keep fields blank if havn't
@@ -505,7 +520,8 @@
 																		<a id='addFigFieldBtn' class="btn green"
 																			onclick="addFigField(1)"> <i class="fa fa-plus"></i>
 																		</a> <a id="removeFigFieldBtn" class="btn red"
-																			onclick="removeFigField(1)"> <i class="fa fa-minus"></i>
+																			onclick="removeFigField(1)"> <i
+																			class="fa fa-minus"></i>
 																		</a>
 																	</div>
 																</div>
