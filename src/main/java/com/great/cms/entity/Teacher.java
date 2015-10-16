@@ -23,20 +23,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Biswajit Debnath
  */
 @Entity
 @Table(name = "teacher")
-@NamedQueries({
-		@NamedQuery(name = "Teacher.findAll", query = "SELECT t FROM Teacher t"),
-		@NamedQuery(name = "Teacher.findByInstructorId", query = "SELECT t FROM Teacher t WHERE t.instructorId = :instructorId"),
-		@NamedQuery(name = "Teacher.findByTeacherName", query = "SELECT t FROM Teacher t WHERE t.teacherName = :teacherName"),
-		@NamedQuery(name = "Teacher.findByEmployeeCode", query = "SELECT t FROM Teacher t WHERE t.employeeCode = :employeeCode"),
-		@NamedQuery(name = "Teacher.findByIsPermanent", query = "SELECT t FROM Teacher t WHERE t.isPermanent = :isPermanent"),
-		@NamedQuery(name = "Teacher.findByEmail", query = "SELECT t FROM Teacher t WHERE t.email = :email"),
-		@NamedQuery(name = "Teacher.findByIsAvailable", query = "SELECT t FROM Teacher t WHERE t.isAvailable = :isAvailable") })
 public class Teacher implements DomainObject, Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -60,14 +54,18 @@ public class Teacher implements DomainObject, Serializable {
 	@Basic(optional = false)
 	@Column(name = "is_available")
 	private boolean isAvailable;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "instructorId")
 	private List<Teaches> teachesList;
+	@JsonIgnore
 	@JoinColumn(name = "desig_id", referencedColumnName = "desig_id")
 	@ManyToOne(optional = false)
 	private Designation desigId;
+	@JsonIgnore
 	@JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
 	@ManyToOne(optional = false)
 	private Department deptId;
+	@JsonIgnore
 	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
 	@ManyToOne(optional = false)
 	private User userId;

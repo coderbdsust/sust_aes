@@ -26,6 +26,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -35,16 +36,6 @@ import org.springframework.data.annotation.LastModifiedDate;
  */
 @Entity
 @Table(name = "quiz")
-@NamedQueries({
-		@NamedQuery(name = "Quiz.findAll", query = "SELECT q FROM Quiz q"),
-		@NamedQuery(name = "Quiz.findByQuizId", query = "SELECT q FROM Quiz q WHERE q.quizId = :quizId"),
-		@NamedQuery(name = "Quiz.findByQuizTitle", query = "SELECT q FROM Quiz q WHERE q.quizTitle = :quizTitle"),
-		@NamedQuery(name = "Quiz.findByDescription", query = "SELECT q FROM Quiz q WHERE q.description = :description"),
-		@NamedQuery(name = "Quiz.findByCreateDate", query = "SELECT q FROM Quiz q WHERE q.createDate = :createDate"),
-		@NamedQuery(name = "Quiz.findByUpdateDate", query = "SELECT q FROM Quiz q WHERE q.updateDate = :updateDate"),
-		@NamedQuery(name = "Quiz.findByStartTime", query = "SELECT q FROM Quiz q WHERE q.startTime = :startTime"),
-		@NamedQuery(name = "Quiz.findByEndTime", query = "SELECT q FROM Quiz q WHERE q.endTime = :endTime"),
-		@NamedQuery(name = "Quiz.findByIsQuestionTimerOn", query = "SELECT q FROM Quiz q WHERE q.isQuestionTimerOn = :isQuestionTimerOn") })
 public class Quiz implements DomainObject, Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -57,13 +48,13 @@ public class Quiz implements DomainObject, Serializable {
 	private String quizTitle;
 	@Column(name = "description")
 	private String description;
-	
+
 	@CreatedDate
 	@Basic(optional = false)
 	@Column(name = "create_date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate = new Date();
-	
+
 	@LastModifiedDate
 	@Basic(optional = false)
 	@Column(name = "update_date")
@@ -77,13 +68,19 @@ public class Quiz implements DomainObject, Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date endTime;
 	@Basic(optional = false)
+	@Column(name = "total_time")
+	private Long totalTime;
+	@Basic(optional = false)
 	@Column(name = "is_question_timer_on")
 	private boolean isQuestionTimerOn;
 	@JoinColumn(name = "teaches_id", referencedColumnName = "teaches_id")
 	@ManyToOne(optional = false)
 	private Teaches teachesId;
+	
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
 	private List<QuizQuestion> quizQuestionList;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
 	private List<QuizRegistration> quizRegistrationList;
 
@@ -159,6 +156,14 @@ public class Quiz implements DomainObject, Serializable {
 		this.endTime = endTime;
 	}
 
+	public Long getTotalTime() {
+		return totalTime;
+	}
+
+	public void setTotalTime(Long totalTime) {
+		this.totalTime = totalTime;
+	}
+
 	public boolean getIsQuestionTimerOn() {
 		return isQuestionTimerOn;
 	}
@@ -201,8 +206,7 @@ public class Quiz implements DomainObject, Serializable {
 
 	@Override
 	public boolean equals(Object object) {
-		// TODO: Warning - this method won't work in the case the id fields are
-		// not set
+
 		if (!(object instanceof Quiz)) {
 			return false;
 		}
@@ -216,19 +220,12 @@ public class Quiz implements DomainObject, Serializable {
 
 	@Override
 	public String toString() {
-		// return "Quiz [quizId=" + quizId + ", quizTitle=" + quizTitle
-		// + ", description=" + description + ", createDate=" + createDate
-		// + ", updateDate=" + updateDate + ", startTime=" + startTime
-		// + ", endTime=" + endTime + ", isQuestionTimerOn="
-		// + isQuestionTimerOn + ", teachesId=" + teachesId
-		// + ", quizQuestionList=" + quizQuestionList
-		// + ", quizRegistrationList=" + quizRegistrationList + "]";
-		//
 		return "Quiz [quizId=" + quizId + ", quizTitle=" + quizTitle
 				+ ", description=" + description + ", createDate=" + createDate
 				+ ", updateDate=" + updateDate + ", startTime=" + startTime
-				+ ", endTime=" + endTime + ", isQuestionTimerOn="
-				+ isQuestionTimerOn + ", teachesId=" + teachesId + "]";
+				+ ", endTime=" + endTime + ", totalTime=" + totalTime
+				+ ", isQuestionTimerOn=" + isQuestionTimerOn + ", teachesId="
+				+ teachesId + "]";
 	}
 
 }

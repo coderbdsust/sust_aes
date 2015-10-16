@@ -30,6 +30,7 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -43,15 +44,6 @@ import com.great.cms.security.utils.SimpleGrantedAuthority;
 @Entity
 @Table(name = "user")
 @XmlRootElement
-@NamedQueries({
-		@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-		@NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId"),
-		@NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username"),
-		@NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password"),
-		@NamedQuery(name = "User.findByEnabled", query = "SELECT u FROM User u WHERE u.enabled = :enabled"),
-		@NamedQuery(name = "User.findByAccountNonLocked", query = "SELECT u FROM User u WHERE u.accountNonLocked = :accountNonLocked"),
-		@NamedQuery(name = "User.findByAccountNonExpired", query = "SELECT u FROM User u WHERE u.accountNonExpired = :accountNonExpired"),
-		@NamedQuery(name = "User.findByCredentialsNonExpired", query = "SELECT u FROM User u WHERE u.credentialsNonExpired = :credentialsNonExpired") })
 public class User implements DomainObject, UserDetails, Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -77,6 +69,7 @@ public class User implements DomainObject, UserDetails, Serializable {
 	@Basic(optional = false)
 	@Column(name = "credentials_non_expired")
 	private boolean credentialsNonExpired;
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
 	private List<Student> studentList;
 

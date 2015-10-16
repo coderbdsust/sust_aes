@@ -30,15 +30,6 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 @Entity
 @Table(name = "course")
-@NamedQueries({ @NamedQuery(name = "Course.findAll", query = "SELECT c FROM Course c"),
-		@NamedQuery(name = "Course.findByCourseId", query = "SELECT c FROM Course c WHERE c.courseId = :courseId"),
-		@NamedQuery(name = "Course.findByCourseCode", query = "SELECT c FROM Course c WHERE c.courseCode = :courseCode"),
-		@NamedQuery(name = "Course.findByCourseTitle", query = "SELECT c FROM Course c WHERE c.courseTitle = :courseTitle"),
-		@NamedQuery(name = "Course.findByCredit", query = "SELECT c FROM Course c WHERE c.credit = :credit"),
-		@NamedQuery(name = "Course.findBySemester", query = "SELECT c FROM Course c WHERE c.semester = :semester"),
-		@NamedQuery(name = "Course.findBySession", query = "SELECT c FROM Course c WHERE c.session = :session"),
-		@NamedQuery(name = "Course.findByOfferingDept", query = "SELECT c FROM Course c WHERE c.offeringDept = :offeringDept"),
-		@NamedQuery(name = "Course.findByAcceptingDept", query = "SELECT c FROM Course c WHERE c.acceptingDept = :acceptingDept") })
 public class Course implements DomainObject, Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

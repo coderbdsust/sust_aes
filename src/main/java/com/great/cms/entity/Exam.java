@@ -23,6 +23,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Biswajit Debnath
@@ -59,6 +61,7 @@ public class Exam implements DomainObject,Serializable {
     @Basic(optional = false)
     @Column(name = "reg_end")
     private String regEnd;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "examId")
     private List<ExamCommittee> examCommitteeList;
     @JoinColumn(name = "dept_id", referencedColumnName = "dept_id")

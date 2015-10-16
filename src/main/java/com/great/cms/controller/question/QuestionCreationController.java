@@ -1,4 +1,4 @@
-package com.great.cms.controller.question;
+  package com.great.cms.controller.question;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
@@ -40,13 +40,14 @@ public class QuestionCreationController {
 	@ResponseBody
 	public Question saveQuestion(Principal principal, Question question) {
 		System.out.println("POST: /question/create");
-		question.setCreatedBy(UserUtil.getInstance().getTeacher(principal));
+		question.setInstructorId(UserUtil.getInstance().getTeacher(principal));
 		System.out.println(question);
 		questionService.saveOrUpdate(question);
 		// System.out.println("Question Saved");
 		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
 				question.getCreatedTime(), question.getCourseId());
-		 System.out.println("Question Retrieved: " +savedQuestion.getCreatedBy());
+		System.out.println("Question Retrieved: "
+				+ savedQuestion.getInstructorId());
 		// savedQuestion.getQuestionId());
 		return savedQuestion;
 	}

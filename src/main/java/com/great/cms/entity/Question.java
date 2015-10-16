@@ -78,16 +78,13 @@ public class Question implements DomainObject, Serializable {
 	@Column(name = "question_type")
 	@Enumerated(EnumType.STRING)
 	private QuestionType questionType;
-
 	@JoinColumn(name = "course_id", referencedColumnName = "course_id")
 	@ManyToOne(optional = false)
 	private Course courseId;
-
-	@JsonIgnore
-	@JoinColumn(name = "created_by", referencedColumnName = "instructor_id")
+	@JoinColumn(name = "instructor_id", referencedColumnName = "instructor_id")
+	
 	@ManyToOne(optional = false)
-	private Teacher createdBy;
-
+    private Teacher instructorId;
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
 	private List<QuestionAnswer> questionAnswerList;
@@ -195,12 +192,12 @@ public class Question implements DomainObject, Serializable {
 		this.courseId = courseId;
 	}
 
-	public Teacher getCreatedBy() {
-		return createdBy;
+	public Teacher getInstructorId() {
+		return instructorId;
 	}
 
-	public void setCreatedBy(Teacher createdBy) {
-		this.createdBy = createdBy;
+	public void setInstructorId(Teacher instructorId) {
+		this.instructorId = instructorId;
 	}
 
 	public List<QuestionAnswer> getQuestionAnswerList() {
@@ -248,7 +245,7 @@ public class Question implements DomainObject, Serializable {
 				+ requiredTime + ", questionMarks=" + questionMarks
 				+ ", createdTime=" + createdTime + ", lastUpdated="
 				+ lastUpdated + ", questionType=" + questionType
-				+ ", courseId=" + courseId + ", createdBy=" + createdBy
+				+ ", courseId=" + courseId + ", instructorId=" + instructorId
 				+ ", questionAnswerList=" + questionAnswerList
 				+ ", quizQuestionList=" + quizQuestionList + "]";
 	}

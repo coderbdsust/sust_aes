@@ -24,6 +24,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Biswajit Debnath
@@ -59,6 +61,7 @@ public class QuizRegistration implements DomainObject, Serializable {
     @Basic(optional = false)
     @Column(name = "is_exam_reviewed")
     private boolean isExamReviewed;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "quizRegistrationId")
     private List<QuestionAnswer> questionAnswerList;
     @JoinColumn(name = "quiz_id", referencedColumnName = "quiz_id")

@@ -23,6 +23,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Biswajit Debnath
@@ -39,6 +41,7 @@ public class Teaches implements DomainObject, Serializable {
     @Basic(optional = false)
     @Column(name = "teaches_id")
     private Integer teachesId;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "teachesId")
     private List<Quiz> quizList;
     @JoinColumn(name = "course_id", referencedColumnName = "course_id")

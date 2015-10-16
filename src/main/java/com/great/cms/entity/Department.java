@@ -21,127 +21,129 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Biswajit Debnath
  */
 @Entity
 @Table(name = "department")
-@NamedQueries({
-    @NamedQuery(name = "Department.findAll", query = "SELECT d FROM Department d"),
-    @NamedQuery(name = "Department.findByDeptId", query = "SELECT d FROM Department d WHERE d.deptId = :deptId"),
-    @NamedQuery(name = "Department.findByDeptName", query = "SELECT d FROM Department d WHERE d.deptName = :deptName"),
-    @NamedQuery(name = "Department.findByDeptCode", query = "SELECT d FROM Department d WHERE d.deptCode = :deptCode")})
-public class Department implements DomainObject,Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "dept_id")
-    private Integer deptId;
-    @Basic(optional = false)
-    @Column(name = "dept_name")
-    private String deptName;
-    @Basic(optional = false)
-    @Column(name = "dept_code")
-    private String deptCode;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
-    private List<Student> studentList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
-    private List<Exam> examList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
-    private List<Teacher> teacherList;
+public class Department implements DomainObject, Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
+	@Column(name = "dept_id")
+	private Integer deptId;
+	@Basic(optional = false)
+	@Column(name = "dept_name")
+	private String deptName;
+	@Basic(optional = false)
+	@Column(name = "dept_code")
+	private String deptCode;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
+	private List<Student> studentList;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
+	private List<Exam> examList;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "deptId")
+	private List<Teacher> teacherList;
 
-    public Department() {
-    }
+	public Department() {
+	}
 
-    public Department(Integer deptId) {
-        this.deptId = deptId;
-    }
-    
-    public Department( String deptName, String deptCode) {
+	public Department(Integer deptId) {
+		this.deptId = deptId;
+	}
 
-        this.deptName = deptName;
-        this.deptCode = deptCode;
-    }
-    
-    public Department(Integer deptId, String deptName, String deptCode) {
-        this.deptId = deptId;
-        this.deptName = deptName;
-        this.deptCode = deptCode;
-    }
+	public Department(String deptName, String deptCode) {
 
-    public Integer getDeptId() {
-        return deptId;
-    }
+		this.deptName = deptName;
+		this.deptCode = deptCode;
+	}
 
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
+	public Department(Integer deptId, String deptName, String deptCode) {
+		this.deptId = deptId;
+		this.deptName = deptName;
+		this.deptCode = deptCode;
+	}
 
-    public String getDeptName() {
-        return deptName;
-    }
+	public Integer getDeptId() {
+		return deptId;
+	}
 
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
+	}
 
-    public String getDeptCode() {
-        return deptCode;
-    }
+	public String getDeptName() {
+		return deptName;
+	}
 
-    public void setDeptCode(String deptCode) {
-        this.deptCode = deptCode;
-    }
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
+	public String getDeptCode() {
+		return deptCode;
+	}
 
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
-    }
+	public void setDeptCode(String deptCode) {
+		this.deptCode = deptCode;
+	}
 
-    public List<Exam> getExamList() {
-        return examList;
-    }
+	public List<Student> getStudentList() {
+		return studentList;
+	}
 
-    public void setExamList(List<Exam> examList) {
-        this.examList = examList;
-    }
+	public void setStudentList(List<Student> studentList) {
+		this.studentList = studentList;
+	}
 
-    public List<Teacher> getTeacherList() {
-        return teacherList;
-    }
+	public List<Exam> getExamList() {
+		return examList;
+	}
 
-    public void setTeacherList(List<Teacher> teacherList) {
-        this.teacherList = teacherList;
-    }
+	public void setExamList(List<Exam> examList) {
+		this.examList = examList;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (deptId != null ? deptId.hashCode() : 0);
-        return hash;
-    }
+	public List<Teacher> getTeacherList() {
+		return teacherList;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Department)) {
-            return false;
-        }
-        Department other = (Department) object;
-        if ((this.deptId == null && other.deptId != null) || (this.deptId != null && !this.deptId.equals(other.deptId))) {
-            return false;
-        }
-        return true;
-    }
+	public void setTeacherList(List<Teacher> teacherList) {
+		this.teacherList = teacherList;
+	}
 
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.Department[ deptId=" + deptId + " ]";
-    }
-    
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (deptId != null ? deptId.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof Department)) {
+			return false;
+		}
+		Department other = (Department) object;
+		if ((this.deptId == null && other.deptId != null)
+				|| (this.deptId != null && !this.deptId.equals(other.deptId))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "com.great.cms.entity.Department[ deptId=" + deptId + " ]";
+	}
+
 }

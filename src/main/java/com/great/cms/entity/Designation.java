@@ -21,17 +21,14 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 /**
  *
  * @author Biswajit Debnath
  */
 @Entity
 @Table(name = "designation")
-@NamedQueries({
-    @NamedQuery(name = "Designation.findAll", query = "SELECT d FROM Designation d"),
-    @NamedQuery(name = "Designation.findByDesigId", query = "SELECT d FROM Designation d WHERE d.desigId = :desigId"),
-    @NamedQuery(name = "Designation.findByDesigName", query = "SELECT d FROM Designation d WHERE d.desigName = :desigName"),
-    @NamedQuery(name = "Designation.findByDesigDesc", query = "SELECT d FROM Designation d WHERE d.desigDesc = :desigDesc")})
 public class Designation implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,6 +41,7 @@ public class Designation implements DomainObject,Serializable {
     private String desigName;
     @Column(name = "desig_desc")
     private String desigDesc;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "desigId")
     private List<Teacher> teacherList;
 

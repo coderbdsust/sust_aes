@@ -8,6 +8,7 @@ package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,6 +20,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -53,6 +56,7 @@ public class CourseRegistration implements DomainObject, Serializable {
     @JoinColumn(name = "student_id", referencedColumnName = "student_id")
     @ManyToOne(optional = false)
     private Student studentId;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseRegId")
     private List<QuizRegistration> quizRegistrationList;
 

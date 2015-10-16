@@ -26,6 +26,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.test.annotation.Timed;
 
@@ -35,20 +36,6 @@ import org.springframework.test.annotation.Timed;
  */
 @Entity
 @Table(name = "student")
-@NamedQueries({
-    @NamedQuery(name = "Student.findAll", query = "SELECT s FROM Student s"),
-    @NamedQuery(name = "Student.findByStudentId", query = "SELECT s FROM Student s WHERE s.studentId = :studentId"),
-    @NamedQuery(name = "Student.findByRegistrationNo", query = "SELECT s FROM Student s WHERE s.registrationNo = :registrationNo"),
-    @NamedQuery(name = "Student.findByEmail", query = "SELECT s FROM Student s WHERE s.email = :email"),
-    @NamedQuery(name = "Student.findByContactNo", query = "SELECT s FROM Student s WHERE s.contactNo = :contactNo"),
-    @NamedQuery(name = "Student.findByAddress", query = "SELECT s FROM Student s WHERE s.address = :address"),
-    @NamedQuery(name = "Student.findByFirstName", query = "SELECT s FROM Student s WHERE s.firstName = :firstName"),
-    @NamedQuery(name = "Student.findByLastName", query = "SELECT s FROM Student s WHERE s.lastName = :lastName"),
-    @NamedQuery(name = "Student.findByMaritalStatus", query = "SELECT s FROM Student s WHERE s.maritalStatus = :maritalStatus"),
-    @NamedQuery(name = "Student.findByBloodGroup", query = "SELECT s FROM Student s WHERE s.bloodGroup = :bloodGroup"),
-    @NamedQuery(name = "Student.findByReligion", query = "SELECT s FROM Student s WHERE s.religion = :religion"),
-    @NamedQuery(name = "Student.findByDateOfBirth", query = "SELECT s FROM Student s WHERE s.dateOfBirth = :dateOfBirth"),
-    @NamedQuery(name = "Student.findByGender", query = "SELECT s FROM Student s WHERE s.gender = :gender")})
 public class Student implements DomainObject,Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -94,6 +81,7 @@ public class Student implements DomainObject,Serializable {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User userId;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "studentId")
     private List<CourseRegistration> courseRegistrationList;
 
