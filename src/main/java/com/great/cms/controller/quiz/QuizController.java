@@ -46,7 +46,7 @@ public class QuizController {
 
 		System.out.println("GET: quiz/create");
 		Teacher teacher = UserUtil.getInstance()
-				.getTeacher(principal.getName());
+				.getTeacher(principal);
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		uiModel.addAttribute("quiz", new Quiz());
 		uiModel.addAttribute("teachesList", teachesList);

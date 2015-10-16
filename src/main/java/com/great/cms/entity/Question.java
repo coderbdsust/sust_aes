@@ -16,6 +16,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +30,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -40,15 +42,7 @@ import com.great.cms.enums.QuestionType;
  */
 @Entity
 @Table(name = "question")
-@NamedQueries({
-		@NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q"),
-		@NamedQuery(name = "Question.findByQuestionId", query = "SELECT q FROM Question q WHERE q.questionId = :questionId"),
-		@NamedQuery(name = "Question.findByQuestionText", query = "SELECT q FROM Question q WHERE q.questionText = :questionText"),
-		@NamedQuery(name = "Question.findByDifficultyLevel", query = "SELECT q FROM Question q WHERE q.difficultyLevel = :difficultyLevel"),
-		@NamedQuery(name = "Question.findByRequiredTime", query = "SELECT q FROM Question q WHERE q.requiredTime = :requiredTime"),
-		@NamedQuery(name = "Question.findByQuestionMarks", query = "SELECT q FROM Question q WHERE q.questionMarks = :questionMarks"),
-		@NamedQuery(name = "Question.findByCreatedTime", query = "SELECT q FROM Question q WHERE q.createdTime = :createdTime"),
-		@NamedQuery(name = "Question.findByLastUpdated", query = "SELECT q FROM Question q WHERE q.lastUpdated = :lastUpdated") })
+@NamedQueries({ @NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q") })
 public class Question implements DomainObject, Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -81,7 +75,6 @@ public class Question implements DomainObject, Serializable {
 	@Column(name = "last_updated")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date lastUpdated = new Date();
-
 	@Column(name = "question_type")
 	@Enumerated(EnumType.STRING)
 	private QuestionType questionType;
@@ -89,6 +82,12 @@ public class Question implements DomainObject, Serializable {
 	@JoinColumn(name = "course_id", referencedColumnName = "course_id")
 	@ManyToOne(optional = false)
 	private Course courseId;
+
+	@JsonIgnore
+	@JoinColumn(name = "created_by", referencedColumnName = "instructor_id")
+	@ManyToOne(optional = false)
+	private Teacher createdBy;
+
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questionId")
 	private List<QuestionAnswer> questionAnswerList;
@@ -196,6 +195,14 @@ public class Question implements DomainObject, Serializable {
 		this.courseId = courseId;
 	}
 
+	public Teacher getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(Teacher createdBy) {
+		this.createdBy = createdBy;
+	}
+
 	public List<QuestionAnswer> getQuestionAnswerList() {
 		return questionAnswerList;
 	}
@@ -241,11 +248,9 @@ public class Question implements DomainObject, Serializable {
 				+ requiredTime + ", questionMarks=" + questionMarks
 				+ ", createdTime=" + createdTime + ", lastUpdated="
 				+ lastUpdated + ", questionType=" + questionType
-				+ ", courseId=" + courseId + ", questionAnswerList="
-				+ questionAnswerList + ", quizQuestionList=" + quizQuestionList
-				+ "]";
+				+ ", courseId=" + courseId + ", createdBy=" + createdBy
+				+ ", questionAnswerList=" + questionAnswerList
+				+ ", quizQuestionList=" + quizQuestionList + "]";
 	}
-
-	
 
 }

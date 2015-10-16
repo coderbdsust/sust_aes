@@ -78,7 +78,6 @@ public class QuizQuestionController {
 			System.out
 					.println("SQ: " + q.getQuestionId().getQuestionId() + " " + q.getQuizId().getQuizId());
 		}
-
 		return "redirect:/teacher/quiz/dashboard";
 	}
 

@@ -54,14 +54,20 @@ public class QuestionDaoTest {
 		// }
 		// }
 
-		Quiz quiz = new Quiz(7L);
-		List<Question> questions = questionDao.findAssignedQuestions(quiz);
-		System.out.println("Total Assigned Questions: " + questions.size());
-		if (!questions.isEmpty()) {
-			for (Question q : questions) {
-				System.out.println(q.getQuestionId());
-			}
-		}
-
+//		Quiz quiz = new Quiz(7L);
+//		List<Question> questions = questionDao.findAssignedQuestions(quiz);
+//		System.out.println("Total Assigned Questions: " + questions.size());
+//		if (!questions.isEmpty()) {
+//			for (Question q : questions) {
+//				System.out.println(q.getQuestionId());
+//			}
+//		}
+		
+//		List<Question> question = questionDao.findAll();
+//		for(Question q:question){
+//			System.out.println(q);
+//		}
+//		Question q = questionDao.findById(1L);
+//		System.out.println(q);
 	}
 }

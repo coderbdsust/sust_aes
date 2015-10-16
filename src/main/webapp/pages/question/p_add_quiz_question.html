@@ -135,12 +135,8 @@
 															<ul id="question-bank" class="task-list">
 
 																<li th:id="'question-'+${q.questionId}"
-																	th:each="q, iterStat : ${availableQuestionList}">
-																	<div class="task-checkbox">
-																		<!-- 																		<input type="checkbox" class="liChild" value="" /> -->
-																		<p th:text="${iterStat.count}">1.</p>
-																		<!-- 																		<p >100.</p> -->
-
+																	th:each="q, iterStat : ${availableQuestionList}" style="background: rgba(223, 240, 216, 0.70);  margin-bottom: 2px;">
+																	<div class="task-checkbox"><p></p>
 																	</div>
 																	<div class="task-title">
 																		<span class="task-title-sp"

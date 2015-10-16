@@ -1,5 +1,6 @@
 package com.great.cms.controller.question;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.entity.Question;
+import com.great.cms.security.UserUtil;
 import com.great.cms.service.QuestionService;
 
 @Controller
@@ -36,14 +38,15 @@ public class QuestionCreationController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
-	public Question saveQuestion(Question question) {
+	public Question saveQuestion(Principal principal, Question question) {
 		System.out.println("POST: /question/create");
+		question.setCreatedBy(UserUtil.getInstance().getTeacher(principal));
 		System.out.println(question);
 		questionService.saveOrUpdate(question);
 		// System.out.println("Question Saved");
 		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
 				question.getCreatedTime(), question.getCourseId());
-		// System.out.println("Question Retrieved with id: " +
+		 System.out.println("Question Retrieved: " +savedQuestion.getCreatedBy());
 		// savedQuestion.getQuestionId());
 		return savedQuestion;
 	}

@@ -35,7 +35,7 @@ public class TeacherQuizController {
 	public String showStdQuizDashboard(Principal principal, Model uiModel) {
 		System.out.println("/exam/question");
 		Teacher teacher = UserUtil.getInstance()
-				.getTeacher(principal.getName());
+				.getTeacher(principal);
 		List<Quiz> quizList = new ArrayList<Quiz>();
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		for (Teaches teaches : teachesList) {

@@ -1,5 +1,7 @@
 package com.great.cms.security;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.great.cms.entity.Student;
@@ -24,14 +26,14 @@ public class UserUtil {
 		return ownInstance;
 	}
 
-	public Teacher getTeacher(String username) {
-//		System.out.println(userService == null ? "UserService Not Intialized"
-//				: "User Service Autowired");
+	public Teacher getTeacher(Principal principal) {
+		// System.out.println(userService == null ? "UserService Not Intialized"
+		// : "User Service Autowired");
 
-		User user = userService.getUser(username);
-//		System.out.println(user);
+		User user = userService.getUser(principal.getName());
+		// System.out.println(user);
 		Teacher teacher = teacherService.getTeacherByUserId(user);
-//		System.out.println(teacher);
+		// System.out.println(teacher);
 		if (teacher == null) {
 			teacher = new Teacher();
 		}
@@ -39,12 +41,12 @@ public class UserUtil {
 		return teacher;
 	}
 
-	public Student getStudent(String username) {
+	public Student getStudent(Principal principal) {
 
-//		System.out.println(userService == null ? "UserService Not Intialized"
-//				: "User Service Autowired");
+		// System.out.println(userService == null ? "UserService Not Intialized"
+		// : "User Service Autowired");
 
-		User user = userService.getUser(username);
+		User user = userService.getUser(principal.getName());
 		Student student = studentService.getStudentByUserId(user);
 		if (student == null) {
 			student = new Student();
