@@ -42,12 +42,11 @@ public class QuizQuestionController {
 	public String showQuizQuestionPage(@PathVariable Long id, Model model) {
 		System.out.println("GET: /question/quiz/add/" + id);
 		Quiz quiz = quizService.getQuiz(id);
-		// System.out.println(quiz);
-
 		List<Question> availableQuestions = questionService
 				.findAvailableQuestions(quiz);
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(quiz);
+		
 		model.addAttribute("quiz", quiz);
 		model.addAttribute("availableQuestionList", availableQuestions);
 		model.addAttribute("assignedQuestionList", assignedQuestions);
@@ -72,9 +71,10 @@ public class QuizQuestionController {
 
 	@RequestMapping(value = "/question/assignto", method = RequestMethod.GET)
 	public String saveQuizQuestion(ArrayList<QuizQuestion> quizQuestionList,
-			Quiz quiz, Model model) {
+			Long totalTime, Long quizId, Model model) {
 		System.out.println("GET: /quiz/question/assignto");
-		System.out.println("Quiz: " + quiz);
+		System.out.println("QuizId:" + quizId);
+		System.out.println("Total Time: " + totalTime);
 		for (QuizQuestion q : quizQuestionList) {
 			System.out.println("SQ: " + q.getQuestionId().getQuestionId() + " "
 					+ q.getQuizId().getQuizId());

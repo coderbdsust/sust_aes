@@ -40,14 +40,14 @@ public class QuestionCreationController {
 	@ResponseBody
 	public Question saveQuestion(Principal principal, Question question) {
 		System.out.println("POST: /question/create");
-		question.setInstructorId(UserUtil.getInstance().getTeacher(principal));
+		question.setCreatedBy(UserUtil.getInstance().getTeacher(principal));
 		System.out.println(question);
 		questionService.saveOrUpdate(question);
 		// System.out.println("Question Saved");
 		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
 				question.getCreatedTime(), question.getCourseId());
 		System.out.println("Question Retrieved: "
-				+ savedQuestion.getInstructorId());
+				+ savedQuestion.getCreatedBy());
 		// savedQuestion.getQuestionId());
 		return savedQuestion;
 	}

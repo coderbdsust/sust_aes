@@ -54,7 +54,8 @@
 												<div class="col-md-9">
 													<h4 class="form-control-static">
 														<strong th:text="${quiz?.quizTitle}"> <input
-															type="hidden" id="quizId" name="quizId" th:value="${quiz.quizId}" />
+															type="hidden" class="form-control" id="quizId"
+															name="quizId" th:value="${quiz.quizId}" />
 														</strong>
 													</h4>
 												</div>
@@ -235,20 +236,28 @@
 									</div>
 									<div class="form-actions">
 										<div class="row">
-											<div class="col-md-6">
-												<label class="col-md-3 control-label"><strong><em>Total
-															Time</em></strong></label>
-												<div class="row">
-													<div class="col-md-7">
-														<div class="input-group">
-															<input id="total-time" placeholder="In seconds" name="totalTime"
-																type="text" class="form-control"  th:value="${quiz.totalTime}"/>
+											<div class="col-md-8">
+												<!-- 												<label class="col-md-3 control-label"><strong><em>Predefined Time</em></strong></label> -->
 
-														</div>
+												<div class="col-md-2">
+													<label class="col-md-2 control-label"><strong><em>Predefined
+																Time</em></strong></label>
+												</div>
+												<div class="col-md-5">
+													<div class="input-group">
+														<input id="total-time" placeholder="In seconds"
+															name="totalTime" type="text" class="form-control"
+															th:value="${quiz.totalTime}" />
+
 													</div>
 												</div>
+																								<div class="col-md-5">
+																									<label class="col-md-5 control-label"><strong
+																										style="color: green;">Estimated Time(sec.) <b id="estimated-time" style="color: red;" th:text="${quiz.totalTime}">3000</b> </strong></label>
+																								</div>
 											</div>
-											<div class="col-md-offset-3 col-md-3">
+
+											<div class="col-md-offset-1 col-md-3">
 												<button type="submit" class="btn green">Save</button>
 												<button type="button" class="btn default">Cancel</button>
 											</div>
