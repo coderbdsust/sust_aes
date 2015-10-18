@@ -132,8 +132,12 @@
 															data-always-visible="1" data-rail-visible1="0"
 															data-handle-color="#D7DCE2">
 															<!-- START TASK LIST -->
+															<span style="display: none;" id="hiddenTotalQuestion"
+																	th:text="${availableQuestionList.size()}"></span>
+															<span style="display: none;" id="hiddenQuizId"
+																	th:text="${quiz.quizId}"></span>		
 															<ul id="question-bank" class="task-list">
-
+																
 																<li th:id="'question-'+${q.questionId}"
 																	th:each="q, iterStat : ${availableQuestionList}"
 																	style="background: rgba(223, 24quizId0, 216, 0.70); margin-bottom: 2px;">
@@ -144,13 +148,15 @@
 																		<span class="task-title-sp"
 																			th:text="${q.questionText}"> What is fill in
 																			the gaps? </span>
-																		<fieldset>
-																			<input type="hidden"
-																				th:name="'quizQuestions['+${iterStat.index}+'].questionId.questionId'"
-																				th:value="${q.questionId}" /> <input type="hidden"
-																				th:name="'quizQuestions['+${iterStat.index}+'].quizId.quizId'"
-																				th:value="${quiz.quizId}" />
-																		</fieldset>
+																		<ul th:id="'hiddenQuizQuestionHolder-'+${iterStat.index}">
+																			<li style="display: none;"
+																				th:id="'quizQuestions['+${iterStat.index}+'].questionId.questionId'"
+																				th:text="${q.questionId}" />
+																			<li style="display: none;"
+																				th:id="'quizQuestions['+${iterStat.index}+'].quizId.quizId'"
+																				th:text="${quiz.quizId}"></li>
+																		</ul>
+
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
@@ -164,7 +170,7 @@
 																				<li th:id="'add-'+${q.questionId}"><a
 																					th:id="'addButton'+${q.questionId}"
 																					th:name="'addButton'+${q.questionId}" type="button"
-																					th:onclick="'addQuestions('+${q.questionId}+')'">
+																					th:onclick="'addQuestions('+${q.questionId}+','+${iterStat.index}+')'">
 																						<i class="fa fa-plus"></i> Add
 																				</a></li>
 																				<li style="display: none;"
@@ -172,7 +178,7 @@
 																					th:id="'removeButton'+${q.questionId}"
 																					th:name="'removeButton'+${q.questionId}"
 																					type="button"
-																					th:onclick="'removeQuestions('+${q.questionId}+')'">
+																					th:onclick="'removeQuestions('+${q.questionId}+','+${iterStat.index}+')'">
 																						<i class="fa fa-times"></i> Remove
 																				</a></li>
 																				<li><a href="javascript:;"> <i
