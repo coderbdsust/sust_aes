@@ -43,7 +43,6 @@
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
 							<form th:action="@{/quiz/question/assignto}" method="GET">
-								<!-- 							<form action="#" method="GET" class="form-horizontal"> -->
 								<div class="form-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -137,19 +136,21 @@
 
 																<li th:id="'question-'+${q.questionId}"
 																	th:each="q, iterStat : ${availableQuestionList}"
-																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
+																	style="background: rgba(223, 24quizId0, 216, 0.70); margin-bottom: 2px;">
 																	<div class="task-checkbox">
 																		<p></p>
 																	</div>
 																	<div class="task-title">
 																		<span class="task-title-sp"
 																			th:text="${q.questionText}"> What is fill in
-																			the gaps? <input type="hidden"
-																			th:field="*{quizQuestionList[__${iterStat.index}__].questionId}"
-																			th:value="${q.questionId}" /> <input type="hidden"
-																			th:field="*{quizQuestionList[__${iterStat.index}__].quizId}"
-																			th:value="${quiz.quizId}" />
-																		</span>
+																			the gaps? </span>
+																		<fieldset>
+																			<input type="hidden"
+																				th:name="'quizQuestions['+${iterStat.index}+'].questionId.questionId'"
+																				th:value="${q.questionId}" /> <input type="hidden"
+																				th:name="'quizQuestions['+${iterStat.index}+'].quizId.quizId'"
+																				th:value="${quiz.quizId}" />
+																		</fieldset>
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
@@ -251,10 +252,13 @@
 
 													</div>
 												</div>
-																								<div class="col-md-5">
-																									<label class="col-md-5 control-label"><strong
-																										style="color: green;">Estimated Time(sec.) <b id="estimated-time" style="color: red;" th:text="${quiz.totalTime}">3000</b> </strong></label>
-																								</div>
+												<div class="col-md-5">
+													<label class="col-md-5 control-label"><strong
+														style="color: green;">Estimated Time(sec.) <b
+															id="estimated-time" style="color: red;"
+															th:text="${quiz.totalTime}">3000</b>
+													</strong></label>
+												</div>
 											</div>
 
 											<div class="col-md-offset-1 col-md-3">
