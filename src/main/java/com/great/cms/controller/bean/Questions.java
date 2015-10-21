@@ -1,9 +1,16 @@
-package com.great.cms.entity;
+package com.great.cms.controller.bean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Questions {
+import com.great.cms.entity.QuizQuestion;
+/**
+ * @author Biswajit Debnath
+ * 1. Change the class name to ExamQuesion or ExamDetail 
+ * 2. I think it's preferable to use Quiz quizId instead of Long quizId
+ * 3. ExamDetail(Quiz quiz, List<QuizQuestion> quizQuestions)
+ */
+public class Questions{
 
 	public Long quizId;
 	List<QuizQuestion> quizQuestions = new ArrayList<>();

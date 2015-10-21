@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.great.cms.controller.bean.Questions;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.Question;
-import com.great.cms.entity.Questions;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
 import com.great.cms.service.QuestionService;
@@ -72,11 +72,11 @@ public class QuizQuestionController {
 		System.out.println("GET: /quiz/question/assignto");
 		System.out.println("QuizId:" + quizId);
 		System.out.println("Total Time: " + totalTime);
-		System.out.println(questions);
+//		System.out.println(questions);
 		List<QuizQuestion> quizQuestionList = questions.getQuizQuestions();
-		System.out.println(quizQuestionList);
+//		System.out.println(quizQuestionList);
 		for (QuizQuestion q : quizQuestionList) {
-			System.out.println("SQ: " + q.getQuestionId().getQuestionId() + " " + q.getQuizId().getQuizId());
+			System.out.println("QuestionId: " + q.getQuestionId().getQuestionId());
 		}
 		return "redirect:/teacher/quiz/dashboard";
 	}
