@@ -33,18 +33,17 @@ public class TeacherQuizController {
 
 	@RequestMapping("/dashboard")
 	public String showStdQuizDashboard(Principal principal, Model uiModel) {
-		System.out.println("/exam/question");
+		System.out.println("/teacher/quiz/dashboard");
 		Teacher teacher = UserUtil.getInstance()
 				.getTeacher(principal);
 		List<Quiz> quizList = new ArrayList<Quiz>();
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		for (Teaches teaches : teachesList) {
 			List<Quiz> quizes = quizService.getQuizes(teaches);
-			System.out.println("Quiz: " + quizes.size());
+			System.out.println("Teaches " + teaches.getTeachesId()+": Quiz-Count: " + quizes.size());
 			if (!quizes.isEmpty())
 				quizList.addAll(quizes);
 		}
-		System.out.println("Total Quiz: " + quizList.size());
 		uiModel.addAttribute("quizList", quizList);
 		return "teacher/quiz/teach_quiz_dashboard";
 	}
