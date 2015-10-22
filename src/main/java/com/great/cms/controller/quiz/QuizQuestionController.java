@@ -76,6 +76,7 @@ public class QuizQuestionController {
 		List<QuizQuestion> quizQuestionList = questions.getQuizQuestions();
 		System.out.println(quizQuestionList);
 		for (QuizQuestion q : quizQuestionList) {
+			if(q!=null)
 			System.out.println("SQ: " + q.getQuestionId().getQuestionId() + " " + q.getQuizId().getQuizId());
 		}
 		return "redirect:/teacher/quiz/dashboard";
