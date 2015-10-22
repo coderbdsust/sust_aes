@@ -33,6 +33,7 @@ function addQuestions(id,iterId) {
 		oldParent.removeChild(child);
 		newParent.appendChild(child);
 		//alert('parent');
+		timeEstimationAfterAssigned(id);
 	}
 	function removeQuestions(id,iterId) {
 		//alert('parent1');
@@ -51,5 +52,6 @@ function addQuestions(id,iterId) {
 		//alert('parent3');
 		oldParent.removeChild(child);
 		newParent.appendChild(child);
+		timeEstimationAfterRemoved(id);
 		//alert('parent');
 	}
