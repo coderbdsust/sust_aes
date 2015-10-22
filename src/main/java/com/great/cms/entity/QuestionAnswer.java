@@ -11,6 +11,8 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,6 +31,7 @@ public class QuestionAnswer implements DomainObject, Serializable {
 	    @Id
 	    @Basic(optional = false)
 	    @Column(name = "question_ans_id")
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long questionAnsId;
 	    @Basic(optional = false)
 	    @Column(name = "answer_body")

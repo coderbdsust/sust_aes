@@ -13,6 +13,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -40,6 +42,7 @@ public class CourseRegistration implements DomainObject, Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "course_reg_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer courseRegId;
     @Basic(optional = false)
     @Column(name = "is_approved")

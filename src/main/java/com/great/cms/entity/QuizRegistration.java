@@ -14,6 +14,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -44,6 +46,7 @@ public class QuizRegistration implements DomainObject, Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "quiz_registration_id")
     private Long quizRegistrationId;
     @Column(name = "attend_time")

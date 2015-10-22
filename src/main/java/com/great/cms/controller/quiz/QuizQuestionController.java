@@ -1,7 +1,6 @@
 package com.great.cms.controller.quiz;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.controller.bean.Questions;
-import com.great.cms.entity.Course;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
 import com.great.cms.service.QuestionService;
+import com.great.cms.service.QuizQuestionService;
 import com.great.cms.service.QuizService;
 import com.great.cms.utils.simulator.TimeEstimater;
 
@@ -33,7 +32,9 @@ public class QuizQuestionController {
 	QuizService quizService;
 	@Autowired
 	QuestionService questionService;
-
+	@Autowired
+	QuizQuestionService quizQuestionService;
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
@@ -83,9 +84,11 @@ public class QuizQuestionController {
 		// System.out.println(questions);
 		List<QuizQuestion> quizQuestionList = questions.getQuizQuestions();
 		// System.out.println(quizQuestionList);
-		for (QuizQuestion q : quizQuestionList) {
+		for (QuizQuestion quizQuestion : quizQuestionList) {
 			System.out.println("QuestionId: "
-					+ q.getQuestionId().getQuestionId());
+					+ quizQuestion.getQuestionId().getQuestionId());
+			quizQuestionService.saveOrUpdateQuizQuestion(quizQuestion);
+			
 		}
 		return "redirect:/teacher/quiz/dashboard";
 	}

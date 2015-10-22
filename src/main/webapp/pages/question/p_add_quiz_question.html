@@ -240,6 +240,65 @@
 															data-handle-color="#D7DCE2">
 															<!-- START TASK LIST -->
 															<ul id="quiz-question" class="task-list">
+<span th:if="${#sets.isEmpty(assignedQuestions)}">NULL</span>
+
+
+																<li th:id="'question-'+${q.questionId}"
+																	th:each="q, iterStat : ${assignedQuestions}"
+																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
+
+																	<span style="display: none;"
+																	th:id="'required-time-'+${q.questionId}"
+																	th:text="${q.requiredTime}">0</span>
+
+																	<div class="task-checkbox">
+																		<p></p>
+																	</div>
+																	<div class="task-title">
+																		<span class="task-title-sp"
+																			th:text="${q.questionText}"> What is fill in
+																			the gaps? </span>
+																		<ul
+																			th:id="'hiddenQuizQuestionHolder-'+${iterStat.index}">
+																			<li style="display: none;"
+																				th:id="'quizQuestions['+${iterStat.index}+'].questionId.questionId'"
+																				th:text="${q.questionId}" />
+																			<li style="display: none;"
+																				th:id="'quizQuestions['+${iterStat.index}+'].quizId.quizId'"
+																				th:text="${quiz.quizId}"></li>
+																		</ul>
+
+																	</div>
+																	<div class="task-config">
+																		<div class="task-config-btn btn-group">
+																			<a class="btn btn-xs default" href="javascript:;"
+																				data-toggle="dropdown" data-hover="dropdown"
+																				data-close-others="true"> <i class="fa fa-cog"></i><i
+																				class="fa fa-angle-down"></i>
+																			</a>
+
+																			<ul class="dropdown-menu pull-right">
+																				<li th:id="'add-'+${q.questionId}"><a
+																					th:id="'addButton'+${q.questionId}"
+																					th:name="'addButton'+${q.questionId}" type="button"
+																					th:onclick="'addQuestions('+${q.questionId}+','+${iterStat.index}+')'">
+																						<i class="fa fa-plus"></i> Add
+																				</a></li>
+																				<li style="display: none;"
+																					th:id="'remove-'+${q.questionId}"><a
+																					th:id="'removeButton'+${q.questionId}"
+																					th:name="'removeButton'+${q.questionId}"
+																					type="button"
+																					th:onclick="'removeQuestions('+${q.questionId}+','+${iterStat.index}+')'">
+																						<i class="fa fa-times"></i> Remove
+																				</a></li>
+																				<li><a href="javascript:;"> <i
+																						class="fa fa-info"></i> Details
+																				</a></li>
+																			</ul>
+																		</div>
+																	</div>
+																</li>
 
 
 															</ul>
