@@ -10,7 +10,7 @@ import com.great.cms.entity.QuizQuestion;
  * 2. I think it's preferable to use Quiz quizId instead of Long quizId
  * 3. ExamDetail(Quiz quiz, List<QuizQuestion> quizQuestions)
  */
-public class AssignedQuestion{
+public class Questions{
 
 	public Long quizId;
 	List<QuizQuestion> quizQuestions = new ArrayList<>();

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.great.cms.controller.bean.AssignedQuestion;
+import com.great.cms.controller.bean.Questions;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
@@ -75,7 +75,7 @@ public class QuizQuestionController {
 	}
 
 	@RequestMapping(value = "/question/assignto", method = RequestMethod.GET)
-	public String saveQuizQuestion(AssignedQuestion questions, Long totalTime,
+	public String saveQuizQuestion(Questions questions, Long totalTime,
 			Long quizId, Model model) {
 		System.out.println("GET: /quiz/question/assignto");
 		System.out.println("QuizId:" + quizId);
