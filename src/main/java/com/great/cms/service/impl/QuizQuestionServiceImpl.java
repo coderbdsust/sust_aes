@@ -35,19 +35,10 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
 	public List<QuizQuestion> getQuizQuestions(Quiz quizId) {
 		return quizQuestionDao.getQuizQuestions(quizId);
 	}
-
-	@Override
-	public void deleteQuizQuestion(QuizQuestion quizQuestionId) {
+	
+	public void deleteById(Long Id) {
 		// TODO Auto-generated method stub
-		quizQuestionDao.delete(quizQuestionId);
-		
-	}
-
-	@Override
-	public void deleteQuizQuestion(Quiz quizId, Question questionId) {
-		// TODO Auto-generated method stub
-		 quizQuestionDao.deleteQuizQuestion(quizId,questionId);
-		
+		quizQuestionDao.deleteById(Id);
 	}
 
 }

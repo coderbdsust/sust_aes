@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.controller.bean.Questions;
+import com.great.cms.controller.bean.util.AssignQuestion;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
@@ -81,19 +82,40 @@ public class QuizQuestionController {
 		System.out.println("GET: /quiz/question/assignto");
 		System.out.println("QuizId:" + quizId);
 		System.out.println("Total Time: " + totalTime);
+
+		Quiz quiz = new Quiz(quizId);
+
+		List<QuizQuestion> prevQuestionList = quizQuestionService
+				.getQuizQuestions(quiz);
+
 		List<QuizQuestion> quizQuestionList = questions
 				.getFilteredQuizQuestions();
 
-		System.out.println("Quiz Question List Size: "
-				+ quizQuestionList.size());
+		AssignQuestion assignQuestion = new AssignQuestion(prevQuestionList,
+				quizQuestionList);
 
-		for (QuizQuestion quizQuestion : quizQuestionList) {
-			Quiz quiz = quizQuestion.getQuizId();
-			Question question = quizQuestion.getQuestionId();
-			System.out.println("QuizId: " + quiz.getQuizId() + " QuestionId: "
-					+ question.getQuestionId());
-			// quizQuestionService.saveOrUpdate(quizQuestion);
+		for (QuizQuestion q : assignQuestion.getRemoveList()) {
+			// System.out.println("REMOVE QID: " +
+			// q.getQuestionId().getQuestionId());
+
+			// System.out.print(q.getQuizQuestionId()==null?"QQID NULL":q.getQuizQuestionId()+" ");
+			// System.out.print(q.getQuizId()==null?"QUIZ NULL":q.getQuizId().getQuizId()+" ");
+			// System.out.println(q.getQuestionId()==null?"QUESTION NULL":q.getQuestionId().getQuestionId());
+			quizQuestionService.deleteById(q.getQuizQuestionId());
 		}
+
+		System.out.println("REMOVE ITEM SIZE: "
+				+ assignQuestion.getRemoveList().size());
+
+		for (QuizQuestion q : assignQuestion.getSaveList()) {
+			// System.out.println("SAVE QID: " +
+			// q.getQuestionId().getQuestionId());
+			quizQuestionService.saveOrUpdate(q);
+		}
+
+		System.out.println("SAVE ITEM SIZE: "
+				+ assignQuestion.getSaveList().size());
+
 		return "redirect:/teacher/quiz/dashboard";
 	}
 

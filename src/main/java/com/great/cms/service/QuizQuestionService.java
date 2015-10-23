@@ -15,8 +15,8 @@ public interface QuizQuestionService {
 
 	public List<QuizQuestion> getQuizQuestions(Quiz quizId);
 	
-	public void deleteQuizQuestion(QuizQuestion quizQuestionId);
+	public void deleteById(Long Id);
 	
-	public void deleteQuizQuestion(Quiz quizId, Question questionId);
+	
 
 }

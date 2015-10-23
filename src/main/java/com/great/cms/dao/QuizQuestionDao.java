@@ -10,6 +10,4 @@ public interface QuizQuestionDao extends GenericDao<QuizQuestion, Long> {
 
 	public List<QuizQuestion> getQuizQuestions(Quiz quizId);
 
-	public void deleteQuizQuestion(Quiz quizId, Question questionId);
-
 }

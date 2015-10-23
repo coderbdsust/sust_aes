@@ -29,17 +29,6 @@ public class QuizQuestionDaoImpl extends GenericDaoImpl<QuizQuestion, Long>
 		return quizQuestions;
 	}
 
-	@Override
-	public void deleteQuizQuestion(Quiz quizId, Question questionId) {
-		// TODO Auto-generated method stub
-		Query query = this.em.createQuery("DELETE FROM q QuizQuestion q WHERE"
-				+ " q.quizId=:quizId and q.questionId=:questionId");
-		query.setParameter("quizId", quizId);
-		query.setParameter("questionId", questionId);
-		
-		
-		query.executeUpdate();
-		
-	}
+	
 
 }
