@@ -81,21 +81,18 @@ public class QuizQuestionController {
 		System.out.println("GET: /quiz/question/assignto");
 		System.out.println("QuizId:" + quizId);
 		System.out.println("Total Time: " + totalTime);
-		List<QuizQuestion> quizQuestionList = questions.getQuizQuestions();
+		List<QuizQuestion> quizQuestionList = questions
+				.getFilteredQuizQuestions();
 
 		System.out.println("Quiz Question List Size: "
 				+ quizQuestionList.size());
-		
-		for (QuizQuestion quizQuestion : quizQuestionList) {
-			if (quizQuestion.getQuizId() != null
-					&& quizQuestion.getQuestionId() != null) {
-				Quiz quiz = quizQuestion.getQuizId();
-				Question question = quizQuestion.getQuestionId();
 
-				System.out.println("QuizId: " + quiz.getQuizId()
-						+ " QuestionId: " + question.getQuestionId());
-				quizQuestionService.saveOrUpdate(quizQuestion);
-			}
+		for (QuizQuestion quizQuestion : quizQuestionList) {
+			Quiz quiz = quizQuestion.getQuizId();
+			Question question = quizQuestion.getQuestionId();
+			System.out.println("QuizId: " + quiz.getQuizId() + " QuestionId: "
+					+ question.getQuestionId());
+			// quizQuestionService.saveOrUpdate(quizQuestion);
 		}
 		return "redirect:/teacher/quiz/dashboard";
 	}
