@@ -34,7 +34,7 @@ public class QuizQuestionController {
 	QuestionService questionService;
 	@Autowired
 	QuizQuestionService quizQuestionService;
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
@@ -81,14 +81,21 @@ public class QuizQuestionController {
 		System.out.println("GET: /quiz/question/assignto");
 		System.out.println("QuizId:" + quizId);
 		System.out.println("Total Time: " + totalTime);
-		// System.out.println(questions);
 		List<QuizQuestion> quizQuestionList = questions.getQuizQuestions();
-		// System.out.println(quizQuestionList);
+
+		System.out.println("Quiz Question List Size: "
+				+ quizQuestionList.size());
+		
 		for (QuizQuestion quizQuestion : quizQuestionList) {
-			System.out.println("QuestionId: "
-					+ quizQuestion.getQuestionId().getQuestionId());
-			quizQuestionService.saveOrUpdateQuizQuestion(quizQuestion);
-			
+			if (quizQuestion.getQuizId() != null
+					&& quizQuestion.getQuestionId() != null) {
+				Quiz quiz = quizQuestion.getQuizId();
+				Question question = quizQuestion.getQuestionId();
+
+				System.out.println("QuizId: " + quiz.getQuizId()
+						+ " QuestionId: " + question.getQuestionId());
+				quizQuestionService.saveOrUpdate(quizQuestion);
+			}
 		}
 		return "redirect:/teacher/quiz/dashboard";
 	}

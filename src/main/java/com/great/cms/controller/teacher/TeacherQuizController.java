@@ -38,9 +38,11 @@ public class TeacherQuizController {
 				.getTeacher(principal);
 		List<Quiz> quizList = new ArrayList<Quiz>();
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
+//		System.out.println("TeachesList Found!");
 		for (Teaches teaches : teachesList) {
 			List<Quiz> quizes = quizService.getQuizes(teaches);
-			System.out.println("Teaches " + teaches.getTeachesId()+": Quiz-Count: " + quizes.size());
+//			System.out.println("Quiz List Found!");
+//			System.out.println("Teaches " + teaches.getTeachesId()+": Quiz-Count: " + quizes.size());
 			if (!quizes.isEmpty())
 				quizList.addAll(quizes);
 		}

@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.QuizQuestionDao;
+import com.great.cms.entity.Question;
+import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
 import com.great.cms.service.QuizQuestionService;
+
 @Service("quizQuestionService")
 public class QuizQuestionServiceImpl implements QuizQuestionService {
 
@@ -15,9 +18,12 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
 	private QuizQuestionDao quizQuestionDao;
 
 	@Override
-	public void saveOrUpdateQuizQuestion(QuizQuestion quizQuestion) {
-		quizQuestionDao.save(quizQuestion);
-
+	public void saveOrUpdate(QuizQuestion quizQuestion) {
+		if (null == quizQuestion.getQuizQuestionId()) {
+			quizQuestionDao.save(quizQuestion);
+		} else {
+			quizQuestionDao.update(quizQuestion);
+		}
 	}
 
 	@Override
@@ -26,9 +32,22 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
 	}
 
 	@Override
-	public List<QuizQuestion> getQuizQuestions() {
+	public List<QuizQuestion> getQuizQuestions(Quiz quizId) {
+		return quizQuestionDao.getQuizQuestions(quizId);
+	}
+
+	@Override
+	public void deleteQuizQuestion(QuizQuestion quizQuestionId) {
 		// TODO Auto-generated method stub
-		return null;
+		quizQuestionDao.delete(quizQuestionId);
+		
+	}
+
+	@Override
+	public void deleteQuizQuestion(Quiz quizId, Question questionId) {
+		// TODO Auto-generated method stub
+		 quizQuestionDao.deleteQuizQuestion(quizId,questionId);
+		
 	}
 
 }

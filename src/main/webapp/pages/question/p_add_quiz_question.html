@@ -55,10 +55,9 @@
 												</h4>
 												<div class="col-md-9">
 													<h4 class="form-control-static">
-														<strong th:text="${quiz?.quizTitle}"> <input
-															type="hidden" class="form-control" id="quizId"
-															name="quizId" th:value="${quiz.quizId}" />
+														<strong th:text="${quiz?.quizTitle}"> 
 														</strong>
+														<input type="hidden" class="form-control" id="quizId" name="quizId" th:value="${quiz.quizId}" />
 													</h4>
 												</div>
 											</div>
@@ -75,7 +74,7 @@
 															th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle}">[CSE333]
 															Database</strong>
 													</h4>
-													<input id="courseId" type="hidden"
+													<input id="courseId" type="hidden" name="courseId"
 														th:value="${quiz?.teachesId?.courseId?.courseId}" />
 												</div>
 											</div>
@@ -240,11 +239,11 @@
 															data-handle-color="#D7DCE2">
 															<!-- START TASK LIST -->
 															<ul id="quiz-question" class="task-list">
-<span th:if="${#sets.isEmpty(assignedQuestions)}">NULL</span>
+<!-- <span th:if="${#sets.isEmpty(assignedQuestions)}">NULL</span> -->
 
 
 																<li th:id="'question-'+${q.questionId}"
-																	th:each="q, iterStat : ${assignedQuestions}"
+																	th:each="q, iterStat : ${assignedQuestionList}"
 																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
 
 																	<span style="display: none;"
@@ -278,13 +277,13 @@
 																			</a>
 
 																			<ul class="dropdown-menu pull-right">
-																				<li th:id="'add-'+${q.questionId}"><a
+																				<li  style="display: none;" th:id="'add-'+${q.questionId}"><a
 																					th:id="'addButton'+${q.questionId}"
 																					th:name="'addButton'+${q.questionId}" type="button"
 																					th:onclick="'addQuestions('+${q.questionId}+','+${iterStat.index}+')'">
 																						<i class="fa fa-plus"></i> Add
 																				</a></li>
-																				<li style="display: none;"
+																				<li 
 																					th:id="'remove-'+${q.questionId}"><a
 																					th:id="'removeButton'+${q.questionId}"
 																					th:name="'removeButton'+${q.questionId}"

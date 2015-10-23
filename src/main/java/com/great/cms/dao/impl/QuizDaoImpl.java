@@ -39,10 +39,12 @@ public class QuizDaoImpl extends GenericDaoImpl<Quiz, Long> implements QuizDao {
 	public List<Quiz> findByTeachesId(Teaches teachesId) {
 		Query query = this.em.createQuery("SELECT q FROM Quiz q WHERE"
 				+ " q.teachesId=:teachesId");
-
+		
+//		System.out.println("ID: "+teachesId.getTeachesId());
 		query.setParameter("teachesId", teachesId);
-
+//		System.out.println("Query Executing...");
 		List<Quiz> quizes = query.getResultList();
+//		System.out.println("Query Executed...");
 		return quizes;
 	}
 
