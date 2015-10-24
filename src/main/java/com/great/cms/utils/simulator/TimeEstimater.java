@@ -3,7 +3,7 @@ package com.great.cms.utils.simulator;
 import java.util.List;
 
 import com.great.cms.entity.Question;
-import com.great.cms.security.UserUtil;
+import com.great.cms.security.utils.UserUtil;
 
 public class TimeEstimater {
 

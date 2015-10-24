@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.great.cms.controller.bean.util.QuestionUtils;
+import com.great.cms.controller.util.QuestionUtil;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
-import com.great.cms.security.UserUtil;
+import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.QuestionService;
 import com.great.cms.service.QuizQuestionService;
 import com.great.cms.service.QuizService;
@@ -98,9 +98,9 @@ public class QuizController {
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(savedQuiz);
 		
-		long totalMarks = QuestionUtils.getInstance().getTotalMarks(
+		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
-		int totalQuestions = QuestionUtils.getInstance().getTotalQuestions(
+		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);
 		
 		uiModel.addAttribute("quiz", savedQuiz);

@@ -1,14 +1,14 @@
-package com.great.cms.controller.bean.util;
+package com.great.cms.controller.util;
 
 import java.util.*;
 
 import com.great.cms.entity.Question;
 
-public class QuestionUtils {
+public class QuestionUtil {
 	
-	private static final QuestionUtils ownInstance = new QuestionUtils();
+	private static final QuestionUtil ownInstance = new QuestionUtil();
 	
-	public static QuestionUtils getInstance(){
+	public static QuestionUtil getInstance(){
 		return ownInstance;
 	}
 	
@@ -20,7 +20,7 @@ public class QuestionUtils {
 		return totalMarks;
 	}
 	
-	public int getTotalQuestions(List<Question> assignedQuestions){
+	public int countTotalQuestions(List<Question> assignedQuestions){
 		return assignedQuestions.size();
 	}
 	

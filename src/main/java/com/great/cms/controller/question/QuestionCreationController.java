@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.entity.Question;
-import com.great.cms.security.UserUtil;
+import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.QuestionService;
 
 @Controller

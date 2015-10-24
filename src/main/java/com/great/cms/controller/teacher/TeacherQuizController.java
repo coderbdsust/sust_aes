@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
-import com.great.cms.security.UserUtil;
+import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.QuizService;
 import com.great.cms.service.TeachesService;
 

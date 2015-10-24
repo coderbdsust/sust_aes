@@ -1,4 +1,4 @@
-package com.great.cms.controller.bean.util;
+package com.great.cms.controller.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;

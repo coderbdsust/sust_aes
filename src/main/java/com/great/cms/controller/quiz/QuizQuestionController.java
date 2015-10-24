@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.controller.bean.Questions;
-import com.great.cms.controller.bean.util.AssignQuestion;
+import com.great.cms.controller.util.AssignQuestion;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
