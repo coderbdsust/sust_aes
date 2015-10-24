@@ -49,45 +49,38 @@
 								<div class="form-body">
 									<div class="row">
 										<div class="col-md-6">
-											<div class="form-group">
-												<h4 class="control-label col-md-3">
-													<strong>QUIZ TITLE:</strong>
-												</h4>
-												<div class="col-md-9">
-													<h4 class="form-control-static">
-														<strong th:text="${quiz?.quizTitle}"> </strong> <input
-															type="hidden" class="form-control" id="quizId"
-															name="quizId" th:value="${quiz.quizId}" />
-													</h4>
-												</div>
+											<div class="form-group"
+												style="background: rgba(0, 128, 0, 0.35);">
+												<h3 class="form-control-static" style="padding-left:25px;">
+													<strong th:text="${quiz?.quizTitle.toUpperCase()}"> </strong> <input
+														type="hidden" class="form-control" id="quizId"
+														name="quizId" th:value="${quiz.quizId}" />
+												</h3>
 											</div>
 										</div>
-										<!--/span-->
+
 										<div class="col-md-6">
-											<div class="form-group">
-												<h4 class="control-label col-md-3">
-													<strong>COURSE:</strong>
-												</h4>
-												<div class="col-md-9">
-													<h4 class="form-control-static">
-														<strong
-															th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle}">[CSE333]
-															Database</strong>
-													</h4>
-													<input id="courseId" type="hidden" name="courseId"
-														th:value="${quiz?.teachesId?.courseId?.courseId}" />
-												</div>
+											<div class="form-group" style="background: rgba(0, 128, 0, 0.35);">
+												<h3 class="form-control-static" style="padding-left:25px;">
+													<strong
+														th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle.toUpperCase()}">[CSE333]
+														Database</strong>
+												</h3>
+												<input id="courseId" type="hidden" name="courseId"
+													th:value="${quiz?.teachesId?.courseId?.courseId}" />
 											</div>
 										</div>
+
 									</div>
 
 									<!--/row-->
 									<div class="row">
 
-										<div class="col-md-6 col-sm-12">
+										<div class="col-md-6 col-sm-12"
+											style="background: rgba(223, 240, 216, 0.40);">
 											<!-- BEGIN PORTLET-->
 											<div class="portlet light tasks-widget"
-												style="background: rgba(223, 240, 216, 0.40);">
+												style="background: rgba(223, 240, 216, 0.60);">
 												<div class="portlet-title">
 
 													<div class="caption caption-md">
@@ -149,12 +142,16 @@
 																	th:id="'required-time-'+${q.questionId}"
 																	th:text="${q.requiredTime}">0</span>
 
-																	<div class="task-checkbox" th:switch="${q.questionType.name()}">
-																		<p style="padding-left:5px; color:green;" th:case="MCQ">[M]</p>
-																		<p style="padding-left:5px; color:green;" th:case="DESCRIPTIVE">[D]</p>
-																		<p style="padding-left:5px; color:green;" th:case="FILL_IN_THE_GAPS">[F]</p>
+																	<div class="task-checkbox"
+																		th:switch="${q.questionType.name()}">
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="MCQ">[M]</p>
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="DESCRIPTIVE">[D]</p>
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="FILL_IN_THE_GAPS">[F]</p>
 																	</div>
-																	
+
 																	<div class="task-title">
 																		<span class="task-title-sp"
 																			th:text="${q.questionText}"> What is fill in
@@ -208,15 +205,14 @@
 												</div>
 											</div>
 											<!-- END PORTLET-->
-
-
 										</div>
 
 										<!-- This module for exam added question -->
-										<div class="col-md-6 col-sm-12">
+										<div class="col-md-6 col-sm-12"
+											style="background: rgba(223, 240, 216, 0.40);">
 											<!-- BEGIN PORTLET-->
 											<div class="portlet light tasks-widget"
-												style="background: rgba(223, 240, 216, 0.40);">
+												style="background: rgba(223, 240, 216, 0.60);">
 												<div class="portlet-title">
 													<div class="caption caption-md">
 														<i class="icon-bar-chart theme-font-color hide"></i> <span
@@ -251,10 +247,14 @@
 																	th:id="'required-time-'+${q.questionId}"
 																	th:text="${q.requiredTime}">0</span>
 
-																	<div class="task-checkbox" th:switch="${q.questionType.name()}">
-																		<p style="padding-left:5px; color:green;" th:case="MCQ">[M]</p>
-																		<p style="padding-left:5px; color:green;" th:case="DESCRIPTIVE">[D]</p>
-																		<p style="padding-left:5px; color:green;" th:case="FILL_IN_THE_GAPS">[F]</p>
+																	<div class="task-checkbox"
+																		th:switch="${q.questionType.name()}">
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="MCQ">[M]</p>
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="DESCRIPTIVE">[D]</p>
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="FILL_IN_THE_GAPS">[F]</p>
 																	</div>
 																	<div class="task-title">
 																		<span class="task-title-sp"
@@ -262,20 +262,26 @@
 																			the gaps? </span>
 																		<ul
 																			th:id="'hiddenQuizQuestionHolder-'+${q.questionId}">
-																			
+
 																			<li style="display: none;"
 																				th:id="'quizQuestions['+${q.questionId}+'].questionId.questionId'"
 																				th:text="${q.questionId}" />
-																				
+
 																			<li style="display: none;"
 																				th:id="'quizQuestions['+${q.questionId}+'].quizId.quizId'"
-																				th:text="${quiz.quizId}"/>
-																		
-																		
-																			
-																			<input th:id="'hiddenQuestionInput'+${q.questionId}" type="hidden" th:name="'quizQuestions['+${q.questionId}+'].questionId.questionId'" th:value="${q.questionId}" />
-																			<input th:id="'hiddenQuizInput'+${q.questionId}" type="hidden" th:name="'quizQuestions['+${q.questionId}+'].quizId.quizId'" th:value="${quiz.quizId}" />
-																	
+																				th:text="${quiz.quizId}" />
+
+
+
+																			<input th:id="'hiddenQuestionInput'+${q.questionId}"
+																				type="hidden"
+																				th:name="'quizQuestions['+${q.questionId}+'].questionId.questionId'"
+																				th:value="${q.questionId}" />
+																			<input th:id="'hiddenQuizInput'+${q.questionId}"
+																				type="hidden"
+																				th:name="'quizQuestions['+${q.questionId}+'].quizId.quizId'"
+																				th:value="${quiz.quizId}" />
+
 																		</ul>
 
 																	</div>
@@ -347,7 +353,8 @@
 											</div>
 
 											<div class="col-md-offset-1 col-md-3">
-												<button type="submit" class="btn green">Save Changes</button>
+												<button type="submit" class="btn green">Save
+													Changes</button>
 												<button type="button" class="btn default">Cancel</button>
 											</div>
 										</div>
