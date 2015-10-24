@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.great.cms.controller.bean.util.QuestionUtils;
+import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
 import com.great.cms.security.UserUtil;
+import com.great.cms.service.QuestionService;
+import com.great.cms.service.QuizQuestionService;
 import com.great.cms.service.QuizService;
 import com.great.cms.service.TeachesService;
 
@@ -33,6 +37,8 @@ public class QuizController {
 	TeachesService teachesService;
 	@Autowired
 	QuizService quizService;
+	@Autowired
+	QuestionService questionService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -45,8 +51,7 @@ public class QuizController {
 	public String createNewQuiz(Principal principal, Model uiModel) {
 
 		System.out.println("GET: quiz/create");
-		Teacher teacher = UserUtil.getInstance()
-				.getTeacher(principal);
+		Teacher teacher = UserUtil.getInstance().getTeacher(principal);
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		uiModel.addAttribute("quiz", new Quiz());
 		uiModel.addAttribute("teachesList", teachesList);
@@ -62,7 +67,8 @@ public class QuizController {
 				quiz.getCreateDate(), quiz.getTeachesId());
 		redirectAttr.addAttribute("id", savedQuiz.getQuizId());
 		System.out.println("Quiz Saved Id: " + savedQuiz.getQuizId());
-		System.out.println("Redirectig to quiz/question/add/"+savedQuiz.getQuizId());
+		System.out.println("Redirectig to quiz/question/add/"
+				+ savedQuiz.getQuizId());
 		return "redirect:/quiz/question/add/{id}";
 	}
 
@@ -75,7 +81,7 @@ public class QuizController {
 		redirectAttr.addAttribute("id", savedQuiz.getQuizId());
 		return "redirect:/quiz/question/add/{id}";
 	}
-	
+
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String deleteQuiz(@PathVariable Long id,
 			RedirectAttributes redirectAttr) {
@@ -86,10 +92,20 @@ public class QuizController {
 
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String viewQuiz(@PathVariable Long id, Model uiModel) {
-		System.out.println("GET: quiz/edit/{id}" + id);
+		System.out.println("GET: quiz/view/{id}" + id);
 		Quiz savedQuiz = quizService.getQuiz(id);
 		System.out.println(savedQuiz);
+		List<Question> assignedQuestions = questionService
+				.findAssignedQuestions(savedQuiz);
+		
+		long totalMarks = QuestionUtils.getInstance().getTotalMarks(
+				assignedQuestions);
+		int totalQuestions = QuestionUtils.getInstance().getTotalQuestions(
+				assignedQuestions);
+		
 		uiModel.addAttribute("quiz", savedQuiz);
+		uiModel.addAttribute("totalQuestions", totalQuestions);
+		uiModel.addAttribute("totalMarks", totalMarks);
 		return "teacher/quiz/teach_quiz_view";
 	}
 

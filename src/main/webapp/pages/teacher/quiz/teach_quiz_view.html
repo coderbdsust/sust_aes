@@ -78,17 +78,16 @@
 												<label class="control-label col-md-3"><strong>Total
 														Questions</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static">25</p>
+													<p class="form-control-static" th:text="${totalQuestions}">25</p>
 												</div>
 											</div>
 										</div>
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3"><strong>Total
-														Time</strong></label>
+												<label class="control-label col-md-3"><strong>Quiz Duration</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.totalTime}">2hrs</p>
+													<p class="form-control-static" th:text="${quiz.totalTime}+' seconds'">2hrs</p>
 												</div>
 											</div>
 										</div>
@@ -100,7 +99,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Marks</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static">50</p>
+													<p class="form-control-static" th:text="${totalMarks}">50</p>
 												</div>
 											</div>
 										</div>

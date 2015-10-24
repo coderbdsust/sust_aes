@@ -1,6 +1,7 @@
 package com.great.cms.controller.quiz;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -83,38 +84,26 @@ public class QuizQuestionController {
 		System.out.println("QuizId:" + quizId);
 		System.out.println("Total Time: " + totalTime);
 
-		Quiz quiz = new Quiz(quizId);
+		Quiz quiz = quizService.getQuiz(quizId);
+		quiz.setTotalTime(totalTime);
+		quizService.saveOrUpdate(quiz);
 
-		List<QuizQuestion> prevQuestionList = quizQuestionService
+		ArrayList<QuizQuestion> prevQuestionList = (ArrayList<QuizQuestion>) quizQuestionService
 				.getQuizQuestions(quiz);
 
-		List<QuizQuestion> quizQuestionList = questions
+		ArrayList<QuizQuestion> quizQuestionList = (ArrayList<QuizQuestion>) questions
 				.getFilteredQuizQuestions();
 
 		AssignQuestion assignQuestion = new AssignQuestion(prevQuestionList,
 				quizQuestionList);
 
 		for (QuizQuestion q : assignQuestion.getRemoveList()) {
-			// System.out.println("REMOVE QID: " +
-			// q.getQuestionId().getQuestionId());
-
-			// System.out.print(q.getQuizQuestionId()==null?"QQID NULL":q.getQuizQuestionId()+" ");
-			// System.out.print(q.getQuizId()==null?"QUIZ NULL":q.getQuizId().getQuizId()+" ");
-			// System.out.println(q.getQuestionId()==null?"QUESTION NULL":q.getQuestionId().getQuestionId());
 			quizQuestionService.deleteById(q.getQuizQuestionId());
 		}
 
-		System.out.println("REMOVE ITEM SIZE: "
-				+ assignQuestion.getRemoveList().size());
-
 		for (QuizQuestion q : assignQuestion.getSaveList()) {
-			// System.out.println("SAVE QID: " +
-			// q.getQuestionId().getQuestionId());
 			quizQuestionService.saveOrUpdate(q);
 		}
-
-		System.out.println("SAVE ITEM SIZE: "
-				+ assignQuestion.getSaveList().size());
 
 		return "redirect:/teacher/quiz/dashboard";
 	}
