@@ -149,9 +149,12 @@
 																	th:id="'required-time-'+${q.questionId}"
 																	th:text="${q.requiredTime}">0</span>
 
-																	<div class="task-checkbox">
-																		<p></p>
+																	<div class="task-checkbox" th:switch="${q.questionType.name()}">
+																		<p style="padding-left:5px; color:green;" th:case="MCQ">[M]</p>
+																		<p style="padding-left:5px; color:green;" th:case="DESCRIPTIVE">[D]</p>
+																		<p style="padding-left:5px; color:green;" th:case="FILL_IN_THE_GAPS">[F]</p>
 																	</div>
+																	
 																	<div class="task-title">
 																		<span class="task-title-sp"
 																			th:text="${q.questionText}"> What is fill in
@@ -248,8 +251,10 @@
 																	th:id="'required-time-'+${q.questionId}"
 																	th:text="${q.requiredTime}">0</span>
 
-																	<div class="task-checkbox">
-																		<p></p>
+																	<div class="task-checkbox" th:switch="${q.questionType.name()}">
+																		<p style="padding-left:5px; color:green;" th:case="MCQ">[M]</p>
+																		<p style="padding-left:5px; color:green;" th:case="DESCRIPTIVE">[D]</p>
+																		<p style="padding-left:5px; color:green;" th:case="FILL_IN_THE_GAPS">[F]</p>
 																	</div>
 																	<div class="task-title">
 																		<span class="task-title-sp"
