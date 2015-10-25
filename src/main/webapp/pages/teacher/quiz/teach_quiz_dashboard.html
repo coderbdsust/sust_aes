@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
@@ -55,39 +56,43 @@
 																	</tr>
 																</thead>
 																<tbody>
-<!-- 																	<tr> -->
-<!-- 																		<td>Database Quiz Exam 4</td> -->
-<!-- 																		<td>CSE333</td> -->
-<!-- 																		<td>12-Sat-15</td> -->
-<!-- 																		<td>15-Sat-15</td> -->
-<!-- 																		<td>Not Started</td> -->
+																	<!-- 																	<tr> -->
+																	<!-- 																		<td>Database Quiz Exam 4</td> -->
+																	<!-- 																		<td>CSE333</td> -->
+																	<!-- 																		<td>12-Sat-15</td> -->
+																	<!-- 																		<td>15-Sat-15</td> -->
+																	<!-- 																		<td>Not Started</td> -->
 
-<!-- 																		<td><a th:href="@{/quiz/view/1}" -->
-<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
+																	<!-- 																		<td><a th:href="@{/quiz/view/1}" -->
+																	<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
 
-<!-- 																	</tr> -->
-<!-- 																	<tr> -->
-<!-- 																		<td>Database Quiz Exam 3</td> -->
-<!-- 																		<td>CSE333</td> -->
-<!-- 																		<td>5-Sat-15</td> -->
-<!-- 																		<td>10 Sat-15</td> -->
-<!-- 																		<td>Running</td> -->
-<!-- 																		<td><a th:href="@{/quiz/view/1}" -->
-<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
+																	<!-- 																	</tr> -->
+																	<!-- 																	<tr> -->
+																	<!-- 																		<td>Database Quiz Exam 3</td> -->
+																	<!-- 																		<td>CSE333</td> -->
+																	<!-- 																		<td>5-Sat-15</td> -->
+																	<!-- 																		<td>10 Sat-15</td> -->
+																	<!-- 																		<td>Running</td> -->
+																	<!-- 																		<td><a th:href="@{/quiz/view/1}" -->
+																	<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
 
-<!-- 																	</tr> -->
-																	
+																	<!-- 																	</tr> -->
+
 																	<tr th:each="quiz: ${quizList}">
-																		<td th:text="${quiz.quizTitle}">Database Quiz Exam 3</td>
+																		<td th:text="${quiz.quizTitle}">Database Quiz
+																			Exam 3</td>
 																		<td th:text="${quiz.teachesId.courseId.courseCode}">CSE333</td>
-																		<td th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">5-Sat-15</td>
-																		<td th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">10 Sat-15</td>
-																		<td>Finished</td>
+																		<td
+																			th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">5-Sat-15</td>
+																		<td
+																			th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">10
+																			Sat-15</td>
+																		<td th:text="${quiz.getExamStatus()}">Unknown</td>
 																		<td><a th:href="@{'/quiz/view/'+${quiz.quizId}}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
 
 																	</tr>
-																	
+
 																</tbody>
 															</table>
 														</div>

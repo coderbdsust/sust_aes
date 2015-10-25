@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -14,7 +15,7 @@
 						<div class="portlet-title">
 							<div class="caption">
 
-								
+
 								<h2>
 									<i class="icon-user font-red-haze"></i> <span
 										class="caption-subject font-red-haze bold uppercase"
@@ -31,7 +32,11 @@
 							<!-- BEGIN FORM-->
 							<form class="form-horizontal" role="form">
 								<div class="form-body">
-									<h3 class="form-section">Person Info <label class="caption-subject font-green-haze bold" th:if="${message}" th:text="${message}"></label></h3>
+									<h3 class="form-section">
+										Person Info <label
+											class="caption-subject font-green-haze bold"
+											th:if="${message}" th:text="${message}"></label>
+									</h3>
 									<div class="row">
 										<div class="col-md-6">
 

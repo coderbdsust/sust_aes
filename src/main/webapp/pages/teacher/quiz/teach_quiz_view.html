@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
@@ -55,7 +56,8 @@
 												<label class="control-label col-md-3"><strong>Start
 														Time</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
+													<p class="form-control-static"
+														th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
 												</div>
 											</div>
 										</div>
@@ -65,7 +67,8 @@
 												<label class="control-label col-md-3"><strong>End
 														Time</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
+													<p class="form-control-static"
+														th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
 												</div>
 											</div>
 										</div>
@@ -85,9 +88,11 @@
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3"><strong>Quiz Duration</strong></label>
+												<label class="control-label col-md-3"><strong>Quiz
+														Duration</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.totalTime}+' seconds'">2hrs</p>
+													<p class="form-control-static"
+														th:text="${quiz.totalTime}+' seconds'">2hrs</p>
 												</div>
 											</div>
 										</div>
@@ -125,8 +130,9 @@
 									<div class="row">
 										<div class="col-md-offset-4 col-md-4">
 											<a class="btn green" href="#"> Edit </a> <a class="btn green"
-												th:href="@{'/quiz/question/add/'+${quiz.quizId}}"> Add Question </a> <a class="btn green" th:href="@{'/quiz/delete/'+${quiz.quizId}}">
-												Delete Exam</a>
+												th:href="@{'/quiz/question/add/'+${quiz.quizId}}"> Add
+												Question </a> <a class="btn green"
+												th:href="@{'/quiz/delete/'+${quiz.quizId}}"> Delete Exam</a>
 										</div>
 
 									</div>

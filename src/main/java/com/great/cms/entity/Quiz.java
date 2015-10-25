@@ -30,6 +30,8 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import com.great.cms.controller.util.ExamStatus;
+
 /**
  *
  * @author Biswajit Debnath
@@ -76,7 +78,7 @@ public class Quiz implements DomainObject, Serializable {
 	@JoinColumn(name = "teaches_id", referencedColumnName = "teaches_id")
 	@ManyToOne(optional = false)
 	private Teaches teachesId;
-	
+
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quizId")
 	private List<QuizQuestion> quizQuestionList;
@@ -216,6 +218,17 @@ public class Quiz implements DomainObject, Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	public String getExamStatus(Date currDate) {
+		ExamStatus status = new ExamStatus();
+		return status.getExamStatus(startTime, endTime, currDate);
+	}
+	
+	public String getExamStatus() {
+		Date currDate = new Date();
+		ExamStatus status = new ExamStatus();
+		return status.getExamStatus(startTime, endTime, currDate);
 	}
 
 	@Override
