@@ -10,22 +10,22 @@
 Core features
 ==============
 Role: Admin
-*1. Account verification & Role Setup for user.
-*2. Maintaining Exam Commitee.
-*3.Control all over the system.
-*4.Verify a course and assign the teacher of that course.
-*5.Assigning New course to the Semester.
+1.	[Account verification & Role Setup for user.]
+2.	[Maintaining Exam Commitee.]
+3.	[Control all over the system.]
+4.	[Verify a course and assign the teacher of that course.]
+5.	[Assigning New course to the Semester.]
 
 
 Role: Teacher
-*1. Exam Creation
-*2. 3 Types of question creation in the question bank for exam.
-    - Multiple question
-    - Fill in the gaps
-    - Descriptive question
-*3. Exam Review & Result Publish
-*4. Verification : Course Registration
-*5. Answering student complain
+1.	[Exam Creation
+*2.	[3 Types of question creation in the question bank for exam.]
+   		-	[Multiple question]
+    	-	[Fill in the gaps]
+    - Descriptive question]
+3.	[Exam Review & Result Publish]
+4.	[Verification : Course Registration]
+5.	[Answering student complain]
 
 Role: Student
 1. Apply for a course
