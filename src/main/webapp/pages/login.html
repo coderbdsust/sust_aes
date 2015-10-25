@@ -116,10 +116,12 @@ License: You must have a valid license purchased only from themeforest(the above
 						name="j_password" />
 				</div>
 			</div>
+			
 			<div class="form-actions">
 				<!-- 				<label class="checkbox"> <input type="checkbox" -->
 				<!-- 					name="remember" value="1" /> Remember me -->
 				<!-- 				</label> -->
+				<img alt="" th:src="@{/resources/images/bg/1.jpg}" style="display:none;"/>
 				<button type="submit" class="btn blue pull-right">
 					Login <i class="m-icon-swapright m-icon-white"></i>
 				</button>
@@ -278,6 +280,9 @@ License: You must have a valid license purchased only from themeforest(the above
 		type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
+		var relativeLoc=window.location;
+		console.log(relativeLoc);
+		
 		jQuery(document).ready(
 				function() {
 					Metronic.init(); // init metronic core components
@@ -285,10 +290,11 @@ License: You must have a valid license purchased only from themeforest(the above
 					Login.init();
 					Demo.init();
 					// init background slide images
-					$.backstretch([ "/resources/images/bg/1.jpg",
-							"/resources/images/bg/2.jpg",
-							"/resources/images/bg/3.jpg",
-							"/resources/images/bg/4.jpg" ], {
+					$.backstretch([
+					        "/sustaes/resources/img/1.png",
+					        "/sustaes/resources/img/2.png",
+							"/sustaes/resources/img/3.png",
+							"/sustaes/resources/img/4.png" ], {
 						fade : 1000,
 						duration : 8000
 					});

@@ -52,7 +52,7 @@
 		<!-- <security:access-denied-handler -->
 		<!-- error-page="/accessDenied" /> -->
 
-		<security:intercept-url pattern="/resources/**" />
+		<security:intercept-url pattern="/resources/**" access="permitAll" />
 
 		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/index"
