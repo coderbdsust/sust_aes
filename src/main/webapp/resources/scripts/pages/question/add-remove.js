@@ -28,8 +28,8 @@ function addQuestions(id) {
 
 		var child = document.getElementById("question-" + id);
 		console.log("question-" + id);
-		$("#add-" + id).hide();
-		$("#remove-" + id).show();
+		$("#addButton" + id).hide();
+		$("#removeButton" + id).show();
 		//alert('parent3');
 		oldParent.removeChild(child);
 		newParent.appendChild(child);
@@ -48,8 +48,8 @@ function addQuestions(id) {
 
 		//alert('parent2');
 		var child = document.getElementById("question-" + id);
-		$("#remove-" + id).hide();
-		$("#add-" + id).show();
+		$("#removeButton" + id).hide();
+		$("#addButton" + id).show();
 		//alert('parent3');
 		oldParent.removeChild(child);
 		newParent.appendChild(child);

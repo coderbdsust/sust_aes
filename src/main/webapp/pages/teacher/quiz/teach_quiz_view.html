@@ -55,7 +55,7 @@
 												<label class="control-label col-md-3"><strong>Start
 														Time</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.startTime}">20.01.1984</p>
+													<p class="form-control-static" th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
 												</div>
 											</div>
 										</div>
@@ -65,7 +65,7 @@
 												<label class="control-label col-md-3"><strong>End
 														Time</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.endTime}">20.01.1984</p>
+													<p class="form-control-static" th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
 												</div>
 											</div>
 										</div>

@@ -51,17 +51,18 @@
 										<div class="col-md-6">
 											<div class="form-group"
 												style="background: rgba(0, 128, 0, 0.35);">
-												<h3 class="form-control-static" style="padding-left:25px;">
-													<strong th:text="${quiz?.quizTitle.toUpperCase()}"> </strong> <input
-														type="hidden" class="form-control" id="quizId"
+												<h3 class="form-control-static" style="padding-left: 25px;">
+													<strong th:text="${quiz?.quizTitle.toUpperCase()}">
+													</strong> <input type="hidden" class="form-control" id="quizId"
 														name="quizId" th:value="${quiz.quizId}" />
 												</h3>
 											</div>
 										</div>
 
 										<div class="col-md-6">
-											<div class="form-group" style="background: rgba(0, 128, 0, 0.35);">
-												<h3 class="form-control-static" style="padding-left:25px;">
+											<div class="form-group"
+												style="background: rgba(0, 128, 0, 0.35);">
+												<h3 class="form-control-static" style="padding-left: 25px;">
 													<strong
 														th:text="'['+${quiz?.teachesId?.courseId?.courseCode}+'] '+${quiz?.teachesId?.courseId?.courseTitle.toUpperCase()}">[CSE333]
 														Database</strong>
@@ -76,8 +77,7 @@
 									<!--/row-->
 									<div class="row">
 
-										<div class="col-md-6 col-sm-12"
-											>
+										<div class="col-md-6 col-sm-12">
 											<!-- BEGIN PORTLET-->
 											<div class="portlet light tasks-widget"
 												style="background: rgba(223, 240, 216, 0.40);">
@@ -169,31 +169,21 @@
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
-																			<a class="btn btn-xs default" href="javascript:;"
-																				data-toggle="dropdown" data-hover="dropdown"
-																				data-close-others="true"> <i class="fa fa-cog"></i><i
-																				class="fa fa-angle-down"></i>
+<!-- 																			<A CLASS="BTN BTN-XS DEFAULT" HREF="JAVASCRIPT:;" -->
+<!-- 																				DATA-TOGGLE="DROPDOWN" DATA-HOVER="DROPDOWN" -->
+<!-- 																				DATA-CLOSE-OTHERS="TRUE"> <I CLASS="FA FA-COG"></I><I -->
+<!-- 																				CLASS="FA FA-ANGLE-DOWN"></I> -->
+<!-- 																			</A> -->
+																			 <a th:id="'addButton'+${q.questionId}"
+																				th:name="'addButton'+${q.questionId}" type="button"
+																				th:onclick="'addQuestions('+${q.questionId}+')'">
+																				<i class="fa fa-plus"></i> Add
+																			</a> <a th:id="'removeButton'+${q.questionId}"
+																				th:name="'removeButton'+${q.questionId}"
+																				type="button"
+																				th:onclick="'removeQuestions('+${q.questionId}+')'" style="display:none;">
+																				<i class="fa fa-times" ></i> Remove
 																			</a>
-
-																			<ul class="dropdown-menu pull-right">
-																				<li th:id="'add-'+${q.questionId}"><a
-																					th:id="'addButton'+${q.questionId}"
-																					th:name="'addButton'+${q.questionId}" type="button"
-																					th:onclick="'addQuestions('+${q.questionId}+')'">
-																						<i class="fa fa-plus"></i> Add
-																				</a></li>
-																				<li style="display: none;"
-																					th:id="'remove-'+${q.questionId}"><a
-																					th:id="'removeButton'+${q.questionId}"
-																					th:name="'removeButton'+${q.questionId}"
-																					type="button"
-																					th:onclick="'removeQuestions('+${q.questionId}+')'">
-																						<i class="fa fa-times"></i> Remove
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-info"></i> Details
-																				</a></li>
-																			</ul>
 																		</div>
 																	</div>
 																</li>
@@ -208,8 +198,7 @@
 										</div>
 
 										<!-- This module for exam added question -->
-										<div class="col-md-6 col-sm-12"
-											>
+										<div class="col-md-6 col-sm-12">
 											<!-- BEGIN PORTLET-->
 											<div class="portlet light tasks-widget"
 												style="background: rgba(223, 240, 216, 0.40);">
@@ -287,31 +276,36 @@
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
-																			<a class="btn btn-xs default" href="javascript:;"
-																				data-toggle="dropdown" data-hover="dropdown"
-																				data-close-others="true"> <i class="fa fa-cog"></i><i
-																				class="fa fa-angle-down"></i>
+																			 <a th:id="'addButton'+${q.questionId}"
+																				th:name="'addButton'+${q.questionId}" type="button"
+																				th:onclick="'addQuestions('+${q.questionId}+')'"  style="display:none;">
+																				<i class="fa fa-plus"></i> Add
+																			</a> <a th:id="'removeButton'+${q.questionId}"
+																				th:name="'removeButton'+${q.questionId}"
+																				type="button"
+																				th:onclick="'removeQuestions('+${q.questionId}+')'" >
+																				<i class="fa fa-times"></i> Remove
 																			</a>
 
-																			<ul class="dropdown-menu pull-right">
-																				<li style="display: none;"
-																					th:id="'add-'+${q.questionId}"><a
-																					th:id="'addButton'+${q.questionId}"
-																					th:name="'addButton'+${q.questionId}" type="button"
-																					th:onclick="'addQuestions('+${q.questionId}+')'">
-																						<i class="fa fa-plus"></i> Add
-																				</a></li>
-																				<li th:id="'remove-'+${q.questionId}"><a
-																					th:id="'removeButton'+${q.questionId}"
-																					th:name="'removeButton'+${q.questionId}"
-																					type="button"
-																					th:onclick="'removeQuestions('+${q.questionId}+')'">
-																						<i class="fa fa-times"></i> Remove
-																				</a></li>
-																				<li><a href="javascript:;"> <i
-																						class="fa fa-info"></i> Details
-																				</a></li>
-																			</ul>
+<!-- 																			<ul class="dropdown-menu pull-right"> -->
+<!-- 																				<li style="display: none;" -->
+<!-- 																					th:id="'add-'+${q.questionId}"><a -->
+<!-- 																					th:id="'addButton'+${q.questionId}" -->
+<!-- 																					th:name="'addButton'+${q.questionId}" type="button" -->
+<!-- 																					th:onclick="'addQuestions('+${q.questionId}+')'"> -->
+<!-- 																						<i class="fa fa-plus"></i> Add -->
+<!-- 																				</a></li> -->
+<!-- 																				<li th:id="'remove-'+${q.questionId}"><a -->
+<!-- 																					th:id="'removeButton'+${q.questionId}" -->
+<!-- 																					th:name="'removeButton'+${q.questionId}" -->
+<!-- 																					type="button" -->
+<!-- 																					th:onclick="'removeQuestions('+${q.questionId}+')'"> -->
+<!-- 																						<i class="fa fa-times"></i> Remove -->
+<!-- 																				</a></li> -->
+<!-- 																				<li><a href="javascript:;"> <i -->
+<!-- 																						class="fa fa-info"></i> Details -->
+<!-- 																				</a></li> -->
+<!-- 																			</ul> -->
 																		</div>
 																	</div>
 																</li>
