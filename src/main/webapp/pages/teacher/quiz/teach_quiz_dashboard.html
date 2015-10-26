@@ -48,6 +48,7 @@
 																	<tr>
 																		<th>Quiz Title</th>
 																		<th>Course Code</th>
+																		<th>Session</th>
 																		<th>Start Time</th>
 																		<th>End Time</th>
 																		<th>Status</th>
@@ -82,6 +83,7 @@
 																		<td th:text="${quiz.quizTitle}">Database Quiz
 																			Exam 3</td>
 																		<td th:text="${quiz.teachesId.courseId.courseCode}">CSE333</td>
+																		<td th:text="${quiz.teachesId.courseId.session}">2011-12</td>
 																		<td
 																			th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">5-Sat-15</td>
 																		<td

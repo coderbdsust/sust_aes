@@ -57,8 +57,7 @@ Role: Student
 
 Bug
 =========================
-1. Exam Question Assination Page: In mcq question creation page dynamic checkbox design not matched with previous design.
-2. Form validation not added
+1. Form validation not added
 
 Technology:
 ------------

@@ -42,8 +42,29 @@
 												<label class="control-label col-md-3"><strong>Course</strong></label>
 												<div class="col-md-9">
 													<p class="form-control-static"
-														th:text="${quiz.teachesId.courseId.courseTitle}">CSE333
+														th:text="'['+${quiz.teachesId.courseId.courseCode}+'] - '+${quiz.teachesId.courseId.courseTitle}">CSE333
 														- Database</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Session</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:text="${quiz.teachesId.courseId.session}">2011</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Semester</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static"
+														th:text="${quiz.teachesId.courseId.semester}">3-1</p>
 												</div>
 											</div>
 										</div>
