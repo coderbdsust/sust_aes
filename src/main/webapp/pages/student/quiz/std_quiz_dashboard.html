@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
@@ -18,11 +19,11 @@
 									class="caption-subject font-red-sunglo bold uppercase">Student
 									Quiz Dashboard</span>
 							</div>
-<!-- 							<div class="tools"> -->
-<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
-<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
-<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
-<!-- 							</div> -->
+							<!-- 							<div class="tools"> -->
+							<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
+							<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
+							<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
+							<!-- 							</div> -->
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -31,16 +32,16 @@
 							<!-- END FORM-->
 							<div class="row">
 								<div class="col-md-12">
-		
+
 									<div class="portlet light">
-										
+
 										<div class="portlet-body">
 											<div class="tabbable-line">
 												<ul class="nav nav-tabs">
 													<li class="active"><a href="#overview_1"
 														data-toggle="tab"> <strong>Available Quizzes</strong></a></li>
-													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed
-																Quizzes</strong></a></li>
+<!-- 													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed -->
+<!-- 																Quizzes</strong></a></li> -->
 												</ul>
 												<div class="tab-content">
 													<div class="tab-pane active" id="overview_1">
@@ -53,6 +54,7 @@
 																		<th>Course Code</th>
 																		<th>Date Time</th>
 																		<th>End Time</th>
+																		<th>Status</th>
 																		<th></th>
 																	</tr>
 																</thead>
@@ -62,6 +64,7 @@
 																		<td>CSE333</td>
 																		<td>12-Sat-15</td>
 																		<td>15-Sat-15</td>
+																		<th>Status</th>
 																		<td><a th:href="@{/student/quiz/view}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
 																	</tr>
@@ -70,6 +73,7 @@
 																		<td>CSE333</td>
 																		<td>5-Sat-15</td>
 																		<td>10 Sat-15</td>
+																		<th>Status</th>
 																		<td><a th:href="@{/student/quiz/view}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
 																	</tr>
