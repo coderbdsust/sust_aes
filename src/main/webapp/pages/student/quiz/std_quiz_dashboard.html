@@ -19,11 +19,7 @@
 									class="caption-subject font-red-sunglo bold uppercase">Student
 									Quiz Dashboard</span>
 							</div>
-							<!-- 							<div class="tools"> -->
-							<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
-							<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
-							<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
-							<!-- 							</div> -->
+						
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -39,12 +35,52 @@
 											<div class="tabbable-line">
 												<ul class="nav nav-tabs">
 													<li class="active"><a href="#overview_1"
-														data-toggle="tab"> <strong>Available Quizzes</strong></a></li>
-<!-- 													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed -->
-<!-- 																Quizzes</strong></a></li> -->
+														data-toggle="tab"> <strong>Registered Courses</strong></a></li>
+													<li><a href="#overview_2"
+														data-toggle="tab"> <strong>New Quizzes</strong></a></li>
+													<li><a href="#overview_3" data-toggle="tab"> <strong>Reviewed
+																Quizzes</strong></a></li>
 												</ul>
 												<div class="tab-content">
-													<div class="tab-pane active" id="overview_1">
+												<div class="tab-pane active" id="overview_1">
+														<div class="table-responsive">
+															<table
+																class="table table-striped table-hover table-bordered">
+																<thead>
+																	<tr>
+																		<th>Course Title</th>
+																		<th>Course Code</th>
+																		<th>Semester</th>
+																		<th>Session</th>
+																		<th>Instructor</th>
+																		<th></th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr>
+																		<td>Database</td>
+																		<td>CSE333</td>
+																		<td>3-1</td>
+																		<td>2011</td>
+																		<td>Sheikh Nabil Mohammad</td>
+																		<td><a th:href="@{/student/quiz/view}"
+																			class="btn default btn-xs green-stripe">View</a></td>
+																	</tr>
+																	<tr>
+																		<td>Database Lab</td>
+																		<td>CSE334</td>
+																		<td>3-1</td>
+																		<td>2011</td>
+																		<td>Sheikh Nabil Mohammad</td>
+																		<td><a th:href="@{/student/quiz/view}"
+																			class="btn default btn-xs green-stripe">View</a></td>
+																	</tr>
+																	
+																</tbody>
+															</table>
+														</div>
+													</div>
+													<div class="tab-pane" id="overview_2">
 														<div class="table-responsive">
 															<table
 																class="table table-striped table-hover table-bordered">
@@ -64,16 +100,16 @@
 																		<td>CSE333</td>
 																		<td>12-Sat-15</td>
 																		<td>15-Sat-15</td>
-																		<th>Status</th>
+																		<td>Upcoming</td>
 																		<td><a th:href="@{/student/quiz/view}"
-																			class="btn default btn-xs green-stripe"> View </a></td>
+																			class="btn default btn-xs green-stripe">View</a></td>
 																	</tr>
 																	<tr>
 																		<td>Database Quiz Exam 3</td>
 																		<td>CSE333</td>
 																		<td>5-Sat-15</td>
 																		<td>10 Sat-15</td>
-																		<th>Status</th>
+																		<td>Finished</td>
 																		<td><a th:href="@{/student/quiz/view}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
 																	</tr>
@@ -81,7 +117,7 @@
 															</table>
 														</div>
 													</div>
-													<div class="tab-pane" id="overview_2">
+													<div class="tab-pane" id="overview_3">
 														<div class="table-responsive">
 															<table
 																class="table table-striped table-hover table-bordered">
@@ -89,6 +125,7 @@
 																	<tr>
 																		<th>Exam Title</th>
 																		<th>Course Code</th>
+																		<th>Instructor</th>
 																		<th>Marks</th>
 																		<th>Status</th>
 																		<th></th>
@@ -98,6 +135,7 @@
 																	<tr>
 																		<td>Database Quiz Exam 2</td>
 																		<td>CSE333</td>
+																		<td>Sheikh Nabil Mohammad</td>
 																		<td>15/20</td>
 																		<td>Passed</td>
 																		<td><a th:href="@{/student/quiz/view}"
@@ -106,6 +144,8 @@
 																	<tr>
 																		<td>Database Quiz Exam 1</td>
 																		<td>CSE333</td>
+																		<td>Sheikh Nabil Mohammad</td>
+																		
 																		<td>5/20</td>
 																		<td>Failed</td>
 																		<td><a th:href="@{/student/quiz/view}"

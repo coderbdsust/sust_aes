@@ -15,6 +15,7 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<h2>
+									
 									<span class="caption-subject font-red-haze bold uppercase"
 										th:text="${quiz.quizTitle}">Database Quiz Exam 1</span>
 								</h2>
@@ -28,10 +29,9 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3"><strong>Quiz
-														Title</strong></label>
+												<label class="control-label col-md-3"><strong>Instructor:</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.quizTitle}">Database
+													<p class="form-control-static" th:text="${quiz.teachesId.instructorId.teacherName}">Database
 														Quiz Lab 1</p>
 												</div>
 											</div>

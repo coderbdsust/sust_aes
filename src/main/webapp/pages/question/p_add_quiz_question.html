@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
@@ -169,20 +170,32 @@
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
-<!-- 																			<A CLASS="BTN BTN-XS DEFAULT" HREF="JAVASCRIPT:;" -->
-<!-- 																				DATA-TOGGLE="DROPDOWN" DATA-HOVER="DROPDOWN" -->
-<!-- 																				DATA-CLOSE-OTHERS="TRUE"> <I CLASS="FA FA-COG"></I><I -->
-<!-- 																				CLASS="FA FA-ANGLE-DOWN"></I> -->
-<!-- 																			</A> -->
-																			 <a th:id="'addButton'+${q.questionId}"
+																			<!-- 																			<A CLASS="BTN BTN-XS DEFAULT" HREF="JAVASCRIPT:;" -->
+																			<!-- 																				DATA-TOGGLE="DROPDOWN" DATA-HOVER="DROPDOWN" -->
+																			<!-- 																				DATA-CLOSE-OTHERS="TRUE"> <I CLASS="FA FA-COG"></I><I -->
+																			<!-- 																				CLASS="FA FA-ANGLE-DOWN"></I> -->
+																			<!-- 																			</A> -->
+																			<a th:id="'addButton'+${q.questionId}"
 																				th:name="'addButton'+${q.questionId}" type="button"
 																				th:onclick="'addQuestions('+${q.questionId}+')'">
 																				<i class="fa fa-plus"></i> Add
-																			</a> <a th:id="'removeButton'+${q.questionId}"
+																			</a>
+<!-- 																			<a th:id="'viewButton'+${q.questionId}" -->
+<!-- 																				th:name="'viewButton'+${q.questionId}" type="button" -->
+<!-- 																				th:onclick="'viewQuestions('+${q.questionId}+')'"> -->
+<!-- 																				<i class="fa fa-info"></i> View -->
+<!-- 																			</a> -->
+<!-- 																			<a th:id="'deleteButton'+${q.questionId}" -->
+<!-- 																				th:name="'deleteButton'+${q.questionId}" type="button" -->
+<!-- 																				th:onclick="'deleteQuestions('+${q.questionId}+')'"> -->
+<!-- 																				<i class="fa fa-times"></i> Delete -->
+<!-- 																			</a> -->
+																			 <a th:id="'removeButton'+${q.questionId}"
 																				th:name="'removeButton'+${q.questionId}"
 																				type="button"
-																				th:onclick="'removeQuestions('+${q.questionId}+')'" style="display:none;">
-																				<i class="fa fa-times" ></i> Remove
+																				th:onclick="'removeQuestions('+${q.questionId}+')'"
+																				style="display: none;"> <i class="fa fa-minus"></i>
+																				Remove
 																			</a>
 																		</div>
 																	</div>
@@ -276,36 +289,38 @@
 																	</div>
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group">
-																			 <a th:id="'addButton'+${q.questionId}"
+																			<a th:id="'addButton'+${q.questionId}"
 																				th:name="'addButton'+${q.questionId}" type="button"
-																				th:onclick="'addQuestions('+${q.questionId}+')'"  style="display:none;">
-																				<i class="fa fa-plus"></i> Add
+																				th:onclick="'addQuestions('+${q.questionId}+')'"
+																				style="display: none;"> <i class="fa fa-plus"></i>
+																				Add
 																			</a> <a th:id="'removeButton'+${q.questionId}"
 																				th:name="'removeButton'+${q.questionId}"
 																				type="button"
-																				th:onclick="'removeQuestions('+${q.questionId}+')'" >
-																				<i class="fa fa-times"></i> Remove
+																				th:onclick="'removeQuestions('+${q.questionId}+')'">
+																				<i class="fa fa-minus"></i> Remove
 																			</a>
+																		
 
-<!-- 																			<ul class="dropdown-menu pull-right"> -->
-<!-- 																				<li style="display: none;" -->
-<!-- 																					th:id="'add-'+${q.questionId}"><a -->
-<!-- 																					th:id="'addButton'+${q.questionId}" -->
-<!-- 																					th:name="'addButton'+${q.questionId}" type="button" -->
-<!-- 																					th:onclick="'addQuestions('+${q.questionId}+')'"> -->
-<!-- 																						<i class="fa fa-plus"></i> Add -->
-<!-- 																				</a></li> -->
-<!-- 																				<li th:id="'remove-'+${q.questionId}"><a -->
-<!-- 																					th:id="'removeButton'+${q.questionId}" -->
-<!-- 																					th:name="'removeButton'+${q.questionId}" -->
-<!-- 																					type="button" -->
-<!-- 																					th:onclick="'removeQuestions('+${q.questionId}+')'"> -->
-<!-- 																						<i class="fa fa-times"></i> Remove -->
-<!-- 																				</a></li> -->
-<!-- 																				<li><a href="javascript:;"> <i -->
-<!-- 																						class="fa fa-info"></i> Details -->
-<!-- 																				</a></li> -->
-<!-- 																			</ul> -->
+																			<!-- 																			<ul class="dropdown-menu pull-right"> -->
+																			<!-- 																				<li style="display: none;" -->
+																			<!-- 																					th:id="'add-'+${q.questionId}"><a -->
+																			<!-- 																					th:id="'addButton'+${q.questionId}" -->
+																			<!-- 																					th:name="'addButton'+${q.questionId}" type="button" -->
+																			<!-- 																					th:onclick="'addQuestions('+${q.questionId}+')'"> -->
+																			<!-- 																						<i class="fa fa-plus"></i> Add -->
+																			<!-- 																				</a></li> -->
+																			<!-- 																				<li th:id="'remove-'+${q.questionId}"><a -->
+																			<!-- 																					th:id="'removeButton'+${q.questionId}" -->
+																			<!-- 																					th:name="'removeButton'+${q.questionId}" -->
+																			<!-- 																					type="button" -->
+																			<!-- 																					th:onclick="'removeQuestions('+${q.questionId}+')'"> -->
+																			<!-- 																						<i class="fa fa-times"></i> Remove -->
+																			<!-- 																				</a></li> -->
+																			<!-- 																				<li><a href="javascript:;"> <i -->
+																			<!-- 																						class="fa fa-info"></i> Details -->
+																			<!-- 																				</a></li> -->
+																			<!-- 																			</ul> -->
 																		</div>
 																	</div>
 																</li>
