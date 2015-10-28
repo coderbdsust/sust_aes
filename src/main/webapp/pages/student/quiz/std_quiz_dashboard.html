@@ -19,7 +19,7 @@
 									class="caption-subject font-red-sunglo bold uppercase">Student
 									Quiz Dashboard</span>
 							</div>
-						
+
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -36,13 +36,13 @@
 												<ul class="nav nav-tabs">
 													<li class="active"><a href="#overview_1"
 														data-toggle="tab"> <strong>Registered Courses</strong></a></li>
-													<li><a href="#overview_2"
-														data-toggle="tab"> <strong>New Quizzes</strong></a></li>
+													<li><a href="#overview_2" data-toggle="tab"> <strong>New
+																Quizzes</strong></a></li>
 													<li><a href="#overview_3" data-toggle="tab"> <strong>Reviewed
 																Quizzes</strong></a></li>
 												</ul>
 												<div class="tab-content">
-												<div class="tab-pane active" id="overview_1">
+													<div class="tab-pane active" id="overview_1">
 														<div class="table-responsive">
 															<table
 																class="table table-striped table-hover table-bordered">
@@ -75,7 +75,7 @@
 																		<td><a th:href="@{/student/quiz/view}"
 																			class="btn default btn-xs green-stripe">View</a></td>
 																	</tr>
-																	
+
 																</tbody>
 															</table>
 														</div>
@@ -91,27 +91,27 @@
 																		<th>Date Time</th>
 																		<th>End Time</th>
 																		<th>Status</th>
-																		<th></th>
+																		<th>Session</th>
 																	</tr>
 																</thead>
 																<tbody>
 																	<tr>
-																		<td>Database Quiz Exam 4</td>
+																		<td><a th:href="@{/student/quiz/view}">Database
+																				Quiz Exam 4</a></td>
 																		<td>CSE333</td>
 																		<td>12-Sat-15</td>
 																		<td>15-Sat-15</td>
 																		<td>Upcoming</td>
-																		<td><a th:href="@{/student/quiz/view}"
-																			class="btn default btn-xs green-stripe">View</a></td>
+																		<td>2011-12</td>
 																	</tr>
 																	<tr>
-																		<td>Database Quiz Exam 3</td>
+																		<td><a th:href="@{/student/quiz/view}">Database
+																				Quiz Exam 3</a></td>
 																		<td>CSE333</td>
 																		<td>5-Sat-15</td>
 																		<td>10 Sat-15</td>
 																		<td>Finished</td>
-																		<td><a th:href="@{/student/quiz/view}"
-																			class="btn default btn-xs green-stripe"> View </a></td>
+																		<td>2011-12</td>
 																	</tr>
 																</tbody>
 															</table>
@@ -145,7 +145,7 @@
 																		<td>Database Quiz Exam 1</td>
 																		<td>CSE333</td>
 																		<td>Sheikh Nabil Mohammad</td>
-																		
+
 																		<td>5/20</td>
 																		<td>Failed</td>
 																		<td><a th:href="@{/student/quiz/view}"
