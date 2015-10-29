@@ -112,8 +112,7 @@
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3"><strong>Quiz
-														Duration</strong></label>
+												<label class="control-label col-md-3"><strong>Duration</strong></label>
 												<div class="col-md-9">
 													<p class="form-control-static" th:if="${quiz != null}"
 														th:text="${quiz.totalTime}+' seconds'">2hrs</p>
@@ -122,17 +121,30 @@
 										</div>
 										<!--/span-->
 									</div>
-
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Marks</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${totalMarks != null}" th:text="${totalMarks}">50</p>
+													<p class="form-control-static" th:if="${quiz != null}" th:text="${totalQuestions}">25</p>
 												</div>
 											</div>
 										</div>
 										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Registration</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz.totalTime}+' seconds'">Approved</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+
+									<div class="row">
+										
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Description</strong></label>

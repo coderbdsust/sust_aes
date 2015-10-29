@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.great.cms.dao.QuizDao;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
+import com.great.cms.entity.Student;
 import com.great.cms.entity.Teaches;
 
 @Repository("QuizDao")
@@ -39,12 +40,26 @@ public class QuizDaoImpl extends GenericDaoImpl<Quiz, Long> implements QuizDao {
 	public List<Quiz> findByTeachesId(Teaches teachesId) {
 		Query query = this.em.createQuery("SELECT q FROM Quiz q WHERE"
 				+ " q.teachesId=:teachesId");
-		
-//		System.out.println("ID: "+teachesId.getTeachesId());
+
+		// System.out.println("ID: "+teachesId.getTeachesId());
 		query.setParameter("teachesId", teachesId);
-//		System.out.println("Query Executing...");
+		// System.out.println("Query Executing...");
 		List<Quiz> quizes = query.getResultList();
-//		System.out.println("Query Executed...");
+		// System.out.println("Query Executed...");
+		return quizes;
+	}
+
+	@Override
+	public List<Quiz> findNewAvaialableQuizByStudentId(Student studentId) {
+		Query query = this.em
+				.createQuery("SELECT q FROM Quiz q WHERE"
+						+ " q.teachesId in (select t.teachesId from Teaches t where t.courseId"
+						+ " in(select cr.courseId from CourseRegistration cr "
+						+ "where cr.studentId=:studentId and cr.isApproved=true))");
+
+		query.setParameter("studentId", studentId);
+
+		List<Quiz> quizes = query.getResultList();
 		return quizes;
 	}
 

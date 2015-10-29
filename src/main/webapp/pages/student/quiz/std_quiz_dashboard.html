@@ -88,10 +88,12 @@
 																	<tr>
 																		<th>Quiz Title</th>
 																		<th>Course Code</th>
+																		<th>Semester</th>
+																		<th>Session</th>
 																		<th>Date Time</th>
 																		<th>End Time</th>
-																		<th>Status</th>
-																		<th>Session</th>
+																		<th>Registration</th>
+																		
 																	</tr>
 																</thead>
 																<tbody>
@@ -99,19 +101,34 @@
 																		<td><a th:href="@{/student/quiz/view}">Database
 																				Quiz Exam 4</a></td>
 																		<td>CSE333</td>
+																		<td>3-1</td>
+																		<td>2011-12</td>
 																		<td>12-Sat-15</td>
 																		<td>15-Sat-15</td>
-																		<td>Upcoming</td>
-																		<td>2011-12</td>
+																		<td style="color:red;">Apply</td>
+																	
 																	</tr>
 																	<tr>
 																		<td><a th:href="@{/student/quiz/view}">Database
 																				Quiz Exam 3</a></td>
 																		<td>CSE333</td>
+																		<td>3-1</td>
+																		<td>2011-12</td>
 																		<td>5-Sat-15</td>
 																		<td>10 Sat-15</td>
-																		<td>Finished</td>
+																		<td style="color:rgb(35,9,19);">Pending</td>
+																	
+																	</tr>
+																	<tr>
+																		<td><a th:href="@{/student/quiz/view}">Database
+																				Quiz Exam 3</a></td>
+																		<td>CSE333</td>
+																		<td>3-1</td>
 																		<td>2011-12</td>
+																		<td>5-Sat-15</td>
+																		<td>10 Sat-15</td>
+																		<td style="color:green;">Approved</td>
+																	
 																	</tr>
 																</tbody>
 															</table>
