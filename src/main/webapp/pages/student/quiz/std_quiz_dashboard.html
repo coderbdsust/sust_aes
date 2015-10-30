@@ -36,9 +36,9 @@
 												<ul class="nav nav-tabs">
 													<li class="active"><a href="#overview_1"
 														data-toggle="tab"> <strong>Registered Courses</strong></a></li>
-													<li><a href="#overview_2" data-toggle="tab"> <strong>New
+													<li><a href="#overview_2" data-toggle="tab"> <strong>Available
 																Quizzes</strong></a></li>
-													<li><a href="#overview_3" data-toggle="tab"> <strong>Reviewed
+													<li><a href="#overview_3" data-toggle="tab"> <strong>Reviewable
 																Quizzes</strong></a></li>
 												</ul>
 												<div class="tab-content">
@@ -62,7 +62,7 @@
 																		<td th:text="${cr.courseId.courseCode}">CSE333</td>
 																		<td th:text="${cr.courseId.semester}">3-1</td>
 																		<td th:text="${cr.courseId.session}">2011</td>
-																		<td >Sheikh Nabil Mohammad</td>
+																		<td th:text="${cr?.courseId?.teachesList[0]?.instructorId?.teacherName}">Sheikh Nabil Mohammad</td>
 																	
 																	</tr>
 																
