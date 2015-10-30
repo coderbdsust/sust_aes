@@ -26,15 +26,16 @@ public class QuizRegistrationServiceImpl implements QuizRegistrationService {
 	}
 
 	@Override
-	public QuizRegistration getQuizRegistrationByCourseReg(
+	public QuizRegistration getQuizRegistrationByCourseReg(Quiz quiz,
 			CourseRegistration courseRegistration) {
-		return quizRegDao.findQuizRegByCourseReg(courseRegistration);
+		return quizRegDao.findQuizRegistrationByCourseReg(quiz,
+				courseRegistration);
 	}
 
 	@Override
 	public List<QuizRegistration> getQuizRegistrationsByQuiz(Quiz quiz) {
-		return quizRegDao.findQuizRegsByQuiz(quiz);
-	
+		return quizRegDao.findQuizRegistrationsByQuiz(quiz);
+
 	}
 
 }

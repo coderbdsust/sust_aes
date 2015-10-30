@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.QuizDao;
 import com.great.cms.entity.Quiz;
+import com.great.cms.entity.Student;
 import com.great.cms.entity.Teaches;
 import com.great.cms.service.QuizService;
 
@@ -45,6 +46,10 @@ public class QuizServiceImpl implements QuizService {
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		quizDao.deleteById(id);
+	}
 
+	@Override
+	public List<Quiz> getAvailableQuizzes(Student studentId) {
+		return quizDao.findNewAvaialableQuizByStudentId(studentId);
 	}
 }

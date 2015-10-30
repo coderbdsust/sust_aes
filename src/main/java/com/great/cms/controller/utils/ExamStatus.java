@@ -1,4 +1,4 @@
-package com.great.cms.controller.util;
+package com.great.cms.controller.utils;
 
 import java.util.Date;
 

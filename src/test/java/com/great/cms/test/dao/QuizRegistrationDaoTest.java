@@ -80,7 +80,7 @@ public class QuizRegistrationDaoTest {
 		List<Quiz> quizzes = quizDao.findAll();
 		System.out.println(quizzes!=null?quizzes.size():"NULL");
 		for(Quiz quiz:quizzes){
-			List<QuizRegistration> quizReg = quizRegDao.findQuizRegsByQuiz(quiz);
+			List<QuizRegistration> quizReg = quizRegDao.findQuizRegistrationsByQuiz(quiz);
 			System.out.println(quizReg==null?"QUIZ REG NULL":quizReg.size());
 			assertEquals(0,quizReg.size());
 		}

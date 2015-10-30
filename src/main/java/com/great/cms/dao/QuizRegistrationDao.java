@@ -10,10 +10,10 @@ import com.great.cms.entity.User;
 
 public interface QuizRegistrationDao extends GenericDao<QuizRegistration, Long> {
 
-	QuizRegistration findQuizRegByCourseReg(
+	QuizRegistration findQuizRegistrationByCourseReg(Quiz quiz,
 			CourseRegistration courseRegistration);
 
-	List<QuizRegistration> findQuizRegsByQuiz(Quiz quiz);
+	List<QuizRegistration> findQuizRegistrationsByQuiz(Quiz quiz);
 
 	
 

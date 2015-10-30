@@ -21,12 +21,13 @@ public class QuizRegistrationDaoImpl extends
 	}
 
 	@Override
-	public QuizRegistration findQuizRegByCourseReg(
+	public QuizRegistration findQuizRegistrationByCourseReg(Quiz quiz,
 			CourseRegistration courseRegistration) {
 		Query query = this.em
 				.createQuery("SELECT qr FROM QuizRegistration qr WHERE"
-						+ " qr.courseRegId=:courseRegId");
+						+ " qr.courseRegId=:courseRegId and qr.quizId=:quiz");
 		query.setParameter("courseRegId", courseRegistration);
+		query.setParameter("quiz", quiz);
 		List<QuizRegistration> quizRegistrations = query.getResultList();
 		if (null != quizRegistrations && quizRegistrations.size() == 1) {
 			return quizRegistrations.get(0);
@@ -35,7 +36,7 @@ public class QuizRegistrationDaoImpl extends
 	}
 
 	@Override
-	public List<QuizRegistration> findQuizRegsByQuiz(Quiz quiz) {
+	public List<QuizRegistration> findQuizRegistrationsByQuiz(Quiz quiz) {
 		// TODO Auto-generated method stub
 		Query query = this.em
 				.createQuery("SELECT qr FROM QuizRegistration qr WHERE"

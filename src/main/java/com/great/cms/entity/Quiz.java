@@ -30,7 +30,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.great.cms.controller.util.ExamStatus;
+import com.great.cms.controller.utils.ExamStatus;
 
 /**
  *

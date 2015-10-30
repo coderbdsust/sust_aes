@@ -12,7 +12,7 @@ import com.great.cms.entity.Teacher;
 public interface QuizRegistrationService {
 	
 	public void saveOrUpdate(QuizRegistration quizReg);
-	public QuizRegistration getQuizRegistrationByCourseReg(CourseRegistration courseRegistration);
+	public QuizRegistration getQuizRegistrationByCourseReg(Quiz quiz, CourseRegistration courseRegistration);
 	public List<QuizRegistration> getQuizRegistrationsByQuiz(Quiz quiz);
 	
 	
