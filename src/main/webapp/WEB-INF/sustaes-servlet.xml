@@ -125,6 +125,6 @@
 	  
 	<bean id="UserUtil" class="com.great.cms.security.utils.UserUtil" factory-method="getInstance">
 	</bean>
-           
+             
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 </beans>

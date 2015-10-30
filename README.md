@@ -64,8 +64,9 @@ Technology:
 
 1. Spring 3
 2. Hibernate
-3. jQuery
-4. Maven Build Tools
+3. Thymeleaf
+4. jQuery
+5. Maven Build Tools
 
 
 

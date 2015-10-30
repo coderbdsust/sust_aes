@@ -3,6 +3,7 @@ package com.great.cms.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.QuizRegistrationDao;
 import com.great.cms.entity.CourseRegistration;
@@ -10,6 +11,8 @@ import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.service.QuizRegistrationService;
 
+
+@Service("QuizRegistrationService")
 public class QuizRegistrationServiceImpl implements QuizRegistrationService {
 
 	@Autowired

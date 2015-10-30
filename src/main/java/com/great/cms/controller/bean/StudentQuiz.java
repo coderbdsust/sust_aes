@@ -5,15 +5,20 @@ import com.great.cms.entity.QuizRegistration;
 
 public class StudentQuiz {
 	private Quiz quiz;
-	private QuizRegistration quizReg;
+	private QuizRegistration quizRegistration;
 
 	public StudentQuiz() {
 	}
+	
+	
 
-	public StudentQuiz(Quiz quiz, QuizRegistration quizReg) {
+	public StudentQuiz(Quiz quiz, QuizRegistration quizRegistration) {
+		super();
 		this.quiz = quiz;
-		this.quizReg = quizReg;
+		this.quizRegistration = quizRegistration;
 	}
+
+
 
 	public Quiz getQuiz() {
 		return quiz;
@@ -23,17 +28,20 @@ public class StudentQuiz {
 		this.quiz = quiz;
 	}
 
-	public QuizRegistration getQuizReg() {
-		return quizReg;
+	public QuizRegistration getQuizRegistration() {
+		return quizRegistration;
 	}
 
-	public void setQuizReg(QuizRegistration quizReg) {
-		this.quizReg = quizReg;
+	public void setQuizRegistration(QuizRegistration quizRegistration) {
+		this.quizRegistration = quizRegistration;
 	}
 
 	@Override
 	public String toString() {
-		return "StudentQuiz [quiz=" + quiz + ", quizReg=" + quizReg + "]";
+		return "StudentQuiz [quiz=" + quiz + ", quizRegistration="
+				+ quizRegistration + "]";
 	}
+
+	
 
 }
