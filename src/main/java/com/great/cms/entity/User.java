@@ -220,7 +220,7 @@ public class User implements DomainObject, UserDetails, Serializable {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username
-				+ ", password=" + password + ", enabled=" + enabled
+				+ ", enabled=" + enabled
 				+ ", accountNonLocked=" + accountNonLocked
 				+ ", accountNonExpired=" + accountNonExpired
 				+ ", credentialsNonExpired=" + credentialsNonExpired + "]";

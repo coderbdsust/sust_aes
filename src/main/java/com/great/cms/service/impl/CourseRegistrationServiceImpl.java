@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.great.cms.dao.CourseRegistrationDao;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
+import com.great.cms.entity.Student;
 import com.great.cms.service.CourseRegistrationService;
 
 @Service("CourseRegistrationService")
@@ -32,6 +33,12 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 	public List<CourseRegistration> findByCourseId(Course course) {
 		return courseRegDao.findByCourseId(course);
 
+	}
+
+	@Override
+	public List<CourseRegistration> findByStudentAndIsApproved(Student studentId) {
+		// TODO Auto-generated method stub
+		return courseRegDao.findByStudentAndIsApproved(studentId);
 	}
 	
 }

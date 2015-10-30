@@ -53,29 +53,19 @@
 																		<th>Semester</th>
 																		<th>Session</th>
 																		<th>Instructor</th>
-																		<th></th>
+																	
 																	</tr>
 																</thead>
 																<tbody>
-																	<tr>
-																		<td>Database</td>
-																		<td>CSE333</td>
-																		<td>3-1</td>
-																		<td>2011</td>
-																		<td>Sheikh Nabil Mohammad</td>
-																		<td><a th:href="@{/student/quiz/view}"
-																			class="btn default btn-xs green-stripe">View</a></td>
+																	<tr th:each="cr: ${courseRegistrationList}">
+																		<td th:text="${cr.courseId.courseTitle}">Database</td>
+																		<td th:text="${cr.courseId.courseCode}">CSE333</td>
+																		<td th:text="${cr.courseId.semester}">3-1</td>
+																		<td th:text="${cr.courseId.session}">2011</td>
+																		<td >Sheikh Nabil Mohammad</td>
+																	
 																	</tr>
-																	<tr>
-																		<td>Database Lab</td>
-																		<td>CSE334</td>
-																		<td>3-1</td>
-																		<td>2011</td>
-																		<td>Sheikh Nabil Mohammad</td>
-																		<td><a th:href="@{/student/quiz/view}"
-																			class="btn default btn-xs green-stripe">View</a></td>
-																	</tr>
-
+																
 																</tbody>
 															</table>
 														</div>
@@ -92,44 +82,27 @@
 																		<th>Session</th>
 																		<th>Date Time</th>
 																		<th>End Time</th>
-																		<th>Registration</th>
+																		<th>Instructor</th>
+																	
 																		
 																	</tr>
 																</thead>
 																<tbody>
-																	<tr>
-																		<td><a th:href="@{/student/quiz/view}">Database
-																				Quiz Exam 4</a></td>
-																		<td>CSE333</td>
-																		<td>3-1</td>
-																		<td>2011-12</td>
-																		<td>12-Sat-15</td>
-																		<td>15-Sat-15</td>
-																		<td style="color:red;">Apply</td>
-																	
+																	<tr th:each="quiz: ${quizList}">
+																		<td ><a th:href="@{'/student/quiz/view/'+${quiz.quizId}}" th:text="${quiz.quizTitle}">Database Quiz
+																			Exam 3</a></td>
+																		<td th:text="${quiz.teachesId.courseId.courseCode}">CSE333</td>
+																		<td th:text="${quiz.teachesId.courseId.semester}">3-1</td>
+																		<td th:text="${quiz.teachesId.courseId.session}">2011-12</td>
+																		<td
+																			th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">5-Sat-15</td>
+																		<td
+																			th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">10
+																			Sat-15</td>
+																		<td th:text="${quiz.teachesId.instructorId.teacherName}">Sheikh Nabil Mohammad</td>
+																		
 																	</tr>
-																	<tr>
-																		<td><a th:href="@{/student/quiz/view}">Database
-																				Quiz Exam 3</a></td>
-																		<td>CSE333</td>
-																		<td>3-1</td>
-																		<td>2011-12</td>
-																		<td>5-Sat-15</td>
-																		<td>10 Sat-15</td>
-																		<td style="color:rgb(35,9,19);">Pending</td>
 																	
-																	</tr>
-																	<tr>
-																		<td><a th:href="@{/student/quiz/view}">Database
-																				Quiz Exam 3</a></td>
-																		<td>CSE333</td>
-																		<td>3-1</td>
-																		<td>2011-12</td>
-																		<td>5-Sat-15</td>
-																		<td>10 Sat-15</td>
-																		<td style="color:green;">Approved</td>
-																	
-																	</tr>
 																</tbody>
 															</table>
 														</div>

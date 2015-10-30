@@ -31,7 +31,7 @@ public class CourseRegistrationDaoImpl extends
 	}
 	
 	@Override
-	public List<CourseRegistration> findByIsApproved(Student student) {
+	public List<CourseRegistration> findByStudentAndIsApproved(Student student) {
 		Query query = this.em
 				.createQuery("SELECT cr FROM CourseRegistration cr WHERE cr.isApproved=true and cr.studentId=:studentId");
 		query.setParameter("studentId", student);
