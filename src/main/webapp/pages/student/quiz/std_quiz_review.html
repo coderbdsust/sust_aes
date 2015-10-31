@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Student :: Quiz View</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane" id="tab_3">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<h2>
+									 <span
+										class="caption-subject font-red-haze bold uppercase" th:if="${quiz != null}" th:text="${quiz.quizTitle}">Database Quiz Exam 1</span>
+								</h2>
+							</div>
+<!-- 							<div class="tools"> -->
+<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
+<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
+<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
+<!-- 							</div> -->
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form class="form-horizontal" role="form"
+								th:action="@{/student/exam/view}">
+								<div class="form-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Instructor</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}" th:text="${quiz?.teachesId?.instructorId?.teacherName}">Database
+														Quiz Lab 1</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Course</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="'['+${quiz.teachesId.courseId.courseCode}+'] - '+${quiz.teachesId.courseId.courseTitle}">CSE333
+														- Database</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Session</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}" th:text="${quiz.teachesId.courseId.session}">2011</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Semester</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz.teachesId.courseId.semester}">3-1</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<!--/row-->
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Start
+														Time</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${#dates.format(quiz.startTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>End
+														Time</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">20.01.1984</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<!--/row-->
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Total
+														Questions</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}" th:text="${totalQuestions}">25</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Duration</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz.totalTime}+' seconds'">2hrs</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Marks</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}" th:text="${totalQuestions}">25</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Registration</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz.totalTime}+' seconds'">Approved</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+
+									<div class="row">
+										
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Description</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz.description}">1.Quiz is not for all</p>
+												</div>
+											</div>
+										</div>
+										<!--/span-->
+									</div>
+
+
+
+									<!--/row-->
+
+								</div>
+								<div class="form-actions">
+									<div class="row">
+										<div class="col-md-offset-5 col-md-4">
+											
+												<a class="btn green" href="#"> 
+													Complain
+												</a>												
+										</div>
+										
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
+

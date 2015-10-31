@@ -53,7 +53,7 @@
 																		<th>Semester</th>
 																		<th>Session</th>
 																		<th>Instructor</th>
-																	
+
 																	</tr>
 																</thead>
 																<tbody>
@@ -62,10 +62,12 @@
 																		<td th:text="${cr.courseId.courseCode}">CSE333</td>
 																		<td th:text="${cr.courseId.semester}">3-1</td>
 																		<td th:text="${cr.courseId.session}">2011</td>
-																		<td th:text="${cr.courseId.teachesList[0].instructorId.teacherName}">Sheikh Nabil Mohammad</td>
-																	
+																		<td
+																			th:text="${cr.courseId.teachesList[0].instructorId.teacherName}">Sheikh
+																			Nabil Mohammad</td>
+
 																	</tr>
-																
+
 																</tbody>
 															</table>
 														</div>
@@ -83,14 +85,15 @@
 																		<th>Date Time</th>
 																		<th>End Time</th>
 																		<th>Instructor</th>
-																	
-																		
+
+
 																	</tr>
 																</thead>
 																<tbody>
 																	<tr th:each="quiz: ${quizList}">
-																		<td ><a th:href="@{'/student/quiz/view/'+${quiz.quizId}}" th:text="${quiz.quizTitle}">Database Quiz
-																			Exam 3</a></td>
+																		<td><a
+																			th:href="@{'/student/quiz/view/'+${quiz.quizId}}"
+																			th:text="${quiz.quizTitle}">Database Quiz Exam 3</a></td>
 																		<td th:text="${quiz.teachesId.courseId.courseCode}">CSE333</td>
 																		<td th:text="${quiz.teachesId.courseId.semester}">3-1</td>
 																		<td th:text="${quiz.teachesId.courseId.session}">2011-12</td>
@@ -99,10 +102,12 @@
 																		<td
 																			th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">10
 																			Sat-15</td>
-																		<td th:text="${quiz.teachesId.instructorId.teacherName}">Sheikh Nabil Mohammad</td>
-																		
+																		<td
+																			th:text="${quiz.teachesId.instructorId.teacherName}">Sheikh
+																			Nabil Mohammad</td>
+
 																	</tr>
-																	
+
 																</tbody>
 															</table>
 														</div>
@@ -116,31 +121,30 @@
 																		<th>Exam Title</th>
 																		<th>Course Code</th>
 																		<th>Instructor</th>
-																		<th>Marks</th>
 																		<th>Status</th>
 																		<th></th>
 																	</tr>
 																</thead>
 																<tbody>
-																	<tr>
-																		<td>Database Quiz Exam 2</td>
-																		<td>CSE333</td>
-																		<td>Sheikh Nabil Mohammad</td>
-																		<td>15/20</td>
-																		<td>Passed</td>
-																		<td><a th:href="@{/student/quiz/view}"
-																			class="btn default btn-xs green-stripe"> View </a></td>
-																	</tr>
-																	<tr>
-																		<td>Database Quiz Exam 1</td>
-																		<td>CSE333</td>
-																		<td>Sheikh Nabil Mohammad</td>
+																	<tr th:each="qr: ${reviewableQuizRegistrationList}">
+																		<td th:text="${qr.quizId.quizTitle}">Database
+																			Quiz Exam 2</td>
+																		<td
+																			th:text="${qr.quizId.teachesId.courseId.courseCode}">CSE333</td>
+																		<td
+																			th:text="${qr.quizId.teachesId.instructorId.teacherName}">Sheikh
+																			Nabil Mohammad</td>
 
-																		<td>5/20</td>
-																		<td>Failed</td>
-																		<td><a th:href="@{/student/quiz/view}"
+																		<td th:if="${qr.isExamReviewed}==true">Reviewed</td>
+
+																		<td th:if="${qr.isExamReviewed}==false">Review
+																			Pending</td>
+
+																		<td><a
+																			th:href="@{'/student/quiz/review/'+${qr.quizId}}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
 																	</tr>
+
 
 																</tbody>
 															</table>

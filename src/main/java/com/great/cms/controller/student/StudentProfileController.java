@@ -86,13 +86,4 @@ public class StudentProfileController {
 		return "redirect:/student/profile";
 	}
 
-//	@RequestMapping(value = "/profile/show", method = RequestMethod.GET)
-//	@ResponseBody
-//	public List<Student> showProfileInfo() {
-//		System.out.println("/profile/show");
-//		List<Student> students = studentService.getStudents();
-//		System.out.println("/profile/show : data found!");
-//		return students;
-//	}
-
 }

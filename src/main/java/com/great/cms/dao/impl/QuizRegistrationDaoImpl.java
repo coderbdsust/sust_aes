@@ -46,4 +46,15 @@ public class QuizRegistrationDaoImpl extends
 		return quizRegistrations;
 	}
 
+	@Override
+	public List<QuizRegistration> findQuizRegistrationsByAttendedAndCourseRegistration(
+			CourseRegistration courseRegistration) {
+		Query query = this.em
+				.createQuery("SELECT qr FROM QuizRegistration qr WHERE"
+						+ " qr.courseRegId=:courseRegId and isRegApproved=true and isAttended=true");
+		query.setParameter("courseRegId", courseRegistration);
+		List<QuizRegistration> quizRegistrations = query.getResultList();
+		return quizRegistrations;
+	}
+
 }

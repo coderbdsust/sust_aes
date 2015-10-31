@@ -10,11 +10,15 @@ import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Teacher;
 
 public interface QuizRegistrationService {
-	
+
 	public void saveOrUpdate(QuizRegistration quizReg);
-	public QuizRegistration getQuizRegistrationByCourseReg(Quiz quiz, CourseRegistration courseRegistration);
+
+	public QuizRegistration getQuizRegistrationByCourseReg(Quiz quiz,
+			CourseRegistration courseRegistration);
+
 	public List<QuizRegistration> getQuizRegistrationsByQuiz(Quiz quiz);
-	
-	
+
+	public List<QuizRegistration> getQuizRegistrationsByAttendedAndCourseReg(
+			List<CourseRegistration> courseRegistrations);
 
 }

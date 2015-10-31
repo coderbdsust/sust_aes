@@ -14,6 +14,8 @@ public interface QuizRegistrationDao extends GenericDao<QuizRegistration, Long> 
 			CourseRegistration courseRegistration);
 
 	List<QuizRegistration> findQuizRegistrationsByQuiz(Quiz quiz);
+	
+	List<QuizRegistration> findQuizRegistrationsByAttendedAndCourseRegistration(CourseRegistration courseRegistration);
 
 	
 
