@@ -58,7 +58,7 @@ public class QuizQuestionController {
 		model.addAttribute("estimatedTime", TimeEstimater.getInstance()
 				.getTotalTime(assignedQuestions));
 
-		return "question/p_add_quiz_question";
+		return "teacher/question/assign_quiz_question";
 	}
 
 	@RequestMapping(value = "/question/available/{id}", method = RequestMethod.GET)

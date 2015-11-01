@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Student :: Question</title>
+
+<script th:src="@{/resources/scripts/pages/question/mcq.js}"
+	type="text/javascript"></script>
+<script
+	th:src="@{/resources/scripts/pages/question/mcq-option-maker.js}"
+	type="text/javascript"></script>
+
+<script th:src="@{/resources/scripts/pages/question/fig.js}"
+	type="text/javascript"></script>
+<script th:src="@{/resources/scripts/pages/question/fig-field-maker.js}"
+	type="text/javascript"></script>
+
+<script th:src="@{/resources/scripts/pages/question/desc.js}"
+	type="text/javascript"></script>
+
+
+<script th:src="@{/resources/scripts/pages/question/add-remove.js}"
+	type="text/javascript"></script>
+<script th:src="@{/resources/scripts/pages/question/append-question.js}"
+	type="text/javascript"></script>
+<script th:src="@{/resources/scripts/pages/question/time-estimater.js}"
+	type="text/javascript"></script>
+
+
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<div class="tab-pane">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="icon-equalizer font-red-sunglo"></i> <span
+									class="caption-subject font-red-sunglo bold uppercase">Review
+									Exam Question</span>
+							</div>
+						</div>
+						<div class="portlet-body form">
+							<!-- BEGIN FORM-->
+							<form th:action="@{/quiz/question/assignto}" method="GET">
+								<div class="form-body">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group"
+												style="background: rgba(0, 128, 0, 0.35);">
+												<h3 class="form-control-static" style="padding-left: 25px;">
+													<strong th:if="${quiz}!=null"
+														th:text="${quiz?.quizTitle.toUpperCase()}"> </strong> <strong
+														th:if="${quiz}==null"> Database Quiz 1 </strong> <input
+														type="hidden" class="form-control" th:if="${quiz}!=null"
+														id="quizId" name="quizId" th:value="${quiz.quizId}" />
+												</h3>
+											</div>
+										</div>
+
+
+									</div>
+
+									<!--/row-->
+									<div class="row">
+
+										<div class="col-md-6 col-sm-12">
+											<!-- BEGIN PORTLET-->
+											<div class="portlet light tasks-widget"
+												style="background: rgba(223, 240, 216, 0.40);">
+												<div class="portlet-title">
+
+													<div class="caption caption-md">
+														<i class="icon-bar-chart theme-font-color hide"></i> <span
+															class="caption-subject theme-font-color bold uppercase">Exam
+															Question List</span>
+													</div>
+
+													<div class="inputs">
+														<div class="portlet-input input-small input-inline">
+															<div class="input-icon right"></div>
+
+														</div>
+													</div>
+												</div>
+
+												<div class="portlet-body">
+													<div id="quess" class="task-content note-success">
+														<div class="scroller" style="height: 282px;"
+															data-always-visible="1" data-rail-visible1="0"
+															data-handle-color="#D7DCE2">
+															<!-- START TASK LIST -->
+															<span style="display: none;" id="hiddenTotalQuestion"
+																th:if="${availableQuestionList}!=null"
+																th:text="${availableQuestionList.size()}"></span> <span
+																style="display: none;" id="hiddenQuizId"
+																th:if="${quiz}!=null" th:text="${quiz.quizId}"></span>
+
+															<ul id="question-bank" class="task-list">
+
+																<li
+																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
+																	<span style="display: none;">0</span>
+
+																	<div class="task-checkbox">
+																		<p style="padding-left: 5px; color: green;">[M]</p>
+																	</div> <!-- 																	<div class="task-checkbox" --> <!-- 																		th:switch="${q.questionType.name()}"> -->
+																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="MCQ">[M]</p> --> <!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="DESCRIPTIVE">[D]</p> -->
+																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="FILL_IN_THE_GAPS">[F]</p> -->
+																	<!-- 																	</div> -->
+
+																	<div class="task-title">
+																		<span class="task-title-sp"> What is MCQ? </span>
+																	</div>
+																	<div class="task-config">
+																		<div class="task-config-btn btn-group">
+																			<a type="button" href="#form_modal10"
+																				data-toggle="modal"> <i class="fa fa-eye"></i>
+																				Review
+																			</a>
+																		</div>
+																	</div>
+																</li>
+																<li
+																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
+																	<span style="display: none;">0</span>
+
+																	<div class="task-checkbox">
+																		<p style="padding-left: 5px; color: green;">[F]</p>
+																	</div> <!-- 																	<div class="task-checkbox" --> <!-- 																		th:switch="${q.questionType.name()}"> -->
+																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="MCQ">[M]</p> --> <!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="DESCRIPTIVE">[D]</p> -->
+																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="FILL_IN_THE_GAPS">[F]</p> -->
+																	<!-- 																	</div> -->
+
+																	<div class="task-title">
+																		<span class="task-title-sp"> What is fill in
+																			the gaps? </span>
+																	</div>
+																	<div class="task-config">
+																		<div class="task-config-btn btn-group">
+																			<a type="button" href="#form_modal12"
+																				data-toggle="modal"> <i class="fa fa-eye"></i>
+																				Review
+																			</a>
+																		</div>
+																	</div>
+																</li>
+																<li
+																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
+																	<span style="display: none;">0</span>
+
+																	<div class="task-checkbox">
+																		<p style="padding-left: 5px; color: green;">[D]</p>
+																	</div> <!-- 																	<div class="task-checkbox" --> <!-- 																		th:switch="${q.questionType.name()}"> -->
+																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="MCQ">[M]</p> --> <!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="DESCRIPTIVE">[D]</p> -->
+																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
+																	<!-- 																			th:case="FILL_IN_THE_GAPS">[F]</p> -->
+																	<!-- 																	</div> -->
+
+																	<div class="task-title">
+																		<span class="task-title-sp"> What is
+																			Descriptive question? </span>
+																	</div>
+																	<div class="task-config">
+																		<div class="task-config-btn btn-group">
+																			<a type="button" href="#form_modal11"
+																				data-toggle="modal"> <i class="fa fa-eye"></i>
+																				Review
+																			</a>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+															<!-- END START TASK LIST -->
+														</div>
+													</div>
+
+												</div>
+											</div>
+											<!-- END PORTLET-->
+										</div>
+
+									</div>
+									<div class="form-actions">
+										<div class="row">
+
+
+											<div class="col-md-offset-3 col-md-3">
+												<button type="submit" class="btn green">Save
+													Changes</button>
+												<button type="button" class="btn default">Cancel</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+							<!-- END FORM-->
+
+							<!--MODAL FORM SAMPLE START-->
+							<!--MCQ MODAL START-->
+							<div id="form_modal10" class="modal fade" role="dialog"
+								aria-labelledby="myModalLabel10" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true"></button>
+											<h3 class="modal-title">
+												<strong>MCQ REVIEW</strong>
+											</h3>
+										</div>
+										<div class="modal-body">
+											<form id="mcq-question-form" class="form-horizontal"
+												role="form">
+												<div class="form-body" id="mcq-form-body">
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Question</label>
+														<div class="col-md-8">
+															<input id="mcq-question-text" type="text"
+																class="form-control input-md" />
+															<!-- 															<p> -->
+															<!-- 																<strong>Note: </strong> Keep fields blank if doesn't -->
+															<!-- 																want to give more options! -->
+															<!-- 															</p> -->
+														</div>
+														<div class="col-md-1"></div>
+													</div>
+
+
+													<div id="mcq-opt-0" class="form-group">
+														<label class="col-md-3 control-label">Option 1</label>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="input-group">
+																	<input id="mcq-opt-0-text" type="text"
+																		class="form-control" /> <span
+																		class="input-group-addon"> <input
+																		id="mcq-opt-0-answer" type="checkbox" />
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+
+
+													<div id="mcq-opt-1" class="form-group">
+														<label class="col-md-3 control-label">Option 2</label>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="input-group">
+																	<input id="mcq-opt-1-text" type="text"
+																		class="form-control" /> <span
+																		class="input-group-addon"> <input
+																		id="mcq-opt-1-answer" type="checkbox" />
+																	</span>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<!-- 													<div class="row"> -->
+													<!-- 														<div class="col-md-offset-3 col-md-6"> -->
+													<!-- 															<div class="clearfix"> -->
+													<!-- 																<div class="btn-toolbar margin-bottom-10"> -->
+													<!-- 																	<div -->
+													<!-- 																		class="btn-group  btn-group-xs btn-group-justified"> -->
+													<!-- 																		<a id='addOptionBtn' class="btn green" -->
+													<!-- 																			onclick="addOption(1)"> <i class="fa fa-plus"></i> -->
+													<!-- 																		</a> <a id='removeOptionBtn' class="btn red" -->
+													<!-- 																			onclick="removeOption(1)"> <i class="fa fa-minus"></i> -->
+													<!-- 																		</a> -->
+													<!-- 																	</div> -->
+													<!-- 																</div> -->
+													<!-- 															</div> -->
+													<!-- 														</div> -->
+													<!-- 													</div> -->
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="col-md-3 control-label"><strong><em>Mark</em></strong></label>
+																<div class="row">
+																	<div class="col-md-7">
+																		<div class="input-group">
+																			<input id="mcq-marks" placeholder="Mark" type="text"
+																				class="form-control" />
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<!-- 														<div class="col-md-6"> -->
+														<!-- 															<div class="form-group"> -->
+														<!-- 																<label class="col-md-3 control-label"><strong><em>Time</em></strong></label> -->
+														<!-- 																<div class="row"> -->
+														<!-- 																	<div class="col-md-7"> -->
+														<!-- 																		<div class="input-group"> -->
+														<!-- 																			<input id="mcq-time" placeholder="In Seconds..." -->
+														<!-- 																				type="text" class="form-control" /> -->
+
+														<!-- 																		</div> -->
+														<!-- 																	</div> -->
+														<!-- 																</div> -->
+														<!-- 															</div> -->
+														<!-- 														</div> -->
+													</div>
+
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button class="btn default" data-dismiss="modal"
+												aria-hidden="true">Close</button>
+											<button class="btn green" aria-hidden="true">Next</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- MCQ MODAL END -->
+							<!-- DESCRIPTIVE MODAL START -->
+							<div id="form_modal11" class="modal fade" role="dialog"
+								aria-labelledby="myModalLabel10" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true"></button>
+											<h3 class="modal-title">
+												<strong>DESCRIPTIVE QUESTION REVIEW</strong>
+											</h3>
+										</div>
+										<div class="modal-body">
+											<form class="form-horizontal" role="form">
+												<div class="form-body">
+													<div class="form-group">
+														<label class="col-md-3 control-label"> Question </label>
+														<div class="col-md-8">
+															<input id="desc-question-text" type="text"
+																class="form-control input-md" />
+														</div>
+													</div>
+													<div class="form-group">
+														<!-- <label class="col-md-3 control-label">Option 1</label> -->
+														<div class="row">
+															<div class="col-md-offset-1 col-md-10">
+																<!-- 																		<div class="input-group"> -->
+
+																<textarea id="desc-answer-text"
+																	style="resize: vertical;" class="form-control"
+																	rows="10" cols="24"
+																	placeholder="Answer the following question"></textarea>
+																<!-- 																		</div> -->
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-md-6">
+														<div class="form-group">
+															<label class="col-md-3 control-label"><strong><em>Mark</em></strong></label>
+															<div class="row">
+																<div class="col-md-7">
+																	<div class="input-group">
+																		<input id="desc-marks" placeholder="Mark" type="text"
+																			class="form-control" />
+
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<!-- 													<div class="col-md-6"> -->
+													<!-- 														<div class="form-group"> -->
+													<!-- 															<label class="col-md-3 control-label"><strong><em>Time</em></strong></label> -->
+													<!-- 															<div class="row"> -->
+													<!-- 																<div class="col-md-7"> -->
+													<!-- 																	<div class="input-group"> -->
+													<!-- 																		<input id="desc-time" placeholder="In Seconds..." -->
+													<!-- 																			type="text" class="form-control" /> -->
+
+													<!-- 																	</div> -->
+													<!-- 																</div> -->
+													<!-- 															</div> -->
+													<!-- 														</div> -->
+													<!-- 													</div> -->
+												</div>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button class="btn default" data-dismiss="modal"
+												aria-hidden="true">Close</button>
+											<button class="btn green" aria-hidden="true">Next</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- DESCRIPTIVE MODAL END -->
+							<!-- FILL IN THE GAPS MODAL STARTED -->
+							<div id="form_modal12" class="modal fade" role="dialog"
+								aria-labelledby="myModalLabel10" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true"></button>
+											<h3 class="modal-title">
+												<strong>FILL IN THE GAPS QUESTION REVIEW</strong>
+											</h3>
+										</div>
+										<div class="modal-body">
+											<form class="form-horizontal" role="form">
+												<div class="form-body">
+													<div class="form-group">
+														<label class="col-md-3 control-label"> <strong>Question</strong>
+														</label>
+														<div class="col-md-8">
+															<input id="fig-question-text" type="text"
+																class="form-control input-md" />
+															<p>
+																<strong> Example: </strong> What language do you __(1)__
+																?
+															</p>
+															<p>
+																<strong>Note: </strong> Keep fields blank if havn't
+																enough gaps in question!
+															</p>
+														</div>
+													</div>
+
+
+													<div id="fig-gaps-1" class="form-group">
+														<label class="col-md-2 control-label"><strong><em>1.</em></strong></label>
+														<div class="row">
+															<div class="col-md-8">
+																<div class="input-group">
+																	<input id="fig-gaps-0-text"
+																		placeholder="type this answer" type="text"
+																		class="form-control" />
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<!-- 													<div class="row"> -->
+													<!-- 														<div class="col-md-offset-2 col-md-4"> -->
+													<!-- 															<div class="clearfix"> -->
+													<!-- 																<div class="btn-toolbar margin-bottom-10"> -->
+													<!-- 																	<div -->
+													<!-- 																		class="btn-group  btn-group-xs btn-group-justified"> -->
+													<!-- 																		<a id='addFigFieldBtn' class="btn green" -->
+													<!-- 																			onclick="addFigField(1)"> <i class="fa fa-plus"></i> -->
+													<!-- 																		</a> <a id="removeFigFieldBtn" class="btn red" -->
+													<!-- 																			onclick="removeFigField(1)"> <i -->
+													<!-- 																			class="fa fa-minus"></i> -->
+													<!-- 																		</a> -->
+													<!-- 																	</div> -->
+													<!-- 																</div> -->
+													<!-- 															</div> -->
+													<!-- 														</div> -->
+													<!-- 													</div> -->
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label class="col-md-3 control-label"><strong><em>Mark</em></strong></label>
+																<div class="row">
+																	<div class="col-md-7">
+																		<div class="input-group">
+																			<input id="fig-marks" placeholder="Mark" type="text"
+																				class="form-control" />
+
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+
+													</div>
+
+												</div>
+											</form>
+										</div>
+
+										<div class="modal-footer">
+
+											<button class="btn default" data-dismiss="modal"
+												aria-hidden="true">Close</button>
+											<button class="btn green" aria-hidden="true">Next</button>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- FILL IN THE GAPS MODAL END -->
+							<!-- ALERT MESSAGE MODAL -->
+							<div id="success-modal" class="modal fade" role="dialog"
+								aria-labelledby="myModalLabel10" aria-hidden="true">
+								<div class="modal-dialog">
+
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true"></button>
+									</div>
+									<div class="note note-success">
+										<h4 class="block">Question saved successfully in question
+											bank!</h4>
+									</div>
+									<div class="modal-footer" aria-hidden="true">
+										<button class="btn default" data-dismiss="modal"
+											aria-hidden="true">Close</button>
+									</div>
+								</div>
+							</div>
+							<div id="error-modal" class="modal fade" role="dialog"
+								aria-labelledby="myModalLabel10" aria-hidden="true">
+								<div class="modal-dialog">
+
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true"></button>
+									</div>
+									<div class="note note-danger">
+										<h4 class="block">Sorry! Question couldn't be saved.</h4>
+									</div>
+									<div class="modal-footer" aria-hidden="true">
+										<button class="btn default" data-dismiss="modal"
+											aria-hidden="true">Close</button>
+									</div>
+								</div>
+							</div>
+							<!--MODAL FORM SAMPLE END-->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>

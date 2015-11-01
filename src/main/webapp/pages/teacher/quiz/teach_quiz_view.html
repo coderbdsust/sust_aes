@@ -15,7 +15,7 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<h2>
-									
+
 									<span class="caption-subject font-red-haze bold uppercase"
 										th:text="${quiz.quizTitle}">Database Quiz Exam 1</span>
 								</h2>
@@ -31,7 +31,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Instructor:</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.teachesId.instructorId.teacherName}">Database
+													<p class="form-control-static"
+														th:text="${quiz.teachesId.instructorId.teacherName}">Database
 														Quiz Lab 1</p>
 												</div>
 											</div>
@@ -54,7 +55,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Session</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quiz.teachesId.courseId.session}">2011</p>
+													<p class="form-control-static"
+														th:text="${quiz.teachesId.courseId.session}">2011</p>
 												</div>
 											</div>
 										</div>
@@ -149,11 +151,13 @@
 								</div>
 								<div class="form-actions">
 									<div class="row">
-										<div class="col-md-offset-4 col-md-4">
+										<div class="col-md-offset-3 col-md-7">
 											<a class="btn green" href="#"> Edit </a> <a class="btn green"
 												th:href="@{'/quiz/question/add/'+${quiz.quizId}}"> Add
 												Question </a> <a class="btn green"
 												th:href="@{'/quiz/delete/'+${quiz.quizId}}"> Delete Exam</a>
+											<a class="btn green"
+												th:href="@{'/teacher/quiz/review/'+${quiz.quizId}}"> Review Exam</a>
 										</div>
 
 									</div>
