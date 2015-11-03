@@ -6,14 +6,14 @@ import com.great.cms.enums.ExamStatusType;
 
 public class ExamStatus {
 	
-	public String getExamStatus(Date startDate, Date endDate, Date currDate) {
+	public ExamStatusType getExamStatus(Date startDate, Date endDate, Date currDate) {
 		
 		if (currDate.after(startDate) && currDate.before(endDate)) {
-			return ExamStatusType.Running.name();
+			return ExamStatusType.Running;
 		} else if (currDate.before(startDate) && currDate.before(endDate)) {
-			return ExamStatusType.Upcoming.name();
+			return ExamStatusType.Upcoming;
 		} else {
-			return ExamStatusType.Finished.name();
+			return ExamStatusType.Finished;
 		}
 	}
 

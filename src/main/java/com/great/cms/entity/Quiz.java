@@ -31,6 +31,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import com.great.cms.controller.utils.ExamStatus;
+import com.great.cms.enums.ExamStatusType;
 
 /**
  *
@@ -220,12 +221,12 @@ public class Quiz implements DomainObject, Serializable {
 		return true;
 	}
 
-	public String getExamStatus(Date currDate) {
+	public ExamStatusType getExamStatus(Date currDate) {
 		ExamStatus status = new ExamStatus();
 		return status.getExamStatus(startTime, endTime, currDate);
 	}
-	
-	public String getExamStatus() {
+
+	public ExamStatusType getExamStatus() {
 		Date currDate = new Date();
 		ExamStatus status = new ExamStatus();
 		return status.getExamStatus(startTime, endTime, currDate);

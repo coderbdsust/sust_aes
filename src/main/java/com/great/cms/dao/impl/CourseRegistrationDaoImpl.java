@@ -14,8 +14,9 @@ import com.great.cms.entity.Student;
 import com.great.cms.entity.Teaches;
 
 @Repository
-public class CourseRegistrationDaoImpl extends GenericDaoImpl<CourseRegistration, Integer>
-		implements CourseRegistrationDao {
+public class CourseRegistrationDaoImpl extends
+		GenericDaoImpl<CourseRegistration, Integer> implements
+		CourseRegistrationDao {
 
 	public CourseRegistrationDaoImpl() {
 		super(CourseRegistration.class);
@@ -23,7 +24,8 @@ public class CourseRegistrationDaoImpl extends GenericDaoImpl<CourseRegistration
 
 	@Override
 	public List<CourseRegistration> findByCourseId(Course course) {
-		Query query = this.em.createQuery("SELECT cr FROM CourseRegistration cr WHERE cr.courseId=:courseId");
+		Query query = this.em
+				.createQuery("SELECT cr FROM CourseRegistration cr WHERE cr.courseId=:courseId");
 		query.setParameter("courseId", course);
 		List<CourseRegistration> courseRegList = query.getResultList();
 		return courseRegList;
@@ -32,13 +34,28 @@ public class CourseRegistrationDaoImpl extends GenericDaoImpl<CourseRegistration
 	@Override
 	@Transactional(readOnly = true, value = "transactionManager")
 	public List<CourseRegistration> findByStudentAndIsApproved(Student student) {
-		Query query = this.em.createQuery(
-				"SELECT cr FROM CourseRegistration cr WHERE cr.isApproved=true and cr.studentId=:studentId");
+		Query query = this.em
+				.createQuery("SELECT cr FROM CourseRegistration cr WHERE cr.isApproved=true and cr.studentId=:studentId");
 		query.setParameter("studentId", student);
 		List<CourseRegistration> courseRegList = query.getResultList();
 		for (CourseRegistration courseRegistration : courseRegList) {
-			System.out.println(courseRegistration.getCourseId().getTeachesList().size());
+			System.out.println(courseRegistration.getCourseId()
+					.getTeachesList().size());
 		}
 		return courseRegList;
+	}
+
+	@Override
+	public CourseRegistration findByStudentAndCourseAndIsApproved(
+			Student student, Course course) {
+		Query query = this.em
+				.createQuery("SELECT cr FROM CourseRegistration cr WHERE cr.isApproved=true and cr.studentId=:studentId and cr.courseId=:courseId");
+		query.setParameter("studentId", student);
+		query.setParameter("courseId", course);
+		List<CourseRegistration> courseRegList = query.getResultList();
+		if (courseRegList != null && courseRegList.size() == 1) {
+			return courseRegList.get(0);
+		}
+		return null;
 	}
 }

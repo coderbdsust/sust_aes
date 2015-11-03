@@ -14,18 +14,19 @@ import com.great.cms.service.CourseRegistrationService;
 @Service("CourseRegistrationService")
 public class CourseRegistrationServiceImpl implements CourseRegistrationService {
 
-	@Autowired CourseRegistrationDao courseRegDao;
-	
+	@Autowired
+	CourseRegistrationDao courseRegDao;
+
 	@Override
 	public void saveOrUpdate(CourseRegistration courseRegistration) {
-		if(courseRegistration.getCourseRegId()==null){
+		if (courseRegistration.getCourseRegId() == null) {
 			courseRegDao.save(courseRegistration);
-		}else{
+		} else {
 			courseRegDao.update(courseRegistration);
 		}
 	}
-	
-	public List<CourseRegistration> getCourseRegistrations(){
+
+	public List<CourseRegistration> getCourseRegistrations() {
 		return courseRegDao.findAll();
 	}
 
@@ -40,5 +41,13 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 		// TODO Auto-generated method stub
 		return courseRegDao.findByStudentAndIsApproved(studentId);
 	}
-	
+
+	@Override
+	public CourseRegistration findByStudentAndCourseAndIsApproved(
+			Student student, Course course) {
+		// TODO Auto-generated method stub
+		return courseRegDao
+				.findByStudentAndCourseAndIsApproved(student, course);
+	}
+
 }

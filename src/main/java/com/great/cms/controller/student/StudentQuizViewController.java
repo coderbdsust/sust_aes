@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.controller.utils.QuestionUtil;
+import com.great.cms.controller.utils.QuizRegistrationStatus;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Student;
+import com.great.cms.enums.RegistrationType;
 import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.CourseRegistrationService;
 import com.great.cms.service.QuestionService;
@@ -44,16 +46,27 @@ public class StudentQuizViewController {
 	public String showStdExamView(Principal principal,
 			@PathVariable Long quizId, Model uiModel) {
 		System.out.println("/quiz/question " + quizId);
+		Student student = UserUtil.getInstance().getStudent(principal);
 		Quiz quiz = quizService.getQuiz(quizId);
+		Course course = quiz.getTeachesId().getCourseId();
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(quiz);
 		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
 		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);
+		CourseRegistration courseReg = courseRegService
+				.findByStudentAndCourseAndIsApproved(student, course);
+		QuizRegistration quizReg = quizRegistrationService
+				.getQuizRegistrationByCourseReg(quiz, courseReg);
+		QuizRegistrationStatus status = new QuizRegistrationStatus();
+		RegistrationType regType = status.getQuizRegistrationStatus(quizReg);
+
 		uiModel.addAttribute("quiz", quiz);
 		uiModel.addAttribute("totalMarks", totalMarks);
 		uiModel.addAttribute("totalQuestions", totalQuestions);
+		uiModel.addAttribute("registrationType", regType);
+
 		return "student/quiz/std_quiz_view";
 	}
 
@@ -61,6 +74,21 @@ public class StudentQuizViewController {
 	public String showStdExamApply(Principal principal, Long quizId,
 			Integer courseId, Model uiModel, RedirectAttributes redirectAttr) {
 		System.out.println("/student/quiz/apply/" + quizId + " " + courseId);
+		Student student = UserUtil.getInstance().getStudent(principal);
+		Course course = new Course(courseId);
+		Quiz quiz = new Quiz(quizId);
+
+		CourseRegistration courseReg = courseRegService
+				.findByStudentAndCourseAndIsApproved(student, course);
+		QuizRegistration quizReg = quizRegistrationService
+				.getQuizRegistrationByCourseReg(quiz, courseReg);
+
+		if (quizReg == null) {
+			quizReg = new QuizRegistration();
+			quizReg.setCourseRegId(courseReg);
+			quizReg.setQuizId(quiz);
+			quizRegistrationService.saveOrUpdate(quizReg);
+		}
 
 		redirectAttr.addAttribute("quizId", quizId);
 		return "redirect:/student/quiz/view/{quizId}";

@@ -137,8 +137,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Registration</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${quiz != null}"
-														th:text="${quiz.totalTime}+' seconds'">Approved</p>
+													<p class="form-control-static" th:if="${registrationType != null}"
+														th:text="${registrationType}">Approved</p>
 												</div>
 											</div>
 										</div>
@@ -167,7 +167,7 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-5 col-md-4">
-												<button class="btn green" type="submit"> 
+												<button class="btn green" type="submit" th:if="${registrationType.name() == 'APPLY'}"> 
 													Apply
 												</button>
 												<a class="btn green" th:href="@{/student/quiz/answer}"> 

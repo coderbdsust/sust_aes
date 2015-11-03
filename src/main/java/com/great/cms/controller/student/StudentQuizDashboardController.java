@@ -43,6 +43,7 @@ public class StudentQuizDashboardController {
 		List<Quiz> quizList = quizService.getAvailableQuizzes(student);
 		List<QuizRegistration> reviewableQuizRegList = quizRegistrationService
 				.getQuizRegistrationsByAttendedAndCourseReg(courseRegistrationList);
+		
 		uiModel.addAttribute("quizList", quizList);
 		uiModel.addAttribute("reviewableQuizRegistrationList",
 				reviewableQuizRegList);
