@@ -9,60 +9,47 @@
 	<section layout:fragment="body-content">
 		<div class="page-content-wrapper">
 			<div class="page-content">
-				<form th:action="@{/admin/verification}"></form>
+				<form th:action="@{/teacher/quiz/students/approve}"></form>
 				<div class="row">
-		
+
 					<div class="col-md-12">
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
-						<div class="portlet box blue"
-							th:each="nvUser : ${nonVerifiedUsers}">
+						<div class="portlet box blue" th:each="qr : ${quizRegList}">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-edit"></i><span th:text="${nvUser.username}"></span>
+									<i class="fa fa-edit"></i><span
+										th:text="${qr.courseRegId.studentId.firstName}"></span>
 								</div>
-<!-- 								<div class="tools"> -->
-<!-- 									<a href="javascript:;" class="collapse"> </a> <a -->
-<!-- 										href="#portlet-config" data-toggle="modal" class="config"> -->
-<!-- 									</a> <a href="javascript:;" class="reload"> </a> <a -->
-<!-- 										href="javascript:;" class="remove"> </a> -->
-<!-- 								</div> -->
+
 							</div>
 							<div class="portlet-body">
-								<form action="/admin/verification/"
-									th:action="@{/admin/verification/}" method="post">
-									<input type="hidden" th:value="${nvUser.userId}" name="userId" />
-									<input type="hidden" th:value="${nvUser.username}"
-										name="username" />
+								<form action="/teacher/quiz/students/approve"
+									th:action="@{/teacher/quiz/students/approve}" method="post">
+									<input type="hidden" th:value="${qr.quizRegistrationId}"
+										name="quizRegistrationId" /> <input type="hidden"
+										th:value="${qr.courseRegId.courseRegId}"
+										name="courseRegId.courseRegId" /> <input type="hidden"
+										th:value="${qr.quizId.quizId}" name="quizId.quizId" /> <input
+										type="hidden" th:value="${qr.courseRegId.courseRegId}"
+										name="courseRegId.courseRegId" />
 									<div class="form-group">
 										<label><input type="checkbox" value="true"
-											name="enabled" /><span>enabled</span> </label>
+											th:checked="${qr.isRegApproved}" name="isRegApproved" /><span>Registration
+												Approved</span> </label>
 									</div>
 									<div class="form-group">
 										<label><input type="checkbox" value="true"
-											name="accountNonLocked" /><span>accountNonLocked</span> </label>
-									</div>
-									<div class="form-group">
-										<div th:each="role : ${T(com.great.cms.enums.Role).values()}">
-											<input type="checkbox" name="role" th:value="${role}" /> <label
-												th:text="${role}">example</label>
-										</div>
+											th:checked="${qr.isAttended}" name="isAttended" /><span>Attended
+												In Quiz</span> </label>
 									</div>
 									<div class="form-group">
 										<label><input type="checkbox" value="true"
-											name="accountNonLocked" /><span>accountNonLocked</span> </label>
+											name="isExamReviewed" th:checked="${qr.isExamReviewed}" /><span>Exam
+												Reviewed</span> </label>
 									</div>
 
-									<div class="form-group">
-										<label><input type="checkbox" value="true"
-											name="accountNonExpired" /><span>accountNonExpired</span> </label>
-									</div>
-									<div class="form-group">
-										<label><input type="checkbox" value="true"
-											name="credentialsNonExpired" /><span>credentialsNonExpired</span>
-										</label>
-									</div>
 									<div>
-										<input type="submit"  />
+										<input type="submit" />
 									</div>
 								</form>
 							</div>

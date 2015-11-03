@@ -9,11 +9,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.entity.Quiz;
+import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
 import com.great.cms.security.utils.UserUtil;
+import com.great.cms.service.QuizRegistrationService;
 import com.great.cms.service.QuizService;
 import com.great.cms.service.TeachesService;
 
@@ -25,6 +28,8 @@ public class TeacherQuizController {
 	TeachesService teachesService;
 	@Autowired
 	QuizService quizService;
+	@Autowired
+	QuizRegistrationService quizRegService;
 
 	@RequestMapping("/question/create")
 	public String showQuizQuestions(Model model) {
@@ -55,7 +60,27 @@ public class TeacherQuizController {
 	public String showStdQuizRegPage(Principal principal,
 			@PathVariable Long quizId, Model uiModel) {
 		System.out.println("/teacher/quiz/student/" + quizId);
-
+		Quiz quiz = new Quiz(quizId);
+		List<QuizRegistration> quizRegList = quizRegService
+				.getQuizRegistrationsByQuiz(quiz);
+		uiModel.addAttribute("quizRegList", quizRegList);
+		uiModel.addAttribute("quizRegistration", new QuizRegistration());
 		return "teacher/quiz/teach_quiz_students";
+	}
+
+	@RequestMapping("/students/approve")
+	public String stdQuizRegApprove(Principal principal,
+			QuizRegistration quizRegistration, Model uiModel,
+			RedirectAttributes redirectAttr) {
+		System.out.println("/teacher/quiz/students/approve" + quizRegistration);
+		QuizRegistration savedQuizReg = quizRegService
+				.getQuizRegistrationById(quizRegistration
+						.getQuizRegistrationId());
+		quizRegistration.setAttendTime(savedQuizReg.getAttendTime());
+		quizRegistration.setSubmitTime(savedQuizReg.getSubmitTime());
+		quizRegService.saveOrUpdate(quizRegistration);
+		redirectAttr.addAttribute("quizId", quizRegistration.getQuizId()
+				.getQuizId());
+		return "redirect:/teacher/quiz/students/{quizId}";
 	}
 }

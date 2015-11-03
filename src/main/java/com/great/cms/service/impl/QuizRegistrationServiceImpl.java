@@ -54,4 +54,10 @@ public class QuizRegistrationServiceImpl implements QuizRegistrationService {
 		}
 		return quizRegList;
 	}
+
+	@Override
+	public QuizRegistration getQuizRegistrationById(Long quizRegistrationId) {
+		// TODO Auto-generated method stub
+		return quizRegDao.findById(quizRegistrationId);
+	}
 }

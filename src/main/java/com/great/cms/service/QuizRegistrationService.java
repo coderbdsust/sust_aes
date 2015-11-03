@@ -21,4 +21,8 @@ public interface QuizRegistrationService {
 	public List<QuizRegistration> getQuizRegistrationsByAttendedAndCourseReg(
 			List<CourseRegistration> courseRegistrations);
 
+	public QuizRegistration getQuizRegistrationById(Long quizRegistrationId);
+
+	
+
 }
