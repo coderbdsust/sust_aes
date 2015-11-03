@@ -17,4 +17,6 @@ public interface UserDao extends GenericDao<User, Long> {
 	public Integer countVerificationNeed();
 
 	public List<User> nonVerifiedUsers();
+
+	public void deleteUserAllRoles(User user);
 }

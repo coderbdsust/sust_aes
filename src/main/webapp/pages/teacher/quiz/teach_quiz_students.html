@@ -15,10 +15,10 @@
 					<div class="col-md-12">
 						<!-- BEGIN EXAMPLE TABLE PORTLET-->
 						<div class="portlet box blue"
-							th:each="u : ${userList}">
+							th:each="nvUser : ${nonVerifiedUsers}">
 							<div class="portlet-title">
 								<div class="caption">
-									<i class="fa fa-edit"></i><span th:text="${u.username}"></span>
+									<i class="fa fa-edit"></i><span th:text="${nvUser.username}"></span>
 								</div>
 <!-- 								<div class="tools"> -->
 <!-- 									<a href="javascript:;" class="collapse"> </a> <a -->
@@ -30,35 +30,39 @@
 							<div class="portlet-body">
 								<form action="/admin/verification/"
 									th:action="@{/admin/verification/}" method="post">
-									<input type="hidden" th:value="${u.userId}" name="userId" />
-									<input type="hidden" th:value="${u.username}"
+									<input type="hidden" th:value="${nvUser.userId}" name="userId" />
+									<input type="hidden" th:value="${nvUser.username}"
 										name="username" />
 									<div class="form-group">
-										<label><input type="checkbox" value="true" th:checked="${u.enabled}"
+										<label><input type="checkbox" value="true"
 											name="enabled" /><span>enabled</span> </label>
 									</div>
 									<div class="form-group">
 										<label><input type="checkbox" value="true"
-											name="accountNonLocked" th:checked="${u.accountNonLocked}" /><span>accountNonLocked</span> </label>
+											name="accountNonLocked" /><span>accountNonLocked</span> </label>
 									</div>
 									<div class="form-group">
-										<div th:each="roles : ${T(com.great.cms.enums.Role).values()}">
-											<input type="checkbox" name="role" th:value="${roles}" th:checked="${#lists.contains(u.role,roles)}"/> <label
-												th:text="${roles}">example</label>
+										<div th:each="role : ${T(com.great.cms.enums.Role).values()}">
+											<input type="checkbox" name="role" th:value="${role}" /> <label
+												th:text="${role}">example</label>
 										</div>
+									</div>
+									<div class="form-group">
+										<label><input type="checkbox" value="true"
+											name="accountNonLocked" /><span>accountNonLocked</span> </label>
 									</div>
 
 									<div class="form-group">
 										<label><input type="checkbox" value="true"
-											name="accountNonExpired" th:checked="${u.accountNonExpired}"/><span>accountNonExpired</span> </label>
+											name="accountNonExpired" /><span>accountNonExpired</span> </label>
 									</div>
 									<div class="form-group">
 										<label><input type="checkbox" value="true"
-											name="credentialsNonExpired" th:checked="${u.accountNonExpired}"/><span>credentialsNonExpired</span>
+											name="credentialsNonExpired" /><span>credentialsNonExpired</span>
 										</label>
 									</div>
 									<div>
-										<input type="submit" />
+										<input type="submit"  />
 									</div>
 								</form>
 							</div>

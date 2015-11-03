@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.expression.Dates;
+import org.thymeleaf.expression.Lists;
 
 import com.great.cms.dao.UserDao;
 import com.great.cms.entity.User;
@@ -15,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public List<User> getUsers() {
+	public List<User> getUsers() {		
 		return userDao.findAll();
 	}
 
@@ -59,6 +61,12 @@ public class UserServiceImpl implements UserService {
 	public List<User> nonVerifiedUsers() {
 		// TODO Auto-generated method stub
 		return userDao.nonVerifiedUsers();
+	}
+
+	@Override
+	public void deleteUserRoles(User user) {
+		 userDao.deleteUserAllRoles(user);
+		
 	}
 
 }

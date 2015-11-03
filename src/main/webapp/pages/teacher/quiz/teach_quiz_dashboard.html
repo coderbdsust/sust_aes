@@ -53,6 +53,7 @@
 																		<th>End Time</th>
 																		<th>Status</th>
 																		<th>View</th>
+																		<th>Students</th>
 
 																	</tr>
 																</thead>
@@ -92,6 +93,8 @@
 																		<td th:text="${quiz.getExamStatus()}">Unknown</td>
 																		<td><a th:href="@{'/quiz/view/'+${quiz.quizId}}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
+																			<td><a th:href="@{'/teacher/quiz/students/'+${quiz.quizId}}"
+																			class="btn default btn-xs green-stripe"> Show </a></td>
 
 																	</tr>
 

@@ -61,8 +61,8 @@ public class AdminController {
 	@RequestMapping(value = "/verification", method = RequestMethod.GET)
 	public String userVerification(Model uiModel) {
 		System.out.println("/admin/verification/");
-		List<User> nonVerifiedUsers = userService.nonVerifiedUsers();
-		uiModel.addAttribute("nonVerifiedUsers", nonVerifiedUsers);
+		List<User> userList = userService.getUsers();
+		uiModel.addAttribute("userList", userList);
 		uiModel.addAttribute("user", new User());
 		return "admin/verify";
 
@@ -73,11 +73,13 @@ public class AdminController {
 			RedirectAttributes redirectAttributes, Model uiModel) {
 		System.out.println("/admin/verification/");
 
-		System.out.println("Submit: " + user);
-
+//		System.out.println("Submit: " + user);
+		
+//		userService.deleteUserRoles(user);
 		User savedUser = userService.getUserById(user.getUserId());
 		user.setPassword(savedUser.getPassword());
-
+		user.setRole(user.getRole());
+		
 		userService.saveOrUpdate(user);
 
 		return "redirect:/admin/verification";

@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.great.cms.entity.Quiz;
@@ -34,19 +35,27 @@ public class TeacherQuizController {
 	@RequestMapping("/dashboard")
 	public String showStdQuizDashboard(Principal principal, Model uiModel) {
 		System.out.println("/teacher/quiz/dashboard");
-		Teacher teacher = UserUtil.getInstance()
-				.getTeacher(principal);
+		Teacher teacher = UserUtil.getInstance().getTeacher(principal);
 		List<Quiz> quizList = new ArrayList<Quiz>();
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
-//		System.out.println("TeachesList Found!");
+		// System.out.println("TeachesList Found!");
 		for (Teaches teaches : teachesList) {
 			List<Quiz> quizes = quizService.getQuizes(teaches);
-//			System.out.println("Quiz List Found!");
-//			System.out.println("Teaches " + teaches.getTeachesId()+": Quiz-Count: " + quizes.size());
+			// System.out.println("Quiz List Found!");
+			// System.out.println("Teaches " +
+			// teaches.getTeachesId()+": Quiz-Count: " + quizes.size());
 			if (!quizes.isEmpty())
 				quizList.addAll(quizes);
 		}
 		uiModel.addAttribute("quizList", quizList);
 		return "teacher/quiz/teach_quiz_dashboard";
+	}
+
+	@RequestMapping("/students/{quizId}")
+	public String showStdQuizRegPage(Principal principal,
+			@PathVariable Long quizId, Model uiModel) {
+		System.out.println("/teacher/quiz/student/" + quizId);
+
+		return "teacher/quiz/teach_quiz_students";
 	}
 }

@@ -68,4 +68,12 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 		return query.getResultList();
 	}
 
+	@Override
+	public void deleteUserAllRoles(User user) {
+		Query query = this.em
+				.createQuery("delete FROM UserRole u where u.userId=:userId");
+		query.setParameter("userId", user);
+		query.executeUpdate();
+	}
+
 }
