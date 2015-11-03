@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.controller.utils.QuestionUtil;
+import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
@@ -38,7 +40,6 @@ public class StudentQuizViewController {
 	@Autowired
 	QuizRegistrationService quizRegistrationService;
 
-
 	@RequestMapping(value = "/view/{quizId}", method = RequestMethod.GET)
 	public String showStdExamView(Principal principal,
 			@PathVariable Long quizId, Model uiModel) {
@@ -54,6 +55,15 @@ public class StudentQuizViewController {
 		uiModel.addAttribute("totalMarks", totalMarks);
 		uiModel.addAttribute("totalQuestions", totalQuestions);
 		return "student/quiz/std_quiz_view";
+	}
+
+	@RequestMapping(value = "/apply", method = RequestMethod.POST)
+	public String showStdExamApply(Principal principal, Long quizId,
+			Integer courseId, Model uiModel, RedirectAttributes redirectAttr) {
+		System.out.println("/student/quiz/apply/" + quizId + " " + courseId);
+
+		redirectAttr.addAttribute("quizId", quizId);
+		return "redirect:/student/quiz/view/{quizId}";
 	}
 
 	@RequestMapping(value = "/review/{quizId}", method = RequestMethod.GET)

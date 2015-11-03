@@ -27,7 +27,7 @@
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
 							<form class="form-horizontal" role="form"
-								th:action="@{/student/exam/view}">
+								th:action="@{/student/quiz/apply}" method="POST">
 								<div class="form-body">
 									<div class="row">
 										<div class="col-md-6">
@@ -36,6 +36,8 @@
 												<div class="col-md-9">
 													<p class="form-control-static" th:if="${quiz != null}" th:text="${quiz?.teachesId?.instructorId?.teacherName}">Database
 														Quiz Lab 1</p>
+														<input type="hidden" name="quizId" th:value="${quiz.quizId}"/>
+														<input type="hidden" name="courseId" th:value="${quiz.teachesId.courseId.courseId}"/>
 												</div>
 											</div>
 										</div>
@@ -165,9 +167,9 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-5 col-md-4">
-												<a class="btn green" href="#"> 
+												<button class="btn green" type="submit"> 
 													Apply
-												</a>
+												</button>
 												<a class="btn green" th:href="@{/student/quiz/answer}"> 
 													Start Exam
 												</a>												
