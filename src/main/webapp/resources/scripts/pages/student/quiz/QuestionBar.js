@@ -19,10 +19,10 @@ function prevQuestion(id, totalQuestion) {
 function switchQuestion(id) {
 	// alert('Question id: ' + id);
 
-	$('div[id^="questionNo-"]').hide();
+	$('div[id^="fake-root-"]').hide();
 
 	console.log('Switch Question ' + id);
-	$("#questionNo-" + id).show();
+	$("#fake-root-" + id).show();
 }
 
 function submitExam() {
