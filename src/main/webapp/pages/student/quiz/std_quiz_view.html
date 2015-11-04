@@ -170,7 +170,7 @@
 												<button class="btn green" type="submit" th:if="${registrationType.name() == 'APPLY'}"> 
 													Apply
 												</button>
-												<a class="btn green" th:href="@{/student/quiz/answer}"> 
+												<a class="btn green" th:href="@{'/student/quiz/answer/'+${quiz.quizId}}"> 
 													Start Exam
 												</a>												
 										</div>

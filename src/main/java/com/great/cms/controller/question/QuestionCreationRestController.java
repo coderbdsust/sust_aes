@@ -19,7 +19,7 @@ import com.great.cms.service.QuestionService;
 
 @Controller
 @RequestMapping("/question")
-public class QuestionCreationController {
+public class QuestionCreationRestController {
 
 	@Autowired
 	QuestionService questionService;

@@ -7,6 +7,7 @@ import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
 import com.great.cms.entity.QuizRegistration;
+import com.great.cms.entity.Student;
 import com.great.cms.entity.Teacher;
 
 public interface QuizRegistrationService {
@@ -22,6 +23,8 @@ public interface QuizRegistrationService {
 			List<CourseRegistration> courseRegistrations);
 
 	public QuizRegistration getQuizRegistrationById(Long quizRegistrationId);
+	
+	public QuizRegistration getQuizRegistrationByStudentAndQuiz(Student student, Long quizId);
 
 	
 

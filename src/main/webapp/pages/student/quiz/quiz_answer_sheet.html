@@ -5,40 +5,10 @@
 	layout:decorator="layout/main">
 
 <head>
-<title>Question :: Create</title>
-<script type="text/javascript">
-	function nextQuestion(id, totalQuestion) {
-		console.log('Question id :' + id);
-		$("#questionNo-" + id).hide();
-		id = id + 1;
-		console.log('NextId :' + id);
-		$("#questionNo-" + id).show();
-
-	}
-	function prevQuestion(id, totalQuestion) {
-		// 		alert('Question id: ' + id);
-		console.log('Question id :' + id);
-		$("#questionNo-" + id).hide();
-		id = id - 1;
-		console.log('PreviousId :' + id);
-		$("#questionNo-" + id).show();
-
-	}
-
-	function switchQuestion(id) {
-		// 		alert('Question id: ' + id);
-
-		$('div[id^="questionNo-"]').hide();
-
-		console.log('Switch Question ' + id);
-		$("#questionNo-" + id).show();
-	}
-
-	function submitExam() {
-		// 		alert('Question id: ' + id);
-		console.log('Complete Exam');
-	}
-</script>
+<title>Quiz :: Answer</title>
+<script th:src="@{/resources/scripts/pages/student/quiz/QuestionBar.js}"></script>
+<script
+	th:src="@{/resources/scripts/pages/student/quiz/QuestionLoader.js}"></script>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -52,27 +22,26 @@
 									class="caption-subject font-red-sunglo bold uppercase">Exam
 									Answer Sheet</span>
 							</div>
-<!-- 							<div class="tools"> -->
-<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
-<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
-<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
-<!-- 							</div> -->
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<form th:action="@{/question/add}" method="POST"
-								class="form-horizontal">
+							<form action="#" method="POST" class="form-horizontal">
 								<div class="form-body">
-									<!-- 									<h3 class="form-section">Question</h3> -->
+									<h3 class="form-section" id="quizRegInputHeader">
+										<input type="hidden" name="quizRegistrationId"
+											id="quizRegistrationId"
+											th:value="${quizRegistration.quizRegistrationId}" />
+									</h3>
+
 									<div class="row">
 										<div class="col-md-12">
 											<div class="clearfix">
 												<div
 													class="btn-group btn-group-circle  btn-group-xs btn-group-justified">
-													<a href="#" class="btn green" onclick="switchQuestion(1)">
-														1 </a> <a href="#" class="btn grey-cascade"
-														onclick="switchQuestion(2)"> 2 </a> <a href="#"
-														class="btn btn green" onclick="switchQuestion(3)"> 3 </a>
+													<a class="btn green" onclick="switchQuestion(1)"> 1 </a> <a
+														class="btn grey-cascade" onclick="switchQuestion(2)">
+														2 </a> <a class="btn btn green" onclick="switchQuestion(3)">
+														3 </a>
 												</div>
 												<div class="clearfix margin-bottom-5"></div>
 											</div>
@@ -83,7 +52,6 @@
 									<div class="row" id="questionNo-1">
 										<div class="col-md-offset-3 col-md-6 col-sm-12">
 											<div class="portlet box green">
-
 												<div class="portlet-title">
 													<div class="row">
 														<div class="col-md-8">
@@ -370,3 +338,9 @@
 	</section>
 </body>
 </html>
+
+<script>
+	jQuery(document).ready(function() {
+		isQuestionUpdationReady();
+	});
+</script>
