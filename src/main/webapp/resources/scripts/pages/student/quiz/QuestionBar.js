@@ -1,18 +1,18 @@
 function nextQuestion(id, totalQuestion) {
 	console.log('Question id :' + id);
-	$("#questionNo-" + id).hide();
+	$("#fake-root-" + id).hide();
 	id = id + 1;
 	console.log('NextId :' + id);
-	$("#questionNo-" + id).show();
+	$("#fake-root-" + id).show();
 
 }
 function prevQuestion(id, totalQuestion) {
 	// alert('Question id: ' + id);
 	console.log('Question id :' + id);
-	$("#questionNo-" + id).hide();
+	$("#fake-root-" + id).hide();
 	id = id - 1;
 	console.log('PreviousId :' + id);
-	$("#questionNo-" + id).show();
+	$("#fake-root-" + id).show();
 
 }
 

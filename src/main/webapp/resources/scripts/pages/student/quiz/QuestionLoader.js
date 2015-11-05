@@ -32,10 +32,9 @@ function loadQuizQuestion() {
 						var question = questionList[key];
 						console.log(question['questionId'] + " "
 								+ question['questionType']);
-						questionDiv
-								.appendChild(createQuestionUI(key,
-										question['questionId'], question,
-										firstElement));
+						questionDiv.appendChild(createQuestionUI(key,
+								question['questionId'], question, firstElement,
+								questionList.length));
 						firstElement = false;
 					}
 				} else {
@@ -63,7 +62,8 @@ function createTab(tabNumber) {
 		tabHolder.innerHTML += tab;
 	}
 }
-function createQuestionUI(key, questionId, question, firstElement) {
+function createQuestionUI(key, questionId, question, firstElement,
+		totalQuestion) {
 	var fakeRootDiv = createDiv('row');
 	var number = parseInt(key) + 1;
 	fakeRootDiv.id = "fake-root-" + number;
@@ -78,28 +78,60 @@ function createQuestionUI(key, questionId, question, firstElement) {
 
 	var secondChildDiv = createDiv('portlet box green');
 	secondChildDiv.appendChild(createUIHeader(key, question['questionType']));
-	secondChildDiv.appendChild(createUIBody(question));
+	secondChildDiv.appendChild(createUIBody(question, key, totalQuestion));
 	firstChildDiv.appendChild(secondChildDiv);
 	rootDiv.appendChild(firstChildDiv);
 	fakeRootDiv.appendChild(rootDiv);
 	return fakeRootDiv;
 }
 
-function createUIBody(question) {
+function createUIBody(question, key, totalQuestion) {
 	console.log(question);
 	var rootDiv = createDiv('portlet-body form');
-	var firstChildDiv = createDiv('form-body');//
+	var firstChildDiv = createDiv('form-body');
 	var secondChildDiv = createDiv('form-horizontal');
 	secondChildDiv.appendChild(questionTextHeader(question['questionText']));
 	secondChildDiv.appendChild(questionTextOption(question));
 	firstChildDiv.appendChild(secondChildDiv);
 	rootDiv.appendChild(firstChildDiv);
+	rootDiv.appendChild(nextButton(key, totalQuestion));
 	return rootDiv;
 }
+
+function nextButton(key, totalQuestion) {
+	var intKey = parseInt(key) + 1;
+	var rootDiv = createDiv('form-actions');
+	var firstChildDiv = createDiv('row');
+	var secondChildDiv = createDiv('col-md-3');
+	var headerDiv = createHeaderDivWithStyle(intKey + '/' + totalQuestion,
+			'h4', "0em 0em 0em 1em", 'pull-left');
+	secondChildDiv.appendChild(headerDiv);
+	var thirdChildDiv = createDiv('col-md-offset-4 col-md-5');
+	firstChildDiv.appendChild(secondChildDiv);
+
+	if (intKey != 1) {
+		thirdChildDiv.innerHTML += '<button type="button" class="btn green" onclick="prevQuestion('
+				+ (intKey) + ',' + totalQuestion + ')">Previous</button>';
+		firstChildDiv.appendChild(thirdChildDiv);
+	}
+	if (intKey != totalQuestion) {
+		thirdChildDiv.innerHTML += '<button type="button" class="btn green" onclick="nextQuestion('
+				+ (intKey) + ',' + totalQuestion + ')">Next</button>';
+		firstChildDiv.appendChild(thirdChildDiv);
+	} else {
+		thirdChildDiv.innerHTML += '<button type="button" class="btn green" onclick="submitExam()">Submit</button>';
+		firstChildDiv.appendChild(thirdChildDiv);
+	}
+
+	rootDiv.appendChild(firstChildDiv);
+	return rootDiv;
+
+}
+
 function questionTextHeader(questionText) {
 	var rootDiv = createDiv('row');
 	var childDiv = createDiv('col-md-offset-1 col-md-12');
-	childDiv.appendChild(createHFourDiv(questionText));
+	childDiv.appendChild(createHeaderDiv(questionText, 'h4'));
 	rootDiv.appendChild(childDiv);
 	return rootDiv;
 }
@@ -117,10 +149,16 @@ function questionTextOption(question) {
 			console.log('MCQ');
 		} else if (question['questionType'] == 'DESCRIPTIVE') {
 			var childDiv = createDiv('col-md-offset-1 col-md-10');
-			var mcqOption = createDescField();
-			childDiv.appendChild(mcqOption);
+			var descOption = createDescField();
+			childDiv.appendChild(descOption);
 			rootDiv.appendChild(childDiv);
-			console.log('MCQ');
+			console.log('DESCRIPTION');
+		} else if (question['questionType'] == 'FILL_IN_THE_GAPS') {
+			var childDiv = createDiv('col-md-offset-1 col-md-11');
+			var figOption = createFIGField(i);
+			childDiv.appendChild(figOption);
+			rootDiv.appendChild(childDiv);
+			console.log('DESCRIPTION');
 		}
 		console.log('tuman-' + quesBody[i].text);
 
@@ -135,7 +173,6 @@ function createMCQOption(optionText) {
 	checkboxDiv.type = 'checkbox';
 	childDiv.appendChild(checkboxDiv);
 	rootDiv.appendChild(childDiv);
-
 	var checkboxTextDiv = document.createElement('h4');
 	checkboxTextDiv.style.padding = '1em 1em';
 	var text = document.createTextNode(optionText);
@@ -157,6 +194,24 @@ function createDescField() {
 
 	return rootDiv;
 }
+
+function createFIGField(key) {
+	var rootDiv = createDiv('form-group');
+	var intKey = parseInt(key) + 1;
+	var labelDiv = createLabelDiv(' ' + intKey + '. ');
+	var firstChildDiv = createDiv('row');
+	var secondChildDiv = createDiv('col-md-8');
+	var thirdChildDiv = createDiv('input-group');
+	thirdChildDiv.innerHTML = '<input placeholder="type this answer" type="text" class="form-control" />';
+
+	secondChildDiv.appendChild(thirdChildDiv);
+	firstChildDiv.appendChild(secondChildDiv);
+
+	rootDiv.appendChild(labelDiv);
+	rootDiv.appendChild(firstChildDiv);
+	return rootDiv;
+}
+
 function createUIHeader(key, questionType) {
 
 	var rootDiv = createDiv('portlet-title');
@@ -170,15 +225,19 @@ function createUIHeader(key, questionType) {
 	var questionNumber = parseInt(key) + 1;
 	var headerDiv;
 	if (questionType == 'MCQ') {
-		headerDiv = createHThreeDiv(questionNumber + '.MCQ QUESTION');
+		headerDiv = createHeaderDiv(questionNumber + '.MCQ QUESTION', 'h3');
 	} else if (questionType == 'DESCRIPTIVE') {
-		headerDiv = createHThreeDiv(questionNumber + '.DESCRIPTIVE QUESTION ');
+		headerDiv = createHeaderDiv(questionNumber + '.DESCRIPTIVE QUESTION ',
+				'h3');
+	} else if (questionType == 'FILL_IN_THE_GAPS') {
+		headerDiv = createHeaderDiv(questionNumber
+				+ '.FILL IN THE GAPS QUESTION', 'h3');
 	}
 	var rootTimerDiv = createDiv('col-md-offset-1 col-md-3');
 
 	var rootTimerInnerDiv = createDiv('caption caption-md');
 
-	var timerDiv = createHThreeDiv('02:00');
+	var timerDiv = createHeaderDiv('02:00', 'h3');
 
 	rootHeaderInnerDiv.appendChild(headerDiv);
 	rootHeaderDiv.appendChild(rootHeaderInnerDiv);
@@ -197,8 +256,8 @@ function createDiv(className) {
 	return div;
 }
 
-function createHThreeDiv(textValue) {
-	var headerDiv = document.createElement('h3');
+function createHeaderDiv(textValue, headerType) {
+	var headerDiv = document.createElement(headerType);
 	var strongHeaderDiv = document.createElement('strong');
 	var headerText = document.createTextNode(textValue);
 	strongHeaderDiv.appendChild(headerText);
@@ -206,8 +265,21 @@ function createHThreeDiv(textValue) {
 	return headerDiv;
 }
 
-function createHFourDiv(textValue) {
-	var headerDiv = document.createElement('h3');
+function createLabelDiv(textValue) {
+	var headerDiv = document.createElement('label');
+	var strongHeaderDiv = document.createElement('strong');
+	var emDiv = document.createElement('em');
+	var headerText = document.createTextNode(textValue);
+	emDiv.appendChild(headerText);
+	strongHeaderDiv.appendChild(emDiv);
+	headerDiv.appendChild(strongHeaderDiv);
+	return headerDiv;
+}
+
+function createHeaderDivWithStyle(textValue, headerType, padding, className) {
+	var headerDiv = document.createElement(headerType);
+	headerDiv.style.padding = padding;
+	headerDiv.className = className;
 	var strongHeaderDiv = document.createElement('strong');
 	var headerText = document.createTextNode(textValue);
 	strongHeaderDiv.appendChild(headerText);

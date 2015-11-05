@@ -54,4 +54,11 @@ public class StudentQuizAnswerController {
 		System.out.println("student/quiz/answer/save");
 		return "student/quiz/quiz_answer_sheet";
 	}
+	
+	@RequestMapping("/ans")
+	public String showAnsPage(Principal principal,
+			 Model uiModel) {
+
+		return "student/quiz/std_ans";
+	}
 }
