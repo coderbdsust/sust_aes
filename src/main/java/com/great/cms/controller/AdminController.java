@@ -72,10 +72,6 @@ public class AdminController {
 	public String userVerification(User user, BindingResult bindingResult,
 			RedirectAttributes redirectAttributes, Model uiModel) {
 		System.out.println("/admin/verification/");
-
-//		System.out.println("Submit: " + user);
-		
-//		userService.deleteUserRoles(user);
 		User savedUser = userService.getUserById(user.getUserId());
 		user.setPassword(savedUser.getPassword());
 		user.setRole(user.getRole());

@@ -180,9 +180,15 @@ public class QuizRegistration implements DomainObject, Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "com.great.cms.entity.QuizRegistration[ quizRegistrationId=" + quizRegistrationId + " ]";
-    }
+	@Override
+	public String toString() {
+		return "QuizRegistration [quizRegistrationId=" + quizRegistrationId
+				+ ", attendTime=" + attendTime + ", submitTime=" + submitTime
+				+ ", isRegApproved=" + isRegApproved + ", isAttended="
+				+ isAttended + ", isExamReviewed=" + isExamReviewed
+				+ ", quizId=" + quizId + ", courseRegId=" + courseRegId + "]";
+	}
+
+   
     
 }

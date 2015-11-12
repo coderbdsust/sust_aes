@@ -4,11 +4,14 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.entity.Quiz;
@@ -65,14 +68,15 @@ public class TeacherQuizController {
 				.getQuizRegistrationsByQuiz(quiz);
 		uiModel.addAttribute("quizRegList", quizRegList);
 		uiModel.addAttribute("quizRegistration", new QuizRegistration());
-		return "teacher/quiz/teach_quiz_students";
+		return "teacher/quiz/teach_quiz_students_dt";
 	}
 
-	@RequestMapping("/students/approve")
+	@RequestMapping(value = "/students/approve", method = { RequestMethod.GET })
 	public String stdQuizRegApprove(Principal principal,
 			QuizRegistration quizRegistration, Model uiModel,
 			RedirectAttributes redirectAttr) {
-		System.out.println("/teacher/quiz/students/approve" + quizRegistration);
+		System.out
+				.println("/teacher/quiz/students/approve " + quizRegistration);
 		QuizRegistration savedQuizReg = quizRegService
 				.getQuizRegistrationById(quizRegistration
 						.getQuizRegistrationId());
@@ -82,5 +86,23 @@ public class TeacherQuizController {
 		redirectAttr.addAttribute("quizId", quizRegistration.getQuizId()
 				.getQuizId());
 		return "redirect:/teacher/quiz/students/{quizId}";
+		// return "";
+
+	}
+
+	@RequestMapping(value = "/students/api/approve", method = { RequestMethod.POST })
+	@ResponseBody
+	public Integer stdQuizRegRestApprove(Principal principal,
+			QuizRegistration quizRegistration, Model uiModel,
+			RedirectAttributes redirectAttr) {
+		System.out.println("/teacher/quiz/students/api/approve "
+				+ quizRegistration);
+		QuizRegistration savedQuizReg = quizRegService
+				.getQuizRegistrationById(quizRegistration
+						.getQuizRegistrationId());
+		quizRegistration.setAttendTime(savedQuizReg.getAttendTime());
+		quizRegistration.setSubmitTime(savedQuizReg.getSubmitTime());
+		quizRegService.saveOrUpdate(quizRegistration);
+		return HttpStatus.SC_OK;
 	}
 }

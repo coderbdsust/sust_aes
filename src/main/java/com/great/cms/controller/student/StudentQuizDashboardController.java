@@ -38,6 +38,11 @@ public class StudentQuizDashboardController {
 	public String showStdExamDashboard(Principal principal, Model uiModel) {
 		System.out.println("student/quiz/dashboard");
 		Student student = UserUtil.getInstance().getStudent(principal);
+		
+		if(student.getStudentId()==null){
+			return "redirect:/student/profile";
+		}
+		
 		List<CourseRegistration> courseRegistrationList = courseRegService
 				.findByStudentAndIsApproved(student);
 		List<Quiz> quizList = quizService.getAvailableQuizzes(student);

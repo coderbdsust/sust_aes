@@ -106,6 +106,7 @@ public class QuizQuestionController {
 		}
 
 		return "redirect:/teacher/quiz/dashboard";
+		
 	}
 
 }

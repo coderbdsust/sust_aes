@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Dashboard :: Admin</title>
+<script
+	th:src="@{/resources/scripts/pages/teacher/quiz/quiz-registration.js}"
+	type="text/javascript"></script>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<form th:action="@{/teacher/quiz/students/approve}"></form>
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<!-- BEGIN EXAMPLE TABLE PORTLET-->
+								<div class="portlet box"
+									style="background: rgba(0, 128, 0, 0.35);">
+									<div class="portlet-title">
+										<div class="caption">
+											<!-- 											<i class="fa fa-globe"></i> -->
+											QUIZ STUDENT LIST
+										</div>
+
+									</div>
+									<div class="portlet-body">
+										<div class="table-toolbar">
+											<div class="row">
+												<div class="col-md-offset-6 col-md-6">
+													<div class="btn-group pull-right">
+														<button class="btn dropdown-toggle" data-toggle="dropdown">
+															Tools <i class="fa fa-angle-down"></i>
+														</button>
+														<ul class="dropdown-menu pull-right">
+															<li><a href="javascript:;"> Print </a></li>
+															<li><a href="javascript:;"> Save as PDF </a></li>
+															<li><a href="javascript:;"> Export to Excel </a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<table class="table table-striped table-bordered table-hover"
+											id="sample_1">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Name</th>
+													<th>Registration</th>
+													<th class="center">Q.Reg Approved</th>
+													<th class="center">Quiz Completed</th>
+													<th class="center">Exam Reviewed</th>
+													<th>Submit</th>
+												</tr>
+											</thead>
+											<tbody th:each="qr,iter : ${quizRegList}">
+												<tr class="odd gradeX">
+													<input type="hidden" th:value="${qr.quizRegistrationId}"
+														th:id="'quizRegistrationId-'+${qr.quizRegistrationId}" />
+													<input type="hidden"
+														th:value="${qr.courseRegId.courseRegId}"
+														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" />
+													<input type="hidden" th:value="${qr.quizId.quizId}"
+														th:id="'quizId.quizId-'+${qr.quizRegistrationId}" />
+													<input type="hidden"
+														th:value="${qr.courseRegId.courseRegId}"
+														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" />
+													<td th:text="${iter.index}+1">1</td>
+
+													<td th:text="${qr.courseRegId.studentId.firstName}">Biswajit
+														Debnath</td>
+													<td>2011331009</td>
+													<td class="form-group"><input type="checkbox"
+														class="checkboxes"
+														th:id="'isRegApproved-'+${qr.quizRegistrationId}"
+														value="true" th:checked="${qr.isRegApproved}" /></td>
+													<td class="form-group"><input type="checkbox"
+														class="checkboxes"
+														th:id="'isAttended-'+${qr.quizRegistrationId}"
+														value="true" th:checked="${qr.isAttended}" /></td>
+													<td class="center"><input type="checkbox"
+														class="checkboxes" value="true"
+														th:id="'isExamReviewed-'+${qr.quizRegistrationId}"
+														th:checked="${qr.isExamReviewed}" /></td>
+													<td class="center"><button
+															class="btn default btn-xs green-stripe"
+															th:onclick="'updateQuizReg('+${qr.quizRegistrationId}+')'">Update</button>
+													</td>
+
+												</tr>
+
+
+											</tbody>
+										</table>
+										<!-- 									<div class="row"> -->
+										<!-- 										<div class="col-md-12"> -->
+										<!-- 											<div class="row"> -->
+										<!-- 												<div class="col-md-1"> -->
+										<!-- 													# -->
+										<!-- 												</div> -->
+										<!-- 												<div class="col-md-1"> -->
+										<!-- 													Name -->
+										<!-- 												</div> -->
+										<!-- 												<div class="col-md-1"> -->
+										<!-- 													Registration -->
+										<!-- 												</div> -->
+										<!-- 												<div class="col-md-1"> -->
+										<!-- 													Approved -->
+										<!-- 												</div> -->
+										<!-- 												<div class="col-md-1"> -->
+										<!-- 													Quiz Completed -->
+										<!-- 												</div> -->
+										<!-- 												<div class="col-md-1"> -->
+										<!-- 													Exam Reviewed -->
+										<!-- 												</div> -->
+										<!-- 											</div> -->
+										<!-- 										</div> -->
+										<!-- 										<div class="col-md-12"> -->
+
+										<!-- 										</div> -->
+										<!-- 									</div> -->
+									</div>
+								</div>
+								<!-- END EXAMPLE TABLE PORTLET-->
+							</div>
+						</div>
+						<!-- END SAMPLE TABLE PORTLET-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
