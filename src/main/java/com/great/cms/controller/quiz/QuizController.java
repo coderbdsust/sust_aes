@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.controller.utils.QuestionUtil;
+import com.great.cms.controller.utils.QuizTypeUtil;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.Teacher;
@@ -97,15 +98,17 @@ public class QuizController {
 		System.out.println(savedQuiz);
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(savedQuiz);
-		
+
 		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
 		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);
-		
+
 		uiModel.addAttribute("quiz", savedQuiz);
 		uiModel.addAttribute("totalQuestions", totalQuestions);
 		uiModel.addAttribute("totalMarks", totalMarks);
+		uiModel.addAttribute("quizStatusType", QuizTypeUtil.getInstance()
+				.getQuizStatusType(savedQuiz, new Date()));
 		return "teacher/quiz/teach_quiz_view";
 	}
 

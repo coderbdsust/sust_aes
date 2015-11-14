@@ -1,6 +1,7 @@
 package com.great.cms.controller.student;
 
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.great.cms.controller.utils.QuestionUtil;
-import com.great.cms.controller.utils.QuizRegistrationStatus;
+import com.great.cms.controller.utils.QuizTypeUtil;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Student;
-import com.great.cms.enums.RegistrationType;
+import com.great.cms.enums.QuizRegistrationType;
+import com.great.cms.enums.QuizParticipationType;
+import com.great.cms.enums.QuizStatusType;
 import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.CourseRegistrationService;
 import com.great.cms.service.QuestionService;
@@ -43,8 +46,7 @@ public class StudentQuizViewController {
 	QuizRegistrationService quizRegistrationService;
 
 	@RequestMapping(value = "/view/{quizId}", method = RequestMethod.GET)
-	public String showStdExamView(
-			@PathVariable Long quizId, Model uiModel) {
+	public String showStdExamView(@PathVariable Long quizId, Model uiModel) {
 		System.out.println("/quiz/question " + quizId);
 		Student student = UserUtil.getInstance().getStudent();
 		Quiz quiz = quizService.getQuiz(quizId);
@@ -59,20 +61,27 @@ public class StudentQuizViewController {
 				.findByStudentAndCourseAndIsApproved(student, course);
 		QuizRegistration quizReg = quizRegistrationService
 				.getQuizRegistrationByCourseReg(quiz, courseReg);
-		QuizRegistrationStatus status = new QuizRegistrationStatus();
-		RegistrationType regType = status.getQuizRegistrationStatus(quizReg);
+
+		QuizRegistrationType regType = QuizTypeUtil.getInstance()
+				.getQuizRegistrationType(quizReg);
+		QuizParticipationType pType = QuizTypeUtil.getInstance()
+				.getQuizParticipationType(quizReg, new Date());
+		QuizStatusType quizStatusType = QuizTypeUtil.getInstance()
+				.getQuizStatusType(quiz, new Date());
 
 		uiModel.addAttribute("quiz", quiz);
 		uiModel.addAttribute("totalMarks", totalMarks);
 		uiModel.addAttribute("totalQuestions", totalQuestions);
 		uiModel.addAttribute("registrationType", regType);
+		uiModel.addAttribute("participationType", pType);
+		uiModel.addAttribute("quizStatusType", quizStatusType);
 
 		return "student/quiz/std_quiz_view";
 	}
 
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
-	public String showStdExamApply(Long quizId,
-			Integer courseId, Model uiModel, RedirectAttributes redirectAttr) {
+	public String showStdExamApply(Long quizId, Integer courseId,
+			Model uiModel, RedirectAttributes redirectAttr) {
 		System.out.println("/student/quiz/apply/" + quizId + " " + courseId);
 		Student student = UserUtil.getInstance().getStudent();
 		Course course = new Course(courseId);

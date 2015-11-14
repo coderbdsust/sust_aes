@@ -1,5 +1,5 @@
 package com.great.cms.enums;
 
-public enum RegistrationType {
+public enum QuizRegistrationType {
 	APPLY, PENDING, APPROVED;
 }

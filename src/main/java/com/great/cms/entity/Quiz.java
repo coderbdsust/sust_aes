@@ -30,8 +30,9 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import com.great.cms.controller.utils.ExamStatus;
-import com.great.cms.enums.ExamStatusType;
+import com.great.cms.controller.utils.IQuizTypeUtil;
+import com.great.cms.controller.utils.QuizTypeUtil;
+import com.great.cms.enums.QuizStatusType;
 
 /**
  *
@@ -221,15 +222,15 @@ public class Quiz implements DomainObject, Serializable {
 		return true;
 	}
 
-	public ExamStatusType getExamStatus(Date currDate) {
-		ExamStatus status = new ExamStatus();
-		return status.getExamStatus(startTime, endTime, currDate);
+	public QuizStatusType getExamStatus(Date currDate) {
+		IQuizTypeUtil status = new QuizTypeUtil();
+		return status.getQuizStatusType(startTime, endTime, currDate);
 	}
 
-	public ExamStatusType getExamStatus() {
+	public QuizStatusType getExamStatus() {
 		Date currDate = new Date();
-		ExamStatus status = new ExamStatus();
-		return status.getExamStatus(startTime, endTime, currDate);
+		IQuizTypeUtil status = new QuizTypeUtil();
+		return status.getQuizStatusType(startTime, endTime, currDate);
 	}
 
 	@Override

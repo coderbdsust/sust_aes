@@ -134,6 +134,19 @@
 										<!--/span-->
 										<div class="col-md-6">
 											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Quiz Status</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:text="${quizStatusType}">50</p>
+												</div>
+											</div>
+										</div>
+										
+										<!--/span-->
+									</div>
+									<div class="row">
+										<!--/span-->
+										<div class="col-md-6">
+											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Description</strong></label>
 												<div class="col-md-9">
 													<p class="form-control-static"
@@ -152,11 +165,12 @@
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-3 col-md-7">
-											<a class="btn green" href="#"> Edit </a> <a class="btn green"
+											<a class="btn green" href="#"> Edit </a> <a
+												class="btn green" th:disabled="${quizStatusType.name()!='Upcoming'}"
 												th:href="@{'/quiz/question/add/'+${quiz.quizId}}"> Add
 												Question </a> <a class="btn green"
 												th:href="@{'/quiz/delete/'+${quiz.quizId}}"> Delete Exam</a>
-											<a class="btn green"
+											<a class="btn green" th:disabled="${quizStatusType.name()=='Finished'}"
 												th:href="@{'/teacher/quiz/review/'+${quiz.quizId}}"> Review Exam</a>
 										</div>
 

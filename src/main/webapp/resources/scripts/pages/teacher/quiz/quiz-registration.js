@@ -1,5 +1,5 @@
 function updateQuizReg(quizRegId) {
-
+	
 	var quizRegistration = {};
 	quizRegistration['quizRegistrationId'] = quizRegId;
 	quizRegistration['courseRegId.courseRegId'] = document
@@ -26,11 +26,11 @@ function updateQuizReg(quizRegId) {
 		data : quizRegistration
 	}).success(function(msg) {
 		console.log('SUCCESS ' + msg);
-		location.reload();
-
+		$('#success-modal').modal('show');
 	}).error(function(msg) {
 		console.log('ERROR ' + msg);
 		location.reload();
+		$('#error-modal').modal('show');
 	});
 
 }

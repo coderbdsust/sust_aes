@@ -14,15 +14,16 @@
 						<div class="portlet-title">
 							<div class="caption">
 								<h2>
-									 <span
-										class="caption-subject font-red-haze bold uppercase" th:if="${quiz != null}" th:text="${quiz.quizTitle}">Database Quiz Exam 1</span>
+									<span class="caption-subject font-red-haze bold uppercase"
+										th:if="${quiz != null}" th:text="${quiz.quizTitle}">Database
+										Quiz Exam 1</span>
 								</h2>
 							</div>
-<!-- 							<div class="tools"> -->
-<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
-<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
-<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
-<!-- 							</div> -->
+							<!-- 							<div class="tools"> -->
+							<!-- 								<a href="" class="collapse"> </a> <a href="#portlet-config" -->
+							<!-- 									data-toggle="modal" class="config"> </a> <a href="" -->
+							<!-- 									class="reload"> </a> <a href="" class="remove"> </a> -->
+							<!-- 							</div> -->
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -34,10 +35,13 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Instructor</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${quiz != null}" th:text="${quiz?.teachesId?.instructorId?.teacherName}">Database
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz?.teachesId?.instructorId?.teacherName}">Database
 														Quiz Lab 1</p>
-														<input type="hidden" name="quizId" th:value="${quiz.quizId}"/>
-														<input type="hidden" name="courseId" th:value="${quiz.teachesId.courseId.courseId}"/>
+													<input type="hidden" name="quizId"
+														th:value="${quiz.quizId}" /> <input type="hidden"
+														name="courseId"
+														th:value="${quiz.teachesId.courseId.courseId}" />
 												</div>
 											</div>
 										</div>
@@ -59,7 +63,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Session</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${quiz != null}" th:text="${quiz.teachesId.courseId.session}">2011</p>
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${quiz.teachesId.courseId.session}">2011</p>
 												</div>
 											</div>
 										</div>
@@ -107,7 +112,8 @@
 												<label class="control-label col-md-3"><strong>Total
 														Questions</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${quiz != null}" th:text="${totalQuestions}">25</p>
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${totalQuestions}">25</p>
 												</div>
 											</div>
 										</div>
@@ -128,7 +134,8 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Marks</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${quiz != null}" th:text="${totalQuestions}">25</p>
+													<p class="form-control-static" th:if="${quiz != null}"
+														th:text="${totalQuestions}">25</p>
 												</div>
 											</div>
 										</div>
@@ -137,16 +144,27 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Registration</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${registrationType != null}"
+													<p class="form-control-static"
+														th:if="${registrationType != null}"
 														th:text="${registrationType}">Approved</p>
 												</div>
 											</div>
+
 										</div>
 										<!--/span-->
 									</div>
 
 									<div class="row">
-										
+										<div class="col-md-6">
+											<div class="form-group">
+												<label class="control-label col-md-3"><strong>Quiz
+														Status</strong></label>
+												<div class="col-md-9">
+													<p class="form-control-static" th:text="${quizStatusType}">Running</p>
+												</div>
+											</div>
+										</div>
+
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Description</strong></label>
@@ -158,23 +176,21 @@
 										</div>
 										<!--/span-->
 									</div>
-
-
-
+									
 									<!--/row-->
-
 								</div>
 								<div class="form-actions">
 									<div class="row">
 										<div class="col-md-offset-5 col-md-4">
-												<button class="btn green" type="submit" th:if="${registrationType.name() == 'APPLY'}"> 
-													Apply
-												</button>
-												<a class="btn green" th:href="@{'/student/quiz/answer/'+${quiz.quizId}}"> 
-													Start Exam
-												</a>												
+											<button class="btn green" type="submit"
+												th:disabled="${registrationType.name() == 'APPROVED'}">
+												Apply</button>
+											<a class="btn green"
+												th:disabled="${participationType.name() == 'CAN_NOT_PARTICIPATE'}"
+												th:href="@{'/student/quiz/answer/'+${quiz.quizId}}">
+												Start Exam </a>
 										</div>
-										
+
 									</div>
 								</div>
 							</form>
