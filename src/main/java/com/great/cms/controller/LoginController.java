@@ -30,47 +30,7 @@ public class LoginController {
 		System.out.println("/account/user/");
 		return "login";
 	}
-
-//	@RequestMapping(value = "/user/signin", method = RequestMethod.POST)
-//	public String userAuthentication(User user, BindingResult result,
-//			Model uiModel, RedirectAttributes redirectAttr) {
-//		System.out.println("/user/signin");
-//		User userSaved = userService.getUser(user.getUsername());
-//
-//		if (userSaved == null) {
-//			redirectAttr.addFlashAttribute("loginError",
-//					"Sorry, Username not found!");
-//			return "redirect:/account/user/login";
-//		} else {
-//			if (userSaved.getPassword().equals(user.getPassword())
-//					&& userSaved.getAccountNonExpired() == true
-//					&& userSaved.getAccountNonLocked() == true
-//					&& userSaved.getCredentialsNonExpired() == true
-//					&& userSaved.getEnabled() == true) {
-//				uiModel.addAttribute("message", "Successfully Logged In!");
-//				return "redirect:/admin/";
-//			} else {
-//				if (!userSaved.getPassword().equals(user.getPassword())) {
-//					redirectAttr.addFlashAttribute("loginError",
-//							"Sorry, Password not matched!");
-//				} else if (userSaved.getAccountNonExpired() == false) {
-//					redirectAttr.addFlashAttribute("loginError",
-//							"Sorry, Account Expired!");
-//				} else if (userSaved.getAccountNonLocked() == false) {
-//					redirectAttr.addFlashAttribute("loginError",
-//							"Sorry, Account Locked!");
-//				} else if (userSaved.getCredentialsNonExpired() == false) {
-//					redirectAttr.addFlashAttribute("loginError",
-//							"Sorry, Account Credentials Expired!");
-//				} else {
-//					redirectAttr.addFlashAttribute("loginError",
-//							"Sorry, Account not verified!");
-//				}
-//				return "redirect:/account/user/login";
-//			}
-//		}
-//	}
-
+	
 	@RequestMapping(value = "/user/signup", method = RequestMethod.POST)
 	public String userSignUpEntry(User user, BindingResult result,
 			Model uiModel, RedirectAttributes redirectAttr) {

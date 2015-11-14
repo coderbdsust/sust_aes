@@ -43,10 +43,10 @@ public class StudentQuizViewController {
 	QuizRegistrationService quizRegistrationService;
 
 	@RequestMapping(value = "/view/{quizId}", method = RequestMethod.GET)
-	public String showStdExamView(Principal principal,
+	public String showStdExamView(
 			@PathVariable Long quizId, Model uiModel) {
 		System.out.println("/quiz/question " + quizId);
-		Student student = UserUtil.getInstance().getStudent(principal);
+		Student student = UserUtil.getInstance().getStudent();
 		Quiz quiz = quizService.getQuiz(quizId);
 		Course course = quiz.getTeachesId().getCourseId();
 		List<Question> assignedQuestions = questionService
@@ -71,10 +71,10 @@ public class StudentQuizViewController {
 	}
 
 	@RequestMapping(value = "/apply", method = RequestMethod.POST)
-	public String showStdExamApply(Principal principal, Long quizId,
+	public String showStdExamApply(Long quizId,
 			Integer courseId, Model uiModel, RedirectAttributes redirectAttr) {
 		System.out.println("/student/quiz/apply/" + quizId + " " + courseId);
-		Student student = UserUtil.getInstance().getStudent(principal);
+		Student student = UserUtil.getInstance().getStudent();
 		Course course = new Course(courseId);
 		Quiz quiz = new Quiz(quizId);
 

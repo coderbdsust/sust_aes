@@ -48,10 +48,10 @@ public class QuizController {
 
 	@RequestMapping("/create")
 	@Secured({ "ROLE_TEACHER", "ROLE_ADMIN" })
-	public String createNewQuiz(Principal principal, Model uiModel) {
+	public String createNewQuiz(Model uiModel) {
 
 		System.out.println("GET: quiz/create");
-		Teacher teacher = UserUtil.getInstance().getTeacher(principal);
+		Teacher teacher = UserUtil.getInstance().getTeacher();
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		uiModel.addAttribute("quiz", new Quiz());
 		uiModel.addAttribute("teachesList", teachesList);

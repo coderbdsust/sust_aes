@@ -35,9 +35,9 @@ public class StudentQuizDashboardController {
 	QuizRegistrationService quizRegistrationService;
 
 	@RequestMapping("/dashboard")
-	public String showStdExamDashboard(Principal principal, Model uiModel) {
+	public String showStdExamDashboard( Model uiModel) {
 		System.out.println("student/quiz/dashboard");
-		Student student = UserUtil.getInstance().getStudent(principal);
+		Student student = UserUtil.getInstance().getStudent();
 		
 		if(student.getStudentId()==null){
 			return "redirect:/student/profile";

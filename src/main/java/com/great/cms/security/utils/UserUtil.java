@@ -26,14 +26,9 @@ public class UserUtil {
 		return ownInstance;
 	}
 
-	public Teacher getTeacher(Principal principal) {
-		// System.out.println(userService == null ? "UserService Not Intialized"
-		// : "User Service Autowired");
-
-		User user = userService.getUser(principal.getName());
-		// System.out.println(user);
+	public Teacher getTeacher() {
+		User user = userService.getCurrentLoggedInUser();
 		Teacher teacher = teacherService.getTeacherByUserId(user);
-		// System.out.println(teacher);
 		if (teacher == null) {
 			teacher = new Teacher();
 		}
@@ -41,12 +36,18 @@ public class UserUtil {
 		return teacher;
 	}
 
-	public Student getStudent(Principal principal) {
+//	public Teacher getTeacher(Principal principal) {
+//		User user = userService.getUser(principal.getName());
+//		Teacher teacher = teacherService.getTeacherByUserId(user);
+//		if (teacher == null) {
+//			teacher = new Teacher();
+//		}
+//		teacher.setUserId(user);
+//		return teacher;
+//	}
 
-		// System.out.println(userService == null ? "UserService Not Intialized"
-		// : "User Service Autowired");
-
-		User user = userService.getUser(principal.getName());
+	public Student getStudent() {
+		User user = userService.getCurrentLoggedInUser();
 		Student student = studentService.getStudentByUserId(user);
 		if (student == null) {
 			student = new Student();
@@ -54,4 +55,14 @@ public class UserUtil {
 		student.setUserId(user);
 		return student;
 	}
+
+//	public Student getStudent(Principal principal) {
+//		User user = userService.getUser(principal.getName());
+//		Student student = studentService.getStudentByUserId(user);
+//		if (student == null) {
+//			student = new Student();
+//		}
+//		student.setUserId(user);
+//		return student;
+//	}
 }

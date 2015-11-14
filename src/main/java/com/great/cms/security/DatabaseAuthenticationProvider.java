@@ -47,6 +47,10 @@ public class DatabaseAuthenticationProvider extends
 		System.out.println("Username:" + username);
 		String password = (String) authentication.getCredentials();
 		System.out.println("Password: " + password);
+		
+		if(!StringUtils.hasText(username)){
+			throw new BadCredentialsException("Please enter username");
+		}
 
 		if (!StringUtils.hasText(password)) {
 			throw new BadCredentialsException("Please enter password");

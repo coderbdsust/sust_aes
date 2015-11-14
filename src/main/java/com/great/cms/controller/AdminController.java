@@ -60,7 +60,8 @@ public class AdminController {
 
 	@RequestMapping(value = "/verification", method = RequestMethod.GET)
 	public String userVerification(Model uiModel) {
-		System.out.println("/admin/verification/");
+		//System.out.println("/admin/verification/");
+		log.info("/admin/verification/ - Page: admin/verify");
 		List<User> userList = userService.getUsers();
 		uiModel.addAttribute("userList", userList);
 		uiModel.addAttribute("user", new User());

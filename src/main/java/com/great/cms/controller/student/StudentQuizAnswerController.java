@@ -39,10 +39,10 @@ public class StudentQuizAnswerController {
 	QuizRegistrationService quizRegService;
 
 	@RequestMapping("/answer/{quizId}")
-	public String showExamQuestions(Principal principal,
+	public String showExamQuestions(
 			@PathVariable Long quizId, Model uiModel) {
 		System.out.println("student/quiz/answer");
-		Student student = UserUtil.getInstance().getStudent(principal);
+		Student student = UserUtil.getInstance().getStudent();
 		QuizRegistration quizReg = quizRegService
 				.getQuizRegistrationByStudentAndQuiz(student, quizId);
 		uiModel.addAttribute("quizRegistration", quizReg);
@@ -50,7 +50,7 @@ public class StudentQuizAnswerController {
 	}
 
 	@RequestMapping(value = "/answer/save", method = RequestMethod.POST)
-	public String showExamQuestions(Principal principal, Model uiModel) {
+	public String showExamQuestions(Model uiModel) {
 		System.out.println("student/quiz/answer/save");
 		return "student/quiz/quiz_answer_sheet";
 	}

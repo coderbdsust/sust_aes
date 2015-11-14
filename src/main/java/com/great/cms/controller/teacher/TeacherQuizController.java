@@ -41,9 +41,9 @@ public class TeacherQuizController {
 	}
 
 	@RequestMapping("/dashboard")
-	public String showStdQuizDashboard(Principal principal, Model uiModel) {
+	public String showStdQuizDashboard(Model uiModel) {
 		System.out.println("/teacher/quiz/dashboard");
-		Teacher teacher = UserUtil.getInstance().getTeacher(principal);
+		Teacher teacher = UserUtil.getInstance().getTeacher();
 		List<Quiz> quizList = new ArrayList<Quiz>();
 		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
 		// System.out.println("TeachesList Found!");

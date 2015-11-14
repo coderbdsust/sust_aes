@@ -38,9 +38,9 @@ public class QuestionCreationRestController {
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
-	public Question saveQuestion(Principal principal, Question question) {
+	public Question saveQuestion(Question question) {
 		System.out.println("POST: /question/create");
-		question.setCreatedBy(UserUtil.getInstance().getTeacher(principal));
+		question.setCreatedBy(UserUtil.getInstance().getTeacher());
 		System.out.println(question);
 		questionService.saveOrUpdate(question);
 		// System.out.println("Question Saved");

@@ -3,6 +3,7 @@ package com.great.cms.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.expression.Dates;
 import org.thymeleaf.expression.Lists;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
 
-	public List<User> getUsers() {		
+	public List<User> getUsers() {
 		return userDao.findAll();
 	}
 
@@ -65,8 +66,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUserRoles(User user) {
-		 userDao.deleteUserAllRoles(user);
-		
+		userDao.deleteUserAllRoles(user);
+
+	}
+
+	@Override
+	public User getCurrentLoggedInUser() {
+		// TODO Auto-generated method stub
+		User user = (User) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+
+		System.out.println("getCurrentLoggedInUser() => user.getUsername() ={"
+				+ user.getUsername() + "}, id={" + user.getUserId() + "}");
+
+		return userDao.findById(user.getUserId());
 	}
 
 }

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Student;
 import com.great.cms.entity.User;
+import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.CourseRegistrationService;
 import com.great.cms.service.CourseService;
 import com.great.cms.service.DepartmentService;
@@ -58,8 +59,8 @@ public class StudentProfileController {
 	}
 
 	@RequestMapping({ "/profile", "/", "" })
-	public String showProfile(Principal principal, Model uiModel) {
-		Student student = getStudent(principal.getName());
+	public String showProfile(Model uiModel) {
+		Student student = UserUtil.getInstance().getStudent();
 		if (student.getStudentId() == null) {
 			return "redirect:/student/profile/edit";
 		}
@@ -70,9 +71,9 @@ public class StudentProfileController {
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
-	public String editProfile(Principal principal, Model uiModel) {
+	public String editProfile(Model uiModel) {
 		System.out.println("student/profile/edit");
-		Student student = getStudent(principal.getName());
+		Student student = UserUtil.getInstance().getStudent();
 		uiModel.addAttribute("departmentList", deptService.getDepartments());
 		uiModel.addAttribute("student", student);
 		return "student/edit";

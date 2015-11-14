@@ -10,6 +10,7 @@ public interface UserService {
 	public void deleteUserRoles(User user);
 	public User getUserById(Long id);
 	public User getUser(String username);
+	public User getCurrentLoggedInUser();
 	public void saveOrUpdate(User user);
 	public boolean usernameExists(String username);
 	public Long countVerifiedUsers();
