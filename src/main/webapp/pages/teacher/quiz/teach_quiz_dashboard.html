@@ -19,6 +19,13 @@
 									class="caption-subject font-red-sunglo bold uppercase">Teacher
 									Quiz Dashboard</span>
 							</div>
+							<div class="actions">
+								<a th:href="@{/quiz/create}" class="btn green-haze btn-sm">
+								<i class="fa fa-plus"></i>
+								<span class="hidden-480">
+								New Quiz</span>
+								</a>
+							</div>
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
@@ -30,15 +37,14 @@
 									<div class="portlet light">
 										<div class="portlet-body">
 											<div class="tabbable-line">
-												<!-- 												<ul class="nav nav-tabs"> -->
-												<!-- 													<li class="active"><a href="#overview_1" -->
-												<!-- 														data-toggle="tab"> <strong>Available Exams</strong></a></li> -->
-												<!-- 													<li><a href="#overview_2" data-toggle="tab"> <strong>Reviewed -->
-												<!-- 																Exams</strong></a></li> -->
-												<!-- 												</ul> -->
-												<h4>
-													<strong>Available Quizzes</strong>
-												</h4>
+												
+												<ul class="nav nav-tabs">
+													<li class="active"><a href="#" data-toggle="tab">
+															<strong>Available Quizzes</strong>
+													</a></li>
+
+												</ul>
+												
 												<div class="tab-content">
 													<div class="tab-pane active" id="overview_1">
 														<div class="table-responsive">
@@ -93,7 +99,8 @@
 																		<td th:text="${quiz.getExamStatus()}">Unknown</td>
 																		<td><a th:href="@{'/quiz/view/'+${quiz.quizId}}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
-																			<td><a th:href="@{'/teacher/quiz/students/'+${quiz.quizId}}"
+																		<td><a
+																			th:href="@{'/teacher/quiz/students/'+${quiz.quizId}}"
 																			class="btn default btn-xs green-stripe"> Show </a></td>
 
 																	</tr>
