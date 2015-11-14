@@ -36,15 +36,15 @@ public class UserUtil {
 		return teacher;
 	}
 
-//	public Teacher getTeacher(Principal principal) {
-//		User user = userService.getUser(principal.getName());
-//		Teacher teacher = teacherService.getTeacherByUserId(user);
-//		if (teacher == null) {
-//			teacher = new Teacher();
-//		}
-//		teacher.setUserId(user);
-//		return teacher;
-//	}
+	public Teacher getTeacher(Principal principal) {
+		User user = userService.getUser(principal.getName());
+		Teacher teacher = teacherService.getTeacherByUserId(user);
+		if (teacher == null) {
+			teacher = new Teacher();
+		}
+		teacher.setUserId(user);
+		return teacher;
+	}
 
 	public Student getStudent() {
 		User user = userService.getCurrentLoggedInUser();
@@ -56,13 +56,13 @@ public class UserUtil {
 		return student;
 	}
 
-//	public Student getStudent(Principal principal) {
-//		User user = userService.getUser(principal.getName());
-//		Student student = studentService.getStudentByUserId(user);
-//		if (student == null) {
-//			student = new Student();
-//		}
-//		student.setUserId(user);
-//		return student;
-//	}
+	public Student getStudent(Principal principal) {
+		User user = userService.getUser(principal.getName());
+		Student student = studentService.getStudentByUserId(user);
+		if (student == null) {
+			student = new Student();
+		}
+		student.setUserId(user);
+		return student;
+	}
 }
