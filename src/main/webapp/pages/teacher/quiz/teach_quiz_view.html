@@ -170,7 +170,7 @@
 												th:href="@{'/quiz/question/add/'+${quiz.quizId}}"> Add
 												Question </a> <a class="btn green"
 												th:href="@{'/quiz/delete/'+${quiz.quizId}}"> Delete Exam</a>
-											<a class="btn green" th:disabled="${quizStatusType.name()=='Finished'}"
+											<a class="btn green" th:disabled="${quizStatusType.name()!='Finished'}"
 												th:href="@{'/teacher/quiz/review/'+${quiz.quizId}}"> Review Exam</a>
 										</div>
 

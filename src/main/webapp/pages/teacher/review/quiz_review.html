@@ -100,14 +100,20 @@
 																style="display: none;" id="hiddenQuizId"
 																th:if="${quiz}!=null" th:text="${quiz.quizId}"></span>
 
-															<ul id="question-bank" class="task-list">
+															<ul id="question-review" class="task-list">
 
-																<li
+																<li th:each="q, iterStat : ${questionList}"
 																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
 																	<span style="display: none;">0</span>
 
-																	<div class="task-checkbox">
-																		<p style="padding-left: 5px; color: green;">[M]</p>
+																	<div class="task-checkbox"
+																		th:switch="${q.questionType.name()}">
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="MCQ">[M]</p>
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="DESCRIPTIVE">[D]</p>
+																		<p style="padding-left: 5px; color: green;"
+																			th:case="FILL_IN_THE_GAPS">[F]</p>
 																	</div> <!-- 																	<div class="task-checkbox" --> <!-- 																		th:switch="${q.questionType.name()}"> -->
 																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
 																	<!-- 																			th:case="MCQ">[M]</p> --> <!-- 																		<p style="padding-left: 5px; color: green;" -->
@@ -117,67 +123,22 @@
 																	<!-- 																	</div> -->
 
 																	<div class="task-title">
-																		<span class="task-title-sp"> What is MCQ? </span>
-																	</div>
-																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-																			<a type="button" href="#form_modal10"
-																				data-toggle="modal"> <i class="fa fa-eye"></i>
-																				Review
-																			</a>
-																		</div>
-																	</div>
-																</li>
-																<li
-																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
-																	<span style="display: none;">0</span>
-
-																	<div class="task-checkbox">
-																		<p style="padding-left: 5px; color: green;">[F]</p>
-																	</div> <!-- 																	<div class="task-checkbox" --> <!-- 																		th:switch="${q.questionType.name()}"> -->
-																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
-																	<!-- 																			th:case="MCQ">[M]</p> --> <!-- 																		<p style="padding-left: 5px; color: green;" -->
-																	<!-- 																			th:case="DESCRIPTIVE">[D]</p> -->
-																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
-																	<!-- 																			th:case="FILL_IN_THE_GAPS">[F]</p> -->
-																	<!-- 																	</div> -->
-
-																	<div class="task-title">
-																		<span class="task-title-sp"> What is fill in
+																		<span class="task-title-sp"
+																			th:text="${q.questionText}"> What is fill in
 																			the gaps? </span>
 																	</div>
 																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-																			<a type="button" href="#form_modal12"
+																		<div class="task-config-btn btn-group"
+																			th:switch="${q.questionType.name()}">
+																			<a type="button" href="#form_modal10" th:case="MCQ"
 																				data-toggle="modal"> <i class="fa fa-eye"></i>
 																				Review
-																			</a>
-																		</div>
-																	</div>
-																</li>
-																<li
-																	style="background: rgba(223, 240, 216, 0.70); margin-bottom: 2px;">
-																	<span style="display: none;">0</span>
-
-																	<div class="task-checkbox">
-																		<p style="padding-left: 5px; color: green;">[D]</p>
-																	</div> <!-- 																	<div class="task-checkbox" --> <!-- 																		th:switch="${q.questionType.name()}"> -->
-																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
-																	<!-- 																			th:case="MCQ">[M]</p> --> <!-- 																		<p style="padding-left: 5px; color: green;" -->
-																	<!-- 																			th:case="DESCRIPTIVE">[D]</p> -->
-																	<!-- 																		<p style="padding-left: 5px; color: green;" -->
-																	<!-- 																			th:case="FILL_IN_THE_GAPS">[F]</p> -->
-																	<!-- 																	</div> -->
-
-																	<div class="task-title">
-																		<span class="task-title-sp"> What is
-																			Descriptive question? </span>
-																	</div>
-																	<div class="task-config">
-																		<div class="task-config-btn btn-group">
-																			<a type="button" href="#form_modal11"
-																				data-toggle="modal"> <i class="fa fa-eye"></i>
-																				Review
+																			</a> <a type="button" href="#form_modal11"
+																				th:case="DESCRIPTIVE" data-toggle="modal"> <i
+																				class="fa fa-eye"></i> Review
+																			</a> <a type="button" href="#form_modal12"
+																				th:case="FILL_IN_THE_GAPS" data-toggle="modal">
+																				<i class="fa fa-eye"></i> Review
 																			</a>
 																		</div>
 																	</div>
@@ -198,9 +159,10 @@
 
 
 											<div class="col-md-offset-6 col-md-3">
-												
+
 												<button type="button" class="btn default">Cancel</button>
-												<button type="submit" class="btn green">Review Complete</button>
+												<button type="submit" class="btn green">Review
+													Complete</button>
 											</div>
 										</div>
 									</div>
@@ -386,20 +348,7 @@
 														</div>
 													</div>
 
-													<!-- 													<div class="col-md-6"> -->
-													<!-- 														<div class="form-group"> -->
-													<!-- 															<label class="col-md-3 control-label"><strong><em>Time</em></strong></label> -->
-													<!-- 															<div class="row"> -->
-													<!-- 																<div class="col-md-7"> -->
-													<!-- 																	<div class="input-group"> -->
-													<!-- 																		<input id="desc-time" placeholder="In Seconds..." -->
-													<!-- 																			type="text" class="form-control" /> -->
 
-													<!-- 																	</div> -->
-													<!-- 																</div> -->
-													<!-- 															</div> -->
-													<!-- 														</div> -->
-													<!-- 													</div> -->
 												</div>
 											</form>
 										</div>
@@ -505,7 +454,7 @@
 											<button class="btn default" data-dismiss="modal"
 												aria-hidden="true">Close</button>
 											<button class="btn green" aria-hidden="true">Next</button>
-											
+
 										</div>
 									</div>
 								</div>
