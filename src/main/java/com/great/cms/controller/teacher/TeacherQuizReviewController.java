@@ -46,6 +46,10 @@ public class TeacherQuizReviewController {
 		}
 		List<Question> questionList = questionService
 				.findAssignedQuestions(quiz);
+		for(Question q:questionList){
+			System.out.print(q.getQuestionId()+" ");
+		}
+		System.out.println("");
 		uiModel.addAttribute("questionList", questionList);
 
 		return "teacher/review/quiz_review";
