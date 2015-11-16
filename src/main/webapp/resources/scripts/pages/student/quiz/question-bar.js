@@ -25,7 +25,3 @@ function switchQuestion(id) {
 	$("#fake-root-" + id).show();
 }
 
-function submitExam() {
-	// alert('Question id: ' + id);
-	console.log('Complete Exam');
-}

@@ -30,8 +30,8 @@ function loadQuizQuestion() {
 					createTab(questionList.length);
 					for ( var key in questionList) {
 						var question = questionList[key];
-						console.log(question['questionId'] + " "
-								+ question['questionType']);
+				//		console.log(question['questionId'] + " "
+							//	+ question['questionType']);
 						questionDiv.appendChild(createQuestionUI(key,
 								question['questionId'], question, firstElement,
 								questionList.length));
@@ -57,7 +57,7 @@ function createTab(tabNumber) {
 		}
 		var tab = '<a class="' + className + '" onclick="switchQuestion(' + i
 				+ ')"> ' + i + ' </a>';
-		console.log(tab);
+		//console.log(tab);
 		toggle = !toggle;
 		tabHolder.innerHTML += tab;
 	}
@@ -77,16 +77,30 @@ function createQuestionUI(key, questionId, question, firstElement,
 	var firstChildDiv = createDiv('col-md-offset-3 col-md-6 col-sm-12');
 
 	var secondChildDiv = createDiv('portlet box green');
+	
+	var questionTypeInputTracker = document.createElement('input');
+	questionTypeInputTracker.type="hidden";
+	questionTypeInputTracker.setAttribute("id","fake-root-"+number+"-type");
+	questionTypeInputTracker.value=question['questionType'];
+	
+	var questionIdInputTracker = document.createElement('input');
+	questionIdInputTracker.type="hidden";
+	questionIdInputTracker.setAttribute("id","fake-root-"+number+"-id");
+	questionIdInputTracker.value='questionNo-'+questionId;
+	
+	
 	secondChildDiv.appendChild(createUIHeader(key, question['questionType']));
 	secondChildDiv.appendChild(createUIBody(question, key, totalQuestion));
 	firstChildDiv.appendChild(secondChildDiv);
 	rootDiv.appendChild(firstChildDiv);
+	fakeRootDiv.appendChild(questionIdInputTracker);
+	fakeRootDiv.appendChild(questionTypeInputTracker);
 	fakeRootDiv.appendChild(rootDiv);
 	return fakeRootDiv;
 }
 
 function createUIBody(question, key, totalQuestion) {
-	console.log(question);
+	//console.log(question);
 	var rootDiv = createDiv('portlet-body form');
 	var firstChildDiv = createDiv('form-body');
 	var secondChildDiv = createDiv('form-horizontal');
@@ -119,7 +133,7 @@ function nextButton(key, totalQuestion) {
 				+ (intKey) + ',' + totalQuestion + ')">Next</button>';
 		firstChildDiv.appendChild(thirdChildDiv);
 	} else {
-		thirdChildDiv.innerHTML += '<button type="button" class="btn green" onclick="submitExam()">Submit</button>';
+		thirdChildDiv.innerHTML += '<button type="button" class="btn green" onclick="submitExam('+totalQuestion+')">Submit</button>';
 		firstChildDiv.appendChild(thirdChildDiv);
 	}
 
@@ -138,40 +152,66 @@ function questionTextHeader(questionText) {
 
 function questionTextOption(question) {
 	var rootDiv = createDiv('row');
-
 	var quesBody = JSON.parse(question['questionBody']);
+	//console.log(question['questionType']+' '+ question['questionId']);
 	for (var i = 0; i < quesBody.length; i++) {
 		if (question['questionType'] == 'MCQ') {
 			var childDiv = createDiv('col-md-offset-1 col-md-11');
-			var mcqOption = createMCQOption(quesBody[i].text);
+//			var mcqOption = createMCQOption(quesBody[i].text);
+			var mcqOption = createMCQOption(quesBody[i].text,quesBody[i].index,question['questionId']);
 			childDiv.appendChild(mcqOption);
 			rootDiv.appendChild(childDiv);
-			console.log('MCQ');
+		//	console.log('MCQ');
 		} else if (question['questionType'] == 'DESCRIPTIVE') {
 			var childDiv = createDiv('col-md-offset-1 col-md-10');
-			var descOption = createDescField();
+		//	var descOption = createDescField();
+			var descOption = createDescField(question['questionId']);
 			childDiv.appendChild(descOption);
 			rootDiv.appendChild(childDiv);
-			console.log('DESCRIPTION');
+		//	console.log('DESCRIPTION');
 		} else if (question['questionType'] == 'FILL_IN_THE_GAPS') {
 			var childDiv = createDiv('col-md-offset-1 col-md-11');
-			var figOption = createFIGField(i);
+		//	var figOption = createFIGField(i);
+			var figOption = createFIGField(i,quesBody[i].index,question['questionId']);
 			childDiv.appendChild(figOption);
 			rootDiv.appendChild(childDiv);
-			console.log('DESCRIPTION');
+			//console.log('DESCRIPTION');
 		}
-		console.log('tuman-' + quesBody[i].text);
-
+	//	console.log('tuman-' + quesBody[i].text);
 	}
 	return rootDiv;
 }
-function createMCQOption(optionText) {
+//function createMCQOption(optionText) {
+//	var rootDiv = createDiv('input-group');
+//	var childDiv = document.createElement('span');
+//	childDiv.className = 'input-group-addon';
+//	var checkboxDiv = document.createElement('input');
+//	checkboxDiv.type = 'checkbox';
+//	childDiv.appendChild(checkboxDiv);
+//	rootDiv.appendChild(childDiv);
+//	var checkboxTextDiv = document.createElement('h4');
+//	checkboxTextDiv.style.padding = '1em 1em';
+//	var text = document.createTextNode(optionText);
+//	checkboxTextDiv.appendChild(text);
+//	rootDiv.appendChild(checkboxTextDiv);
+//
+//	return rootDiv;
+//}
+function createMCQOption(optionText,index,questionId) {
+//	console.log(optionText+" "+index+" "+questionId);
 	var rootDiv = createDiv('input-group');
 	var childDiv = document.createElement('span');
 	childDiv.className = 'input-group-addon';
 	var checkboxDiv = document.createElement('input');
+	checkboxDiv.setAttribute("id","questionNo-"+questionId+"-mcq-opt-"+index+"-answer");
 	checkboxDiv.type = 'checkbox';
+	
+	var inputOption = document.createElement('input');
+	inputOption.setAttribute("id","questionNo-"+questionId+"-mcq-opt-"+index+"-text");
+	inputOption.type = 'hidden';
+	inputOption.value = optionText;
 	childDiv.appendChild(checkboxDiv);
+	childDiv.appendChild(inputOption);
 	rootDiv.appendChild(childDiv);
 	var checkboxTextDiv = document.createElement('h4');
 	checkboxTextDiv.style.padding = '1em 1em';
@@ -184,8 +224,21 @@ function createMCQOption(optionText) {
 // <textarea style="resize: vertical;"
 // class="form-control" rows="10" cols="24"
 // placeholder="Answer the following question"></textarea>
-function createDescField() {
+
+//function createDescField() {
+//	var rootDiv = document.createElement('textarea');
+//
+//	rootDiv.className = 'form-control';
+//	rootDiv.style.resize = 'vertical';
+//	rootDiv.cols = "24";
+//	rootDiv.rows = "10";
+//	rootDiv.placeholder = 'Answer the following question';
+//
+//	return rootDiv;
+//}
+function createDescField(questionId) {
 	var rootDiv = document.createElement('textarea');
+	rootDiv.setAttribute("id","questionNo-"+questionId+"-desc-answer-text");
 	rootDiv.className = 'form-control';
 	rootDiv.style.resize = 'vertical';
 	rootDiv.cols = "24";
@@ -195,14 +248,31 @@ function createDescField() {
 	return rootDiv;
 }
 
-function createFIGField(key) {
+//function createFIGField(key) {
+//	var rootDiv = createDiv('form-group');
+//	var intKey = parseInt(key) + 1;
+//	var labelDiv = createLabelDiv(' ' + intKey + '. ');
+//	var firstChildDiv = createDiv('row');
+//	var secondChildDiv = createDiv('col-md-8');
+//	var thirdChildDiv = createDiv('input-group');
+//	thirdChildDiv.innerHTML = '<input placeholder="type this answer" type="text" class="form-control" />';
+//
+//	secondChildDiv.appendChild(thirdChildDiv);
+//	firstChildDiv.appendChild(secondChildDiv);
+//
+//	rootDiv.appendChild(labelDiv);
+//	rootDiv.appendChild(firstChildDiv);
+//	return rootDiv;
+//}
+
+function createFIGField(key, index, questionId) {
 	var rootDiv = createDiv('form-group');
 	var intKey = parseInt(key) + 1;
 	var labelDiv = createLabelDiv(' ' + intKey + '. ');
 	var firstChildDiv = createDiv('row');
 	var secondChildDiv = createDiv('col-md-8');
 	var thirdChildDiv = createDiv('input-group');
-	thirdChildDiv.innerHTML = '<input placeholder="type this answer" type="text" class="form-control" />';
+	thirdChildDiv.innerHTML = '<input placeholder="type this answer" id="questionNo-'+questionId+'-fig-gaps-'+index+'-answer" type="text" class="form-control" />';
 
 	secondChildDiv.appendChild(thirdChildDiv);
 	firstChildDiv.appendChild(secondChildDiv);
