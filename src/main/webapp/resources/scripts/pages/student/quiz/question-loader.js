@@ -24,12 +24,12 @@ function loadQuizQuestion() {
 				console.log('SUCCESS IN QUESTION LOADING');
 				if (msg != null) {
 					questionList = msg;
-					console.log(msg.length);
+					console.log(msg);
 					var questionDiv = document
 							.getElementById('question-holder');
 					var firstElement = true;
 					createTab(questionList.length);
-					var time=0;
+					var time=$('#quizTimer').val();;
 					var totalQuestion = msg.length;
 					for ( var key in questionList) {
 						var question = questionList[key];
@@ -38,8 +38,7 @@ function loadQuizQuestion() {
 						questionDiv.appendChild(createQuestionUI(key,
 								question['questionId'], question, firstElement,
 								questionList.length));
-						firstElement = false;
-						time+= 30;
+						firstElement = false;						
 					}
 					var fiveMinutes = 60 * parseInt(questionList['requiredTime']),
 			        display = document.querySelector('#time');

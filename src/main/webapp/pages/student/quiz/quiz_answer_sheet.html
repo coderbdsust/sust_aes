@@ -12,8 +12,7 @@
 	th:src="@{/resources/scripts/pages/student/quiz/question-loader.js}"></script>
 <script
 	th:src="@{/resources/scripts/pages/student/quiz/question-submit.js}"></script>
-<script
-	th:src="@{/resources/scripts/pages/student/quiz/timer.js}"></script>
+<script th:src="@{/resources/scripts/pages/student/quiz/timer.js}"></script>
 
 </head>
 <body>
@@ -30,8 +29,7 @@
 
 								<div>
 									<h3 class="caption caption-md">
-										<strong>Time Left</strong>
-										<strong id="time">02:00</strong>										
+										<strong>Time Left</strong> <strong id="time">02:00</strong>
 									</h3>
 								</div>
 
@@ -39,6 +37,9 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
+							<input id="quizTimer" type="hidden"
+								th:value="${quizRegistration.quizId.totalTime}" />
+
 							<form action="#" method="POST" class="form-horizontal">
 								<div class="form-body">
 									<h3 class="form-section" id="quizRegInputHeader">
