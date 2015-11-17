@@ -19,5 +19,7 @@ public interface QuestionService {
 	public List<Question> findAvailableQuestions(Quiz quiz);
 
 	public List<Question> findAssignedQuestions(Quiz quiz);
+	
+	public Question findById(Long id);
 
 }

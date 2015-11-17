@@ -21,9 +21,8 @@
 							</div>
 							<div class="actions">
 								<a th:href="@{/quiz/create}" class="btn green-haze btn-sm">
-								<i class="fa fa-plus"></i>
-								<span class="hidden-480">
-								New Quiz</span>
+									<i class="fa fa-plus"></i> <span class="hidden-480"> New
+										Quiz</span>
 								</a>
 							</div>
 						</div>
@@ -37,14 +36,18 @@
 									<div class="portlet light">
 										<div class="portlet-body">
 											<div class="tabbable-line">
-												
+
 												<ul class="nav nav-tabs">
-													<li class="active"><a href="#" data-toggle="tab">
-															<strong>Available Quizzes</strong>
+													
+													<li class="active"><a href="#overview_1"
+														data-toggle="tab"> <strong>Available Quizzes</strong>
+													</a></li>
+													<li><a href="#overview_2" data-toggle="tab"> <strong>Courses</strong>
 													</a></li>
 
+
 												</ul>
-												
+
 												<div class="tab-content">
 													<div class="tab-pane active" id="overview_1">
 														<div class="table-responsive">
@@ -110,47 +113,34 @@
 														</div>
 													</div>
 
-													<!-- 													<div class="tab-pane" id="overview_2"> -->
-													<!-- 														<div class="table-responsive"> -->
-													<!-- 															<table -->
-													<!-- 																class="table table-striped table-hover table-bordered"> -->
-													<!-- 																<thead> -->
-													<!-- 																	<tr> -->
-													<!-- 																		<th>Exam Title</th> -->
-													<!-- 																		<th>Course Code</th> -->
-													<!-- 																		<th>Marks</th> -->
-													<!-- 																		<th>Status</th> -->
-													<!-- 																		<th></th> -->
-													<!-- 																		<th></th> -->
-													<!-- 																	</tr> -->
-													<!-- 																</thead> -->
-													<!-- 																<tbody> -->
-													<!-- 																	<tr> -->
-													<!-- 																		<td>Database Quiz Exam 2</td> -->
-													<!-- 																		<td>CSE333</td> -->
-													<!-- 																		<td>15/20</td> -->
-													<!-- 																		<td>Passed</td> -->
-													<!-- 																		<td><a href="javascript:;" -->
-													<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
-													<!-- 																		<td><a href="javascript:;" -->
-													<!-- 																			class="btn default btn-xs green-stripe"> Edit </a></td> -->
+													<div class="tab-pane" id="overview_2">
+														<div class="table-responsive">
+															<table
+																class="table table-striped table-hover table-bordered">
+																<thead>
+																	<tr>
+																		<th>Course Title</th>
+																		<th>Course Code</th>
+																		<th>Credit</th>
+																		<th>Semester</th>
+																		<th>Session</th>
+																		
+																	</tr>
+																</thead>
+																<tbody>
+																<tr th:each="t: ${teachesList}">
+																		<td th:text="${t.courseId.courseTitle}">Database</td>
+																		<td th:text="${t.courseId.courseCode}">CSE333</td>
+																		<td th:text="${t.courseId.credit}">3.0</td>
+																		<td th:text="${t.courseId.semester}">3-1</td>
+																		<td th:text="${t.courseId.session}">2011</td>
+																</tr>
+																	
 
-													<!-- 																	</tr> -->
-													<!-- 																	<tr> -->
-													<!-- 																		<td>Database Quiz Exam 1</td> -->
-													<!-- 																		<td>CSE333</td> -->
-													<!-- 																		<td>5/20</td> -->
-													<!-- 																		<td>Failed</td> -->
-													<!-- 																		<td><a href="javascript:;" -->
-													<!-- 																			class="btn default btn-xs green-stripe"> View </a></td> -->
-													<!-- 																		<td><a href="javascript:;" -->
-													<!-- 																			class="btn default btn-xs green-stripe"> Edit </a></td> -->
-													<!-- 																	</tr> -->
-
-													<!-- 																</tbody> -->
-													<!-- 															</table> -->
-													<!-- 														</div> -->
-													<!-- 													</div> -->
+																</tbody>
+															</table>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>

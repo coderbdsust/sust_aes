@@ -53,6 +53,7 @@
 																		<th>Semester</th>
 																		<th>Session</th>
 																		<th>Instructor</th>
+																		
 
 																	</tr>
 																</thead>
@@ -85,6 +86,7 @@
 																		<th>Date Time</th>
 																		<th>End Time</th>
 																		<th>Instructor</th>
+																		<th>Quiz Status</th>
 
 
 																	</tr>
@@ -103,8 +105,9 @@
 																			th:text="${#dates.format(quiz.endTime, 'dd MMM yyyy HH:mm a')}">10
 																			Sat-15</td>
 																		<td
-																			th:text="${quiz.teachesId.instructorId.teacherName}">Sheikh
-																			Nabil Mohammad</td>
+																			th:text="${quiz.teachesId.instructorId.teacherName}">Check Out!</td>
+																		<td th:text="${quiz.getExamStatus()}">Check End Time!</td>
+																			
 
 																	</tr>
 

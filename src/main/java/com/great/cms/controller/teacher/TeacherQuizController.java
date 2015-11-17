@@ -56,6 +56,7 @@ public class TeacherQuizController {
 				quizList.addAll(quizes);
 		}
 		uiModel.addAttribute("quizList", quizList);
+		uiModel.addAttribute("teachesList", teachesList);
 		return "teacher/quiz/teach_quiz_dashboard";
 	}
 

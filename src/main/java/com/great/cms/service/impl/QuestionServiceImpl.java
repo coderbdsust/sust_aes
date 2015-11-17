@@ -52,4 +52,10 @@ public class QuestionServiceImpl implements QuestionService {
 		return questionDao.findAssignedQuestions(quiz);
 	}
 
+	@Override
+	public Question findById(Long id) {
+		// TODO Auto-generated method stub
+		return questionDao.findById(id);
+	}
+
 }

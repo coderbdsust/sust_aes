@@ -143,10 +143,19 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Registration</strong></label>
-												<div class="col-md-9">
-													<p class="form-control-static"
-														th:if="${registrationType != null}"
-														th:text="${registrationType}">Approved</p>
+												<div class="col-md-9" th:switch="${registrationType.name()}">
+													<p class="form-control-static" th:case="APPROVED"
+														style="color: green;">
+														<strong>Approved</strong>
+													</p>
+													<p class="form-control-static" th:case="PENDING"
+														style="color: blue;">
+														<strong>Pending</strong>
+													</p>
+													<p class="form-control-static" th:case="APPLY"
+														style="color: red;">
+														<strong>Apply</strong>
+													</p>
 												</div>
 											</div>
 
@@ -159,8 +168,19 @@
 											<div class="form-group">
 												<label class="control-label col-md-3"><strong>Quiz
 														Status</strong></label>
-												<div class="col-md-9">
-													<p class="form-control-static" th:text="${quizStatusType}">Running</p>
+												<div class="col-md-9" th:switch="${quizStatusType.name()}">
+													<p class="form-control-static" th:case="Upcoming"
+														style="color: green;">
+														<strong>Upcoming</strong>
+													</p>
+													<p class="form-control-static" th:case="Running"
+														style="color: blue;">
+														<strong>Running</strong>
+													</p>
+													<p class="form-control-static" th:case="Finished"
+														style="color: red;">
+														<strong>Finished</strong>
+													</p>
 												</div>
 											</div>
 										</div>
@@ -176,7 +196,7 @@
 										</div>
 										<!--/span-->
 									</div>
-									
+
 									<!--/row-->
 								</div>
 								<div class="form-actions">

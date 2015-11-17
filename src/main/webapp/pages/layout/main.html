@@ -118,18 +118,13 @@
 							<i class="icon-user"></i> My Profile </a>
 						</li>
 						<li>
-							<a href="page_calendar.html">
-							<i class="icon-calendar"></i> My Courses(Cur.)<span class="badge badge-danger">
-							3 </span>
-                            </a>
+						<a sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_TEACHER')" th:href="@{/teacher/quiz/dashboard}">
+							<i class="icon-calendar"></i> Dashboard </a>
+							<a sec:authorize="hasRole('ROLE_STUDENT')" th:href="@{/student/quiz/dashboard}">
+							<i class="icon-calendar"></i> Dashboard </a>
 						</li>
 						
-						<li>
-							<a href="page_todo.html">
-							<i class="icon-rocket"></i> Exams Created <span class="badge badge-success">
-							7 </span>
-							</a>
-						</li>
+						
 						<li class="divider">
 						</li>
 						

@@ -42,8 +42,8 @@ public class StudentQuizAnswerController {
 	QuizRegistrationService quizRegService;
 
 	@RequestMapping("/answer/{quizId}")
-	public String showQuizQuestionAnswerSheet(
-			@PathVariable Long quizId, Model uiModel) {
+	public String showQuizQuestionAnswerSheet(@PathVariable Long quizId,
+			Model uiModel) {
 		System.out.println("student/quiz/answer");
 		Student student = UserUtil.getInstance().getStudent();
 		QuizRegistration quizReg = quizRegService
@@ -52,19 +52,29 @@ public class StudentQuizAnswerController {
 		return "student/quiz/quiz_answer_sheet";
 	}
 
-	
-	
 	@RequestMapping(value = "/answer/save", method = RequestMethod.POST)
 	@ResponseBody
 	public Integer saveQuizQuestionAnswers(QuestionAnswer questionAnswer) {
 		System.out.println("student/quiz/answer/save");
 		System.out.println(questionAnswer);
+		Question question = questionService.findById(questionAnswer
+				.getQuestionId().getQuestionId());
+		// System.out.println("SAVED ANSWER: " + question.getQuestionBody());
+		// System.out.println("SUBMITED ANSWER: " +
+		// questionAnswer.getAnswerBody());
+		if (question.getQuestionType() == QuestionType.MCQ
+				&& question.getQuestionBody().equals(
+						questionAnswer.getAnswerBody())) {
+			
+			questionAnswer.setMarks(question.getQuestionMarks());
+			System.out.println("MATCHED: " + questionAnswer);
+
+		}
 		return HttpStatus.SC_ACCEPTED;
 	}
-	
+
 	@RequestMapping("/ans")
-	public String showAnsPage(Principal principal,
-			 Model uiModel) {
+	public String showAnsPage(Principal principal, Model uiModel) {
 
 		return "student/quiz/std_ans";
 	}
