@@ -119,9 +119,14 @@ public class QuestionAnswer implements DomainObject, Serializable {
 	        return true;
 	    }
 
-	    @Override
-	    public String toString() {
-	        return "com.great.cms.entity.QuestionAnswer[ questionAnsId=" + questionAnsId + " ]";
-	    }
+		@Override
+		public String toString() {
+			return "QuestionAnswer [questionAnsId=" + questionAnsId
+					+ ", answerBody=" + answerBody + ", marks=" + marks
+					+ ", quizRegistrationId=" + quizRegistrationId
+					+ ", questionId=" + questionId + "]";
+		}
+
+	    
     
 }

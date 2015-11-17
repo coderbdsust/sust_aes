@@ -3,6 +3,7 @@ package com.great.cms.controller.student;
 import java.security.Principal;
 import java.util.List;
 
+import org.apache.http.HttpStatus;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,10 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Question;
+import com.great.cms.entity.QuestionAnswer;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Student;
@@ -39,7 +42,7 @@ public class StudentQuizAnswerController {
 	QuizRegistrationService quizRegService;
 
 	@RequestMapping("/answer/{quizId}")
-	public String showExamQuestions(
+	public String showQuizQuestionAnswerSheet(
 			@PathVariable Long quizId, Model uiModel) {
 		System.out.println("student/quiz/answer");
 		Student student = UserUtil.getInstance().getStudent();
@@ -49,10 +52,14 @@ public class StudentQuizAnswerController {
 		return "student/quiz/quiz_answer_sheet";
 	}
 
+	
+	
 	@RequestMapping(value = "/answer/save", method = RequestMethod.POST)
-	public String showExamQuestions(Model uiModel) {
+	@ResponseBody
+	public Integer saveQuizQuestionAnswers(QuestionAnswer questionAnswer) {
 		System.out.println("student/quiz/answer/save");
-		return "student/quiz/quiz_answer_sheet";
+		System.out.println(questionAnswer);
+		return HttpStatus.SC_ACCEPTED;
 	}
 	
 	@RequestMapping("/ans")

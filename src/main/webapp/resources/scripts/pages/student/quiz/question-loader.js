@@ -69,7 +69,7 @@ function createQuestionUI(key, questionId, question, firstElement,
 	fakeRootDiv.id = "fake-root-" + number;
 
 	var rootDiv = createDiv('row');
-	rootDiv.id = "questionNo-" + questionId;
+	rootDiv.id = questionId;
 	if (!firstElement) {
 		fakeRootDiv.style.display = "none";
 	}
@@ -86,7 +86,7 @@ function createQuestionUI(key, questionId, question, firstElement,
 	var questionIdInputTracker = document.createElement('input');
 	questionIdInputTracker.type="hidden";
 	questionIdInputTracker.setAttribute("id","fake-root-"+number+"-id");
-	questionIdInputTracker.value='questionNo-'+questionId;
+	questionIdInputTracker.value=questionId;
 	
 	
 	secondChildDiv.appendChild(createUIHeader(key, question['questionType']));
@@ -202,15 +202,29 @@ function createMCQOption(optionText,index,questionId) {
 	var rootDiv = createDiv('input-group');
 	var childDiv = document.createElement('span');
 	childDiv.className = 'input-group-addon';
-	var checkboxDiv = document.createElement('input');
-	checkboxDiv.setAttribute("id","questionNo-"+questionId+"-mcq-opt-"+index+"-answer");
-	checkboxDiv.type = 'checkbox';
+	
+	
+//	var checkerDiv = document.createElement('div');
+//	checkerDiv.className='checker';
+//	checkerDiv.setAttribute('id',"uniform-questionNo-"+questionId+"-mcq-opt-"+index+"-answer");
+
+//	var spanChecker = document.createElement('span');
+	
+	var checkboxInput = document.createElement('input');
+	checkboxInput.setAttribute("id","questionNo-"+questionId+"-mcq-opt-"+index+"-answer");
+	checkboxInput.type = 'checkbox';
+	
+//	spanChecker.appendChild(checkboxInput);
+//	checkerDiv.appendChild(spanChecker);
+//	console.log(checkerDiv);
 	
 	var inputOption = document.createElement('input');
 	inputOption.setAttribute("id","questionNo-"+questionId+"-mcq-opt-"+index+"-text");
 	inputOption.type = 'hidden';
+	
 	inputOption.value = optionText;
-	childDiv.appendChild(checkboxDiv);
+	childDiv.appendChild(checkboxInput);
+	//childDiv.appendChild(checkerDiv);
 	childDiv.appendChild(inputOption);
 	rootDiv.appendChild(childDiv);
 	var checkboxTextDiv = document.createElement('h4');
