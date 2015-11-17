@@ -24,10 +24,13 @@ function loadQuizQuestion() {
 				console.log('SUCCESS IN QUESTION LOADING');
 				if (msg != null) {
 					questionList = msg;
+					console.log(msg.length);
 					var questionDiv = document
 							.getElementById('question-holder');
 					var firstElement = true;
 					createTab(questionList.length);
+					var time=0;
+					var totalQuestion = msg.length;
 					for ( var key in questionList) {
 						var question = questionList[key];
 				//		console.log(question['questionId'] + " "
@@ -36,7 +39,11 @@ function loadQuizQuestion() {
 								question['questionId'], question, firstElement,
 								questionList.length));
 						firstElement = false;
+						time+= 30;
 					}
+					var fiveMinutes = 60 * parseInt(questionList['requiredTime']),
+			        display = document.querySelector('#time');
+					startTimer(time, display,totalQuestion);
 				} else {
 					console.log('LIST IS NULL');
 				}
@@ -317,19 +324,20 @@ function createUIHeader(key, questionType) {
 		headerDiv = createHeaderDiv(questionNumber
 				+ '.FILL IN THE GAPS QUESTION', 'h3');
 	}
-	var rootTimerDiv = createDiv('col-md-offset-1 col-md-3');
 
-	var rootTimerInnerDiv = createDiv('caption caption-md');
-
-	var timerDiv = createHeaderDiv('02:00', 'h3');
 
 	rootHeaderInnerDiv.appendChild(headerDiv);
 	rootHeaderDiv.appendChild(rootHeaderInnerDiv);
 	firstChildDiv.appendChild(rootHeaderDiv);
 
-	rootTimerInnerDiv.appendChild(timerDiv);
-	rootTimerDiv.appendChild(rootTimerInnerDiv);
-	firstChildDiv.appendChild(rootTimerDiv);
+//	var rootTimerDiv = createDiv('col-md-offset-1 col-md-3');
+//
+//	var rootTimerInnerDiv = createDiv('caption caption-md');
+//
+//	var timerDiv = createHeaderDiv('02:00', 'h3');
+//	rootTimerInnerDiv.appendChild(timerDiv);
+//	rootTimerDiv.appendChild(rootTimerInnerDiv);
+//	firstChildDiv.appendChild(rootTimerDiv);
 	rootDiv.appendChild(firstChildDiv);
 	return rootDiv;
 }

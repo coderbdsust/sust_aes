@@ -12,6 +12,9 @@
 	th:src="@{/resources/scripts/pages/student/quiz/question-loader.js}"></script>
 <script
 	th:src="@{/resources/scripts/pages/student/quiz/question-submit.js}"></script>
+<script
+	th:src="@{/resources/scripts/pages/student/quiz/timer.js}"></script>
+
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -24,6 +27,14 @@
 								<i class="icon-equalizer font-red-sunglo"></i> <span
 									class="caption-subject font-red-sunglo bold uppercase">Exam
 									Answer Sheet</span>
+
+								<div>
+									<h3 class="caption caption-md">
+										<strong>Time Left</strong>
+										<strong id="time">02:00</strong>										
+									</h3>
+								</div>
+
 							</div>
 						</div>
 						<div class="portlet-body form">
