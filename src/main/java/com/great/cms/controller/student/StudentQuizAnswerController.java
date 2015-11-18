@@ -65,7 +65,6 @@ public class StudentQuizAnswerController {
 		if (question.getQuestionType() == QuestionType.MCQ
 				&& question.getQuestionBody().equals(
 						questionAnswer.getAnswerBody())) {
-			
 			questionAnswer.setMarks(question.getQuestionMarks());
 			System.out.println("MATCHED: " + questionAnswer);
 

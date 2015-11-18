@@ -37,6 +37,8 @@
 						</div>
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
+							<input id="quizId" type="hidden"
+								th:value="${quizRegistration.quizId.quizId}" />
 							<input id="quizTimer" type="hidden"
 								th:value="${quizRegistration.quizId.totalTime}" />
 
