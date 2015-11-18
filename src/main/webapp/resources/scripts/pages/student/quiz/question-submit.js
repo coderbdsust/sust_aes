@@ -24,8 +24,23 @@ function submitExam(totalQuestion) {
 		}
 		//console.log(questionAnswer);
 		saveQuestion(questionAnswer);
+		var quizId = document.getElementById('quizId').value;
+		showSubmitModal(quizId);
 	}
 	console.log('Answer Wraped!');
+}
+
+function redirectURL(quizId){
+	var url = '/sustaes/student/quiz/view/'+quizId;
+	window.location  = url;
+}
+
+function showSubmitModal(quizId){
+	$('#ajax').modal('show');
+	setTimeout(function(){
+	    $('#ajax').modal('hide');
+	    redirectURL(quizId);
+	}, 1200);
 }
 
 function loadMCQanswerBody(questionLabel) {

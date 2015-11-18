@@ -35,10 +35,27 @@
 
 							</div>
 						</div>
+				
+							<div class="modal fade" id="ajax" role="basic" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-body">
+											<img th:src="@{/resources/img/loading-spinner-grey.gif}"
+												alt="" class="loading" /> <span>&nbsp;&nbsp;Submitting
+												Answer... </span>
+										</div>
+									</div>
+								</div>
+							</div>
+			
+
 						<div class="portlet-body form">
 							<!-- BEGIN FORM-->
-							<input id="quizTimer" type="hidden"
+							<input id="quizId" type="hidden"
+								th:value="${quizRegistration.quizId.quizId}" /> <input
+								id="quizTimer" type="hidden"
 								th:value="${quizRegistration.quizId.totalTime}" />
+
 
 							<form action="#" method="POST" class="form-horizontal">
 								<div class="form-body">

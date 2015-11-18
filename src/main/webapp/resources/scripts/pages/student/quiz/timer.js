@@ -8,7 +8,7 @@ function startTimer(duration, display, totalQuestion, submitted) {
 		seconds = (diff % 60) | 0;
 		var timerText;
 
-		if (minutes < 0 && seconds < 0 && !submitted) {
+		if (minutes <= 0 && seconds <= 0 && !submitted) {
 			submitExam(totalQuestion);
 			submitted = true;
 			console.log('submitted');
