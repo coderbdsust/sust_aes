@@ -25,16 +25,22 @@ function submitExam(totalQuestion) {
 		//console.log(questionAnswer);
 		saveQuestion(questionAnswer);
 		var quizId = document.getElementById('quizId').value;
-		redirectURL(quizId);
+		showSubmitModal(quizId);
 	}
 	console.log('Answer Wraped!');
 }
 
 function redirectURL(quizId){
 	var url = '/sustaes/student/quiz/view/'+quizId;
-	console.log('Location Redirection Starting!');
 	window.location  = url;
-	console.log('Location Redirection Finished!');
+}
+
+function showSubmitModal(quizId){
+	$('#ajax').modal('show');
+	setTimeout(function(){
+	    $('#ajax').modal('hide');
+	    redirectURL(quizId);
+	}, 1200);
 }
 
 function loadMCQanswerBody(questionLabel) {
