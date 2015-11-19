@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.great.cms.dao.QuestionAnswerDao;
-import com.great.cms.entity.Department;
 import com.great.cms.entity.QuestionAnswer;
 import com.great.cms.entity.QuizRegistration;
 
@@ -29,20 +28,24 @@ public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long>
 	 *  but not works in runtime
 	 */
 
+	@Transactional
 	@Override
 	@Transactional
 	public void deleteAllByQuizRegistration(
 			QuizRegistration quizRegistrationId) {
+		System.out.println(quizRegistrationId);
 		System.out.println(quizRegistrationId.getQuizRegistrationId()==null?"QUIZ REG ID NULL":"QUIZ REG ID OK");
 		try {
-			Query query = this.em.createQuery("delete QuestionAnswer "
-					+ " where quizRegistrationId=:quizRegistrationId");
+			Query query = this.em.createQuery("delete QuestionAnswer qa"
+					+ " where qa.quizRegistrationId=:quizRegistrationId");
+			
 			query.setParameter("quizRegistrationId", quizRegistrationId);
 			System.out.println("DELETE QUERY: " + query);
 			query.executeUpdate();
 			System.out.println("[EXECUTED] : QuestionAnswer Deleted");
 		} catch (Exception ex) {
-			System.out.println("[EXCEPTION] : QuestionAnswer Not Deleted");
+			ex.printStackTrace();
+			System.out.println(ex.getClass().getSimpleName());
 		}
 
 	}

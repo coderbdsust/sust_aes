@@ -25,20 +25,19 @@ public class QuizTypeUtil implements IQuizTypeUtil {
 		return QuizRegistrationType.APPROVED;
 	}
 
-	public QuizParticipationType getQuizParticipationType(
-			QuizRegistration quizReg, Date currDate) {
+	public QuizParticipationType getQuizParticipationType(QuizRegistration quizReg, Date currDate,
+			QuizRegistrationType quizRegistrationType) {
 		// TODO Auto-generated method stub
 		if (quizReg == null) {
 			return QuizParticipationType.CAN_NOT_PARTICIPATE;
 		} else if (getQuizStatusType(quizReg.getQuizId(), currDate) == QuizStatusType.Running
-				&& quizReg.getIsAttended() == false) {
+				&& quizReg.getIsAttended() == false && quizRegistrationType == QuizRegistrationType.APPROVED) {
 			return QuizParticipationType.CAN_PARTICIPATE;
 		}
 		return QuizParticipationType.CAN_NOT_PARTICIPATE;
 	}
 
-	public QuizStatusType getQuizStatusType(Date startDate, Date endDate,
-			Date currDate) {
+	public QuizStatusType getQuizStatusType(Date startDate, Date endDate, Date currDate) {
 
 		if (currDate.after(startDate) && currDate.before(endDate)) {
 			return QuizStatusType.Running;
@@ -53,7 +52,6 @@ public class QuizTypeUtil implements IQuizTypeUtil {
 		if (currDate == null) {
 			currDate = new Date();
 		}
-		return getQuizStatusType(quiz.getStartTime(), quiz.getEndTime(),
-				currDate);
+		return getQuizStatusType(quiz.getStartTime(), quiz.getEndTime(), currDate);
 	}
 }
