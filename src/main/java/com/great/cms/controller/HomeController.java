@@ -17,9 +17,10 @@ public class HomeController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/")
+	@RequestMapping({"/","/home","/index"})
 	public String showHome() {
 		log.info("/home");
+		log.debug("/home");
 		return "home";
 	}
 

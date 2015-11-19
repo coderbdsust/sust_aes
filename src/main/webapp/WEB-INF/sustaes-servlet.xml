@@ -22,7 +22,7 @@
 	<!-- <context:component-scan base-package="com.great.cms.dao"></context:component-scan> -->
 	<!-- <context:component-scan base-package="com.great.cms.service"></context:component-scan> -->
 	<context:component-scan base-package="com.great.cms.*"></context:component-scan>
-	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:annotation-driven></mvc:annotation-driven>   
 	
 	<bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
     <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"/>
@@ -125,6 +125,6 @@
 	  
 	<bean id="UserUtil" class="com.great.cms.security.utils.UserUtil" factory-method="getInstance">
 	</bean>
-             
+                 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 </beans>

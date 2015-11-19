@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.great.cms.dao.QuestionAnswerDao;
 import com.great.cms.entity.Department;
@@ -29,6 +30,7 @@ public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long>
 	 */
 
 	@Override
+	@Transactional
 	public void deleteAllByQuizRegistration(
 			QuizRegistration quizRegistrationId) {
 		System.out.println(quizRegistrationId.getQuizRegistrationId()==null?"QUIZ REG ID NULL":"QUIZ REG ID OK");
