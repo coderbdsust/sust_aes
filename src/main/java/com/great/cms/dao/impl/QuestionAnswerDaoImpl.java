@@ -19,6 +19,14 @@ public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long>
 		super(QuestionAnswer.class);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * 
+	 *  This method used for deleting single
+	 *  quiz's question answers of s student
+	 *  It works fine in test case
+	 *  but not works in runtime
+	 */
 
 	@Override
 	public void deleteAllByQuizRegistration(
