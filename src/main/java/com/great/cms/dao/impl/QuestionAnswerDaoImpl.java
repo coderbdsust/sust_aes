@@ -28,7 +28,6 @@ public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long>
 	 *  but not works in runtime
 	 */
 
-	@Transactional
 	@Override
 	@Transactional
 	public void deleteAllByQuizRegistration(

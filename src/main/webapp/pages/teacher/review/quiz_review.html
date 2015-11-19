@@ -130,16 +130,18 @@
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group"
 																			th:switch="${q.questionType.name()}">
-																			<a type="button" href="#form_modal10" th:case="MCQ"
-																				data-toggle="modal"> <i class="fa fa-eye"></i>
-																				Review
-																			</a> <a type="button" href="#form_modal11"
+<!-- 																			<a type="button" href="#form_modal10" th:case="MCQ" -->
+<!-- 																				data-toggle="modal"> <i class="fa fa-eye"></i> -->
+<!-- 																				Review -->
+<!-- 																			</a> -->
+																			 <a type="button" href="#form_modal11"
 																				th:case="DESCRIPTIVE" data-toggle="modal"> <i
 																				class="fa fa-eye"></i> Review
-																			</a> <a type="button" href="#form_modal12"
-																				th:case="FILL_IN_THE_GAPS" data-toggle="modal">
-																				<i class="fa fa-eye"></i> Review
 																			</a>
+<!-- 																			 <a type="button" href="#form_modal12" -->
+<!-- 																				th:case="FILL_IN_THE_GAPS" data-toggle="modal"> -->
+<!-- 																				<i class="fa fa-eye"></i> Review -->
+<!-- 																			</a> -->
 																		</div>
 																	</div>
 																</li>
@@ -160,9 +162,9 @@
 
 											<div class="col-md-offset-6 col-md-3">
 
-												<button type="button" class="btn default">Cancel</button>
-												<button type="submit" class="btn green">Review
-													Complete</button>
+												<a type="button" th:href="@{/teacher/quiz/dashboard}" class="btn green">Cancel</a>
+												<a type="button" href="#" disabled="disabled" class="btn green">Review
+													Complete</a>
 											</div>
 										</div>
 									</div>
