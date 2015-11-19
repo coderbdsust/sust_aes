@@ -143,7 +143,7 @@
 																		<td th:if="${qr.isExamReviewed}==false">Review
 																			Pending</td>
 
-																		<td><a
+																		<td><a th:disabled="${qr.isExamReviewed==false}"
 																			th:href="@{'/student/quiz/review/'+${qr.quizId.quizId}}"
 																			class="btn default btn-xs green-stripe"> View </a></td>
 																	</tr>

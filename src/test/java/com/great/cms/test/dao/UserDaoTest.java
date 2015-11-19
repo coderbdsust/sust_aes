@@ -43,11 +43,13 @@ public class UserDaoTest {
 	
 	
 	
-	 List<User> users = userDao.findAll();
+//	 List<User> users = userDao.findAll();
 //	 for(User u:users){
 //	 System.out.println(u);
+//		 userDao.deleteById(u.getUserId());
 //	 }
-	 assertEquals(1, users.size());
+//	 users = userDao.findAll();
+//	 assertEquals(0, users.size());
 //	
 //	 User u = userDao.findByUsername("coder_bd");
 //	 assertNotNull(u);

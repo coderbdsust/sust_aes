@@ -58,6 +58,9 @@ Role: Student
 Bug
 =========================
 1. Form validation not added
+2. Student All Question Answers Counldn't Delete By QuizRegistration Id,
+This Reason Question Answer Redundant Saving and arise the
+greater obtain marks from quiz marks
 
 Technology:
 ------------

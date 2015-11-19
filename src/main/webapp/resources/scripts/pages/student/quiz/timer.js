@@ -16,9 +16,8 @@ function startTimer(duration, display, totalQuestion, submitted) {
 			minutes = minutes < 10 ? "0" + minutes : minutes;
 			seconds = seconds < 10 ? "0" + seconds : seconds;
 			timerText = minutes < 1 ? " Minute" : " Minutes";
-
-			display.textContent = minutes + ":" + seconds + timerText;
 		}
+		display.textContent = minutes + ":" + seconds + timerText;
 
 	}
 	;

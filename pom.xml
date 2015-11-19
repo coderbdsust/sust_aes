@@ -248,8 +248,9 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.2.2</version>
+			<version>2.3.1</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -422,11 +423,11 @@
 
 		<!-- Logging -->
 
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>log4j</groupId> -->
+<!-- 			<artifactId>log4j</artifactId> -->
+<!-- 			<version>1.2.14</version> -->
+<!-- 		</dependency> -->
 
 
 		<dependency>
@@ -436,11 +437,11 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>1.6.2</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>slf4j-simple</artifactId> -->
+<!-- 			<version>1.6.2</version> -->
+<!-- 		</dependency> -->
 
 		<!-- Tests -->
 		<dependency>

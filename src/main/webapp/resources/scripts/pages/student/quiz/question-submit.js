@@ -1,45 +1,46 @@
 function submitExam(totalQuestion) {
-	// alert('Question id: ' + id);
-	var questionList = {};
-	console.log('Answer Wraping');
+
+	//console.log('Answer Wraping');
+	var quizRegistrationId = document.getElementById('quizRegistrationId').value;
+	var studentQuestionAnswers = {};
+	var questionAnswers = [];
+	studentQuestionAnswers['quizRegistrationId.quizRegistrationId'] = quizRegistrationId;
 	for (var i = 1; i <= totalQuestion; i++) {
-		var questionAnswer = {};
-		questionAnswer['quizRegistrationId.quizRegistrationId'] = document
-				.getElementById('quizRegistrationId').value;
+		var answerBody;
 		var questionType = document.getElementById('fake-root-' + i + '-type').value;
 		var questionId = document.getElementById('fake-root-' + i + '-id').value;
-		questionAnswer['questionId.questionId']=questionId;
+
 		if (questionType == 'MCQ') {
-			console.log(questionType + " " + questionId);
-			questionAnswer['answerBody'] = loadMCQanswerBody('questionNo-'
-					+ questionId);
+			answerBody = loadMCQanswerBody('questionNo-' + questionId);
 		} else if (questionType == 'DESCRIPTIVE') {
-			console.log(questionType + " " + questionId);
-			questionAnswer['answerBody'] = loadDESCanswerBody('questionNo-'
-					+ questionId);
+			answerBody = loadDESCanswerBody('questionNo-' + questionId);
 		} else if (questionType == 'FILL_IN_THE_GAPS') {
-			console.log(questionType + " " + questionId);
-			questionAnswer['answerBody'] = loadFIGanswerBody('questionNo-'
-					+ questionId);
+			answerBody = loadFIGanswerBody('questionNo-' + questionId);
 		}
-		//console.log(questionAnswer);
-		saveQuestion(questionAnswer);
-		var quizId = document.getElementById('quizId').value;
-		showSubmitModal(quizId);
+		studentQuestionAnswers['questionAnswers[' + (i - 1)
+				+ '].quizRegistrationId.quizRegistrationId'] = quizRegistrationId;
+		studentQuestionAnswers['questionAnswers[' + (i - 1)
+				+ '].questionId.questionId'] = questionId;
+		studentQuestionAnswers['questionAnswers[' + (i - 1) + '].answerBody'] = answerBody;
 	}
-	console.log('Answer Wraped!');
+	console.log(questionAnswers);
+
+	saveQuestion(studentQuestionAnswers);
+	var quizId = document.getElementById('quizId').value;
+	showSubmitModal(quizId);
+	//console.log('Answer Wraped!');
 }
 
-function redirectURL(quizId){
-	var url = '/sustaes/student/quiz/view/'+quizId;
-	window.location  = url;
+function redirectURL(quizId) {
+	var url = '/sustaes/student/quiz/view/' + quizId;
+	window.location = url;
 }
 
-function showSubmitModal(quizId){
+function showSubmitModal(quizId) {
 	$('#ajax').modal('show');
-	setTimeout(function(){
-	    $('#ajax').modal('hide');
-	    redirectURL(quizId);
+	setTimeout(function() {
+		$('#ajax').modal('hide');
+		redirectURL(quizId);
 	}, 1200);
 }
 
@@ -82,22 +83,24 @@ function loadDESCanswerBody(questionLabel) {
 	console.log(questionLabel);
 	var options = [];
 	var opt = {};
-	console.log(questionLabel + '-desc-answer-text');
+	//console.log(questionLabel + '-desc-answer-text');
 	opt["answer"] = document
 			.getElementById(questionLabel + '-desc-answer-text').value;
 	options.push(opt);
 	return JSON.stringify(options);
 }
 
-function saveQuestion(questionAnswer) {
+function saveQuestion(studentQuestionAnswers) {
 	var url = '/sustaes/student/quiz/answer/save';
+//	console.log('STUDENT ANSWERS SUBMITTING REQUEST');
+
 	$.ajax({
 		method : "POST",
 		url : url,
-		data : questionAnswer
+		data : studentQuestionAnswers
 	}).success(function(msg) {
-		console.log('SUCCESS MCQ ' + msg);
+		console.log('SUCCESSFULLY SUBMITTED STUDENT ANSWERS ' + msg);
 	}).error(function(msg) {
-		console.log('ERROR MCQ ' + msg);
+		console.log('STUDENT ANSWERS SUBMISSION ERROR ' + msg);
 	});
 }
