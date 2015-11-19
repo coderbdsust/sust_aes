@@ -70,7 +70,7 @@ public class StudentQuizViewController {
 		QuizRegistrationType regType = QuizTypeUtil.getInstance()
 				.getQuizRegistrationType(quizReg);
 		QuizParticipationType pType = QuizTypeUtil.getInstance()
-				.getQuizParticipationType(quizReg, new Date());
+				.getQuizParticipationType(quizReg, new Date(),regType);
 		QuizStatusType quizStatusType = QuizTypeUtil.getInstance()
 				.getQuizStatusType(quiz, new Date());
 

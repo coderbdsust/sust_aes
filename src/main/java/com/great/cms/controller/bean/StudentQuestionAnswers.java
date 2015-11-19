@@ -7,30 +7,25 @@ import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 
 public class StudentQuestionAnswers {
-	
-	private QuizRegistration quizRegistrationId;
+
+	private QuizRegistration quizRegistrationId = new QuizRegistration();
 	private ArrayList<QuestionAnswer> questionAnswers = new ArrayList<>();
 
 	public StudentQuestionAnswers() {
 	}
-	
-	public StudentQuestionAnswers(QuizRegistration quizRegistrationId,
-			ArrayList<QuestionAnswer> questionAnswers) {
+
+	public StudentQuestionAnswers(QuizRegistration quizRegistrationId, ArrayList<QuestionAnswer> questionAnswers) {
 		this.quizRegistrationId = quizRegistrationId;
 		this.questionAnswers = questionAnswers;
 	}
-	
+
 	public QuizRegistration getQuizRegistrationId() {
 		return quizRegistrationId;
 	}
 
-
-
 	public void setQuizRegistrationId(QuizRegistration quizRegistrationId) {
 		this.quizRegistrationId = quizRegistrationId;
 	}
-
-
 
 	public ArrayList<QuestionAnswer> getQuestionAnswers() {
 		return questionAnswers;
@@ -40,17 +35,10 @@ public class StudentQuestionAnswers {
 		this.questionAnswers = questionAnswers;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "StudentQuestionAnswers [quizRegistrationId="
-				+ quizRegistrationId + ", questionAnswers=" + questionAnswers
-				+ "]";
+		return "StudentQuestionAnswers [quizRegistrationId=" + quizRegistrationId + ", questionAnswers="
+				+ questionAnswers + "]";
 	}
-
-	
-
-	
 
 }
