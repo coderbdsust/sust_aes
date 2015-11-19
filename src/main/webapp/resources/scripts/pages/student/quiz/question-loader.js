@@ -11,7 +11,7 @@ function loadQuizQuestion() {
 	console.log('LOAD QUIZ QUESTION INSTANTIATED');
 	var data = {};
 	data['quizRegId'] = document.getElementById("quizRegistrationId").value;
-	//console.log('QUIZ REG ID: ' + data['quizRegId']);
+	// console.log('QUIZ REG ID: ' + data['quizRegId']);
 	var questionList = "";
 	var requestURL = '/sustaes/student/quiz/question/list';
 	$.ajax({
@@ -23,7 +23,7 @@ function loadQuizQuestion() {
 				console.log('SUCCESS IN QUESTION LOADING');
 				if (msg != null) {
 					questionList = msg;
-					//console.log(msg);
+					// console.log(msg);
 					var questionDiv = document
 							.getElementById('question-holder');
 					var firstElement = true;
@@ -172,7 +172,9 @@ function shuffle(options) {
 function questionTextOption(question) {
 	var rootDiv = createDiv('row');
 	var quesBody = JSON.parse(question['questionBody']);
-	shuffle(quesBody);
+	if (question['questionType'] === 'MCQ') {
+		shuffle(quesBody);
+	}
 	for (var i = 0; i < quesBody.length; i++) {
 		if (question['questionType'] == 'MCQ') {
 			var childDiv = createDiv('col-md-offset-1 col-md-11');

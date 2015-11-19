@@ -17,6 +17,7 @@ import com.great.cms.controller.utils.QuizTypeUtil;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Question;
+import com.great.cms.entity.QuestionAnswer;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Student;
@@ -25,6 +26,7 @@ import com.great.cms.enums.QuizParticipationType;
 import com.great.cms.enums.QuizStatusType;
 import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.CourseRegistrationService;
+import com.great.cms.service.QuestionAnswerService;
 import com.great.cms.service.QuestionService;
 import com.great.cms.service.QuizRegistrationService;
 import com.great.cms.service.QuizService;
@@ -44,6 +46,9 @@ public class StudentQuizViewController {
 
 	@Autowired
 	QuizRegistrationService quizRegistrationService;
+
+	@Autowired
+	QuestionAnswerService questionAnsService;
 
 	@RequestMapping(value = "/view/{quizId}", method = RequestMethod.GET)
 	public String showStdExamView(@PathVariable Long quizId, Model uiModel) {
@@ -104,18 +109,28 @@ public class StudentQuizViewController {
 	}
 
 	@RequestMapping(value = "/review/{quizId}", method = RequestMethod.GET)
-	public String showStdExamReview(Principal principal,
-			@PathVariable Long quizId, Model uiModel) {
+	public String showStdExamReview(@PathVariable Long quizId, Model uiModel, RedirectAttributes redirectAttr) {
 		System.out.println("/quiz/question " + quizId);
 		Quiz quiz = quizService.getQuiz(quizId);
+		Student student = UserUtil.getInstance().getStudent();
+		QuizRegistration quizReg = quizRegistrationService
+				.getQuizRegistrationByStudentAndQuiz(student, quizId);
+		if(quizReg.getIsExamReviewed()==false){
+			redirectAttr.addAttribute("quizId", quiz.getQuizId());
+			return "redirect:/student/quiz/view/{quizId}";
+		}
+		List<QuestionAnswer> questionAnswers = questionAnsService
+				.getQuestionAnswersByQuizRegistration(quizReg);
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(quiz);
 		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
 		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);
+		int obtainMarks = QuestionUtil.getInstance().getObtainMarks(questionAnswers);
 		uiModel.addAttribute("quiz", quiz);
 		uiModel.addAttribute("totalMarks", totalMarks);
+		uiModel.addAttribute("obtainMarks", obtainMarks);
 		uiModel.addAttribute("totalQuestions", totalQuestions);
 		return "student/quiz/std_quiz_review";
 	}

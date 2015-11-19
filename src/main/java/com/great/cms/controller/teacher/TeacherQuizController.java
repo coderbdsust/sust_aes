@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.great.cms.entity.QuestionAnswer;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
 import com.great.cms.security.utils.UserUtil;
+import com.great.cms.service.QuestionAnswerService;
 import com.great.cms.service.QuizRegistrationService;
 import com.great.cms.service.QuizService;
 import com.great.cms.service.TeachesService;
@@ -33,6 +35,8 @@ public class TeacherQuizController {
 	QuizService quizService;
 	@Autowired
 	QuizRegistrationService quizRegService;
+	@Autowired
+	QuestionAnswerService questionAnswerService;
 
 	@RequestMapping("/question/create")
 	public String showQuizQuestions(Model model) {
@@ -101,6 +105,7 @@ public class TeacherQuizController {
 		QuizRegistration savedQuizReg = quizRegService
 				.getQuizRegistrationById(quizRegistration
 						.getQuizRegistrationId());
+		
 		quizRegistration.setAttendTime(savedQuizReg.getAttendTime());
 		quizRegistration.setSubmitTime(savedQuizReg.getSubmitTime());
 		quizRegService.saveOrUpdate(quizRegistration);

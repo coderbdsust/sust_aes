@@ -1,4 +1,4 @@
-function startTimer(duration, display, totalQuestion,submitted) {
+function startTimer(duration, display, totalQuestion, submitted) {
 	var start = Date.now(), diff, minutes, seconds;
 	function timer() {
 
@@ -10,15 +10,14 @@ function startTimer(duration, display, totalQuestion,submitted) {
 
 		if (minutes <= 0 && seconds <= 0 && !submitted) {
 			submitExam(totalQuestion);
-			submitted=true;
+			submitted = true;
 			console.log('submitted');
-		}else if (minutes >= 0 && seconds >= 0 && !submitted) {
-		minutes = minutes < 10 ? "0" + minutes : minutes;
-		seconds = seconds < 10 ? "0" + seconds : seconds;
-		timerText = minutes <1 ? " Minute" : " Minutes";
-
-		display.textContent = minutes + ":" + seconds+timerText;
+		} else if (minutes >= 0 && seconds >= 0 && !submitted) {
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
+			timerText = minutes < 1 ? " Minute" : " Minutes";
 		}
+		display.textContent = minutes + ":" + seconds + timerText;
 
 	}
 	;

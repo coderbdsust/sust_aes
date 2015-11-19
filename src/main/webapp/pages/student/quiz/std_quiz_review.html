@@ -124,9 +124,9 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label col-md-3"><strong>Marks</strong></label>
+												<label class="control-label col-md-3"><strong>Obtain Marks</strong></label>
 												<div class="col-md-9">
-													<p class="form-control-static" th:if="${quiz != null}" th:text="${totalQuestions}">25</p>
+													<p class="form-control-static" th:if="${quiz != null}" th:text="${obtainMarks}+'/'+${totalMarks}">25</p>
 												</div>
 											</div>
 										</div>
