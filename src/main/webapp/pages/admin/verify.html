@@ -40,7 +40,7 @@
 										<div th:each="roles : ${T(com.great.cms.enums.Role).values()}">
 											<input type="checkbox" name="role" th:value="${roles}"
 												th:checked="${#lists.contains(u.role,roles)}" /> <label
-												th:text="${roles}">example</label>
+												th:text="${roles.name}">example</label>
 										</div>
 									</div>
 

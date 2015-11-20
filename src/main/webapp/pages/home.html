@@ -119,11 +119,11 @@
 
 			<!-- BEGIN BLOCKQUOTE BLOCK -->
 			<div class="row quote-v1 margin-bottom-30">
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<span>SUST AES: Most Easy way to take an exam &amp; give an
 						exam</span>
 				</div>
-				<div class="col-md-6 text-right">
+				<div class="col-md-4 text-right">
 					<a class="btn-transparent" href="/account/user/login"
 						th:href="@{/account/user/login}"><i
 						class="fa fa-rocket margin-right-10"></i>SIGN IN</a> <a
@@ -310,10 +310,12 @@
 <!-- END BODY -->
 <script type="text/javascript">
 	jQuery(document).ready(function() {
+		window.onbeforeunload = function() {
+			return "6656";
+		};
 		Layout.init();
 		Layout.initOWL();
 		RevosliderInit.initRevoSlider();
-		Layout.initTwitter();
 		//Layout.initFixHeaderWithPreHeader(); /* Switch On Header Fixing (only if you have pre-header) */
 		//Layout.initNavScrolling(); 
 	});
