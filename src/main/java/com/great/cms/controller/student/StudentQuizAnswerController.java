@@ -56,10 +56,12 @@ public class StudentQuizAnswerController {
 		QuizRegistration quizReg = quizRegService
 				.getQuizRegistrationByStudentAndQuiz(student, quizId);
 		uiModel.addAttribute("quizRegistration", quizReg);
+		
 		if (quizReg.getIsAttended() == true) {
 			redirectAttr.addAttribute("quizId", quizId);
 			return "redirect:/student/quiz/view/{quizId}";
 		}
+		
 		return "student/quiz/quiz_answer_sheet";
 	}
 

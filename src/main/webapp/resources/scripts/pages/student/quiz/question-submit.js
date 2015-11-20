@@ -1,6 +1,6 @@
 function submitExam(totalQuestion) {
 
-	//console.log('Answer Wraping');
+	// console.log('Answer Wraping');
 	var quizRegistrationId = document.getElementById('quizRegistrationId').value;
 	var studentQuestionAnswers = {};
 	var questionAnswers = [];
@@ -28,7 +28,7 @@ function submitExam(totalQuestion) {
 	saveQuestion(studentQuestionAnswers);
 	var quizId = document.getElementById('quizId').value;
 	showSubmitModal(quizId);
-	//console.log('Answer Wraped!');
+	// console.log('Answer Wraped!');
 }
 
 function redirectURL(quizId) {
@@ -83,7 +83,7 @@ function loadDESCanswerBody(questionLabel) {
 	console.log(questionLabel);
 	var options = [];
 	var opt = {};
-	//console.log(questionLabel + '-desc-answer-text');
+	// console.log(questionLabel + '-desc-answer-text');
 	opt["answer"] = document
 			.getElementById(questionLabel + '-desc-answer-text').value;
 	options.push(opt);
@@ -92,7 +92,7 @@ function loadDESCanswerBody(questionLabel) {
 
 function saveQuestion(studentQuestionAnswers) {
 	var url = '/sustaes/student/quiz/answer/save';
-//	console.log('STUDENT ANSWERS SUBMITTING REQUEST');
+	// console.log('STUDENT ANSWERS SUBMITTING REQUEST');
 
 	$.ajax({
 		method : "POST",

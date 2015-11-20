@@ -130,18 +130,18 @@
 																	<div class="task-config">
 																		<div class="task-config-btn btn-group"
 																			th:switch="${q.questionType.name()}">
-<!-- 																			<a type="button" href="#form_modal10" th:case="MCQ" -->
-<!-- 																				data-toggle="modal"> <i class="fa fa-eye"></i> -->
-<!-- 																				Review -->
-<!-- 																			</a> -->
-																			 <a type="button" href="#form_modal11"
+																			<!-- 																			<a type="button" href="#form_modal10" th:case="MCQ" -->
+																			<!-- 																				data-toggle="modal"> <i class="fa fa-eye"></i> -->
+																			<!-- 																				Review -->
+																			<!-- 																			</a> -->
+																			<a type="button" href="#form_modal11"
 																				th:case="DESCRIPTIVE" data-toggle="modal"> <i
 																				class="fa fa-eye"></i> Review
 																			</a>
-<!-- 																			 <a type="button" href="#form_modal12" -->
-<!-- 																				th:case="FILL_IN_THE_GAPS" data-toggle="modal"> -->
-<!-- 																				<i class="fa fa-eye"></i> Review -->
-<!-- 																			</a> -->
+																			<!-- 																			 <a type="button" href="#form_modal12" -->
+																			<!-- 																				th:case="FILL_IN_THE_GAPS" data-toggle="modal"> -->
+																			<!-- 																				<i class="fa fa-eye"></i> Review -->
+																			<!-- 																			</a> -->
 																		</div>
 																	</div>
 																</li>
@@ -156,15 +156,25 @@
 										</div>
 
 									</div>
+									<div class="row">
+										<div class="col-md-offset-3 col-md-7 col-sm-12">
+											<h4>
+												Please, Use Student Quiz Controller <a
+													th:href="@{'/teacher/quiz/students/'+${quiz.quizId}}">
+													View </a> To Publish Result!
+											</h4>
+										</div>
+
+									</div>
 									<div class="form-actions">
 										<div class="row">
 
 
 											<div class="col-md-offset-6 col-md-3">
 
-												<a type="button" th:href="@{/teacher/quiz/dashboard}" class="btn green">Cancel</a>
-												<a type="button" href="#" disabled="disabled" class="btn green">Review
-													Complete</a>
+												<a type="button" th:href="@{/teacher/quiz/dashboard}"
+													class="btn green">Cancel</a> <a type="button" href="#"
+													disabled="disabled" class="btn green">Review Complete</a>
 											</div>
 										</div>
 									</div>

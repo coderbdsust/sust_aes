@@ -51,6 +51,7 @@ public class TeacherQuizReviewController {
 		}
 		System.out.println("");
 		uiModel.addAttribute("questionList", questionList);
+		uiModel.addAttribute("quiz", quiz);
 
 		return "teacher/review/quiz_review";
 	}
