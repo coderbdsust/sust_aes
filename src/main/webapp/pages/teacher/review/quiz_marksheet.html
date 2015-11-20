@@ -19,9 +19,15 @@
 								<div class="portlet box"
 									style="background: rgba(0, 128, 0, 0.35);">
 									<div class="portlet-title">
-										<div class="caption">
-											<!-- 											<i class="fa fa-globe"></i> -->
-											STUDENT MARKSHEET
+										<div class="row">
+											<div class="col-md-3">
+												<h4>
+													<strong>STUDENT MARKSHEET</strong>
+												</h4>
+											</div>
+											<div class="col-md-offset-2 col-md-7">
+												<h4 th:text="'[ '+${quiz.teachesId.courseId.courseCode}+' ] [ SESSION: '+${quiz.teachesId.courseId.session}+' ] [ '+${quiz.quizTitle.toUpperCase()}+' ]'">[CSE333], DATABSE QUIZ LAB</h4>
+											</div>
 										</div>
 
 									</div>
@@ -51,6 +57,7 @@
 													<th>Registration</th>
 													<th class="center">Attend Time</th>
 													<th class="center">Submission Time</th>
+													<th class="center">Attended</th>
 													<th class="center">Obtain Marks</th>
 
 												</tr>
@@ -68,6 +75,8 @@
 													<td th:if="${qr.submitTime!=null}"
 														th:text="${#dates.format(qr?.submitTime, 'dd MMM yyyy HH:mm a')}"></td>
 													<td th:if="${qr.submitTime==null}"></td>
+													<td th:if="${qr.isAttended}==false" style=" font-weight: bold; color:red">FALSE</td>
+													<td th:if="${qr.isAttended}==true"  style=" font-weight: bold; color:green">TRUE</td>
 													<td class="center"
 														th:text="${qr?.getObtainMarks()}+'/'+${totalMarks}"></td>
 												</tr>

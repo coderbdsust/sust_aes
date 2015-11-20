@@ -42,7 +42,7 @@ public class TeacherQuizStudentController {
 	public String showStdQuizRegPage(Principal principal,
 			@PathVariable Long quizId, Model uiModel) {
 		System.out.println("/teacher/quiz/student/" + quizId);
-		Quiz quiz = new Quiz(quizId);
+		Quiz quiz = quizService.getQuiz(quizId);
 		List<QuizRegistration> quizRegList = quizRegService
 				.getQuizRegistrationsByQuiz(quiz);
 		uiModel.addAttribute("quizRegList", quizRegList);

@@ -65,13 +65,14 @@ public class TeacherQuizReviewController {
 	public String showStdQuizMarksheet(@PathVariable Long id, Model uiModel,
 			RedirectAttributes redirectAttr) {
 		System.out.println("/teacher/quiz/marksheet " + id);
-		Quiz quiz = new Quiz(id);
+		Quiz quiz = quizService.getQuiz(id);
 		List<Question> questions = questionService.findAssignedQuestions(quiz);
 		double totalMarks = QuestionUtil.getInstance().getTotalMarks(questions);
 		List<QuizRegistration> quizRegistrationList = quizRegService
 				.getQuizRegistrationsByQuiz(quiz);
 		uiModel.addAttribute("quizRegistrationList", quizRegistrationList);
 		uiModel.addAttribute("totalMarks", totalMarks);
+		uiModel.addAttribute("quiz", quiz);
 		
 		return "teacher/review/quiz_marksheet";
 	}

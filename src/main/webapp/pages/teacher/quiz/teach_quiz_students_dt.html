@@ -22,9 +22,15 @@
 								<div class="portlet box"
 									style="background: rgba(0, 128, 0, 0.35);">
 									<div class="portlet-title">
-										<div class="caption" >
-											<!-- 											<i class="fa fa-globe"></i> -->
-											QUIZ CONTROLLER : STUDENT LIST
+										<div class="row">
+											<div class="col-md-4">
+												<h4>
+													<strong>QUIZ CONTROLLER: STUDENT LIST</strong>
+												</h4>
+											</div>
+											<div class="col-md-offset-1 col-md-7">
+												<h4 th:text="'[ '+${quiz?.teachesId?.courseId?.courseCode}+' ] [ SESSION: '+${quiz?.teachesId?.courseId?.session}+' ] [ '+${quiz?.quizTitle?.toUpperCase()}+' ]'">[CSE333], DATABSE QUIZ LAB</h4>
+											</div>
 										</div>
 
 									</div>
@@ -132,39 +138,39 @@
 						<!-- END SAMPLE TABLE PORTLET-->
 					</div>
 					<div id="success-modal" class="modal fade" role="dialog"
-								aria-labelledby="myModalLabel10" aria-hidden="true">
-								<div class="modal-dialog">
+						aria-labelledby="myModalLabel10" aria-hidden="true">
+						<div class="modal-dialog">
 
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true"></button>
-									</div>
-									<div class="note note-success">
-										<h4 class="block">Infomation Updated Successfully</h4>
-									</div>
-									<div class="modal-footer" aria-hidden="true">
-										<button class="btn default" data-dismiss="modal"
-											aria-hidden="true">Close</button>
-									</div>
-								</div>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true"></button>
 							</div>
-							<div id="error-modal" class="modal fade" role="dialog"
-								aria-labelledby="myModalLabel10" aria-hidden="true">
-								<div class="modal-dialog">
+							<div class="note note-success">
+								<h4 class="block">Infomation Updated Successfully</h4>
+							</div>
+							<div class="modal-footer" aria-hidden="true">
+								<button class="btn default" data-dismiss="modal"
+									aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</div>
+					<div id="error-modal" class="modal fade" role="dialog"
+						aria-labelledby="myModalLabel10" aria-hidden="true">
+						<div class="modal-dialog">
 
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true"></button>
-									</div>
-									<div class="note note-danger">
-										<h4 class="block">Sorry, Information Couldn't Updated!</h4>
-									</div>
-									<div class="modal-footer" aria-hidden="true">
-										<button class="btn default" data-dismiss="modal"
-											aria-hidden="true">Close</button>
-									</div>
-								</div>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true"></button>
 							</div>
+							<div class="note note-danger">
+								<h4 class="block">Sorry, Information Couldn't Updated!</h4>
+							</div>
+							<div class="modal-footer" aria-hidden="true">
+								<button class="btn default" data-dismiss="modal"
+									aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
