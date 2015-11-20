@@ -89,11 +89,6 @@
 		</div>
 	</section>
 </body>
-<script>
-	jQuery(document).ready(function() {
-		$(document).on("keydown", disableReload);
-	});
-</script>
 
 </html>
 
@@ -101,6 +96,25 @@
 	jQuery(document).ready(function() {
 		isQuestionUpdationReady();
 	});
+	
+	document.onkeydown = fkey;
+	var wasPressed = false;
+	
+	function fkey(e) {
+		e = e || window.event;
+		if (wasPressed)
+			return;
+		
+		if (e.keyCode == 116) {
+			alert("You can't reload page!");
+			wasPressed = true;
+		}
+		
+		if (wasPressed) {
+			e.preventDefault();
+			wasPressed = false;
+		}
+	}
 </script>
 
 

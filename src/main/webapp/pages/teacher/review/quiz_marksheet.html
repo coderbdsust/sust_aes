@@ -26,7 +26,9 @@
 												</h4>
 											</div>
 											<div class="col-md-offset-1 col-md-8">
-												<h4 th:text="'[ '+${quiz?.teachesId?.courseId?.courseCode}+' ] [ SESSION: '+${quiz?.teachesId?.courseId?.session}+' ] [ '+${quiz?.quizTitle?.toUpperCase()}+' ]'">[CSE333], DATABSE QUIZ LAB</h4>
+												<h4
+													th:text="'[ '+${quiz?.teachesId?.courseId?.courseCode}+' ] [ SESSION: '+${quiz?.teachesId?.courseId?.session}+' ] [ '+${quiz?.quizTitle?.toUpperCase()}+' ]'">[CSE333],
+													DATABSE QUIZ LAB</h4>
 											</div>
 										</div>
 
@@ -36,14 +38,9 @@
 											<div class="row">
 												<div class="col-md-offset-6 col-md-6">
 													<div class="btn-group pull-right">
-														<button class="btn dropdown-toggle" data-toggle="dropdown">
-															Tools <i class="fa fa-angle-down"></i>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="javascript:;"> Print </a></li>
-															<li><a href="javascript:;"> Save as PDF </a></li>
-															<li><a href="javascript:;"> Export to Excel </a></li>
-														</ul>
+													<a class="btn green"
+															th:href="@{'/teacher/quiz/students/'+${quiz.quizId}}">
+															Quiz Controller </a>
 													</div>
 												</div>
 											</div>
@@ -75,8 +72,10 @@
 													<td th:if="${qr.submitTime!=null}"
 														th:text="${#dates.format(qr?.submitTime, 'dd MMM yyyy HH:mm a')}"></td>
 													<td th:if="${qr.submitTime==null}"></td>
-													<td th:if="${qr.isAttended}==false" style=" font-weight: bold; color:red">FALSE</td>
-													<td th:if="${qr.isAttended}==true"  style=" font-weight: bold; color:green">TRUE</td>
+													<td th:if="${qr.isAttended}==false"
+														style="font-weight: bold; color: red">FALSE</td>
+													<td th:if="${qr.isAttended}==true"
+														style="font-weight: bold; color: green">TRUE</td>
 													<td class="center"
 														th:text="${qr?.getObtainMarks()}+'/'+${totalMarks}"></td>
 												</tr>

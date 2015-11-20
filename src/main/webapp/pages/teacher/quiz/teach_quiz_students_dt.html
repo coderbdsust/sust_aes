@@ -29,7 +29,9 @@
 												</h4>
 											</div>
 											<div class="col-md-offset-1 col-md-7">
-												<h4 th:text="'[ '+${quiz?.teachesId?.courseId?.courseCode}+' ] [ SESSION: '+${quiz?.teachesId?.courseId?.session}+' ] [ '+${quiz?.quizTitle?.toUpperCase()}+' ]'">[CSE333], DATABSE QUIZ LAB</h4>
+												<h4
+													th:text="'[ '+${quiz?.teachesId?.courseId?.courseCode}+' ] [ SESSION: '+${quiz?.teachesId?.courseId?.session}+' ] [ '+${quiz?.quizTitle?.toUpperCase()}+' ]'">[CSE333],
+													DATABSE QUIZ LAB</h4>
 											</div>
 										</div>
 
@@ -39,13 +41,10 @@
 											<div class="row">
 												<div class="col-md-offset-6 col-md-6">
 													<div class="btn-group pull-right">
-														<button class="btn dropdown-toggle" data-toggle="dropdown">
-															Tools <i class="fa fa-angle-down"></i>
-														</button>
-														<ul class="dropdown-menu pull-right">
-															<li><a href="javascript:;"> Print </a></li>
-															<li><a href="javascript:;"> Save as PDF </a></li>
-															<li><a href="javascript:;"> Export to Excel </a></li>
+														
+														<ul class="pull-right">
+															<a class="btn green" th:href="@{'/teacher/quiz/marksheet/'+${quiz.quizId}}">
+																Marksheet</a>
 														</ul>
 													</div>
 												</div>
