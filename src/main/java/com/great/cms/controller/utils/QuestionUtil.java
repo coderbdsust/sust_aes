@@ -13,8 +13,8 @@ public class QuestionUtil {
 		return ownInstance;
 	}
 
-	public int getTotalMarks(List<Question> assignedQuestions) {
-		int totalMarks = 0;
+	public double getTotalMarks(List<Question> assignedQuestions) {
+		double totalMarks = 0;
 		for (Question q : assignedQuestions) {
 			totalMarks += q.getQuestionMarks();
 		}

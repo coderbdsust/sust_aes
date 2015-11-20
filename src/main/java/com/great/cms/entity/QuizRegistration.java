@@ -35,150 +35,162 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Entity
 @Table(name = "quiz_registration")
 @NamedQueries({
-    @NamedQuery(name = "QuizRegistration.findAll", query = "SELECT q FROM QuizRegistration q"),
-    @NamedQuery(name = "QuizRegistration.findByQuizRegistrationId", query = "SELECT q FROM QuizRegistration q WHERE q.quizRegistrationId = :quizRegistrationId"),
-    @NamedQuery(name = "QuizRegistration.findByAttendTime", query = "SELECT q FROM QuizRegistration q WHERE q.attendTime = :attendTime"),
-    @NamedQuery(name = "QuizRegistration.findBySubmitTime", query = "SELECT q FROM QuizRegistration q WHERE q.submitTime = :submitTime"),
-    @NamedQuery(name = "QuizRegistration.findByIsRegApproved", query = "SELECT q FROM QuizRegistration q WHERE q.isRegApproved = :isRegApproved"),
-    @NamedQuery(name = "QuizRegistration.findByIsAttended", query = "SELECT q FROM QuizRegistration q WHERE q.isAttended = :isAttended"),
-    @NamedQuery(name = "QuizRegistration.findByIsExamReviewed", query = "SELECT q FROM QuizRegistration q WHERE q.isExamReviewed = :isExamReviewed")})
+		@NamedQuery(name = "QuizRegistration.findAll", query = "SELECT q FROM QuizRegistration q"),
+		@NamedQuery(name = "QuizRegistration.findByQuizRegistrationId", query = "SELECT q FROM QuizRegistration q WHERE q.quizRegistrationId = :quizRegistrationId"),
+		@NamedQuery(name = "QuizRegistration.findByAttendTime", query = "SELECT q FROM QuizRegistration q WHERE q.attendTime = :attendTime"),
+		@NamedQuery(name = "QuizRegistration.findBySubmitTime", query = "SELECT q FROM QuizRegistration q WHERE q.submitTime = :submitTime"),
+		@NamedQuery(name = "QuizRegistration.findByIsRegApproved", query = "SELECT q FROM QuizRegistration q WHERE q.isRegApproved = :isRegApproved"),
+		@NamedQuery(name = "QuizRegistration.findByIsAttended", query = "SELECT q FROM QuizRegistration q WHERE q.isAttended = :isAttended"),
+		@NamedQuery(name = "QuizRegistration.findByIsExamReviewed", query = "SELECT q FROM QuizRegistration q WHERE q.isExamReviewed = :isExamReviewed") })
 public class QuizRegistration implements DomainObject, Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "quiz_registration_id")
-    private Long quizRegistrationId;
-    @Column(name = "attend_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date attendTime;
-    @Column(name = "submit_time")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date submitTime;
-    @Basic(optional = false)
-    @Column(name = "is_reg_approved")
-    private boolean isRegApproved;
-    @Basic(optional = false)
-    @Column(name = "is_attended")
-    private boolean isAttended;
-    @Basic(optional = false)
-    @Column(name = "is_exam_reviewed")
-    private boolean isExamReviewed;
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quizRegistrationId")
-    private List<QuestionAnswer> questionAnswerList;
-    @JoinColumn(name = "quiz_id", referencedColumnName = "quiz_id")
-    @ManyToOne(optional = false)
-    private Quiz quizId;
-    @JoinColumn(name = "course_reg_id", referencedColumnName = "course_reg_id")
-    @ManyToOne(optional = false)
-    private CourseRegistration courseRegId;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@Basic(optional = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "quiz_registration_id")
+	private Long quizRegistrationId;
+	@Column(name = "attend_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date attendTime;
+	@Column(name = "submit_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date submitTime;
+	@Basic(optional = false)
+	@Column(name = "is_reg_approved")
+	private boolean isRegApproved;
+	@Basic(optional = false)
+	@Column(name = "is_attended")
+	private boolean isAttended;
+	@Basic(optional = false)
+	@Column(name = "is_exam_reviewed")
+	private boolean isExamReviewed;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "quizRegistrationId")
+	private List<QuestionAnswer> questionAnswerList;
+	@JoinColumn(name = "quiz_id", referencedColumnName = "quiz_id")
+	@ManyToOne(optional = false)
+	private Quiz quizId;
+	@JoinColumn(name = "course_reg_id", referencedColumnName = "course_reg_id")
+	@ManyToOne(optional = false)
+	private CourseRegistration courseRegId;
 
-    public QuizRegistration() {
-    }
+	public QuizRegistration() {
+	}
 
-    public QuizRegistration(Long quizRegistrationId) {
-        this.quizRegistrationId = quizRegistrationId;
-    }
+	public QuizRegistration(Long quizRegistrationId) {
+		this.quizRegistrationId = quizRegistrationId;
+	}
 
-    public QuizRegistration(Long quizRegistrationId, boolean isRegApproved, boolean isAttended, boolean isExamReviewed) {
-        this.quizRegistrationId = quizRegistrationId;
-        this.isRegApproved = isRegApproved;
-        this.isAttended = isAttended;
-        this.isExamReviewed = isExamReviewed;
-    }
+	public QuizRegistration(Long quizRegistrationId, boolean isRegApproved,
+			boolean isAttended, boolean isExamReviewed) {
+		this.quizRegistrationId = quizRegistrationId;
+		this.isRegApproved = isRegApproved;
+		this.isAttended = isAttended;
+		this.isExamReviewed = isExamReviewed;
+	}
 
-    public Long getQuizRegistrationId() {
-        return quizRegistrationId;
-    }
+	public Long getQuizRegistrationId() {
+		return quizRegistrationId;
+	}
 
-    public void setQuizRegistrationId(Long quizRegistrationId) {
-        this.quizRegistrationId = quizRegistrationId;
-    }
+	public void setQuizRegistrationId(Long quizRegistrationId) {
+		this.quizRegistrationId = quizRegistrationId;
+	}
 
-    public Date getAttendTime() {
-        return attendTime;
-    }
+	public Date getAttendTime() {
+		return attendTime;
+	}
 
-    public void setAttendTime(Date attendTime) {
-        this.attendTime = attendTime;
-    }
+	public void setAttendTime(Date attendTime) {
+		this.attendTime = attendTime;
+	}
 
-    public Date getSubmitTime() {
-        return submitTime;
-    }
+	public Date getSubmitTime() {
+		return submitTime;
+	}
 
-    public void setSubmitTime(Date submitTime) {
-        this.submitTime = submitTime;
-    }
+	public void setSubmitTime(Date submitTime) {
+		this.submitTime = submitTime;
+	}
 
-    public boolean getIsRegApproved() {
-        return isRegApproved;
-    }
+	public boolean getIsRegApproved() {
+		return isRegApproved;
+	}
 
-    public void setIsRegApproved(boolean isRegApproved) {
-        this.isRegApproved = isRegApproved;
-    }
+	public void setIsRegApproved(boolean isRegApproved) {
+		this.isRegApproved = isRegApproved;
+	}
 
-    public boolean getIsAttended() {
-        return isAttended;
-    }
+	public boolean getIsAttended() {
+		return isAttended;
+	}
 
-    public void setIsAttended(boolean isAttended) {
-        this.isAttended = isAttended;
-    }
+	public void setIsAttended(boolean isAttended) {
+		this.isAttended = isAttended;
+	}
 
-    public boolean getIsExamReviewed() {
-        return isExamReviewed;
-    }
+	public boolean getIsExamReviewed() {
+		return isExamReviewed;
+	}
 
-    public void setIsExamReviewed(boolean isExamReviewed) {
-        this.isExamReviewed = isExamReviewed;
-    }
+	public void setIsExamReviewed(boolean isExamReviewed) {
+		this.isExamReviewed = isExamReviewed;
+	}
 
-    public List<QuestionAnswer> getQuestionAnswerList() {
-        return questionAnswerList;
-    }
+	public List<QuestionAnswer> getQuestionAnswerList() {
+		return questionAnswerList;
+	}
 
-    public void setQuestionAnswerList(List<QuestionAnswer> questionAnswerList) {
-        this.questionAnswerList = questionAnswerList;
-    }
+	public void setQuestionAnswerList(List<QuestionAnswer> questionAnswerList) {
+		this.questionAnswerList = questionAnswerList;
+	}
 
-    public Quiz getQuizId() {
-        return quizId;
-    }
+	public Quiz getQuizId() {
+		return quizId;
+	}
 
-    public void setQuizId(Quiz quizId) {
-        this.quizId = quizId;
-    }
+	public void setQuizId(Quiz quizId) {
+		this.quizId = quizId;
+	}
 
-    public CourseRegistration getCourseRegId() {
-        return courseRegId;
-    }
+	public CourseRegistration getCourseRegId() {
+		return courseRegId;
+	}
 
-    public void setCourseRegId(CourseRegistration courseRegId) {
-        this.courseRegId = courseRegId;
-    }
+	public void setCourseRegId(CourseRegistration courseRegId) {
+		this.courseRegId = courseRegId;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (quizRegistrationId != null ? quizRegistrationId.hashCode() : 0);
-        return hash;
-    }
+	public double getObtainMarks() {
+		double marks = 0.0;
+		for (QuestionAnswer q : questionAnswerList) {
+			marks += q.getMarks();
+		}
+		return marks;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof QuizRegistration)) {
-            return false;
-        }
-        QuizRegistration other = (QuizRegistration) object;
-        if ((this.quizRegistrationId == null && other.quizRegistrationId != null) || (this.quizRegistrationId != null && !this.quizRegistrationId.equals(other.quizRegistrationId))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (quizRegistrationId != null ? quizRegistrationId.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are
+		// not set
+		if (!(object instanceof QuizRegistration)) {
+			return false;
+		}
+		QuizRegistration other = (QuizRegistration) object;
+		if ((this.quizRegistrationId == null && other.quizRegistrationId != null)
+				|| (this.quizRegistrationId != null && !this.quizRegistrationId
+						.equals(other.quizRegistrationId))) {
+			return false;
+		}
+		return true;
+	}
 
 	@Override
 	public String toString() {
@@ -189,6 +201,4 @@ public class QuizRegistration implements DomainObject, Serializable {
 				+ ", quizId=" + quizId + ", courseRegId=" + courseRegId + "]";
 	}
 
-   
-    
 }

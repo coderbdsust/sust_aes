@@ -108,7 +108,7 @@ public class QuizController {
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(savedQuiz);
 
-		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
+		double totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
 		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);

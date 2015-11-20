@@ -77,6 +77,7 @@ public class TeacherQuizStudentController {
 			RedirectAttributes redirectAttr) {
 		System.out.println("/teacher/quiz/students/api/approve "
 				+ quizRegistration);
+		
 		QuizRegistration savedQuizReg = quizRegService
 				.getQuizRegistrationById(quizRegistration
 						.getQuizRegistrationId());

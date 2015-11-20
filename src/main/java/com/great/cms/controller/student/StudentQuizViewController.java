@@ -58,7 +58,7 @@ public class StudentQuizViewController {
 		Course course = quiz.getTeachesId().getCourseId();
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(quiz);
-		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
+		double totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
 		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);
@@ -123,7 +123,7 @@ public class StudentQuizViewController {
 				.getQuestionAnswersByQuizRegistration(quizReg);
 		List<Question> assignedQuestions = questionService
 				.findAssignedQuestions(quiz);
-		long totalMarks = QuestionUtil.getInstance().getTotalMarks(
+		double totalMarks = QuestionUtil.getInstance().getTotalMarks(
 				assignedQuestions);
 		int totalQuestions = QuestionUtil.getInstance().countTotalQuestions(
 				assignedQuestions);

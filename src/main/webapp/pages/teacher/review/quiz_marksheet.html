@@ -4,9 +4,6 @@
 	layout:decorator="layout/main">
 <head>
 <title>Quiz :: Marksheet</title>
-<script
-	th:src="@{/resources/scripts/pages/teacher/quiz/quiz-registration.js}"
-	type="text/javascript"></script>
 </head>
 <body>
 	<section layout:fragment="body-content">
@@ -22,7 +19,7 @@
 								<div class="portlet box"
 									style="background: rgba(0, 128, 0, 0.35);">
 									<div class="portlet-title">
-										<div class="caption" >
+										<div class="caption">
 											<!-- 											<i class="fa fa-globe"></i> -->
 											STUDENT MARKSHEET
 										</div>
@@ -55,75 +52,30 @@
 													<th class="center">Attend Time</th>
 													<th class="center">Submission Time</th>
 													<th class="center">Obtain Marks</th>
-													<th>Status</th>
+
 												</tr>
 											</thead>
-											<tbody th:each="qr,iter : ${quizRegList}">
-<!-- 												<tr class="odd gradeX"> -->
-<!-- 													<input type="hidden" th:value="${qr.quizRegistrationId}" -->
-<!-- 														th:id="'quizRegistrationId-'+${qr.quizRegistrationId}" /> -->
-<!-- 													<input type="hidden" -->
-<!-- 														th:value="${qr.courseRegId.courseRegId}" -->
-<!-- 														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" /> -->
-<!-- 													<input type="hidden" th:value="${qr.quizId.quizId}" -->
-<!-- 														th:id="'quizId.quizId-'+${qr.quizRegistrationId}" /> -->
-<!-- 													<input type="hidden" -->
-<!-- 														th:value="${qr.courseRegId.courseRegId}" -->
-<!-- 														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" /> -->
-<!-- 													<td th:text="${iter.index}+1">1</td> -->
-
-<!-- 													<td th:text="${qr.courseRegId.studentId.firstName}">Biswajit -->
-<!-- 														Debnath</td> -->
-<!-- 													<td>2011331009</td> -->
-<!-- 													<td class="form-group"><input type="checkbox" -->
-<!-- 														class="checkboxes" -->
-<!-- 														th:id="'isRegApproved-'+${qr.quizRegistrationId}" -->
-<!-- 														value="true" th:checked="${qr.isRegApproved}" /></td> -->
-<!-- 													<td class="form-group"><input type="checkbox" -->
-<!-- 														class="checkboxes" -->
-<!-- 														th:id="'isAttended-'+${qr.quizRegistrationId}" -->
-<!-- 														value="true" th:checked="${qr.isAttended}" /></td> -->
-<!-- 													<td class="center"><input type="checkbox" -->
-<!-- 														class="checkboxes" value="true" -->
-<!-- 														th:id="'isExamReviewed-'+${qr.quizRegistrationId}" -->
-<!-- 														th:checked="${qr.isExamReviewed}" /></td> -->
-<!-- 													<td class="center"><button -->
-<!-- 															class="btn default btn-xs green-stripe" -->
-<!-- 															th:onclick="'updateQuizReg('+${qr.quizRegistrationId}+')'">Update</button> -->
-<!-- 													</td> -->
-
-<!-- 												</tr> -->
+											<tbody th:each="qr,iter : ${quizRegistrationList}">
+												<tr class="odd gradeX">
+													<td th:text="${iter.index+1}"></td>
+													<td
+														th:text="${qr?.courseRegId?.studentId?.firstName?.toUpperCase()}">Biswajit
+														Debnath</td>
+													<td th:text="${qr?.courseRegId?.studentId?.registrationNo}">2011331009</td>
+													<td th:if="${qr.attendTime!=null}"
+														th:text="${#dates.format(qr?.attendTime, 'dd MMM yyyy HH:mm a')}"></td>
+													<td th:if="${qr.attendTime==null}"></td>
+													<td th:if="${qr.submitTime!=null}"
+														th:text="${#dates.format(qr?.submitTime, 'dd MMM yyyy HH:mm a')}"></td>
+													<td th:if="${qr.submitTime==null}"></td>
+													<td class="center"
+														th:text="${qr?.getObtainMarks()}+'/'+${totalMarks}"></td>
+												</tr>
 
 
 											</tbody>
 										</table>
-										<!-- 									<div class="row"> -->
-										<!-- 										<div class="col-md-12"> -->
-										<!-- 											<div class="row"> -->
-										<!-- 												<div class="col-md-1"> -->
-										<!-- 													# -->
-										<!-- 												</div> -->
-										<!-- 												<div class="col-md-1"> -->
-										<!-- 													Name -->
-										<!-- 												</div> -->
-										<!-- 												<div class="col-md-1"> -->
-										<!-- 													Registration -->
-										<!-- 												</div> -->
-										<!-- 												<div class="col-md-1"> -->
-										<!-- 													Approved -->
-										<!-- 												</div> -->
-										<!-- 												<div class="col-md-1"> -->
-										<!-- 													Quiz Completed -->
-										<!-- 												</div> -->
-										<!-- 												<div class="col-md-1"> -->
-										<!-- 													Exam Reviewed -->
-										<!-- 												</div> -->
-										<!-- 											</div> -->
-										<!-- 										</div> -->
-										<!-- 										<div class="col-md-12"> -->
 
-										<!-- 										</div> -->
-										<!-- 									</div> -->
 									</div>
 								</div>
 								<!-- END EXAMPLE TABLE PORTLET-->
@@ -132,39 +84,39 @@
 						<!-- END SAMPLE TABLE PORTLET-->
 					</div>
 					<div id="success-modal" class="modal fade" role="dialog"
-								aria-labelledby="myModalLabel10" aria-hidden="true">
-								<div class="modal-dialog">
+						aria-labelledby="myModalLabel10" aria-hidden="true">
+						<div class="modal-dialog">
 
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true"></button>
-									</div>
-									<div class="note note-success">
-										<h4 class="block">Infomation Updated Successfully</h4>
-									</div>
-									<div class="modal-footer" aria-hidden="true">
-										<button class="btn default" data-dismiss="modal"
-											aria-hidden="true">Close</button>
-									</div>
-								</div>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true"></button>
 							</div>
-							<div id="error-modal" class="modal fade" role="dialog"
-								aria-labelledby="myModalLabel10" aria-hidden="true">
-								<div class="modal-dialog">
+							<div class="note note-success">
+								<h4 class="block">Infomation Updated Successfully</h4>
+							</div>
+							<div class="modal-footer" aria-hidden="true">
+								<button class="btn default" data-dismiss="modal"
+									aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</div>
+					<div id="error-modal" class="modal fade" role="dialog"
+						aria-labelledby="myModalLabel10" aria-hidden="true">
+						<div class="modal-dialog">
 
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true"></button>
-									</div>
-									<div class="note note-danger">
-										<h4 class="block">Sorry, Information Couldn't Updated!</h4>
-									</div>
-									<div class="modal-footer" aria-hidden="true">
-										<button class="btn default" data-dismiss="modal"
-											aria-hidden="true">Close</button>
-									</div>
-								</div>
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true"></button>
 							</div>
+							<div class="note note-danger">
+								<h4 class="block">Sorry, Information Couldn't Updated!</h4>
+							</div>
+							<div class="modal-footer" aria-hidden="true">
+								<button class="btn default" data-dismiss="modal"
+									aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
