@@ -3,7 +3,7 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="layout/main">
 <head>
-<title>Quiz :: Student List</title>
+<title>Quiz :: Marksheet</title>
 <script
 	th:src="@{/resources/scripts/pages/teacher/quiz/quiz-registration.js}"
 	type="text/javascript"></script>
@@ -24,7 +24,7 @@
 									<div class="portlet-title">
 										<div class="caption" >
 											<!-- 											<i class="fa fa-globe"></i> -->
-											QUIZ CONTROLLER : STUDENT LIST
+											STUDENT MARKSHEET
 										</div>
 
 									</div>
@@ -52,47 +52,47 @@
 													<th>#</th>
 													<th>Name</th>
 													<th>Registration</th>
-													<th class="center">Q.Reg Approved</th>
-													<th class="center">Quiz Completed</th>
-													<th class="center">Exam Reviewed</th>
-													<th>Submit</th>
+													<th class="center">Attend Time</th>
+													<th class="center">Submission Time</th>
+													<th class="center">Obtain Marks</th>
+													<th>Status</th>
 												</tr>
 											</thead>
 											<tbody th:each="qr,iter : ${quizRegList}">
-												<tr class="odd gradeX">
-													<input type="hidden" th:value="${qr.quizRegistrationId}"
-														th:id="'quizRegistrationId-'+${qr.quizRegistrationId}" />
-													<input type="hidden"
-														th:value="${qr.courseRegId.courseRegId}"
-														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" />
-													<input type="hidden" th:value="${qr.quizId.quizId}"
-														th:id="'quizId.quizId-'+${qr.quizRegistrationId}" />
-													<input type="hidden"
-														th:value="${qr.courseRegId.courseRegId}"
-														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" />
-													<td th:text="${iter.index}+1">1</td>
+<!-- 												<tr class="odd gradeX"> -->
+<!-- 													<input type="hidden" th:value="${qr.quizRegistrationId}" -->
+<!-- 														th:id="'quizRegistrationId-'+${qr.quizRegistrationId}" /> -->
+<!-- 													<input type="hidden" -->
+<!-- 														th:value="${qr.courseRegId.courseRegId}" -->
+<!-- 														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" /> -->
+<!-- 													<input type="hidden" th:value="${qr.quizId.quizId}" -->
+<!-- 														th:id="'quizId.quizId-'+${qr.quizRegistrationId}" /> -->
+<!-- 													<input type="hidden" -->
+<!-- 														th:value="${qr.courseRegId.courseRegId}" -->
+<!-- 														th:id="'courseRegId.courseRegId-'+${qr.quizRegistrationId}" /> -->
+<!-- 													<td th:text="${iter.index}+1">1</td> -->
 
-													<td th:text="${qr.courseRegId.studentId.firstName}">Biswajit
-														Debnath</td>
-													<td>2011331009</td>
-													<td class="form-group"><input type="checkbox"
-														class="checkboxes"
-														th:id="'isRegApproved-'+${qr.quizRegistrationId}"
-														value="true" th:checked="${qr.isRegApproved}" /></td>
-													<td class="form-group"><input type="checkbox"
-														class="checkboxes"
-														th:id="'isAttended-'+${qr.quizRegistrationId}"
-														value="true" th:checked="${qr.isAttended}" /></td>
-													<td class="center"><input type="checkbox"
-														class="checkboxes" value="true"
-														th:id="'isExamReviewed-'+${qr.quizRegistrationId}"
-														th:checked="${qr.isExamReviewed}" /></td>
-													<td class="center"><button
-															class="btn default btn-xs green-stripe"
-															th:onclick="'updateQuizReg('+${qr.quizRegistrationId}+')'">Update</button>
-													</td>
+<!-- 													<td th:text="${qr.courseRegId.studentId.firstName}">Biswajit -->
+<!-- 														Debnath</td> -->
+<!-- 													<td>2011331009</td> -->
+<!-- 													<td class="form-group"><input type="checkbox" -->
+<!-- 														class="checkboxes" -->
+<!-- 														th:id="'isRegApproved-'+${qr.quizRegistrationId}" -->
+<!-- 														value="true" th:checked="${qr.isRegApproved}" /></td> -->
+<!-- 													<td class="form-group"><input type="checkbox" -->
+<!-- 														class="checkboxes" -->
+<!-- 														th:id="'isAttended-'+${qr.quizRegistrationId}" -->
+<!-- 														value="true" th:checked="${qr.isAttended}" /></td> -->
+<!-- 													<td class="center"><input type="checkbox" -->
+<!-- 														class="checkboxes" value="true" -->
+<!-- 														th:id="'isExamReviewed-'+${qr.quizRegistrationId}" -->
+<!-- 														th:checked="${qr.isExamReviewed}" /></td> -->
+<!-- 													<td class="center"><button -->
+<!-- 															class="btn default btn-xs green-stripe" -->
+<!-- 															th:onclick="'updateQuizReg('+${qr.quizRegistrationId}+')'">Update</button> -->
+<!-- 													</td> -->
 
-												</tr>
+<!-- 												</tr> -->
 
 
 											</tbody>

@@ -55,4 +55,12 @@ public class TeacherQuizReviewController {
 
 		return "teacher/review/quiz_review";
 	}
+	
+	@RequestMapping("/marksheet/{id}")
+	public String showStdQuizMarksheet(@PathVariable Long id, Model uiModel,
+			RedirectAttributes redirectAttr) {
+		
+
+		return "teacher/review/quiz_marksheet";
+	}
 }

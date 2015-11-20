@@ -27,7 +27,7 @@ import com.great.cms.service.TeachesService;
 
 @Controller
 @RequestMapping("/teacher/quiz")
-public class TeacherQuizController {
+public class TeacherQuizStudentController {
 
 	@Autowired
 	TeachesService teachesService;
@@ -38,32 +38,6 @@ public class TeacherQuizController {
 	@Autowired
 	QuestionAnswerService questionAnswerService;
 
-	@RequestMapping("/question/create")
-	public String showQuizQuestions(Model model) {
-		System.out.println("teacher/quiz/question/create");
-		return "teacher/quiz/quiz_question";
-	}
-
-	@RequestMapping("/dashboard")
-	public String showStdQuizDashboard(Model uiModel) {
-		System.out.println("/teacher/quiz/dashboard");
-		Teacher teacher = UserUtil.getInstance().getTeacher();
-		List<Quiz> quizList = new ArrayList<Quiz>();
-		List<Teaches> teachesList = teachesService.findByInstructorId(teacher);
-		// System.out.println("TeachesList Found!");
-		for (Teaches teaches : teachesList) {
-			List<Quiz> quizes = quizService.getQuizes(teaches);
-			// System.out.println("Quiz List Found!");
-			// System.out.println("Teaches " +
-			// teaches.getTeachesId()+": Quiz-Count: " + quizes.size());
-			if (!quizes.isEmpty())
-				quizList.addAll(quizes);
-		}
-		uiModel.addAttribute("quizList", quizList);
-		uiModel.addAttribute("teachesList", teachesList);
-		return "teacher/quiz/teach_quiz_dashboard";
-	}
-
 	@RequestMapping("/students/{quizId}")
 	public String showStdQuizRegPage(Principal principal,
 			@PathVariable Long quizId, Model uiModel) {
@@ -73,6 +47,7 @@ public class TeacherQuizController {
 				.getQuizRegistrationsByQuiz(quiz);
 		uiModel.addAttribute("quizRegList", quizRegList);
 		uiModel.addAttribute("quizRegistration", new QuizRegistration());
+		uiModel.addAttribute("quiz", quiz);
 		return "teacher/quiz/teach_quiz_students_dt";
 	}
 
@@ -105,7 +80,7 @@ public class TeacherQuizController {
 		QuizRegistration savedQuizReg = quizRegService
 				.getQuizRegistrationById(quizRegistration
 						.getQuizRegistrationId());
-		
+
 		quizRegistration.setAttendTime(savedQuizReg.getAttendTime());
 		quizRegistration.setSubmitTime(savedQuizReg.getSubmitTime());
 		quizRegService.saveOrUpdate(quizRegistration);
