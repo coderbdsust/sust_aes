@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout/main">
+<head>
+<title>Quiz :: Marksheet</title>
+</head>
+<body>
+	<section layout:fragment="body-content">
+		<div class="page-content-wrapper">
+			<div class="page-content">
+				<form th:action="@{/teacher/quiz/students/approve}"></form>
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-md-12">
+								<!-- BEGIN EXAMPLE TABLE PORTLET-->
+								<div class="portlet box"
+									style="background: rgba(0, 128, 0, 0.35);">
+									<div class="portlet-title">
+										<div class="row">
+											<div class="col-md-3">
+												<h4>
+													<strong>STUDENT MARKSHEET</strong>
+												</h4>
+											</div>
+											<div class="col-md-offset-1 col-md-8">
+												<h4
+													th:text="'[ '+${quiz?.teachesId?.courseId?.courseCode}+' ] [ SESSION: '+${quiz?.teachesId?.courseId?.session}+' ] [ '+${quiz?.quizTitle?.toUpperCase()}+' ]'">[CSE333],
+													DATABSE QUIZ LAB</h4>
+											</div>
+										</div>
+
+									</div>
+									<div class="portlet-body">
+										<div class="table-toolbar">
+											<div class="row">
+												<div class="col-md-offset-6 col-md-6">
+													<div class="btn-group pull-right">
+													<a class="btn green"
+															th:href="@{'/teacher/quiz/students/'+${quiz.quizId}}">
+															Quiz Controller </a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<table class="table table-striped table-bordered table-hover"
+											id="sample_1">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Name</th>
+													<th>Registration</th>
+													<th class="center">Attend Time</th>
+													<th class="center">Submission Time</th>
+													<th class="center">Attended</th>
+													<th class="center">Obtain Marks</th>
+
+												</tr>
+											</thead>
+											<tbody th:each="qr,iter : ${quizRegistrationList}">
+												<tr class="odd gradeX">
+													<td th:text="${iter.index+1}"></td>
+													<td
+														th:text="${qr?.courseRegId?.studentId?.firstName?.toUpperCase()}">Biswajit
+														Debnath</td>
+													<td th:text="${qr?.courseRegId?.studentId?.registrationNo}">2011331009</td>
+													<td th:if="${qr.attendTime!=null}"
+														th:text="${#dates.format(qr?.attendTime, 'dd MMM yyyy HH:mm a')}"></td>
+													<td th:if="${qr.attendTime==null}"></td>
+													<td th:if="${qr.submitTime!=null}"
+														th:text="${#dates.format(qr?.submitTime, 'dd MMM yyyy HH:mm a')}"></td>
+													<td th:if="${qr.submitTime==null}"></td>
+													<td th:if="${qr.isAttended}==false"
+														style="font-weight: bold; color: red">FALSE</td>
+													<td th:if="${qr.isAttended}==true"
+														style="font-weight: bold; color: green">TRUE</td>
+													<td class="center"
+														th:text="${qr?.getObtainMarks()}+'/'+${totalMarks}"></td>
+												</tr>
+
+
+											</tbody>
+										</table>
+
+									</div>
+								</div>
+								<!-- END EXAMPLE TABLE PORTLET-->
+							</div>
+						</div>
+						<!-- END SAMPLE TABLE PORTLET-->
+					</div>
+					<div id="success-modal" class="modal fade" role="dialog"
+						aria-labelledby="myModalLabel10" aria-hidden="true">
+						<div class="modal-dialog">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true"></button>
+							</div>
+							<div class="note note-success">
+								<h4 class="block">Infomation Updated Successfully</h4>
+							</div>
+							<div class="modal-footer" aria-hidden="true">
+								<button class="btn default" data-dismiss="modal"
+									aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</div>
+					<div id="error-modal" class="modal fade" role="dialog"
+						aria-labelledby="myModalLabel10" aria-hidden="true">
+						<div class="modal-dialog">
+
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true"></button>
+							</div>
+							<div class="note note-danger">
+								<h4 class="block">Sorry, Information Couldn't Updated!</h4>
+							</div>
+							<div class="modal-footer" aria-hidden="true">
+								<button class="btn default" data-dismiss="modal"
+									aria-hidden="true">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+

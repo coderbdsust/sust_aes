@@ -65,7 +65,7 @@ public class AdminController {
 		List<User> userList = userService.getUsers();
 		uiModel.addAttribute("userList", userList);
 		uiModel.addAttribute("user", new User());
-		return "admin/verify";
+		return "admin/verify_dt";
 
 	}
 

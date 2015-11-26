@@ -29,8 +29,10 @@ Role: Teacher
     	- 	Descriptive question
 
 3.	Exam Review & Result Publish
-4.	Verification : Course Registration
-5.	Answering student complain
+4.  Exam Result's Marksheet Generation
+5.	Verification : Course Registration
+6.	Answering student complain
+
 
 Role: Student
 --------------
@@ -51,13 +53,19 @@ Role: Teacher
 --------------
 1. Exam creation
 2. 3 Types of question creation in question bank for exam.
+3. Exam Creation
+4. Student Exam Permission
+5. Exam Result Publish and Generation
 
 Role: Student
 --------------
+1. Student Exam Request
+2. Student Exam Perticipation
 
 Bug
 =========================
 1. Form validation not added
+2. Exam Reloading Locking Need
 
 Technology:
 ------------
