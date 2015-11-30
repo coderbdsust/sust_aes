@@ -20,7 +20,6 @@ public class HomeController {
 	@RequestMapping({"/","/home","/index"})
 	public String showHome() {
 		log.info("/home");
-		log.debug("/home");
 		return "home";
 	}
 

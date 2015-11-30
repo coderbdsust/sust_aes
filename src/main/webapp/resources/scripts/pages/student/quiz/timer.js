@@ -6,19 +6,18 @@ function startTimer(duration, display, totalQuestion, submitted) {
 
 		minutes = (diff / 60) | 0;
 		seconds = (diff % 60) | 0;
-		var timerText;
+		var timerText = "Minute";
 
-		if (minutes <= 0 && seconds <= 0 && !submitted) {
+		if (minutes < 0 && seconds < 0 && !submitted) {
 			submitExam(totalQuestion);
 			submitted = true;
-			console.log('submitted');
+			console.log('Submitted');
 		} else if (minutes >= 0 && seconds >= 0 && !submitted) {
 			minutes = minutes < 10 ? "0" + minutes : minutes;
 			seconds = seconds < 10 ? "0" + seconds : seconds;
 			timerText = minutes < 1 ? " Minute" : " Minutes";
+			display.textContent = minutes + ":" + seconds + timerText;
 		}
-		display.textContent = minutes + ":" + seconds + timerText;
-
 	}
 	;
 	timer();
