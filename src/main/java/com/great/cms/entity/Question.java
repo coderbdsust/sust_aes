@@ -42,7 +42,6 @@ import com.great.cms.enums.QuestionType;
  */
 @Entity
 @Table(name = "question")
-@NamedQueries({ @NamedQuery(name = "Question.findAll", query = "SELECT q FROM Question q") })
 public class Question implements DomainObject, Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

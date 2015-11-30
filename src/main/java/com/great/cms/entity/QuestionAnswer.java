@@ -29,10 +29,12 @@ import javax.persistence.Table;
 public class QuestionAnswer implements DomainObject, Serializable {
 	 private static final long serialVersionUID = 1L;
 	    @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    @Basic(optional = false)
 	    @Column(name = "question_ans_id")
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long questionAnsId;
+	    @Column(name = "ans_reviewed")
+	    private Boolean ansReviewed=false;
 	    @Basic(optional = false)
 	    @Column(name = "answer_body")
 	    private String answerBody;
@@ -65,6 +67,14 @@ public class QuestionAnswer implements DomainObject, Serializable {
 
 	    public void setQuestionAnsId(Long questionAnsId) {
 	        this.questionAnsId = questionAnsId;
+	    }
+
+	    public Boolean getAnsReviewed() {
+	        return ansReviewed;
+	    }
+
+	    public void setAnsReviewed(Boolean ansReviewed) {
+	        this.ansReviewed = ansReviewed;
 	    }
 
 	    public String getAnswerBody() {
@@ -118,6 +128,8 @@ public class QuestionAnswer implements DomainObject, Serializable {
 	        }
 	        return true;
 	    }
+
+	   
 
 		@Override
 		public String toString() {

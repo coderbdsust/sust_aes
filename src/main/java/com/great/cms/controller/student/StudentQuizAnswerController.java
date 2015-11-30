@@ -56,12 +56,12 @@ public class StudentQuizAnswerController {
 		QuizRegistration quizReg = quizRegService
 				.getQuizRegistrationByStudentAndQuiz(student, quizId);
 		uiModel.addAttribute("quizRegistration", quizReg);
-		
+
 		if (quizReg.getIsAttended() == true) {
 			redirectAttr.addAttribute("quizId", quizId);
 			return "redirect:/student/quiz/view/{quizId}";
 		}
-		
+
 		return "student/quiz/quiz_answer_sheet";
 	}
 
@@ -102,9 +102,11 @@ public class StudentQuizAnswerController {
 			if (question.getQuestionType() == QuestionType.MCQ) {
 				result = QuestionAnswerSimulatorUtil.getInstance()
 						.isMCQAnswerCorrect(question, questionAnswer);
+				questionAnswer.setAnsReviewed(true);
 			} else if (question.getQuestionType() == QuestionType.FILL_IN_THE_GAPS) {
 				result = QuestionAnswerSimulatorUtil.getInstance()
 						.isFillInTheGapsAnswerCorrect(question, questionAnswer);
+				questionAnswer.setAnsReviewed(true);
 			}
 			if (result == true) {
 				System.out.println("[CORRECT] QID: " + question.getQuestionId()
