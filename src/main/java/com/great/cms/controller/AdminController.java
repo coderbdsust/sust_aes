@@ -32,6 +32,7 @@ public class AdminController {
 	private static final Logger log = LoggerFactory
 			.getLogger(AdminController.class);
 
+	
 	@Autowired
 	private UserService userService;
 	@Autowired
