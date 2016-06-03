@@ -101,12 +101,13 @@
 						name="j_password" />
 				</div>
 			</div>
-			
+
 			<div class="form-actions">
 				<!-- 				<label class="checkbox"> <input type="checkbox" -->
 				<!-- 					name="remember" value="1" /> Remember me -->
 				<!-- 				</label> -->
-				<img alt="" th:src="@{/resources/images/bg/1.jpg}" style="display:none;"/>
+				<img alt="" th:src="@{/resources/images/bg/1.jpg}"
+					style="display: none;" />
 				<button type="submit" class="btn blue pull-right">
 					Login <i class="m-icon-swapright m-icon-white"></i>
 				</button>
@@ -199,6 +200,23 @@
 			<!-- 			<div id="register_tnc_error"> -->
 			<!-- 			</div> -->
 			<!-- 		</div> -->
+
+			<div class="form-group">
+				<!-- 				<label class="col-md-3 control-label">Inline Radio</label> -->
+				<div class="col-md-offset-2 col-md-9">
+					<div class="radio-list">
+						<label class="radio-inline"> <input type="radio"
+							th:field="*{role}" name="optionsRadios26"
+							id="optionsRadios25" value="ROLE_TEACHER" /> Teacher
+						</label> <label class="radio-inline"> <input type="radio"
+							th:field="*{role}" name="optionsRadios26"
+							id="optionsRadios26" value="ROLE_STUDENT" /> Student
+						</label>
+
+					</div>
+				</div>
+			</div>
+
 			<div class="form-actions">
 				<button id="register-back-btn" type="button" class="btn">
 					<i class="m-icon-swapleft"></i> Back
@@ -265,9 +283,9 @@
 		type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
-		var relativeLoc=window.location;
+		var relativeLoc = window.location;
 		console.log(relativeLoc);
-		
+
 		jQuery(document).ready(
 				function() {
 					Metronic.init(); // init metronic core components
@@ -275,9 +293,8 @@
 					Login.init();
 					Demo.init();
 					// init background slide images
-					$.backstretch([
-					        "/sustaes/resources/img/1.png",
-					        "/sustaes/resources/img/2.png",
+					$.backstretch([ "/sustaes/resources/img/1.png",
+							"/sustaes/resources/img/2.png",
 							"/sustaes/resources/img/3.png",
 							"/sustaes/resources/img/4.png" ], {
 						fade : 1000,

@@ -6,6 +6,7 @@
 
 package com.great.cms.entity;
 
+import java.beans.PropertyEditorSupport;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
 import com.great.cms.enums.Role;
 import com.great.cms.security.utils.SimpleGrantedAuthority;
@@ -85,6 +88,8 @@ public class User implements DomainObject, UserDetails, Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
 	private List<Teacher> teacherList;
+
+	
 
 	public User() {
 	}
@@ -220,9 +225,8 @@ public class User implements DomainObject, UserDetails, Serializable {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", username=" + username
-				+ ", enabled=" + enabled
-				+ ", accountNonLocked=" + accountNonLocked
-				+ ", accountNonExpired=" + accountNonExpired
+				+ ", enabled=" + enabled + ", accountNonLocked="
+				+ accountNonLocked + ", accountNonExpired=" + accountNonExpired
 				+ ", credentialsNonExpired=" + credentialsNonExpired + "]";
 	}
 

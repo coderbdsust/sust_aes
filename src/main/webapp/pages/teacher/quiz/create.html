@@ -49,7 +49,7 @@
 											<div class="form-group">
 												<label class="control-label col-md-3">Course</label>
 												<div class="col-md-9">
-													<select name="teachesId.teachesId" class="form-control">
+													<select name="teachesId.teachesId"  class="form-control">
 														<option th:each="teaches : ${teachesList}"
 															th:value="${teaches.teachesId}"
 															th:text="'['+${teaches.courseId.courseCode}+'] '+${teaches.courseId.courseTitle}"></option>
