@@ -1,80 +1,69 @@
-[SUSTAES](https://github.com/coderbdsust/sust_aes) SUST-AUTOMATED EXAM SYSTEM
-========================================================================
-                                                           ALPHA VERSION
-                                           Website is not for public use
-                                                                    2015
-                     This software is distributed under the terms of the 
-                                                  SUST CSE own agreement
+# SUST - Automated Exam System
 
-==========================================================================================
-Core features
-==============
+This project is done under a Course Work in Shahjalal University of Science and Technology.
+## Project Background
 
-Role: Admin
-------------
-1.	Account verification & Role Setup for user.
-2.	Maintaining Exam Commitee.
-3.	Control all over the system.
-4.	Verify a course and assign the teacher of that course.
-5.	Assigning New course to the Semester.
+It's an web application initiated in 2015 where teacher can create online exam for student and student can register
+for the exam and give the exam. And all the exam can be evaulated automatically or manually. After
+finishing the evaulation, teacher can release the result and get the overall statistics of the course and exam.
+## Intro
 
+* Home Page
+![Home Page](/demo-img/home-page-v1.png)
 
-Role: Teacher
+## Features under various User Role
+
+### Admin
 --------------
-1.	Exam Creation
-2.	3 Types of question creation in the question bank for exam.
+
+* Account verification & Role setup for user
+* Maintaining exam commitee
+* Control all over the system
+* Verify a course and assign the teacher of that course
+* Assigning new course to the semester
+
+
+### Teacher
+--------------
+
+* Exam creation
+* Currently, 3 Types of question creation supported in the question bank for exam
 
    		-	Multiple question
     	-	Fill in the gaps
-    	- 	Descriptive question
+    	-	Descriptive question
 
-3.	Exam Review & Result Publish
-4.  Exam Result's Marksheet Generation
-5.	Verification : Course Registration
-6.	Answering student complain
+* Exam review & result publish
+* Exam result's marksheet generation
+* Verification  of course registration
+* Answering student's complain
 
 
-Role: Student
+### Student
 --------------
-1. Apply for a course
-2. Exam Participation
-3. Exam Statistics
-4. Online complain
 
+* Apply or register for a course
+* Exam participation
+* Exam statistics
+* Online complain
 
-Implemented Features
-====================
+## Technology
 
-Role: Admin
--------------
-1. Account verification and Role Setup.
+* [Java](https://www.oracle.com/java/technologies/downloads/ "JDK Homepage")
+* [Spring Framework - Version 3](https://spring.io/ "Spring Framework Homepage")
+* [Hibernate](https://hibernate.org/ "Hibernate Homepage")
+* [MySQL](https://www.mysql.com/ "MySQL Homepage")
+* [Thymeleaf](https://www.thymeleaf.org/ "Thymeleaf Homepage")
+* [jQuery](https://jquery.com/ "jQuery Homepage")
+* [Metronic Admin Theme](https://keenthemes.com/metronic/ "Metronic Homepage")
+## Versioning
 
-Role: Teacher
---------------
-1. Exam creation
-2. 3 Types of question creation in question bank for exam.
-3. Exam Creation
-4. Student Exam Permission
-5. Exam Result Publish and Generation
+We used @Git for versioning.
 
-Role: Student
---------------
-1. Student Exam Request
-2. Student Exam Perticipation
+## Developers
 
-Bug
-=========================
-1. Form validation not added
-2. Exam Reloading Locking Need
-
-Technology:
-------------
-
-1. Spring 3
-2. Hibernate
-3. Thymeleaf
-4. jQuery
-5. Maven Build Tools
+* [Sajid Shahriar](https://www.linkedin.com/in/raggedycoder-1993/ "Sajid Shahriar's LinkedIn Profile")
+* [Biswajit Debnath](https://www.linkedin.com/in/coderbd/ "Biswajit Debnath's LinkedIn Profile")
 
 
 
