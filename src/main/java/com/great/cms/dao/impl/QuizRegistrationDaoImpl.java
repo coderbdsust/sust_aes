@@ -10,11 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.great.cms.dao.QuizRegistrationDao;
 import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Quiz;
-import com.great.cms.entity.QuizQuestion;
 import com.great.cms.entity.QuizRegistration;
 
 @Repository("QuizRegistrationDao")
-
 public class QuizRegistrationDaoImpl extends
 		GenericDaoImpl<QuizRegistration, Long> implements QuizRegistrationDao {
 
@@ -33,10 +31,7 @@ public class QuizRegistrationDaoImpl extends
 		query.setParameter("quiz", quiz);
 		List<QuizRegistration> quizRegistrations = query.getResultList();
 		if (null != quizRegistrations && quizRegistrations.size() == 1) {
-			/*
-			 * This line 
-			 */
-			quizRegistrations.get(0).getQuestionAnswerList().size();/*Line added for removing lazy exception*/
+			quizRegistrations.get(0).getQuestionAnswerList().size();
 			return quizRegistrations.get(0);
 		}
 		return null;
@@ -45,7 +40,6 @@ public class QuizRegistrationDaoImpl extends
 	@Override
 	@Transactional(readOnly = true, value = "transactionManager")
 	public List<QuizRegistration> findQuizRegistrationsByQuiz(Quiz quiz) {
-		// TODO Auto-generated method stub
 		Query query = this.em
 				.createQuery("SELECT qr FROM QuizRegistration qr WHERE"
 						+ " qr.quizId=:quizId");

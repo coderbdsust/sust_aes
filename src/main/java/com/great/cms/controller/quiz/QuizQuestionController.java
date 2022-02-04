@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,8 @@ import com.great.cms.utils.simulator.TimeEstimater;
 @RequestMapping("/quiz")
 public class QuizQuestionController {
 
+	private static final Logger log = LoggerFactory.getLogger(QuizQuestionController.class);
+
 	@Autowired
 	QuizService quizService;
 	@Autowired
@@ -39,63 +43,58 @@ public class QuizQuestionController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				new SimpleDateFormat("dd/MM/yyyy"), true));
+		log.debug("/");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true));
+		log.debug("/initBinder");
 	}
 
 	@RequestMapping(value = "/question/add/{id}", method = RequestMethod.GET)
 	public String showQuizQuestionPage(@PathVariable Long id, Model model) {
-		System.out.println("GET: /question/quiz/add/" + id);
+		log.debug("GET: /");
 		Quiz quiz = quizService.getQuiz(id);
-		List<Question> availableQuestions = questionService
-				.findAvailableQuestions(quiz);
-		List<Question> assignedQuestions = questionService
-				.findAssignedQuestions(quiz);
-
+		List<Question> availableQuestions = questionService.findAvailableQuestions(quiz);
+		List<Question> assignedQuestions = questionService.findAssignedQuestions(quiz);
 		model.addAttribute("quiz", quiz);
 		model.addAttribute("availableQuestionList", availableQuestions);
 		model.addAttribute("assignedQuestionList", assignedQuestions);
-		model.addAttribute("estimatedTime", TimeEstimater.getInstance()
-				.getTotalTime(assignedQuestions));
-
+		model.addAttribute("estimatedTime", TimeEstimater.getInstance().getTotalTime(assignedQuestions));
+		log.debug("GET: /question/quiz/add/" + id);
 		return "teacher/question/assign_quiz_question";
 	}
 
 	@RequestMapping(value = "/question/available/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Question> availableQuizQuestion(Quiz quiz, Model model) {
-		System.out.println("POST: quiz/question/available/" + quiz.getQuizId());
+		log.debug("GET: /");
 		List<Question> questions = null;
+		log.debug("GET: /quiz/question/available/");
 		return questions;
 	}
 
 	@RequestMapping(value = "/question/assigned/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Question> quizAssignedQuestion(Quiz quiz, Model model) {
-		System.out.println("POST: quiz/question/assigned/" + +quiz.getQuizId());
+		log.debug("GET: /");
 		List<Question> questions = null;
+		log.debug("GET: /quiz/question/assigned/" + +quiz.getQuizId());
 		return questions;
 	}
 
 	@RequestMapping(value = "/question/assignto", method = RequestMethod.GET)
-	public String saveQuizQuestion(Questions questions, Long totalTime,
-			Long quizId, Model model) {
-		System.out.println("GET: /quiz/question/assignto");
-		System.out.println("QuizId:" + quizId);
-		System.out.println("Total Time: " + totalTime);
+	public String saveQuizQuestion(Questions questions, Long totalTime, Long quizId, Model model) {
+		log.debug("GET: /");
+		log.debug("QuizID:" + quizId);
+		log.debug("Total Time: " + totalTime);
 
 		Quiz quiz = quizService.getQuiz(quizId);
 		quiz.setTotalTime(totalTime);
 		quizService.saveOrUpdate(quiz);
 
-		ArrayList<QuizQuestion> prevQuestionList = (ArrayList<QuizQuestion>) quizQuestionService
-				.getQuizQuestions(quiz);
+		ArrayList<QuizQuestion> prevQuestionList = (ArrayList<QuizQuestion>) quizQuestionService.getQuizQuestions(quiz);
 
-		ArrayList<QuizQuestion> quizQuestionList = (ArrayList<QuizQuestion>) questions
-				.getFilteredQuizQuestions();
+		ArrayList<QuizQuestion> quizQuestionList = (ArrayList<QuizQuestion>) questions.getFilteredQuizQuestions();
 
-		AssignQuestion assignQuestion = new AssignQuestion(prevQuestionList,
-				quizQuestionList);
+		AssignQuestion assignQuestion = new AssignQuestion(prevQuestionList, quizQuestionList);
 
 		for (QuizQuestion q : assignQuestion.getRemoveList()) {
 			quizQuestionService.deleteById(q.getQuizQuestionId());
@@ -104,9 +103,9 @@ public class QuizQuestionController {
 		for (QuizQuestion q : assignQuestion.getSaveList()) {
 			quizQuestionService.saveOrUpdate(q);
 		}
-
+		log.debug("GET: /quiz/question/assignto");
 		return "redirect:/teacher/quiz/dashboard";
-		
+
 	}
 
 }

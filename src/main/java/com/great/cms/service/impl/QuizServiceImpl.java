@@ -37,14 +37,12 @@ public class QuizServiceImpl implements QuizService {
 	}
 
 	@Override
-	public Quiz getQuizesByCreateDateAndTeachesId(Date createDate,
-			Teaches teachesId) {
+	public Quiz getQuizesByCreateDateAndTeachesId(Date createDate, Teaches teachesId) {
 		return quizDao.findByCreateDateAndTeachesId(createDate, teachesId);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		quizDao.deleteById(id);
 	}
 

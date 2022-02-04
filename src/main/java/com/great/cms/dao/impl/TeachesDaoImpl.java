@@ -11,13 +11,12 @@ import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;
 
 @Repository
-public class TeachesDaoImpl extends GenericDaoImpl<Teaches, Integer> implements
-		TeachesDao {
+public class TeachesDaoImpl extends GenericDaoImpl<Teaches, Integer> implements TeachesDao {
 
 	public TeachesDaoImpl() {
 		super(Teaches.class);
 	}
-	
+
 	@Override
 	public List<Teaches> findByInstructorId(Teacher teacher) {
 		Query query = this.em.createQuery("SELECT t FROM Teaches t WHERE t.instructorId=:instructorId");
@@ -25,5 +24,5 @@ public class TeachesDaoImpl extends GenericDaoImpl<Teaches, Integer> implements
 		List<Teaches> teachesList = query.getResultList();
 		return teachesList;
 	}
-	
+
 }

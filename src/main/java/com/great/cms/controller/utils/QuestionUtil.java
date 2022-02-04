@@ -24,11 +24,11 @@ public class QuestionUtil {
 	public int countTotalQuestions(List<Question> assignedQuestions) {
 		return assignedQuestions.size();
 	}
-	
-	public int getObtainMarks(List<QuestionAnswer> questionAnswers){
-		int totalMarks=0;
-		for(QuestionAnswer qa:questionAnswers){
-			totalMarks+=qa.getMarks();
+
+	public int getObtainMarks(List<QuestionAnswer> questionAnswers) {
+		int totalMarks = 0;
+		for (QuestionAnswer qa : questionAnswers) {
+			totalMarks += qa.getMarks();
 		}
 		return totalMarks;
 	}

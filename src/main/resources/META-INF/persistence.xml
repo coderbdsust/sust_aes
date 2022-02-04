@@ -22,16 +22,13 @@
     <class>com.great.cms.entity.Teacher</class>
     <class>com.great.cms.entity.Designation</class>
     <class>com.great.cms.entity.Department</class>
-    
-    
-    
-    
+       
     <properties>      
 		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
 		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 		<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
-		<property name="hibernate.hbm2ddl.auto" value="validate" />
-		<property name="hibernate.show_sql" value="false"/>
+		<property name="hibernate.hbm2ddl.auto" value="create" />
+		<property name="hibernate.show_sql" value="true"/>
     </properties>
   </persistence-unit>
 </persistence>

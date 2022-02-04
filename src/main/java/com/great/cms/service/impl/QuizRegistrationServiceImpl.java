@@ -14,7 +14,6 @@ import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizRegistration;
 import com.great.cms.entity.Student;
-import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.QuizRegistrationService;
 
 @Service("QuizRegistrationService")
@@ -40,10 +39,8 @@ public class QuizRegistrationServiceImpl implements QuizRegistrationService {
 	}
 
 	@Override
-	public QuizRegistration getQuizRegistrationByCourseReg(Quiz quiz,
-			CourseRegistration courseRegistration) {
-		return quizRegDao.findQuizRegistrationByCourseReg(quiz,
-				courseRegistration);
+	public QuizRegistration getQuizRegistrationByCourseReg(Quiz quiz, CourseRegistration courseRegistration) {
+		return quizRegDao.findQuizRegistrationByCourseReg(quiz, courseRegistration);
 	}
 
 	@Override
@@ -55,11 +52,9 @@ public class QuizRegistrationServiceImpl implements QuizRegistrationService {
 	@Override
 	public List<QuizRegistration> getQuizRegistrationsByAttendedAndCourseReg(
 			List<CourseRegistration> courseRegistrationList) {
-		// TODO Auto-generated method stub
 		List<QuizRegistration> quizRegList = new ArrayList<QuizRegistration>();
 		for (CourseRegistration cr : courseRegistrationList) {
-			List<QuizRegistration> quizRegs = quizRegDao
-					.findQuizRegistrationsByAttendedAndCourseRegistration(cr);
+			List<QuizRegistration> quizRegs = quizRegDao.findQuizRegistrationsByAttendedAndCourseRegistration(cr);
 			if (quizRegs != null && quizRegs.size() != 0)
 				quizRegList.addAll(quizRegs);
 		}
@@ -68,18 +63,14 @@ public class QuizRegistrationServiceImpl implements QuizRegistrationService {
 
 	@Override
 	public QuizRegistration getQuizRegistrationById(Long quizRegistrationId) {
-		// TODO Auto-generated method stub
 		return quizRegDao.findById(quizRegistrationId);
 	}
 
-	public QuizRegistration getQuizRegistrationByStudentAndQuiz(
-			Student student, Long quizId) {
+	public QuizRegistration getQuizRegistrationByStudentAndQuiz(Student student, Long quizId) {
 		Quiz quiz = quizDao.findById(quizId);
 		Course course = quiz.getTeachesId().getCourseId();
-		CourseRegistration courseReg = courseRegDao
-				.findByStudentAndCourseAndIsApproved(student, course);
-		QuizRegistration quizReg = quizRegDao.findQuizRegistrationByCourseReg(
-				quiz, courseReg);
+		CourseRegistration courseReg = courseRegDao.findByStudentAndCourseAndIsApproved(student, course);
+		QuizRegistration quizReg = quizRegDao.findQuizRegistrationByCourseReg(quiz, courseReg);
 		return quizReg;
 
 	}

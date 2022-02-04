@@ -27,19 +27,16 @@ public class DesignatioServiceImpl implements DesignationService {
 
 	@Override
 	public List<Designation> getDesignations() {
-		// TODO Auto-generated method stub
 		return designationDao.findAll();
 	}
 
 	@Override
 	public void deleteDesignation(Designation designation) {
-		// TODO Auto-generated method stub
 		designationDao.delete(designation);
 	}
 
 	@Override
 	public Designation getDesignationById(Integer desgId) {
-		// TODO Auto-generated method stub
 		return designationDao.findById(desgId);
 	}
 

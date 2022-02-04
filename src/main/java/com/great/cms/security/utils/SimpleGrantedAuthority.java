@@ -4,16 +4,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.util.Assert;
 
 public final class SimpleGrantedAuthority implements GrantedAuthority {
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 4024604707182393169L;
 	private final String role;
 
 	public SimpleGrantedAuthority(String role) {
-		Assert.hasText(role,
-				"A granted authority textual representation is required");
+		Assert.hasText(role, "A granted authority textual representation is required");
 		this.role = role;
 	}
 

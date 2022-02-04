@@ -1,5 +1,7 @@
 package com.great.cms.controller.student;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -17,25 +19,26 @@ import com.great.cms.service.CourseService;
 @Secured("ROLE_STUDENT")
 public class StudentCourseController {
 
+	private static final Logger log = LoggerFactory.getLogger(StudentCourseController.class);
+
 	@Autowired
 	CourseService courseService;
 
 	@RequestMapping(value = "/course/registration", method = RequestMethod.GET)
 	public String newCourseRegistration(Model uiModel) {
-		System.out.println("student/course/registration");
+		log.debug("GET: /student/course/registration");
 		uiModel.addAttribute("courseList", courseService.getCourses());
+		log.debug("GET: /student/course/registration");
 		return "student/course_registration";
 	}
 
 	@RequestMapping(value = "/course/registration", method = RequestMethod.POST)
-	public String courseRegistration(CourseRegistration courseReg,
-			BindingResult bandingResult, RedirectAttributes redirectAttr) {
-
-		System.out.println("student/course/registration");
-		System.out.println("Course Reg:" + courseReg);
-		redirectAttr.addFlashAttribute("message",
-				" -Course Teacher Approval Pending!");
-		// courseRegService.saveOrUpdate(courseReg);
+	public String courseRegistration(CourseRegistration courseReg, BindingResult bandingResult,
+			RedirectAttributes redirectAttr) {
+		log.debug("POST: /");
+		log.debug("Course Reg:" + courseReg);
+		redirectAttr.addFlashAttribute("message", " - Course Teacher Approval Pending!");
+		log.debug("POST: /student/course/registration");
 		return "redirect:/student/course/registration";
 	}
 

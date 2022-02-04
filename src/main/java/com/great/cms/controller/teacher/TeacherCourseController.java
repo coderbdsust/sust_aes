@@ -2,6 +2,8 @@ package com.great.cms.controller.teacher;
 
 import java.security.Principal;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ import com.great.cms.service.UserService;
 @Secured("ROLE_TEACHER")
 public class TeacherCourseController {
 
+	private static final Logger log = LoggerFactory.getLogger(TeacherCourseController.class);
+
 	@Autowired
 	TeacherService teacherService;
 	@Autowired
@@ -33,54 +37,47 @@ public class TeacherCourseController {
 	CourseRegistrationService courseRegService;
 
 	@RequestMapping(value = "/course/reg/approve", method = RequestMethod.GET)
-	public String regApprove(Course course, Model uiModel,
-			RedirectAttributes redirectAttr) {
-
-		System.out.println("GET: teacher/course/reg/approve");
-		System.out.println("Course: " + course);
-
+	public String regApprove(Course course, Model uiModel, RedirectAttributes redirectAttr) {
+		log.debug("GET: /");
+		log.debug("Course: " + course);
 		uiModel.addAttribute("courseRegistration", new CourseRegistration());
-		uiModel.addAttribute("courseRegistrationList",
-				courseRegService.findByCourseId(course));
-
+		uiModel.addAttribute("courseRegistrationList", courseRegService.findByCourseId(course));
 		if (course == null) {
+			log.debug("GET: /teacher/course/reg/approve");
 			return "redirect:/teacher/course/reg/open";
 		}
-
+		log.debug("GET: /teacher/course/reg/approve");
 		return "teacher/course_reg_approve";
 	}
 
 	@RequestMapping(value = "/course/reg/approve", method = RequestMethod.POST)
 	public String saveRegApprove(CourseRegistration courseReg, Model uiModel) {
-		System.out.println("POST: teacher/course/reg/approve");
-		System.out.println("CourseRegistration: " + courseReg);
+		log.debug("POST: /");
+		log.debug("CourseRegistration: " + courseReg);
+		log.debug("POST: /teacher/course/reg/approve");
 		return "redirect:/teacher/course/reg/approve";
 	}
 
 	@RequestMapping(value = "/course/reg/open", method = RequestMethod.GET)
 	public String showAvailableCourse(Principal principal, Model uiModel) {
-		Teacher teacher = teacherService.getTeacherByUserId(userService
-				.getUser(principal.getName()));
-		System.out.println("GET: /course/reg/open");
-
+		log.debug("GET: /");
+		Teacher teacher = teacherService.getTeacherByUserId(userService.getUser(principal.getName()));
 		uiModel.addAttribute("course", new Course());
-		uiModel.addAttribute("teachesList",
-				teachesService.findByInstructorId(teacher));
-
+		uiModel.addAttribute("teachesList", teachesService.findByInstructorId(teacher));
+		log.debug("GET: /course/reg/open");
 		return "teacher/course_reg_open";
 	}
 
 	@RequestMapping(value = "/course/reg/open", method = RequestMethod.POST)
-	public String showAvailableCourse(Course course, Model uiModel,
-			RedirectAttributes redirectAttr) {
-
-		System.out.println("POST: /course/reg/open");
-		System.out.println(course);
-
+	public String showAvailableCourse(Course course, Model uiModel, RedirectAttributes redirectAttr) {
+		log.debug("POST: /");
+		log.debug("Course" + course);
 		if (course != null) {
 			redirectAttr.addFlashAttribute("course", course);
+			log.debug("POST: /course/reg/open");
 			return "redirect:/teacher/course/reg/approve";
 		} else {
+			log.debug("POST: /course/reg/open");
 			return "teacher/course_reg_open";
 		}
 	}

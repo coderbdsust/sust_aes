@@ -9,12 +9,10 @@ import com.great.cms.dao.DepartmentDao;
 import com.great.cms.entity.Department;
 
 @Repository("DepartmentDao")
-public class DepartmentDaoImpl extends GenericDaoImpl<Department, Integer>
-		implements DepartmentDao {
+public class DepartmentDaoImpl extends GenericDaoImpl<Department, Integer> implements DepartmentDao {
 
 	public DepartmentDaoImpl() {
 		super(Department.class);
-
 	}
 
 	@Override

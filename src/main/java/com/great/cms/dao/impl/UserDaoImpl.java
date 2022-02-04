@@ -10,7 +10,6 @@ import com.great.cms.dao.UserDao;
 import com.great.cms.entity.User;
 
 @Repository("UserDao")
-@SuppressWarnings("unchecked")
 public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 
 	public UserDaoImpl() {
@@ -24,8 +23,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 
 	@Override
 	public boolean usernameExists(String username) {
-		Query query = this.em
-				.createQuery("SELECT u from User u where u.username=:username");
+		Query query = this.em.createQuery("SELECT u from User u where u.username=:username");
 		query.setParameter("username", username);
 		List<User> users = query.getResultList();
 		if (users == null || users.isEmpty() || users.size() > 1)
@@ -35,8 +33,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 
 	@Override
 	public User findByUsername(String username) {
-		Query query = this.em
-				.createQuery("SELECT u FROM User u WHERE u.username=:username");
+		Query query = this.em.createQuery("SELECT u FROM User u WHERE u.username=:username");
 		query.setParameter("username", username);
 		List<User> users = query.getResultList();
 		if (users == null || users.isEmpty() || users.size() > 1)
@@ -45,33 +42,29 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao {
 	}
 
 	public Long countUsers() {
-		Query query = this.em
-				.createQuery("SELECT count(u) FROM User u WHERE u.enabled=true");
+		Query query = this.em.createQuery("SELECT count(u) FROM User u WHERE u.enabled=true");
 		Long count = (Long) query.getResultList().get(0);
 		return count;
 	}
 
 	public Integer countVerificationNeed() {
-		Query query = this.em.createQuery("SELECT u FROM User u WHERE "
-				+ "u.enabled=false " + "or u.accountNonLocked=false "
-				+ "or u.accountNonExpired=false "
-				+ "or u.credentialsNonExpired=false");
+		Query query = this.em
+				.createQuery("SELECT u FROM User u WHERE " + "u.enabled=false " + "or u.accountNonLocked=false "
+						+ "or u.accountNonExpired=false " + "or u.credentialsNonExpired=false");
 		Integer count = query.getResultList().size();
 		return count;
 	}
 
 	public List<User> nonVerifiedUsers() {
-		Query query = this.em.createQuery("SELECT u FROM User u WHERE "
-				+ "u.enabled=false " + "or u.accountNonLocked=false "
-				+ "or u.accountNonExpired=false "
-				+ "or u.credentialsNonExpired=false");
+		Query query = this.em
+				.createQuery("SELECT u FROM User u WHERE " + "u.enabled=false " + "or u.accountNonLocked=false "
+						+ "or u.accountNonExpired=false " + "or u.credentialsNonExpired=false");
 		return query.getResultList();
 	}
 
 	@Override
 	public void deleteUserAllRoles(User user) {
-		Query query = this.em
-				.createQuery("delete FROM UserRole u where u.userId=:userId");
+		Query query = this.em.createQuery("delete FROM UserRole u where u.userId=:userId");
 		query.setParameter("userId", user);
 		query.executeUpdate();
 	}

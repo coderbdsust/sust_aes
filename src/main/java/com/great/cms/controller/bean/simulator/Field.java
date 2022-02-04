@@ -67,7 +67,6 @@ public class Field implements IOption, Comparable<Field> {
 
 	@Override
 	public int compareTo(Field o) {
-		// TODO Auto-generated method stub
 		return this.index - o.getIndex();
 	}
 

@@ -18,7 +18,6 @@ public class QuestionAnswerServiceImpl implements QuestionAnswerService {
 
 	@Override
 	public void saveOrUpdate(QuestionAnswer questionAnswer) {
-		// TODO Auto-generated method stub
 		if (questionAnswer.getQuestionAnsId() == null) {
 			questionAnsDao.save(questionAnswer);
 		} else {
@@ -28,21 +27,17 @@ public class QuestionAnswerServiceImpl implements QuestionAnswerService {
 
 	@Override
 	public void deleteAllByQuizRegistration(QuizRegistration quizRegistrationId) {
-		// TODO Auto-generated method stub
 		questionAnsDao.deleteAllByQuizRegistration(quizRegistrationId);
 
 	}
 
 	@Override
 	public QuestionAnswer getQuestionAnswer(Long questionAnsId) {
-		// TODO Auto-generated method stub
 		return questionAnsDao.findById(questionAnsId);
 	}
 
 	@Override
-	public List<QuestionAnswer> getQuestionAnswersByQuizRegistration(
-			QuizRegistration quizRegistrationId) {
-		// TODO Auto-generated method stub
+	public List<QuestionAnswer> getQuestionAnswersByQuizRegistration(QuizRegistration quizRegistrationId) {
 		return questionAnsDao.findAllByQuizRegistrationId(quizRegistrationId);
 	}
 

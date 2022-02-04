@@ -10,7 +10,6 @@ import com.great.cms.entity.Student;
 import com.great.cms.entity.User;
 import com.great.cms.service.StudentService;
 
-
 @Service("StudentService")
 public class StudentServiceImpl implements StudentService {
 
@@ -25,7 +24,7 @@ public class StudentServiceImpl implements StudentService {
 			studentDao.update(student);
 		}
 	}
-	
+
 	public Student getStudentById(Long studentId) {
 		return studentDao.findById(studentId);
 	}
@@ -36,7 +35,6 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student getStudentByUserId(User userId) {
-		
 		return studentDao.getStudentByUserId(userId);
 	}
 

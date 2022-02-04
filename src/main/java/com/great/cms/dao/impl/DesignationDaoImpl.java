@@ -8,10 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.great.cms.dao.DesignationDao;
 import com.great.cms.entity.Designation;
 
-
 @Repository("DesignationDao")
-public class DesignationDaoImpl extends GenericDaoImpl<Designation, Integer>
-		implements DesignationDao {
+public class DesignationDaoImpl extends GenericDaoImpl<Designation, Integer> implements DesignationDao {
 
 	public DesignationDaoImpl() {
 		super(Designation.class);
@@ -22,7 +20,7 @@ public class DesignationDaoImpl extends GenericDaoImpl<Designation, Integer>
 	public void deleteAll() {
 		Query query = this.em.createQuery("delete  FROM Designation");
 		query.executeUpdate();
-		
+
 	}
 
 }

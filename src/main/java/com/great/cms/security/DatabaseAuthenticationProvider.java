@@ -13,16 +13,12 @@ import org.springframework.util.StringUtils;
 import com.great.cms.entity.User;
 import com.great.cms.service.UserService;
 
+public class DatabaseAuthenticationProvider extends AbstractUserDetailsAuthenticationProvider {
 
+	private final Logger log = LoggerFactory.getLogger(getClass());
 
-public class DatabaseAuthenticationProvider extends
-		AbstractUserDetailsAuthenticationProvider {
-
-	private final Logger logger = LoggerFactory.getLogger(getClass());
-	
 	public DatabaseAuthenticationProvider() {
-		// TODO Auto-generated constructor stub
-		System.out.println("Database Authentication Provider Initialize!");
+		log.debug("Database Authentication Provider Initialize!");
 	}
 
 	@Autowired
@@ -30,25 +26,18 @@ public class DatabaseAuthenticationProvider extends
 
 	@Override
 	protected void additionalAuthenticationChecks(UserDetails userDetails,
-			UsernamePasswordAuthenticationToken authentication)
-			throws AuthenticationException {
-		// ignored
-		System.out.println("Add Auth Cheeks!");
+			UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+		log.debug("Add Auth Cheeks " + userDetails);
 	}
 
 	@Override
-	protected UserDetails retrieveUser(String username,
-			UsernamePasswordAuthenticationToken authentication)
+	protected UserDetails retrieveUser(String username, UsernamePasswordAuthenticationToken authentication)
 			throws AuthenticationException {
-		logger.debug("retrieveUser()  username ={}", username);
-		
-		System.out.println("User Details");
-
-		System.out.println("Username:" + username);
+		log.debug("/");
+		log.debug("Username:" + username);
 		String password = (String) authentication.getCredentials();
-		System.out.println("Password: " + password);
-		
-		if(!StringUtils.hasText(username)){
+
+		if (!StringUtils.hasText(username)) {
 			throw new BadCredentialsException("Please enter username");
 		}
 
@@ -58,16 +47,15 @@ public class DatabaseAuthenticationProvider extends
 
 		try {
 			User targetUser = (User) userService.getUser(username);
-			System.out.println(targetUser);
+			log.debug("Target User: " + targetUser);
 			if (!password.equals(targetUser.getPassword())) {
 				throw new BadCredentialsException("Invalid Password");
 			}
-			System.out.println("Authentication Checking! , TargetUser: "
-					+ targetUser);
+			log.debug("Authentication Checking, TargetUser: " + targetUser);
 			return targetUser;
 
 		} catch (Exception ex) {
-			System.out.println(ex.getLocalizedMessage());
+			log.error(ex.getLocalizedMessage());
 			throw new BadCredentialsException("Invalid user");
 		}
 	}

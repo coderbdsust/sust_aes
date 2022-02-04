@@ -11,7 +11,6 @@ import com.great.cms.dao.QuestionDao;
 import com.great.cms.entity.Course;
 import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
-import com.great.cms.entity.Teacher;
 
 @Repository("QuestionDao")
 public class QuestionDaoImpl extends GenericDaoImpl<Question, Long> implements
@@ -19,7 +18,6 @@ public class QuestionDaoImpl extends GenericDaoImpl<Question, Long> implements
 
 	public QuestionDaoImpl() {
 		super(Question.class);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -40,8 +38,6 @@ public class QuestionDaoImpl extends GenericDaoImpl<Question, Long> implements
 
 	@Override
 	public List<Question> findAssignedQuestions(Quiz quiz) {
-		// TODO Auto-generated method stub
-
 		Query query = this.em
 				.createQuery("SELECT q FROM Question q WHERE q.questionId in (SELECT qq.questionId FROM QuizQuestion qq where qq.quizId=:quizId)");
 		query.setParameter("quizId", quiz);

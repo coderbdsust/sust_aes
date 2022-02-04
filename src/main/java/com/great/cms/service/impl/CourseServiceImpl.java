@@ -30,8 +30,8 @@ public class CourseServiceImpl implements CourseService {
 	public void deleteCourse(Course course) {
 		courseDao.delete(course);
 	}
-	
-	public List<Course> getCourses(){
+
+	public List<Course> getCourses() {
 		return courseDao.findAll();
 	}
 

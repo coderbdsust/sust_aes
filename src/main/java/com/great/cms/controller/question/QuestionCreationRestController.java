@@ -1,9 +1,10 @@
   package com.great.cms.controller.question;
 
-import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -20,50 +21,39 @@ import com.great.cms.service.QuestionService;
 @Controller
 @RequestMapping("/question")
 public class QuestionCreationRestController {
+	
+	private static final Logger log = LoggerFactory
+			.getLogger(QuestionCreationRestController.class);
 
 	@Autowired
 	QuestionService questionService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		log.debug("/");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				new SimpleDateFormat("dd/MM/yyyy"), true));
+		log.debug("/initBinder");
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String showCreateQuestion() {
-		System.out.println("GET: /question/create/");
+		log.debug("GET: /");
+		log.debug("GET: /question/create/");
 		return "question/create_new_question";
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseBody
 	public Question saveQuestion(Question question) {
-		System.out.println("POST: /question/create");
+		log.debug("POST: /");
 		question.setCreatedBy(UserUtil.getInstance().getTeacher());
-		System.out.println(question);
+		log.debug("Question: "+question);
 		questionService.saveOrUpdate(question);
-		// System.out.println("Question Saved");
 		Question savedQuestion = questionService.findByCreationTimeAndCourseId(
 				question.getCreatedTime(), question.getCourseId());
-		System.out.println("Question Retrieved: "
-				+ savedQuestion.getCreatedBy());
-		// savedQuestion.getQuestionId());
+		log.debug("Question Retrieved: " + savedQuestion.getCreatedBy());
+		log.debug("POST: /question/create");
 		return savedQuestion;
 	}
-
-	// @RequestMapping(value = "/create", method = RequestMethod.POST)
-	// public String saveQuestion(Question question, Model uiModel) {
-	// System.out.println("POST: /question/create");
-	// System.out.println(question);
-	// questionService.saveOrUpdate(question);
-	// System.out.println("Question Saved");
-	// Question savedQuestion =
-	// questionService.findByCreationTimeAndCourseId(question.getCreatedTime(),
-	// question.getCourseId());
-	// System.out.println("Question Retrieved with id: " +
-	// savedQuestion.getQuestionId());
-	// uiModel.addAttribute("question", savedQuestion);
-	// return "jsonTemplate";
-	// }
 }

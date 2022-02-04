@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -34,8 +27,7 @@ import org.codehaus.jackson.annotate.JsonIgnore;
  */
 @Entity
 @Table(name = "quiz_registration")
-@NamedQueries({
-		@NamedQuery(name = "QuizRegistration.findAll", query = "SELECT q FROM QuizRegistration q"),
+@NamedQueries({ @NamedQuery(name = "QuizRegistration.findAll", query = "SELECT q FROM QuizRegistration q"),
 		@NamedQuery(name = "QuizRegistration.findByQuizRegistrationId", query = "SELECT q FROM QuizRegistration q WHERE q.quizRegistrationId = :quizRegistrationId"),
 		@NamedQuery(name = "QuizRegistration.findByAttendTime", query = "SELECT q FROM QuizRegistration q WHERE q.attendTime = :attendTime"),
 		@NamedQuery(name = "QuizRegistration.findBySubmitTime", query = "SELECT q FROM QuizRegistration q WHERE q.submitTime = :submitTime"),
@@ -81,8 +73,8 @@ public class QuizRegistration implements DomainObject, Serializable {
 		this.quizRegistrationId = quizRegistrationId;
 	}
 
-	public QuizRegistration(Long quizRegistrationId, boolean isRegApproved,
-			boolean isAttended, boolean isExamReviewed) {
+	public QuizRegistration(Long quizRegistrationId, boolean isRegApproved, boolean isAttended,
+			boolean isExamReviewed) {
 		this.quizRegistrationId = quizRegistrationId;
 		this.isRegApproved = isRegApproved;
 		this.isAttended = isAttended;
@@ -185,8 +177,7 @@ public class QuizRegistration implements DomainObject, Serializable {
 		}
 		QuizRegistration other = (QuizRegistration) object;
 		if ((this.quizRegistrationId == null && other.quizRegistrationId != null)
-				|| (this.quizRegistrationId != null && !this.quizRegistrationId
-						.equals(other.quizRegistrationId))) {
+				|| (this.quizRegistrationId != null && !this.quizRegistrationId.equals(other.quizRegistrationId))) {
 			return false;
 		}
 		return true;
@@ -194,11 +185,9 @@ public class QuizRegistration implements DomainObject, Serializable {
 
 	@Override
 	public String toString() {
-		return "QuizRegistration [quizRegistrationId=" + quizRegistrationId
-				+ ", attendTime=" + attendTime + ", submitTime=" + submitTime
-				+ ", isRegApproved=" + isRegApproved + ", isAttended="
-				+ isAttended + ", isExamReviewed=" + isExamReviewed
-				+ ", quizId=" + quizId + ", courseRegId=" + courseRegId + "]";
+		return "QuizRegistration [quizRegistrationId=" + quizRegistrationId + ", attendTime=" + attendTime
+				+ ", submitTime=" + submitTime + ", isRegApproved=" + isRegApproved + ", isAttended=" + isAttended
+				+ ", isExamReviewed=" + isExamReviewed + ", quizId=" + quizId + ", courseRegId=" + courseRegId + "]";
 	}
 
 }

@@ -38,16 +38,12 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 
 	@Override
 	public List<CourseRegistration> findByStudentAndIsApproved(Student studentId) {
-		// TODO Auto-generated method stub
 		return courseRegDao.findByStudentAndIsApproved(studentId);
 	}
 
 	@Override
-	public CourseRegistration findByStudentAndCourseAndIsApproved(
-			Student student, Course course) {
-		// TODO Auto-generated method stub
-		return courseRegDao
-				.findByStudentAndCourseAndIsApproved(student, course);
+	public CourseRegistration findByStudentAndCourseAndIsApproved(Student student, Course course) {
+		return courseRegDao.findByStudentAndCourseAndIsApproved(student, course);
 	}
 
 }

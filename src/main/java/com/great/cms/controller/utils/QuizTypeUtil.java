@@ -27,7 +27,6 @@ public class QuizTypeUtil implements IQuizTypeUtil {
 
 	public QuizParticipationType getQuizParticipationType(QuizRegistration quizReg, Date currDate,
 			QuizRegistrationType quizRegistrationType) {
-		// TODO Auto-generated method stub
 		if (quizReg == null) {
 			return QuizParticipationType.CAN_NOT_PARTICIPATE;
 		} else if (getQuizStatusType(quizReg.getQuizId(), currDate) == QuizStatusType.Running

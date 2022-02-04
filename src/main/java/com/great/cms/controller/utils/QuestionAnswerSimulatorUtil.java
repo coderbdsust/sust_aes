@@ -1,7 +1,6 @@
 package com.great.cms.controller.utils;
 
 import java.lang.reflect.Type;
-import java.util.Collections;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -19,13 +18,10 @@ public class QuestionAnswerSimulatorUtil implements IQuestionAnswerSimulator {
 	}
 
 	@Override
-	public boolean isMCQAnswerCorrect(Question question,
-			QuestionAnswer questionAnswer) {
+	public boolean isMCQAnswerCorrect(Question question, QuestionAnswer questionAnswer) {
 
-		List<Option> questionOptions = getSortedOptions(question
-				.getQuestionBody());
-		List<Option> answerOptions = getSortedOptions(questionAnswer
-				.getAnswerBody());
+		List<Option> questionOptions = getSortedOptions(question.getQuestionBody());
+		List<Option> answerOptions = getSortedOptions(questionAnswer.getAnswerBody());
 		if (questionOptions.size() == answerOptions.size()) {
 			for (int index = 0; index < questionOptions.size(); index++) {
 				Option questionOption = questionOptions.get(index);
@@ -40,12 +36,9 @@ public class QuestionAnswerSimulatorUtil implements IQuestionAnswerSimulator {
 	}
 
 	@Override
-	public boolean isFillInTheGapsAnswerCorrect(Question question,
-			QuestionAnswer questionAnswer) {
-		// TODO Auto-generated method stub
+	public boolean isFillInTheGapsAnswerCorrect(Question question, QuestionAnswer questionAnswer) {
 		List<Field> questionFields = getSortedField(question.getQuestionBody());
-		List<Field> answerFields = getSortedField(questionAnswer
-				.getAnswerBody());
+		List<Field> answerFields = getSortedField(questionAnswer.getAnswerBody());
 		if (questionFields.size() == answerFields.size()) {
 			for (int index = 0; index < questionFields.size(); index++) {
 				Field questionField = questionFields.get(index);
@@ -63,8 +56,7 @@ public class QuestionAnswerSimulatorUtil implements IQuestionAnswerSimulator {
 		Gson gson = new Gson();
 		Type listType = new TypeToken<List<Option>>() {
 		}.getType();
-		List<Option> Options = (List<Option>) gson.fromJson(optionJson,
-				listType);
+		List<Option> Options = (List<Option>) gson.fromJson(optionJson, listType);
 		return Options;
 	}
 

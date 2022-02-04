@@ -11,7 +11,7 @@ import com.great.cms.entity.Teacher;
 import com.great.cms.entity.User;
 
 @Repository("TeacherDao")
-public class TeacherDaoImpl extends GenericDaoImpl<Teacher, Long>implements TeacherDao {
+public class TeacherDaoImpl extends GenericDaoImpl<Teacher, Long> implements TeacherDao {
 
 	public TeacherDaoImpl() {
 		super(Teacher.class);
@@ -25,7 +25,6 @@ public class TeacherDaoImpl extends GenericDaoImpl<Teacher, Long>implements Teac
 		List<Teacher> teachers = query.getResultList();
 		if (teachers == null || teachers.isEmpty() || teachers.size() > 1)
 			return null;
-
 		return teachers.get(0);
 	}
 }

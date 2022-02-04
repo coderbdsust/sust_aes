@@ -2,11 +2,8 @@ package com.great.cms.service.impl;
 
 import java.util.List;
 
-import javax.persistence.Query;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.great.cms.dao.TeachesDao;
 import com.great.cms.entity.Teacher;
 import com.great.cms.entity.Teaches;

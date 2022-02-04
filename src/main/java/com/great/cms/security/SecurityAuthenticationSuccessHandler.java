@@ -13,37 +13,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Set;
 
-public class SecurityAuthenticationSuccessHandler implements
-		AuthenticationSuccessHandler {
-	private static final Logger log = LoggerFactory
-			.getLogger(SecurityAuthenticationSuccessHandler.class);
+public class SecurityAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
+	private static final Logger log = LoggerFactory.getLogger(SecurityAuthenticationSuccessHandler.class);
 
 	public SecurityAuthenticationSuccessHandler() {
-		System.out.println("Security Authentication Success Handler!");
+		log.debug("Security authentication success handler!");
 	}
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest request,
-			HttpServletResponse response, Authentication authentication)
-			throws IOException, ServletException {
-		log.debug("nAuthenticationSuccess()");
-
-		Set<String> roles = AuthorityUtils.authorityListToSet(authentication
-				.getAuthorities());
-
-		System.out.println("#ROLES : " + roles.size());
-
+	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+			Authentication authentication) throws IOException, ServletException {
+		log.debug("/");
+		Set<String> roles = AuthorityUtils.authorityListToSet(authentication.getAuthorities());
+		log.debug("#Roles : " + roles.size());
 		if (roles.contains(Role.ROLE_ADMIN.name())) {
-			log.debug("role admin found, redirecting...");
-			System.out.println("ROLE: ADMIN FOUND, REDIRECTING...");
+			log.debug("Role: Admin Found, redirecting...");
 			response.sendRedirect("admin/index");
 		} else if (roles.contains(Role.ROLE_TEACHER.name())) {
-			log.debug("role teacher found, redirecting...");
-			System.out.println("ROLE: TEACHER FOUND, REDIRECTING...");
+			log.debug("Role: Teacher Found, redirecting...");
 			response.sendRedirect("teacher/profile/");
 		} else if (roles.contains(Role.ROLE_STUDENT.name())) {
-			log.debug("role student found, redirecting...");
-			System.out.println("ROLE: STUDENT FOUND, REDIRECTING...");
+			log.debug("Role: Student Found, redirecting...");
 			response.sendRedirect("student/quiz/dashboard");
 		}
 	}

@@ -2,18 +2,21 @@ package com.great.cms.service.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.expression.Dates;
-import org.thymeleaf.expression.Lists;
 
+import com.great.cms.controller.AdminController;
 import com.great.cms.dao.UserDao;
 import com.great.cms.entity.User;
 import com.great.cms.service.UserService;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
+
+	private static final Logger log = LoggerFactory.getLogger(AdminController.class);
 
 	@Autowired
 	private UserDao userDao;
@@ -45,7 +48,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUser(String username) {
-		// TODO Auto-generated method stub
 		return userDao.findByUsername(username);
 	}
 
@@ -60,7 +62,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> nonVerifiedUsers() {
-		// TODO Auto-generated method stub
 		return userDao.nonVerifiedUsers();
 	}
 
@@ -72,13 +73,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getCurrentLoggedInUser() {
-		// TODO Auto-generated method stub
-		User user = (User) SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-
-		System.out.println("getCurrentLoggedInUser() => user.getUsername() ={"
-				+ user.getUsername() + "}, id={" + user.getUserId() + "}");
-
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		log.debug("getCurrentLoggedInUser() => {" + user.getUsername() + "}, id={" + user.getUserId() + "}");
 		return userDao.findById(user.getUserId());
 	}
 

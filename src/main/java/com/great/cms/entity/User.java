@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.great.cms.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
@@ -23,17 +16,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.great.cms.enums.Role;
 import com.great.cms.security.utils.SimpleGrantedAuthority;
 
@@ -74,8 +63,8 @@ public class User implements DomainObject, UserDetails, Serializable {
 	private List<Student> studentList;
 
 	/*
-	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId") private
-	 * List<Role> roles;
+	 * @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId") private List<Role>
+	 * roles;
 	 */
 
 	@ElementCollection(fetch = FetchType.EAGER, targetClass = Role.class)
@@ -93,9 +82,8 @@ public class User implements DomainObject, UserDetails, Serializable {
 		this.userId = userId;
 	}
 
-	public User(Long userId, String username, String password, boolean enabled,
-			boolean accountNonLocked, boolean accountNonExpired,
-			boolean credentialsNonExpired) {
+	public User(Long userId, String username, String password, boolean enabled, boolean accountNonLocked,
+			boolean accountNonExpired, boolean credentialsNonExpired) {
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
@@ -171,11 +159,11 @@ public class User implements DomainObject, UserDetails, Serializable {
 	}
 
 	/*
-	 * @XmlTransient public List<UserRole> getUserRoleList() { return
-	 * userRoleList; }
+	 * @XmlTransient public List<UserRole> getUserRoleList() { return userRoleList;
+	 * }
 	 * 
-	 * public void setUserRoleList(List<UserRole> userRoleList) {
-	 * this.userRoleList = userRoleList; }
+	 * public void setUserRoleList(List<UserRole> userRoleList) { this.userRoleList
+	 * = userRoleList; }
 	 */
 
 	public List<Role> getRole() {
@@ -219,11 +207,9 @@ public class User implements DomainObject, UserDetails, Serializable {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username
-				+ ", enabled=" + enabled
-				+ ", accountNonLocked=" + accountNonLocked
-				+ ", accountNonExpired=" + accountNonExpired
-				+ ", credentialsNonExpired=" + credentialsNonExpired + "]";
+		return "User [userId=" + userId + ", username=" + username + ", enabled=" + enabled + ", accountNonLocked="
+				+ accountNonLocked + ", accountNonExpired=" + accountNonExpired + ", credentialsNonExpired="
+				+ credentialsNonExpired + "]";
 	}
 
 	@Override

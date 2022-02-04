@@ -17,35 +17,35 @@ import com.great.cms.service.UserService;
 @Controller
 @RequestMapping("/account")
 public class LoginController {
-	static final Logger log = LoggerFactory
-			.getLogger(LoginController.class);
+	
+	static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired
 	UserService userService;
 
 	@RequestMapping(value = "/user/{pageName}", method = RequestMethod.GET)
 	public String userEntry(@PathVariable String pageName, Model uiModel) {
+		log.debug("GET: /");
 		uiModel.addAttribute(pageName, true);
 		uiModel.addAttribute("user", new User());
-		System.out.println("/account/user/");
+		log.debug("GET: /account/user/");
 		return "login";
 	}
-	
+
 	@RequestMapping(value = "/user/signup", method = RequestMethod.POST)
-	public String userSignUpEntry(User user, BindingResult result,
-			Model uiModel, RedirectAttributes redirectAttr) {
-		System.out.println("/user/signup");
+	public String userSignUpEntry(User user, BindingResult result, Model uiModel, RedirectAttributes redirectAttr) {
+		log.debug("POST: /");
 		boolean status = userService.usernameExists(user.getUsername());
 		if (status == true) {
-			System.out.println("User account creation rejected!");
-			redirectAttr.addFlashAttribute("userExists",
-					"Username already taken, try another!");
+			log.debug("User account creation rejected!");
+			redirectAttr.addFlashAttribute("userExists", "Username already taken, try another!");
+			log.debug("POST: /user/signup");
 			return "redirect:/account/user/signup";
 		} else {
 			userService.saveOrUpdate(user);
-			System.out.println("User account created!");
-			uiModel.addAttribute("message",
-					"User successfully created, Admin verification needed!");
+			log.debug("User account created!");
+			uiModel.addAttribute("message", "User successfully created, Admin verification needed!");
+			log.debug("POST: /user/signup");
 			return "message";
 		}
 	}

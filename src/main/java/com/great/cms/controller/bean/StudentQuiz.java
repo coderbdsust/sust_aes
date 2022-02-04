@@ -7,19 +7,14 @@ public class StudentQuiz {
 	private Quiz quiz;
 	private QuizRegistration quizRegistration;
 
-	public StudentQuiz() {
-	}
+	public StudentQuiz() {}
 	
-	
-
 	public StudentQuiz(Quiz quiz, QuizRegistration quizRegistration) {
 		super();
 		this.quiz = quiz;
 		this.quizRegistration = quizRegistration;
 	}
-
-
-
+	
 	public Quiz getQuiz() {
 		return quiz;
 	}
@@ -41,7 +36,5 @@ public class StudentQuiz {
 		return "StudentQuiz [quiz=" + quiz + ", quizRegistration="
 				+ quizRegistration + "]";
 	}
-
 	
-
 }

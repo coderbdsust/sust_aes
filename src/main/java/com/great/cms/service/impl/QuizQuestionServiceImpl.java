@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.great.cms.dao.QuizQuestionDao;
-import com.great.cms.entity.Question;
 import com.great.cms.entity.Quiz;
 import com.great.cms.entity.QuizQuestion;
 import com.great.cms.service.QuizQuestionService;
@@ -35,9 +34,8 @@ public class QuizQuestionServiceImpl implements QuizQuestionService {
 	public List<QuizQuestion> getQuizQuestions(Quiz quizId) {
 		return quizQuestionDao.getQuizQuestions(quizId);
 	}
-	
+
 	public void deleteById(Long Id) {
-		// TODO Auto-generated method stub
 		quizQuestionDao.deleteById(Id);
 	}
 

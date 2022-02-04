@@ -12,25 +12,21 @@ import com.great.cms.entity.QuestionAnswer;
 import com.great.cms.entity.QuizRegistration;
 
 @Repository("QuestionAnswerDao")
-public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long>
-		implements QuestionAnswerDao {
+public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long> implements QuestionAnswerDao {
 
 	public QuestionAnswerDaoImpl() {
 		super(QuestionAnswer.class);
-		// TODO Auto-generated constructor stub
 	}
-	
 
 	@Override
 	@Transactional
-	public void deleteAllByQuizRegistration(
-			QuizRegistration quizRegistrationId) {
+	public void deleteAllByQuizRegistration(QuizRegistration quizRegistrationId) {
 		System.out.println(quizRegistrationId);
-		System.out.println(quizRegistrationId.getQuizRegistrationId()==null?"QUIZ REG ID NULL":"QUIZ REG ID OK");
+		System.out.println(quizRegistrationId.getQuizRegistrationId() == null ? "QUIZ REG ID NULL" : "QUIZ REG ID OK");
 		try {
-			Query query = this.em.createQuery("delete QuestionAnswer qa"
-					+ " where qa.quizRegistrationId=:quizRegistrationId");
-			
+			Query query = this.em
+					.createQuery("delete QuestionAnswer qa" + " where qa.quizRegistrationId=:quizRegistrationId");
+
 			query.setParameter("quizRegistrationId", quizRegistrationId);
 			System.out.println("DELETE QUERY: " + query);
 			query.executeUpdate();
@@ -43,14 +39,12 @@ public class QuestionAnswerDaoImpl extends GenericDaoImpl<QuestionAnswer, Long>
 	}
 
 	@Override
-	public List<QuestionAnswer> findAllByQuizRegistrationId(
-			QuizRegistration quizRegistrationId) {
+	public List<QuestionAnswer> findAllByQuizRegistrationId(QuizRegistration quizRegistrationId) {
 		// TODO Auto-generated method stub
 		List<QuestionAnswer> questionAnswerList = null;
-
 		try {
-			Query query = this.em.createQuery("SELECT qa FROM QuestionAnswer qa "
-					+ "where qa.quizRegistrationId=:quizRegistrationId");
+			Query query = this.em.createQuery(
+					"SELECT qa FROM QuestionAnswer qa " + "where qa.quizRegistrationId=:quizRegistrationId");
 			query.setParameter("quizRegistrationId", quizRegistrationId);
 			questionAnswerList = query.getResultList();
 		} catch (Exception ex) {

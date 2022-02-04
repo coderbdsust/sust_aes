@@ -12,8 +12,7 @@ import com.great.cms.entity.User;
 
 @Repository("StudentDao")
 @SuppressWarnings("unchecked")
-public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
-		StudentDao {
+public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements StudentDao {
 
 	public StudentDaoImpl() {
 		super(Student.class);
@@ -21,11 +20,8 @@ public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
 
 	@Override
 	public Student findByRegId(Integer regId) {
-		// TODO Auto-generated method stub
-		Query query = this.em
-				.createQuery("SELECT s from Student s where registrationNo=:regNo");
+		Query query = this.em.createQuery("SELECT s from Student s where registrationNo=:regNo");
 		query.setParameter("regNo", regId);
-		
 		List<Student> students = query.getResultList();
 		if (students != null && students.size() > 1)
 			return null;
@@ -34,8 +30,7 @@ public class StudentDaoImpl extends GenericDaoImpl<Student, Long> implements
 
 	@Override
 	public Student getStudentByUserId(User userId) {
-		Query query = this.em
-				.createQuery("SELECT s FROM Student s WHERE s.userId=:userId");
+		Query query = this.em.createQuery("SELECT s FROM Student s WHERE s.userId=:userId");
 		query.setParameter("userId", userId);
 		List<Student> students = query.getResultList();
 		if (students == null || students.isEmpty() || students.size() > 1)

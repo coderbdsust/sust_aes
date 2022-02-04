@@ -37,7 +37,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	public void deleteDepartment(Department dept) {
 		departmentDao.delete(dept);
 	}
-	
+
 	@Override
 	public void deleteAllDepartment() {
 		departmentDao.deleteAll();

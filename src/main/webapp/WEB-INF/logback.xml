@@ -1,0 +1,39 @@
+<configuration scan="true" scanPeriod="60 seconds">
+		
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+		</filter>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %-30.30class{0}.%-25.25M:%-4L - %msg %n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE-ROLLING"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>sust_aes.log</file>
+
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>sust_aes_archived/sust_aes.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<!-- each archived file, size max 50MB -->
+			<maxFileSize>50MB</maxFileSize>
+			<!-- total size of all archive files, if total size > 20GB, it will delete 
+				old archived file -->
+			<totalSizeCap>20GB</totalSizeCap>
+			<!-- 60 days to keep -->
+			<maxHistory>60</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] %-30.30class{0}.%-25.25M:%-4L - %msg %n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="debug">
+		<appender-ref ref="FILE-ROLLING" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>

@@ -1,10 +1,10 @@
 package com.great.cms.controller.student;
 
-import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.access.annotation.Secured;
@@ -15,15 +15,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.great.cms.entity.CourseRegistration;
 import com.great.cms.entity.Student;
 import com.great.cms.entity.User;
 import com.great.cms.security.utils.UserUtil;
 import com.great.cms.service.CourseRegistrationService;
-import com.great.cms.service.CourseService;
 import com.great.cms.service.DepartmentService;
 import com.great.cms.service.StudentService;
 import com.great.cms.service.UserService;
@@ -32,6 +28,8 @@ import com.great.cms.service.UserService;
 @RequestMapping("/student")
 @Secured("ROLE_STUDENT")
 public class StudentProfileController {
+
+	private static final Logger log = LoggerFactory.getLogger(StudentProfileController.class);
 
 	@Autowired
 	StudentService studentService;
@@ -44,11 +42,14 @@ public class StudentProfileController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		log.debug("/");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 				new SimpleDateFormat("dd/MM/yyyy"), true));
+		log.debug("/initBinder");
 	}
 
 	private Student getStudent(String username) {
+		log.debug("/");
 		User user = userService.getUser(username);
 		Student student = studentService.getStudentByUserId(user);
 		if (student == null) {
@@ -60,30 +61,34 @@ public class StudentProfileController {
 
 	@RequestMapping({ "/profile", "/", "" })
 	public String showProfile(Model uiModel) {
+		log.debug("GET: /");
 		Student student = UserUtil.getInstance().getStudent();
 		if (student.getStudentId() == null) {
+			log.debug("GET: /student/profile/edit");
 			return "redirect:/student/profile/edit";
 		}
-		System.out.println(student);
+		log.debug("student "+student);
 		uiModel.addAttribute("student", student);
-		System.out.println("/student/profile");
+		log.debug("GET: /student/profile/profile");
 		return "student/profile";
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
 	public String editProfile(Model uiModel) {
-		System.out.println("student/profile/edit");
+		log.debug("GET: /");
 		Student student = UserUtil.getInstance().getStudent();
 		uiModel.addAttribute("departmentList", deptService.getDepartments());
 		uiModel.addAttribute("student", student);
+		log.debug("GET: /student/profile/edit");
 		return "student/edit";
 	}
 
 	@RequestMapping(value = "/profile/edit", method = RequestMethod.POST)
 	public String editProfile(Student student, BindingResult bandingResult) {
-		System.out.println("student/profile/edit");
-		System.out.println("Edit Student: " + student);
+		log.debug("POST: /");
+		log.debug("Edit student: " + student);
 		studentService.saveOrUpdateStudent(student);
+		log.debug("POST: /student/profile/edit");
 		return "redirect:/student/profile";
 	}
 

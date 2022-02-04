@@ -32,13 +32,11 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public Teacher getTeacherByUserId(User userId) {
-		// TODO Auto-generated method stub
 		return teacherDao.getTeacherByUserId(userId);
 	}
 
 	@Override
 	public List<Teacher> getTeachers() {
-		// TODO Auto-generated method stub
 		return teacherDao.findAll();
 	}
 

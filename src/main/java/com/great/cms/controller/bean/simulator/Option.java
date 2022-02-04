@@ -40,8 +40,7 @@ public class Option implements IOption, Comparable<Option> {
 
 	@Override
 	public String toString() {
-		return "Option [index=" + index + ", text=" + text + ", answer="
-				+ answer + "]";
+		return "Option [index=" + index + ", text=" + text + ", answer=" + answer + "]";
 	}
 
 	@Override

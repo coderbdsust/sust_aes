@@ -6,10 +6,10 @@ import com.great.cms.dao.CourseDao;
 import com.great.cms.entity.Course;
 
 @Repository("CourseDao")
-public class CourseDaoImpl extends GenericDaoImpl<Course, Integer> implements CourseDao{
+public class CourseDaoImpl extends GenericDaoImpl<Course, Integer> implements CourseDao {
 
-	public CourseDaoImpl () {
-		super(Course.class );
+	public CourseDaoImpl() {
+		super(Course.class);
 	}
 
 }

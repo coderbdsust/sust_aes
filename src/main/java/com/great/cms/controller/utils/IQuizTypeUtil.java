@@ -12,11 +12,10 @@ public interface IQuizTypeUtil {
 
 	public QuizRegistrationType getQuizRegistrationType(QuizRegistration quizReg);
 
-	public QuizParticipationType getQuizParticipationType(
-			QuizRegistration quizReg, Date currDate,QuizRegistrationType quizRegistrationType);
+	public QuizParticipationType getQuizParticipationType(QuizRegistration quizReg, Date currDate,
+			QuizRegistrationType quizRegistrationType);
 
-	public QuizStatusType getQuizStatusType(Date startDate, Date endDate,
-			Date currDate);
+	public QuizStatusType getQuizStatusType(Date startDate, Date endDate, Date currDate);
 
 	public QuizStatusType getQuizStatusType(Quiz quiz, Date currDate);
 
