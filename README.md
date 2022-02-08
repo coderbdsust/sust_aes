@@ -67,6 +67,9 @@ We used @Git for versioning.
 * [Sajid Shahriar](https://www.linkedin.com/in/raggedycoder-1993/ "Sajid Shahriar's LinkedIn Profile")
 * [Biswajit Debnath](https://www.linkedin.com/in/coderbd/ "Biswajit Debnath's LinkedIn Profile")
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 
 
